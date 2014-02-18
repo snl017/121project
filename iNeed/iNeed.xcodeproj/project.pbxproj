@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		86314D2218B40C74006FA727 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 86314D2118B40C74006FA727 /* Place.m */; };
+		86314D2518B40C90006FA727 /* PlaceDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 86314D2418B40C90006FA727 /* PlaceDatabase.m */; };
 		DA212CE718B3EAB600C0DF8F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA212CE618B3EAB600C0DF8F /* Foundation.framework */; };
 		DA212CE918B3EAB600C0DF8F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA212CE818B3EAB600C0DF8F /* CoreGraphics.framework */; };
 		DA212CEB18B3EAB600C0DF8F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA212CEA18B3EAB600C0DF8F /* UIKit.framework */; };
@@ -34,6 +36,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		86314D2018B40C74006FA727 /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Place.h; path = ../Place.h; sourceTree = "<group>"; };
+		86314D2118B40C74006FA727 /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Place.m; path = ../Place.m; sourceTree = "<group>"; };
+		86314D2318B40C90006FA727 /* PlaceDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceDatabase.h; path = ../PlaceDatabase.h; sourceTree = "<group>"; };
+		86314D2418B40C90006FA727 /* PlaceDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceDatabase.m; path = ../PlaceDatabase.m; sourceTree = "<group>"; };
 		DA212CE318B3EAB600C0DF8F /* iNeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iNeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA212CE618B3EAB600C0DF8F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DA212CE818B3EAB600C0DF8F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -79,6 +85,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		86314D2618B40CA4006FA727 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				86314D2318B40C90006FA727 /* PlaceDatabase.h */,
+				86314D2418B40C90006FA727 /* PlaceDatabase.m */,
+			);
+			name = Database;
+			sourceTree = "<group>";
+		};
 		DA212CDA18B3EAB600C0DF8F = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +127,9 @@
 		DA212CEC18B3EAB600C0DF8F /* iNeed */ = {
 			isa = PBXGroup;
 			children = (
+				86314D2618B40CA4006FA727 /* Database */,
+				86314D2018B40C74006FA727 /* Place.h */,
+				86314D2118B40C74006FA727 /* Place.m */,
 				DA212CF518B3EAB600C0DF8F /* iNeedAppDelegate.h */,
 				DA212CF618B3EAB600C0DF8F /* iNeedAppDelegate.m */,
 				DA212CF818B3EAB600C0DF8F /* Main.storyboard */,
@@ -251,8 +269,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA212CF718B3EAB600C0DF8F /* iNeedAppDelegate.m in Sources */,
+				86314D2518B40C90006FA727 /* PlaceDatabase.m in Sources */,
 				DA212CF318B3EAB600C0DF8F /* main.m in Sources */,
 				DA212CFD18B3EAB600C0DF8F /* iNeedViewController.m in Sources */,
+				86314D2218B40C74006FA727 /* Place.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +481,7 @@
 				DA212D1718B3EAB600C0DF8F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DA212D1818B3EAB600C0DF8F /* Build configuration list for PBXNativeTarget "iNeedTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +490,7 @@
 				DA212D1A18B3EAB600C0DF8F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

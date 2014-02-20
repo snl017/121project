@@ -24,6 +24,7 @@
 		DA212D0818B3EAB600C0DF8F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA212CEA18B3EAB600C0DF8F /* UIKit.framework */; };
 		DA212D1018B3EAB600C0DF8F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA212D0E18B3EAB600C0DF8F /* InfoPlist.strings */; };
 		DA212D1218B3EAB600C0DF8F /* iNeedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA212D1118B3EAB600C0DF8F /* iNeedTests.m */; };
+		DA212D6318B5AEAF00C0DF8F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA212D6218B5AEAF00C0DF8F /* libsqlite3.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		DA212D0D18B3EAB600C0DF8F /* iNeedTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iNeedTests-Info.plist"; sourceTree = "<group>"; };
 		DA212D0F18B3EAB600C0DF8F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DA212D1118B3EAB600C0DF8F /* iNeedTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iNeedTests.m; sourceTree = "<group>"; };
+		DA212D6218B5AEAF00C0DF8F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA212D6318B5AEAF00C0DF8F /* libsqlite3.dylib in Frameworks */,
 				DA212CE918B3EAB600C0DF8F /* CoreGraphics.framework in Frameworks */,
 				DA212CEB18B3EAB600C0DF8F /* UIKit.framework in Frameworks */,
 				DA212CE718B3EAB600C0DF8F /* Foundation.framework in Frameworks */,
@@ -119,6 +122,7 @@
 		DA212CE518B3EAB600C0DF8F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DA212D6218B5AEAF00C0DF8F /* libsqlite3.dylib */,
 				DA212CE618B3EAB600C0DF8F /* Foundation.framework */,
 				DA212CE818B3EAB600C0DF8F /* CoreGraphics.framework */,
 				DA212CEA18B3EAB600C0DF8F /* UIKit.framework */,

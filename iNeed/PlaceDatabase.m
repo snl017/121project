@@ -13,8 +13,6 @@
 //Our Database is called db
 static sqlite3 *db;
 
-
-
 //Statements: Fetching each place, or deleting,inserting a place. Also creating database
 static sqlite3_stmt *createPlaceDatabase;
 static sqlite3_stmt *fetchPlaces;
@@ -26,8 +24,11 @@ static sqlite3_stmt *selectBroadCategoryPlaces;
 static sqlite3_stmt *selectSpecificCategoryPlaces;
 static sqlite3_stmt *selectNamePlaces;
 
+
+
 //More specialized statements: Updating monday - sunday hrs, all hrs - TODO
 //TODO - searching by school if we ever get to that
+
 
 
 
@@ -159,8 +160,6 @@ static sqlite3_stmt *selectNamePlaces;
 
 
 //School - name - broad category - specific category - location - monday - tuesday - wednesday - thursday - friday - saturday - sunday - allhours - phone - email - link//
-
-
 //Read in everything from database
 + (NSMutableArray *)fetchAllPlaces
 {
@@ -170,22 +169,6 @@ static sqlite3_stmt *selectNamePlaces;
     while (sqlite3_step(fetchPlaces) == SQLITE_ROW) {
         
         // query columns from fetch statement (we exclude rowid for now?)
-        //char *schoolChars = (char *) sqlite3_column_text(fetchPlaces, 1);
-        //        char *nameChars = (char *) sqlite3_column_text(fetchPlaces, 2);
-        //        char *broadChars = (char *) sqlite3_column_text(fetchPlaces, 3);
-        //        char *specificChars = (char *) sqlite3_column_text(fetchPlaces, 4);
-        //        char *locationChars = (char *) sqlite3_column_text(fetchPlaces, 5);
-        //        char *mondayChars = (char *) sqlite3_column_text(fetchPlaces, 6);
-        //        char *tuesdayChars = (char *) sqlite3_column_text(fetchPlaces, 7);
-        //        char *wednesdayChars = (char *) sqlite3_column_text(fetchPlaces, 8);
-        //        char *thursdayChars = (char *) sqlite3_column_text(fetchPlaces, 9);
-        //        char *fridayChars = (char *) sqlite3_column_text(fetchPlaces, 10);
-        //        char *saturdayChars = (char *) sqlite3_column_text(fetchPlaces, 11);
-        //        char *sundayChars = (char *) sqlite3_column_text(fetchPlaces, 12);
-        //        char *allhoursChars = (char *) sqlite3_column_text(fetchPlaces, 13);
-        //        char *phoneChars = (char *) sqlite3_column_text(fetchPlaces, 14);
-        //        char *emailChars = (char *) sqlite3_column_text(fetchPlaces, 15);
-        //        char *linkChars = (char *) sqlite3_column_text(fetchPlaces, 16);
         NSString *schoolString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 1)];
         NSString *nameString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 2)];
         NSString *broadString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 3)];
@@ -221,16 +204,167 @@ static sqlite3_stmt *selectNamePlaces;
 }
 
 
+
+
+
 //More Fetching/Selecting functions
 + (NSMutableArray *)fetchPlacesByName:(NSString *)name{
-    return NULL;
+    //First we bind to the selectBroadCategoryPlaces statement
+    sqlite3_bind_text(selectNamePlaces, 1, [name UTF8String], -1, SQLITE_TRANSIENT);
+    
+    //The array that gets returned
+    NSMutableArray *ret = [NSMutableArray arrayWithCapacity:0];
+    
+    //Get all rows with correct broad category info and place into array as a Place
+    while (sqlite3_step(selectNamePlaces) == SQLITE_ROW) {
+        
+        // query columns from fetch statement (we exclude rowid for now?)
+        NSString *schoolString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 1)];
+        NSString *nameString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 2)];
+        NSString *broadString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 3)];
+        NSString *specificString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 4)];
+        NSString *locationString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 5)];
+        NSString *mondayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 6)];
+        NSString *tuesdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 7)];
+        NSString *wednesdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 8)];
+        NSString *thursdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 9)];
+        NSString *fridayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 10)];
+        NSString *saturdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 11)];
+        NSString *sundayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 12)];
+        NSString *allhoursString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 13)];
+        NSString *phoneString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 14)];
+        NSString *emailString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 15)];
+        NSString *linkString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 16)];
+        
+        
+        
+        //Create Place object with information
+        Place *databasePlace = [[Place alloc] initWithSchool:schoolString andName:nameString andBroadCategory:broadString andSpecificCategory:specificString andLocation:locationString andMondayHours:mondayString andTuesdayHours:tuesdayString andWednesdayHours:wednesdayString andThursdayHours:thursdayString andFridayHours:fridayString andSaturdayHours:saturdayString andSundayHours:sundayString andAllHours:allhoursString andPhoneString:phoneString andEmailString:emailString andLinkString:linkString];
+        
+        //Add place object to array
+        [ret addObject:databasePlace];
+        
+        //Should we be checking for success here?
+    }
+    
+    //Reset the statement
+    sqlite3_reset(selectNamePlaces);
+    
+    //if (success != SQLITE_DONE) {
+    //    NSLog(@"ERROR: failed to select by broad category");
+    //}
+    
+    //Return
+    return ret;
 }
+
+
 + (NSMutableArray *)fetchPlacesByBroadCategory:(NSString *)broadCategory{
-    return NULL;
+    
+    //First we bind to the selectBroadCategoryPlaces statement
+    sqlite3_bind_text(selectBroadCategoryPlaces, 1, [broadCategory UTF8String], -1, SQLITE_TRANSIENT);
+
+    //The array that gets returned
+    NSMutableArray *ret = [NSMutableArray arrayWithCapacity:0];
+    
+    //Get all rows with correct broad category info and place into array as a Place
+    while (sqlite3_step(selectBroadCategoryPlaces) == SQLITE_ROW) {
+        
+        // query columns from fetch statement (we exclude rowid for now?)
+        NSString *schoolString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 1)];
+        NSString *nameString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 2)];
+        NSString *broadString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 3)];
+        NSString *specificString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 4)];
+        NSString *locationString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 5)];
+        NSString *mondayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 6)];
+        NSString *tuesdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 7)];
+        NSString *wednesdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 8)];
+        NSString *thursdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 9)];
+        NSString *fridayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 10)];
+        NSString *saturdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 11)];
+        NSString *sundayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 12)];
+        NSString *allhoursString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 13)];
+        NSString *phoneString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 14)];
+        NSString *emailString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 15)];
+        NSString *linkString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 16)];
+        
+        
+        
+        //Create Place object with information
+        Place *databasePlace = [[Place alloc] initWithSchool:schoolString andName:nameString andBroadCategory:broadString andSpecificCategory:specificString andLocation:locationString andMondayHours:mondayString andTuesdayHours:tuesdayString andWednesdayHours:wednesdayString andThursdayHours:thursdayString andFridayHours:fridayString andSaturdayHours:saturdayString andSundayHours:sundayString andAllHours:allhoursString andPhoneString:phoneString andEmailString:emailString andLinkString:linkString];
+        
+        //Add place object to array
+        [ret addObject:databasePlace];
+        
+        //Should we be checking for success here?
+    }
+    
+    //Reset the statement
+    sqlite3_reset(selectBroadCategoryPlaces);
+    
+    //if (success != SQLITE_DONE) {
+    //    NSLog(@"ERROR: failed to select by broad category");
+    //}
+    
+    //Return
+    return ret;
 }
+
+
 + (NSMutableArray *)fetchPlacesBySpecificCategory:(NSString *)specificCategory{
-    return NULL;
+    //First we bind to the selectBroadCategoryPlaces statement
+    sqlite3_bind_text(selectSpecificCategoryPlaces, 1, [specificCategory UTF8String], -1, SQLITE_TRANSIENT);
+    
+    //The array that gets returned
+    NSMutableArray *ret = [NSMutableArray arrayWithCapacity:0];
+    
+    //Get all rows with correct broad category info and place into array as a Place
+    while (sqlite3_step(selectSpecificCategoryPlaces) == SQLITE_ROW) {
+        
+        // query columns from fetch statement (we exclude rowid for now?)
+        NSString *schoolString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 1)];
+        NSString *nameString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 2)];
+        NSString *broadString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 3)];
+        NSString *specificString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 4)];
+        NSString *locationString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 5)];
+        NSString *mondayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 6)];
+        NSString *tuesdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 7)];
+        NSString *wednesdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 8)];
+        NSString *thursdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 9)];
+        NSString *fridayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 10)];
+        NSString *saturdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 11)];
+        NSString *sundayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 12)];
+        NSString *allhoursString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 13)];
+        NSString *phoneString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 14)];
+        NSString *emailString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 15)];
+        NSString *linkString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 16)];
+        
+        
+        
+        //Create Place object with information
+        Place *databasePlace = [[Place alloc] initWithSchool:schoolString andName:nameString andBroadCategory:broadString andSpecificCategory:specificString andLocation:locationString andMondayHours:mondayString andTuesdayHours:tuesdayString andWednesdayHours:wednesdayString andThursdayHours:thursdayString andFridayHours:fridayString andSaturdayHours:saturdayString andSundayHours:sundayString andAllHours:allhoursString andPhoneString:phoneString andEmailString:emailString andLinkString:linkString];
+        
+        //Add place object to array
+        [ret addObject:databasePlace];
+        
+        //Should we be checking for success here?
+    }
+    
+    //Reset the statement
+    sqlite3_reset(selectSpecificCategoryPlaces);
+    
+    //if (success != SQLITE_DONE) {
+    //    NSLog(@"ERROR: failed to select by specific category");
+    //}
+    
+    //Return
+    return ret;
 }
+
+
+
+
+
 
 
 //Save Function: saving item into database. Will we need to use this? Probably not. But it's good to have just in case.

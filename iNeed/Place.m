@@ -34,5 +34,20 @@
     
 }
 
+-(void)printPlace{
+    NSString *printStrOne = [NSString stringWithFormat: @"%@ %@ %@ %@ %@ %@ %@ %@", @"School: ", self.school, @" Name: ", self.name, @" Specific Category: ", self.specificCategory, @" Broad Category: ", self.broadCategory];
+    NSString *printStrTwo = [NSString stringWithFormat: @"%@ %@ %@ %@ %@ %@ %@ %@", @" Location: ", self.location, @" Monday Hours: ", self.mondayHours, @" Tuesday: ", self.tuesdayHours, @" Wednesday: ", self.wednesdayHours];
+    NSString *printStrThr = [NSString stringWithFormat: @"%@ %@ %@ %@ %@ %@ %@ %@", @" Thursday: ", self.thursdayHours, @" Friday: ", self.fridayHours, @" Saturday: ", self.saturdayHours, @" Sunday: ", self.sundayHours];
+    NSString *printStrFou = [NSString stringWithFormat: @"%@ %@ %@ %@ %@ %@ %@ %@", @" All Hours: ", self.allHours, @" Phone: ", self.phone, @" Email: ", self.email, @" Link: ", self.webLink];
+    
+    NSString *printString = [NSString stringWithFormat:@"%@ %@ %@ %@", printStrOne, printStrTwo, printStrThr, printStrFou];
+    
+    NSLog(@"%@", @" PLACE: ");
+    NSLog(@"%@", printString);
+    
+
+
+
+}
 
 @end

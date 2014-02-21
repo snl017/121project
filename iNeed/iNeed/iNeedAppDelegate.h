@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PlaceDatabase.h"
+#import "Place.h"
 
 @interface iNeedAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+
+//METHODS
+//This is the tester function that just makes sure the database queries are working.
+- (void)testDatabase;
+
 
 @end

@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller - iNeed...-->
+        <!--I Need Table View Controller - Broad Categories-->
         <scene sceneID="8e0-9l-1Lx">
             <objects>
-                <tableViewController id="9bi-be-73M" sceneMemberID="viewController">
+                <tableViewController title="Broad Categories" id="9bi-be-73M" customClass="iNeedTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="K72-VM-DNU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,7 +32,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="e2e-rB-BOT" kind="push" id="pQb-KV-MMS"/>
+                                            <segue destination="e2e-rB-BOT" kind="push" identifier="" id="pQb-KV-MMS"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="y2f-FA-1Wz" style="IBUITableViewCellStyleDefault" id="7Xi-kf-5Tk">
@@ -52,7 +52,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Fkc-tt-hXj" kind="push" id="YPe-nW-Yii"/>
+                                            <segue destination="Fkc-tt-hXj" kind="push" id="3HT-SY-egp"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="jqD-O3-7dp" style="IBUITableViewCellStyleDefault" id="c5f-Jx-8QM">
@@ -71,6 +71,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="nYG-CF-d71" kind="push" identifier="Safety/Health" id="38o-7C-c8k"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="I43-NV-56W" style="IBUITableViewCellStyleDefault" id="5WC-LL-rwQ">
                                         <rect key="frame" x="0.0" y="196" width="320" height="44"/>
@@ -106,10 +109,10 @@
             </objects>
             <point key="canvasLocation" x="531" y="31"/>
         </scene>
-        <!--Table View Controller - Living on Campus-->
+        <!--I Need Table View Controller - Living on Campus-->
         <scene sceneID="IGn-Ma-zNZ">
             <objects>
-                <tableViewController id="YXe-55-tAU" sceneMemberID="viewController">
+                <tableViewController title="Living on Campus" id="YXe-55-tAU" customClass="iNeedTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="w6j-4H-CZ2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -133,6 +136,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="nYG-CF-d71" kind="push" identifier="Services" id="lVJ-8b-uD7"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="r8j-SY-5Mt" style="IBUITableViewCellStyleDefault" id="WUR-ES-ge5">
                                         <rect key="frame" x="0.0" y="108" width="320" height="44"/>
@@ -150,6 +156,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="nYG-CF-d71" kind="push" identifier="Resource Centers &amp; Offices" id="GmT-KU-eTD"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -163,12 +172,41 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CbC-d3-hhb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="986" y="281"/>
+            <point key="canvasLocation" x="994" y="665"/>
         </scene>
-        <!--Table View Controller - Academics-->
+        <!--Details Table View Controller-->
+        <scene sceneID="sGp-m2-K14">
+            <objects>
+                <tableViewController id="nYG-CF-d71" customClass="DetailsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Gpt-8x-GIa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlacesCell" id="GnI-Bs-Zsg">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GnI-Bs-Zsg" id="gtr-JG-nlS">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="nYG-CF-d71" id="Ib7-ve-7FB"/>
+                            <outlet property="delegate" destination="nYG-CF-d71" id="1No-tg-v5x"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="obu-fJ-5gb"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MVf-Fg-vap" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1412" y="31"/>
+        </scene>
+        <!--I Need Table View Controller - Academics-->
         <scene sceneID="tn1-lt-R9j">
             <objects>
-                <tableViewController id="Fkc-tt-hXj" sceneMemberID="viewController">
+                <tableViewController title="Academics" id="Fkc-tt-hXj" customClass="iNeedTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="xaX-R8-gTI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -192,6 +230,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="nYG-CF-d71" kind="push" identifier="Office Hours &amp; Departments" id="ISx-sr-wbu"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="h9f-Ni-7ze" style="IBUITableViewCellStyleDefault" id="GnI-ib-DtV">
                                         <rect key="frame" x="0.0" y="108" width="320" height="44"/>
@@ -209,6 +250,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="nYG-CF-d71" kind="push" identifier="Academic Resource Centers" id="iRz-bN-Ix1"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -222,12 +266,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ss6-wc-l2O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="986" y="-375"/>
+            <point key="canvasLocation" x="994" y="-397"/>
         </scene>
-        <!--Table View Controller - Food-->
+        <!--I Need Table View Controller - Food-->
         <scene sceneID="7fd-xU-gIp">
             <objects>
-                <tableViewController id="e2e-rB-BOT" sceneMemberID="viewController">
+                <tableViewController title="Food" id="e2e-rB-BOT" customClass="iNeedTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="MQQ-DH-ZC0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -251,6 +295,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="nYG-CF-d71" kind="push" identifier="Dining Halls" id="XjM-Di-K6O"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="IzX-p2-BnA" style="IBUITableViewCellStyleDefault" id="SVS-9e-1cQ">
                                         <rect key="frame" x="0.0" y="108" width="320" height="44"/>
@@ -268,6 +315,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="nYG-CF-d71" kind="push" identifier="Other On-Campus Restaurants" id="ioh-l2-Mef"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="tJo-WX-H8c" style="IBUITableViewCellStyleDefault" id="YyI-88-2PE">
                                         <rect key="frame" x="0.0" y="152" width="320" height="44"/>
@@ -285,6 +335,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="nYG-CF-d71" kind="push" identifier="On-Campus Groceries" id="PZD-DU-8LF"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -298,7 +351,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lHX-ZE-pAn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="986" y="-1071"/>
+            <point key="canvasLocation" x="994" y="-1051"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hVw-d3-XkV">
@@ -324,4 +377,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="ioh-l2-Mef"/>
+    </inferredMetricsTieBreakers>
 </document>

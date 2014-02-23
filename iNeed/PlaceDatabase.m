@@ -25,6 +25,16 @@ static sqlite3_stmt *selectSpecificCategoryPlaces;
 static sqlite3_stmt *selectNamePlaces;
 static sqlite3_stmt *emptyDatabase;
 
+//Update statements for updating hours! This will be used once we implement scraping.
+static sqlite3_stmt *updateMondayHoursByNameStmt;
+static sqlite3_stmt *updateTuesdayHoursByNameStmt;
+static sqlite3_stmt *updateWednesdayHoursByNameStmt;
+static sqlite3_stmt *updateThursdayHoursByNameStmt;
+static sqlite3_stmt *updateFridayHoursByNameStmt;
+static sqlite3_stmt *updateSaturdayHoursByNameStmt;
+static sqlite3_stmt *updateSundayHoursByNameStmt;
+static sqlite3_stmt *updateAllHoursByNameStmt; //This will work by looking at the monday-sunday hours in the same table entry
+
 
 
 
@@ -64,24 +74,23 @@ static sqlite3_stmt *emptyDatabase;
 + (void)initDatabase{
     
     //These are the actual calls to sqlite table.
+        //Creation, fetchall, insert, delete, empty database queries
     const char *createTableString = "CREATE TABLE IF NOT EXISTS placeDatabase (rowid INTEGER PRIMARY KEY AUTOINCREMENT, school TEXT, name TEXT, broad TEXT, specific TEXT, location TEXT, monday TEXT, tuesday TEXT, wednesday TEXT, thursday TEXT, friday TEXT, saturday TEXT, sunday TEXT, allhours TEXT, phone TEXT, email TEXT, link TEXT)";
     const char *fetchPlacesString = "SELECT * FROM placeDatabase";
     const char *insertPlaceString = "INSERT INTO placeDatabase (school, name, broad, specific, location, monday, tuesday, wednesday, thursday, friday, saturday, sunday, allhours, phone, email, link) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     const char *deletePlaceString = "DELETE FROM placeDatabase WHERE rowid=?";
+    const char *emptyDatabaseString = "DELETE FROM placeDatabase;";
+        //Specific selection queries
     const char *selectBroadCategoryPlacesString = "SELECT * FROM placeDatabase WHERE broad=?";
     const char *selectSpecificCategoryPlacesString = "SELECT * FROM placeDatabase WHERE specific=?";
     const char *selectNamePlacesString = "SELECT * FROM placeDatabase WHERE name=?";
-    const char *emptyDatabaseString = "DELETE FROM placeDatabase;";
-
-    
-    
+        //Update queries
+    const char *updateMondayHoursByNameString = "UPDATE placeDatabase SET monday=? WHERE name=?";
     
     // Create the path to the database
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentDirectory = [paths objectAtIndex:0];
     NSString *path = [documentDirectory stringByAppendingPathComponent:@"placeDatabase"];
-    
-    
     
     // open the database connection
     if (sqlite3_open([path UTF8String], &db)) {
@@ -91,13 +100,11 @@ static sqlite3_stmt *emptyDatabase;
     int success;
     
     
-    
     //init table statement
     if (sqlite3_prepare_v2(db, createTableString, -1, &createPlaceDatabase, NULL) != SQLITE_OK) {
         NSLog(@"Failed to prepare create table statement");
         NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
     }
-    
     
     
     // execute the table creation statement
@@ -164,6 +171,13 @@ static sqlite3_stmt *emptyDatabase;
         NSLog(@"ERROR: failed to prepare empty database statement");
         NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
     }
+    
+    // init all the update hours satements
+    if (sqlite3_prepare_v2(db, updateMondayHoursByNameString, -1, &updateMondayHoursByNameStmt, NULL) != SQLITE_OK) {
+        NSLog(@"ERROR: failed to prepare update monday hours database statement");
+        NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
+    }
+    
 }
 
 
@@ -374,9 +388,6 @@ static sqlite3_stmt *emptyDatabase;
 
 
 
-
-
-
 //Save Function: saving item into database. Will we need to use this? Probably not. But it's good to have just in case.
 + (void)saveItemWithSchool:(NSString *)school andName:(NSString *)name andBroadCategory:(NSString *)broadCategory andSpecificCategory:(NSString *)specificCategory andLocation:(NSString *)location andMondayHours:(NSString *)monday andTuesdayHours:(NSString *)tuesday andWednesdayHours:(NSString *)wednesday andThursdayHours:(NSString *)thursday andFridayHours:(NSString *)friday andSaturdayHours:(NSString *)saturday andSundayHours:(NSString *)sunday andAllHours:(NSString *)allhours andPhoneString:(NSString *)phone andEmailString:(NSString *)email andLinkString:(NSString *)webLink{
     
@@ -427,6 +438,41 @@ static sqlite3_stmt *emptyDatabase;
         NSLog(@"ERROR: failed to delete item");
     }
 }
+
+
+//NOTE: these need to accept Hours objects.
+//All the update methods.
+//Update Monday Hours
+//+ (void)updateMondayHoursByName:(NSString *)name{
+//    //Query takes in name and updated hours. Check hour against correct format and abort with message
+//    //If incorrect format. Otherwise proceed. Bind values to query and then proceed with step stmt.
+//    
+//}
+//+ (void)updateTuesdayHoursByName:(NSString *)name{
+//    
+//}
+//+ (void)updateWednesdayHoursByName:(NSString *)name{
+//    
+//}
+//+ (void)updateThursdayHoursByName:(NSString *)name{
+//    
+//}
+//+ (void)updateFridayHoursByName:(NSString *)name{
+//    
+//}
+//+ (void)updateSaturdayHoursByName:(NSString *)name{
+//    
+//}
+//+ (void)updateSundayHoursByName:(NSString *)name{
+//    
+//}
+//+ (void)updateAllHoursByName:(NSString *)name{
+//    
+//}
+
+
+
+
 
 
 //Completely empty the databse. Please do not call accidentally.

@@ -25,11 +25,26 @@
 + (void)emptyDatabase;
 
 
-//Fetch/select statements
+//Fetch/select methods
 + (NSMutableArray *)fetchAllPlaces;
 + (NSMutableArray *)fetchPlacesByName:(NSString *)name;
 + (NSMutableArray *)fetchPlacesByBroadCategory:(NSString *)broadCategory;
 + (NSMutableArray *)fetchPlacesBySpecificCategory:(NSString *)specificCategory;
+
+//Updating Hours methods
+//NOTICE: these need to be updated to accept Hours objects.
+//+ (void)updateMondayHoursByName:(NSString *)name;
+//+ (void)updateTuesdayHoursByName:(NSString *)name;
+//+ (void)updateWednesdayHoursByName:(NSString *)name;
+//+ (void)updateThursdayHoursByName:(NSString *)name;
+//+ (void)updateFridayHoursByName:(NSString *)name;
+//+ (void)updateSaturdayHoursByName:(NSString *)name;
+//+ (void)updateSundayHoursByName:(NSString *)name;
+//+ (void)updateAllHoursByName:(NSString *)name;
+
+
+//This method is for the updating hours methods. It checks the input format of the hours string
+
 
 
 

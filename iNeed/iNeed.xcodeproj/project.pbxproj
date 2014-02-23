@@ -10,6 +10,7 @@
 		86314D2218B40C74006FA727 /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 86314D2118B40C74006FA727 /* Place.m */; };
 		86314D2518B40C90006FA727 /* PlaceDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 86314D2418B40C90006FA727 /* PlaceDatabase.m */; };
 		86314D2818B40E18006FA727 /* placeDatabase.sql in Resources */ = {isa = PBXBuildFile; fileRef = 86314D2718B40E18006FA727 /* placeDatabase.sql */; };
+		86314D2B18B986AD006FA727 /* Hours.m in Sources */ = {isa = PBXBuildFile; fileRef = 86314D2A18B986AD006FA727 /* Hours.m */; };
 		DA212CE718B3EAB600C0DF8F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA212CE618B3EAB600C0DF8F /* Foundation.framework */; };
 		DA212CE918B3EAB600C0DF8F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA212CE818B3EAB600C0DF8F /* CoreGraphics.framework */; };
 		DA212CEB18B3EAB600C0DF8F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA212CEA18B3EAB600C0DF8F /* UIKit.framework */; };
@@ -44,6 +45,8 @@
 		86314D2318B40C90006FA727 /* PlaceDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceDatabase.h; path = ../PlaceDatabase.h; sourceTree = "<group>"; };
 		86314D2418B40C90006FA727 /* PlaceDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceDatabase.m; path = ../PlaceDatabase.m; sourceTree = "<group>"; };
 		86314D2718B40E18006FA727 /* placeDatabase.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = placeDatabase.sql; sourceTree = "<group>"; };
+		86314D2918B986AD006FA727 /* Hours.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hours.h; sourceTree = "<group>"; };
+		86314D2A18B986AD006FA727 /* Hours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hours.m; sourceTree = "<group>"; };
 		DA212CE318B3EAB600C0DF8F /* iNeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iNeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA212CE618B3EAB600C0DF8F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DA212CE818B3EAB600C0DF8F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -144,6 +147,8 @@
 				86314D2618B40CA4006FA727 /* Database */,
 				86314D2018B40C74006FA727 /* Place.h */,
 				86314D2118B40C74006FA727 /* Place.m */,
+				86314D2918B986AD006FA727 /* Hours.h */,
+				86314D2A18B986AD006FA727 /* Hours.m */,
 				DA212CF518B3EAB600C0DF8F /* iNeedAppDelegate.h */,
 				DA212CF618B3EAB600C0DF8F /* iNeedAppDelegate.m */,
 				DA212CF818B3EAB600C0DF8F /* Main.storyboard */,
@@ -284,6 +289,7 @@
 				DA212CF718B3EAB600C0DF8F /* iNeedAppDelegate.m in Sources */,
 				86314D2518B40C90006FA727 /* PlaceDatabase.m in Sources */,
 				DA212CF318B3EAB600C0DF8F /* main.m in Sources */,
+				86314D2B18B986AD006FA727 /* Hours.m in Sources */,
 				DA49770018B6DB3700BD4BC8 /* iNeedTableViewController.m in Sources */,
 				DA4976FD18B6D69E00BD4BC8 /* DetailsTableViewController.m in Sources */,
 				86314D2218B40C74006FA727 /* Place.m in Sources */,

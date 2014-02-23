@@ -17,8 +17,6 @@
     [PlaceDatabase initDatabase];
     [self testDatabase];
     
-    
-    
     return YES;
 }
 

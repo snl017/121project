@@ -12,5 +12,6 @@
 @interface DetailsTableViewController : iNeedTableViewController
 
 @property NSString *specificCategory;
+@property NSMutableArray *places;
 
 @end

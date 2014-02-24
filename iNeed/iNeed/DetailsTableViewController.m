@@ -7,6 +7,7 @@
 //
 
 #import "DetailsTableViewController.h"
+#import "PlaceDatabase.h"
 
 @interface DetailsTableViewController ()
 
@@ -26,7 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    self.places = [PlaceDatabase fetchPlacesBySpecificCategory:self.specificCategory];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -51,8 +53,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 1;
-    return 0;
+    return [self.places count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -60,9 +61,11 @@
     static NSString *CellIdentifier = @"PlacesCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.textLabel.text = self.specificCategory;
-    // Configure the cell...
     
+    Place *place = (self.places)[indexPath.row];
+    cell.textLabel.text = place.name;
+    //cell.detailTextLabel.text = ;
+
     return cell;
 }
 

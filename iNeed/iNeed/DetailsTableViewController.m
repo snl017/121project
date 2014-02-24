@@ -64,8 +64,35 @@
     
     Place *place = (self.places)[indexPath.row];
     cell.textLabel.text = place.name;
-    //cell.detailTextLabel.text = ;
-
+    
+    //Get the day of the week
+    NSDateFormatter* day = [[NSDateFormatter alloc] init];
+    [day setDateFormat: @"EEEE"];
+    NSString *dayOfWeek=[[day stringFromDate:[NSDate date]]lowercaseString];
+    
+    if ([dayOfWeek  isEqual: @"monday"]){
+        cell.detailTextLabel.text = place.mondayHours;
+    }
+    else if ([dayOfWeek  isEqual: @"tuesday"]){
+        cell.detailTextLabel.text = place.tuesdayHours;
+    }
+    else if ([dayOfWeek  isEqual: @"wednesday"]){
+        cell.detailTextLabel.text = place.wednesdayHours;
+    }
+    else if ([dayOfWeek  isEqual: @"thursday"]){
+        cell.detailTextLabel.text = place.thursdayHours;
+    }
+    else if ([dayOfWeek  isEqual: @"friday"]){
+        cell.detailTextLabel.text = place.fridayHours;
+    }
+    else if ([dayOfWeek  isEqual: @"saturday"]){
+        cell.detailTextLabel.text = place.saturdayHours;
+    }
+    else if ([dayOfWeek  isEqual: @"sunday"]){
+        cell.detailTextLabel.text = place.sundayHours;
+    }else{
+        NSLog(@"ERROR: The day of the week is not correct");
+    }
     return cell;
 }
 

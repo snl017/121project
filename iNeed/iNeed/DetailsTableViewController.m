@@ -27,7 +27,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.places = [NSMutableArray new];
     self.places = [PlaceDatabase fetchPlacesBySpecificCategory:self.specificCategory];
+    
+   // [self.places initWithArray:[PlaceDatabase fetchPlacesBySpecificCategory:self.specificCategory]] ;
+   
+    NSLog(@"%i",[self.places count]);
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

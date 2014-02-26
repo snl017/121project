@@ -15,10 +15,32 @@
     //Create database. Call tester function to make sure they work.
     [PlaceDatabase createEditableCopyOfDatabaseIfNeeded];
     [PlaceDatabase initDatabase];
-    [self testDatabase];
+    [self testHoursClass];
     
     return YES;
 }
+
+//Test out Hours class
+-(void)testHoursClass{
+//    //Some hours to test out
+//    Hours *normalHours = [[Hours alloc] initWithOpeningDigits:@"0961" andClosingDigits:@"1700"];
+//    NSString *dispString = [normalHours hoursToDisplayString];
+//    NSString *dataString = [normalHours hoursToDatabaseString];
+//    
+//    NSLog(@"%@", dispString);
+//    NSLog(@"%@", dataString);
+
+
+    //5. These hours are initiated with a digits-dash-digits string presumably pulled from database
+    //NOTE: may need to do checks on database inited hours to make sure valid, just as the checks are done for the regular init
+//    Hours *dbHours = [[Hours alloc] initWithOneString:@"1300-1900"];
+//    NSString *dispDbHours = [dbHours hoursToDatabaseString];
+//    NSString *dataDbHours = [dbHours hoursToDisplayString];
+//    
+//    NSLog(@"%@", dispDbHours);
+//    NSLog(@"%@", dataDbHours);
+}
+
 
 //Test out database functions
 - (void)testDatabase{
@@ -40,12 +62,6 @@
     //[PlaceDatabase saveItemWithPlace:frankDining];
     //[PlaceDatabase saveItemWithPlace:campusSafety];
     //[PlaceDatabase saveItemWithPlace:studyAbroad];
-    
-        
-    
-    
-    
-    
     
     //TESTS
     

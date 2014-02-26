@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PlaceDatabase.h"
 #import "Place.h"
+#import "Hours.h"
 
 @interface iNeedAppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -18,6 +19,8 @@
 //METHODS
 //This is the tester function that just makes sure the database queries are working.
 - (void)testDatabase;
+//This is the tester function checking that the Hours class works.
+- (void)testHoursClass;
 
 
 @end

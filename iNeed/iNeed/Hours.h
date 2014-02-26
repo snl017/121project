@@ -24,9 +24,9 @@
 -(id) initWithOneString:(NSString *)fourDigitsDashFourDigits;
 
 //This method used to convert hours to string object to place into a database.
--(NSString *) hoursToDatabaseString:(Hours *) hoursObject;
+-(NSString *) hoursToDatabaseString;
 
 //This method used to convert hours into user-friendly displayable string
--(NSString *) hoursToDisplayString:(Hours *) hoursObject;
+-(NSString *) hoursToDisplayString;
 
 @end

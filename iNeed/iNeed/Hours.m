@@ -12,21 +12,33 @@
 
 
 //This init method used when have opening and closing hours as separate strings.
-//Double check digit string lengths, and values as numbers
+//Double check digit string lengths, and values as numbers (nothing higher than 2359 and nothing with greater than 59 in last two digits)
 -(id) initWithOpeningDigits:(NSString *)openingDigits andClosingDigits:(NSString *)closingDigits{
+    //As integers
+    NSInteger openingDigitsInteger = [openingDigits integerValue];
+    NSInteger closingDigitsInteger = [closingDigits integerValue];
+    NSInteger openingLastTwo = openingDigitsInteger % 100;
+    NSInteger closingLastTwo = closingDigitsInteger % 100;
+    
     if ([openingDigits length] != 4) {
-        NSLog(@"Opening digits string must be 4 characters in length");
+        NSLog(@"ERROR: Opening digits string must be 4 characters in length");
         return NULL;
     } else if ([closingDigits length] != 4){
-        NSLog(@"Closing digits string must be 4 characters in length");
+        NSLog(@"ERROR: Closing digits string must be 4 characters in length");
         return NULL;
-    } else if ([openingDigits integerValue] > 2359){
-        NSLog(@"Opening digits string must be be a valid time");
+    } else if (openingDigitsInteger > 2359){
+        NSLog(@"ERROR: Opening digits string must be a valid time");
         return NULL;
-    } else if ([closingDigits integerValue] > 2359){
-        NSLog(@"Closing digits string must be be a valid time");
+    } else if (closingDigitsInteger > 2359){
+        NSLog(@"ERROR: Closing digits string must be a valid time");
         return NULL;
-    } else {
+    } else if (openingLastTwo > 59){
+        NSLog(@"ERROR: Opening hours' last two digits must be < 60");
+        return NULL;
+    } else if (closingLastTwo > 59){
+        NSLog(@"ERROR: Closing hours' last two digits must be < 60");
+        return NULL;
+    } else { //all is okay
         self.openingHours = [openingDigits integerValue];
         self.closingHours = [closingDigits integerValue];
         return self;
@@ -43,18 +55,18 @@
 }
 
 //This method used to convert hours to string object to place into a database.
--(NSString *) hoursToDatabaseString:(Hours *) hoursObject{
-    NSString *open = [NSString stringWithFormat:@"%d", [hoursObject openingHours]];
-    NSString *closed = [NSString stringWithFormat:@"%d", [hoursObject closingHours]];
+-(NSString *) hoursToDatabaseString{
+    NSString *open = [NSString stringWithFormat:@"%04d", [self openingHours]];
+    NSString *closed = [NSString stringWithFormat:@"%04d", [self closingHours]];
     NSString *concatString = [NSString stringWithFormat:@"%@-%@", open, closed];
     return concatString;
 }
 
 //This method used to convert hours into user-friendly displayable string
 //I.e. something that's 1200-2300 in a database format becomes 12:00-23:00
--(NSString *) hoursToDisplayString:(Hours *) hoursObject{
-    NSMutableString *openHours = [NSMutableString stringWithFormat:@"%d", [hoursObject openingHours]];
-    NSMutableString *closedHours = [NSMutableString stringWithFormat:@"%d", [hoursObject closingHours]];
+-(NSString *) hoursToDisplayString{
+    NSMutableString *openHours = [NSMutableString stringWithFormat:@"%04d", [self openingHours]];
+    NSMutableString *closedHours = [NSMutableString stringWithFormat:@"%04d", [self closingHours]];
     NSMutableString *concatString = [NSMutableString stringWithFormat:@"%@-%@", openHours, closedHours];
     [concatString insertString:@":" atIndex:2];
     [concatString insertString:@":" atIndex:8];

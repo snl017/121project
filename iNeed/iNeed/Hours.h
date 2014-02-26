@@ -23,7 +23,10 @@
 //The idea behind this is to have pulled text from the database to convert into an hours object
 -(id) initWithOneString:(NSString *)fourDigitsDashFourDigits;
 
-//This method used to convert hours to string object to either display or place into a database.
--(NSString *) hoursToString:(Hours *) hoursObject;
+//This method used to convert hours to string object to place into a database.
+-(NSString *) hoursToDatabaseString:(Hours *) hoursObject;
+
+//This method used to convert hours into user-friendly displayable string
+-(NSString *) hoursToDisplayString:(Hours *) hoursObject;
 
 @end

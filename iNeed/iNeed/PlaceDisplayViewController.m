@@ -7,6 +7,7 @@
 //
 
 #import "PlaceDisplayViewController.h"
+#import "Constants.h"
 
 @interface PlaceDisplayViewController ()
 
@@ -25,11 +26,45 @@
 
 - (void)viewDidLoad
 {
+    /*UITextFields:
+     Tag: 1 Labels: Hours
+     Tag: 2 Displays: AllHours
+     Tag: 3 Labels: Location
+     Tag: 4 Displays: Location
+     Tag: 5 Labels: Phone
+     Tag: 6 Displays: Phone
+     Tag: 7 Labels: Email
+     Tag: 8 Displays: Email
+     Tag: 9 Labels: Web
+     Tag: 10 Displays: Web
+     */
     [super viewDidLoad];
     [self setTitle:self.place.name];
-    UITextField *hoursText =(UITextField*)[self.view viewWithTag:1];
-    hoursText.text = self.place.allHours;
-	// Do any additional setup after loading the view.
+    [self setLabel:2 with:self.place.allHours];
+    [self setLabel:4 with:self.place.location];
+    [self setLabel:6 with:self.place.phone];
+    [self setLabel:8 with:self.place.email];
+    [self setLabel:10 with:self.place.webLink];
+    
+   	// Do any additional setup after loading the view.
+}
+/*
+ * Sets the text of a specific display label.
+ * If the information to be displayed on the label is not available,
+ * Remove all text from the label and the label explaining its contents.
+ */
+-(void)setLabel:(int)tag with:(NSString*)element{
+    if([element isEqualToString:None]){
+        UITextField *label =(UITextField*)[self.view viewWithTag:(tag-1)];
+        label.text = @"";
+        UITextField *text =(UITextField*)[self.view viewWithTag:tag];
+        text.text = @"";
+    }else{
+        UITextField *text =(UITextField*)[self.view viewWithTag:tag];
+        text.text = element;
+    }
+
+    
 }
 
 - (void)didReceiveMemoryWarning

@@ -15,7 +15,7 @@
     //Create database. Call tester function to make sure they work.
     [PlaceDatabase createEditableCopyOfDatabaseIfNeeded];
     [PlaceDatabase initDatabase];
-    //[self testDatabase];
+    [self testDatabase];
     [self testHoursClass];
     
     return YES;
@@ -46,9 +46,9 @@
 //Test out database functions
 - (void)testDatabase{
     //First create some test Places
-    Place *fraryDining = [[Place alloc] initWithSchool:PomonaSchool andName:@"Frary Dining Hall" andBroadCategory:FoodBroad andSpecificCategory:DiningHallNarrow andLocation:@"Pomona College" andMondayHours:@"Monday 1-2" andTuesdayHours:@"Tuesday 2-3" andWednesdayHours:@"Wednesday 3-4" andThursdayHours:@"Thursday 4-5" andFridayHours:@"Friday 5-6" andSaturdayHours:@"Saturday 6-7" andSundayHours:@"Sunday 7-8" andAllHours:@"All hours forever" andPhoneString:@"123-456-7890" andEmailString:@"frarysomething@pomona.edu" andLinkString:@"www.google.com"];
+    Place *fraryDining = [[Place alloc] initWithSchool:PomonaSchool andName:@"Frary Dining Hall" andBroadCategory:FoodBroad andSpecificCategory:DiningHallNarrow andLocation:@"Pomona College" andMondayHours:@"Monday 1-2" andTuesdayHours:@"Tuesday 2-3" andWednesdayHours:@"Wednesday 3-4" andThursdayHours:@"Thursday 4-5" andFridayHours:@"Friday 5-6" andSaturdayHours:@"Saturday 6-7" andSundayHours:@"Sunday 7-8" andAllHours:@"All hours forever" andPhoneString:@"123-456-7890" andEmailString:@"frarysomething@pomona.edu" andLinkString:None];
     
-    Place *frankDining = [[Place alloc] initWithSchool:PomonaSchool andName:@"Frank Dining Hall" andBroadCategory:FoodBroad andSpecificCategory:DiningHallNarrow andLocation:@"Pomona College" andMondayHours:@"Monday 1-2" andTuesdayHours:@"Tuesday 2-3" andWednesdayHours:@"Wednesday 3-4" andThursdayHours:@"Thursday 4-5" andFridayHours:@"Friday 5-6" andSaturdayHours:@"Saturday 6-7" andSundayHours:@"Sunday 7-8" andAllHours:@"All hours forever frank" andPhoneString:@"frank-456-7890" andEmailString:@"franksomething@pomona.edu" andLinkString:@"frank.com"];
+    Place *frankDining = [[Place alloc] initWithSchool:PomonaSchool andName:@"Frank Dining Hall" andBroadCategory:FoodBroad andSpecificCategory:DiningHallNarrow andLocation:@"Pomona College" andMondayHours:@"Monday 1-2" andTuesdayHours:@"Tuesday 2-3" andWednesdayHours:@"Wednesday 3-4" andThursdayHours:@"Thursday 4-5" andFridayHours:@"Friday 5-6" andSaturdayHours:@"Saturday 6-7" andSundayHours:@"Sunday 7-8" andAllHours:@"Mon allday \nTues \nWed \nThurs \nFri \nSat \nSun" andPhoneString:@"frank-456-7890" andEmailString:@"franksomething@pomona.edu" andLinkString:@"www.google.com"];
     
     Place *campusSafety = [[Place alloc] initWithSchool:CUCSchool andName:@"Campus Safety" andBroadCategory:SafetyHealth andSpecificCategory:SafetyHealth andLocation:@"Tranquada" andMondayHours:@"Monday 11-12" andTuesdayHours:@"Tuesday 12-13" andWednesdayHours:@"Wednesday 13-14" andThursdayHours:@"Thursday 14-15" andFridayHours:@"Friday 15-16" andSaturdayHours:@"Saturday 16-17" andSundayHours:@"Sunday 17-18" andAllHours:@"Campus Safety Never Sleeps" andPhoneString:@"1800-Mix-a-lot" andEmailString:@"HelpHelpHelp@pomona.edu" andLinkString:@"www.nsa.gov"];
     
@@ -56,13 +56,13 @@
     
     
     //Empty the database if necessary
-//    [PlaceDatabase emptyDatabase];
+    [PlaceDatabase emptyDatabase];
     
     //Save some test places to database
-//    [PlaceDatabase saveItemWithPlace:fraryDining];
-//    [PlaceDatabase saveItemWithPlace:frankDining];
-//    [PlaceDatabase saveItemWithPlace:campusSafety];
-//    [PlaceDatabase saveItemWithPlace:studyAbroad];
+    [PlaceDatabase saveItemWithPlace:fraryDining];
+    [PlaceDatabase saveItemWithPlace:frankDining];
+    [PlaceDatabase saveItemWithPlace:campusSafety];
+    [PlaceDatabase saveItemWithPlace:studyAbroad];
     
     //TESTS
     

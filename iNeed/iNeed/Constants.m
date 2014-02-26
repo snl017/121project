@@ -22,5 +22,6 @@ NSString* const ServicesNarrow= @"Services on Campus";
 NSString* const StoresNarrow= @"Stores on Campus";
 NSString* const PomonaSchool = @"Pomona";
 NSString* const CUCSchool = @"CUC";
+NSString* const None = @"None";
 
 @end

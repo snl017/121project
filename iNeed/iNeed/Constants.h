@@ -21,4 +21,5 @@ extern NSString* const ServicesNarrow;
 extern NSString* const StoresNarrow;
 extern NSString* const PomonaSchool;
 extern NSString* const CUCSchool;
+extern NSString* const None;
 @end

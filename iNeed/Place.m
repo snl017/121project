@@ -11,7 +11,7 @@
 @implementation Place
 
 //Init method. Creation of a new Place object with all parameters.
--(id)initWithSchool:(NSString *)school andName:(NSString *)name andBroadCategory:(NSString *)broadCategory andSpecificCategory:(NSString *)specificCategory andLocation:(NSString *)location andMondayHours:(NSString *)monday andTuesdayHours:(NSString *)tuesday andWednesdayHours:(NSString *)wednesday andThursdayHours:(NSString *)thursday andFridayHours:(NSString *)friday andSaturdayHours:(NSString *)saturday andSundayHours:(NSString *)sunday andAllHours:(NSString *)allhours andPhoneString:(NSString *)phone andEmailString:(NSString *)email andLinkString:(NSString *)webLink{
+-(id)initWithSchool:(NSString *)school andName:(NSString *)name andBroadCategory:(NSString *)broadCategory andSpecificCategory:(NSString *)specificCategory andLocation:(NSString *)location andMondayHours:(Hours *)monday andTuesdayHours:(Hours *)tuesday andWednesdayHours:(Hours *)wednesday andThursdayHours:(Hours *)thursday andFridayHours:(Hours *)friday andSaturdayHours:(Hours *)saturday andSundayHours:(Hours *)sunday andAllHours:(NSString *)allhours andPhoneString:(NSString *)phone andEmailString:(NSString *)email andLinkString:(NSString *)webLink{
     
     self.school = school;
     self.name = name;
@@ -35,9 +35,18 @@
 }
 
 -(void)printPlace{
+    NSString *monString = [self.mondayHours hoursToDisplayString];
+    NSString *tueString = [self.tuesdayHours hoursToDisplayString];
+    NSString *wedString = [self.wednesdayHours hoursToDisplayString];
+    NSString *thuString = [self.thursdayHours hoursToDisplayString];
+    NSString *friString = [self.fridayHours hoursToDisplayString];
+    NSString *satString = [self.saturdayHours hoursToDisplayString];
+    NSString *sunString = [self.sundayHours hoursToDisplayString];
+    
+    
     NSString *printStrOne = [NSString stringWithFormat: @"%@ %@ %@ %@ %@ %@ %@ %@", @"School: ", self.school, @" Name: ", self.name, @" Specific Category: ", self.specificCategory, @" Broad Category: ", self.broadCategory];
-    NSString *printStrTwo = [NSString stringWithFormat: @"%@ %@ %@ %@ %@ %@ %@ %@", @" Location: ", self.location, @" Monday Hours: ", self.mondayHours, @" Tuesday: ", self.tuesdayHours, @" Wednesday: ", self.wednesdayHours];
-    NSString *printStrThr = [NSString stringWithFormat: @"%@ %@ %@ %@ %@ %@ %@ %@", @" Thursday: ", self.thursdayHours, @" Friday: ", self.fridayHours, @" Saturday: ", self.saturdayHours, @" Sunday: ", self.sundayHours];
+    NSString *printStrTwo = [NSString stringWithFormat: @"%@ %@ %@ %@ %@ %@ %@ %@", @" Location: ", self.location, @" Monday Hours: ", monString, @" Tuesday: ", tueString, @" Wednesday: ", wedString];
+    NSString *printStrThr = [NSString stringWithFormat: @"%@ %@ %@ %@ %@ %@ %@ %@", @" Thursday: ", thuString, @" Friday: ", friString, @" Saturday: ", satString, @" Sunday: ", sunString];
     NSString *printStrFou = [NSString stringWithFormat: @"%@ %@ %@ %@ %@ %@ %@ %@", @" All Hours: ", self.allHours, @" Phone: ", self.phone, @" Email: ", self.email, @" Link: ", self.webLink];
     
     NSString *printString = [NSString stringWithFormat:@"%@ %@ %@ %@", printStrOne, printStrTwo, printStrThr, printStrFou];

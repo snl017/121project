@@ -9,6 +9,7 @@
 // Variable types are open to change.
 
 #import <Foundation/Foundation.h>
+#import "Hours.h"
 
 @interface Place : NSObject
 
@@ -19,13 +20,13 @@
 @property NSString *name;
 @property NSString *specificCategory;
 @property NSString *location;
-@property NSString *mondayHours;
-@property NSString *tuesdayHours;
-@property NSString *wednesdayHours;
-@property NSString *thursdayHours;
-@property NSString *fridayHours;
-@property NSString *saturdayHours;
-@property NSString *sundayHours;
+@property Hours *mondayHours;
+@property Hours *tuesdayHours;
+@property Hours *wednesdayHours;
+@property Hours *thursdayHours;
+@property Hours *fridayHours;
+@property Hours *saturdayHours;
+@property Hours *sundayHours;
 @property NSString *allHours;
 @property NSString *phone;
 @property NSString *email;
@@ -37,7 +38,7 @@
 
 
 //Methods
--(id)initWithSchool:(NSString *)school andName:(NSString *)name andBroadCategory:(NSString *)broadCategory andSpecificCategory:(NSString *)specificCategory andLocation:(NSString *)location andMondayHours:(NSString *)monday andTuesdayHours:(NSString *)tuesday andWednesdayHours:(NSString *)wednesday andThursdayHours:(NSString *)thursday andFridayHours:(NSString *)friday andSaturdayHours:(NSString *)saturday andSundayHours:(NSString *)sunday andAllHours:(NSString *)allhours andPhoneString:(NSString *)phone andEmailString:(NSString *)email andLinkString:(NSString *)link;
+-(id)initWithSchool:(NSString *)school andName:(NSString *)name andBroadCategory:(NSString *)broadCategory andSpecificCategory:(NSString *)specificCategory andLocation:(NSString *)location andMondayHours:(Hours *)monday andTuesdayHours:(Hours *)tuesday andWednesdayHours:(Hours *)wednesday andThursdayHours:(Hours *)thursday andFridayHours:(Hours *)friday andSaturdayHours:(Hours *)saturday andSundayHours:(Hours *)sunday andAllHours:(NSString *)allhours andPhoneString:(NSString *)phone andEmailString:(NSString *)email andLinkString:(NSString *)link;
 
 -(void)printPlace; //This just prints out a nice formatted version of place
 

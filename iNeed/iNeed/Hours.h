@@ -13,6 +13,10 @@
 
 @interface Hours : NSObject
 
+//Properties
+@property NSInteger openingHours;
+@property NSInteger closingHours;
+
 //This init method used when have opening and closing hours as separate strings
 -(id) initWithOpeningDigits:(NSString *)openingDigits andClosingDigits:(NSString *)closingDigits;
 

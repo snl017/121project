@@ -42,7 +42,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Academics" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="y2f-FA-1Wz">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Resource Centers &amp; Offices" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="y2f-FA-1Wz">
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -52,7 +52,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Fkc-tt-hXj" kind="push" id="3HT-SY-egp"/>
+                                            <segue destination="Fkc-tt-hXj" kind="push" identifier="Resource Centers &amp; Offices" id="3HT-SY-egp"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="jqD-O3-7dp" style="IBUITableViewCellStyleDefault" id="c5f-Jx-8QM">
@@ -92,7 +92,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="YXe-55-tAU" kind="push" id="X1k-WI-glU"/>
+                                            <segue destination="YXe-55-tAU" kind="push" identifier="Living on Campus" id="X1k-WI-glU"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -127,7 +127,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Services" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qIq-Pf-bo5">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Services on Campus" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qIq-Pf-bo5">
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -137,7 +137,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="nYG-CF-d71" kind="push" identifier="Services" id="lVJ-8b-uD7"/>
+                                            <segue destination="nYG-CF-d71" kind="push" identifier="Services on Campus" id="lVJ-8b-uD7"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="r8j-SY-5Mt" style="IBUITableViewCellStyleDefault" id="WUR-ES-ge5">
@@ -147,7 +147,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Resource Centers &amp; Offices" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="r8j-SY-5Mt">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Stores on Campus" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="r8j-SY-5Mt">
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -157,7 +157,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="nYG-CF-d71" kind="push" identifier="Resource Centers &amp; Offices" id="GmT-KU-eTD"/>
+                                            <segue destination="nYG-CF-d71" kind="push" identifier="Stores on Campus" id="GmT-KU-eTD"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -237,7 +237,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Office Hours &amp; Departments" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rfd-8Q-lii">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Academic Centers &amp; Offices" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rfd-8Q-lii">
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -247,7 +247,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="nYG-CF-d71" kind="push" identifier="Office Hours &amp; Departments" id="ISx-sr-wbu"/>
+                                            <segue destination="nYG-CF-d71" kind="push" identifier="Academic Centers &amp; Offices" id="ISx-sr-wbu"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="h9f-Ni-7ze" style="IBUITableViewCellStyleDefault" id="GnI-ib-DtV">
@@ -257,7 +257,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Academic Resource Centers" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="h9f-Ni-7ze">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Non-Academic Centers &amp; Offices" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="h9f-Ni-7ze">
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -267,7 +267,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="nYG-CF-d71" kind="push" identifier="Academic Resource Centers" id="iRz-bN-Ix1"/>
+                                            <segue destination="nYG-CF-d71" kind="push" identifier="Non-Academic Centers &amp; Offices" id="iRz-bN-Ix1"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -278,7 +278,7 @@
                             <outlet property="delegate" destination="Fkc-tt-hXj" id="uTp-9F-DqU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Academics" id="VXy-RL-jyF"/>
+                    <navigationItem key="navigationItem" title="Resource Centers &amp; Offices" id="VXy-RL-jyF"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ss6-wc-l2O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -322,7 +322,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Other On-Campus Restaurants" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IzX-p2-BnA">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="On-Campus Eateries &amp; Groceries" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IzX-p2-BnA">
                                                     <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -332,27 +332,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="nYG-CF-d71" kind="push" identifier="Other On-Campus Restaurants" id="ioh-l2-Mef"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="tJo-WX-H8c" style="IBUITableViewCellStyleDefault" id="YyI-88-2PE">
-                                        <rect key="frame" x="0.0" y="152" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YyI-88-2PE" id="SmP-sa-BS1">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="On-Campus Groceries" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tJo-WX-H8c">
-                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="nYG-CF-d71" kind="push" identifier="On-Campus Groceries" id="PZD-DU-8LF"/>
+                                            <segue destination="nYG-CF-d71" kind="push" identifier="On-Campus Eateries &amp; Groceries" id="ioh-l2-Mef"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -394,6 +374,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="38o-7C-c8k"/>
+        <segue reference="lVJ-8b-uD7"/>
     </inferredMetricsTieBreakers>
 </document>

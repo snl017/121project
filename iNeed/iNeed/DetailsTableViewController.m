@@ -29,6 +29,7 @@
     [super viewDidLoad];
     self.places = [NSMutableArray new];
     self.places = [PlaceDatabase fetchPlacesBySpecificCategory:self.specificCategory];
+    [self setTitle:self.specificCategory];
     
    // [self.places initWithArray:[PlaceDatabase fetchPlacesBySpecificCategory:self.specificCategory]] ;
    

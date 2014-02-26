@@ -27,6 +27,7 @@
 		DA212D6318B5AEAF00C0DF8F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA212D6218B5AEAF00C0DF8F /* libsqlite3.dylib */; };
 		DA4976FD18B6D69E00BD4BC8 /* DetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4976FC18B6D69E00BD4BC8 /* DetailsTableViewController.m */; };
 		DA49770018B6DB3700BD4BC8 /* iNeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4976FF18B6DB3700BD4BC8 /* iNeedTableViewController.m */; };
+		DA4D4D7E18BDB6CF00368DC8 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4D4D7D18BDB6CF00368DC8 /* Constants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,8 @@
 		DA4976FC18B6D69E00BD4BC8 /* DetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsTableViewController.m; sourceTree = "<group>"; };
 		DA4976FE18B6DB3700BD4BC8 /* iNeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iNeedTableViewController.h; sourceTree = "<group>"; };
 		DA4976FF18B6DB3700BD4BC8 /* iNeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iNeedTableViewController.m; sourceTree = "<group>"; };
+		DA4D4D7C18BDB6CF00368DC8 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		DA4D4D7D18BDB6CF00368DC8 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +155,8 @@
 				DA212CF518B3EAB600C0DF8F /* iNeedAppDelegate.h */,
 				DA212CF618B3EAB600C0DF8F /* iNeedAppDelegate.m */,
 				DA212CF818B3EAB600C0DF8F /* Main.storyboard */,
+				DA4D4D7C18BDB6CF00368DC8 /* Constants.h */,
+				DA4D4D7D18BDB6CF00368DC8 /* Constants.m */,
 				DA212CFE18B3EAB600C0DF8F /* Images.xcassets */,
 				DA212CED18B3EAB600C0DF8F /* Supporting Files */,
 			);
@@ -289,6 +294,7 @@
 				DA212CF718B3EAB600C0DF8F /* iNeedAppDelegate.m in Sources */,
 				86314D2518B40C90006FA727 /* PlaceDatabase.m in Sources */,
 				DA212CF318B3EAB600C0DF8F /* main.m in Sources */,
+				DA4D4D7E18BDB6CF00368DC8 /* Constants.m in Sources */,
 				86314D2B18B986AD006FA727 /* Hours.m in Sources */,
 				DA49770018B6DB3700BD4BC8 /* iNeedTableViewController.m in Sources */,
 				DA4976FD18B6D69E00BD4BC8 /* DetailsTableViewController.m in Sources */,

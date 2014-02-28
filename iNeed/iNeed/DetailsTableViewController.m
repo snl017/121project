@@ -74,25 +74,25 @@
     NSString *dayOfWeek=[[day stringFromDate:[NSDate date]]lowercaseString];
     
     if ([dayOfWeek  isEqual: @"monday"]){
-        cell.detailTextLabel.text = place.mondayHours;
+        cell.detailTextLabel.text = place.mondayHours.hoursToDisplayString;
     }
     else if ([dayOfWeek  isEqual: @"tuesday"]){
-        cell.detailTextLabel.text = place.tuesdayHours;
+        cell.detailTextLabel.text = place.tuesdayHours.hoursToDisplayString;
     }
     else if ([dayOfWeek  isEqual: @"wednesday"]){
-        cell.detailTextLabel.text = place.wednesdayHours;
+        cell.detailTextLabel.text = place.wednesdayHours.hoursToDisplayString;
     }
     else if ([dayOfWeek  isEqual: @"thursday"]){
-        cell.detailTextLabel.text = place.thursdayHours;
+        cell.detailTextLabel.text = place.thursdayHours.hoursToDisplayString;
     }
     else if ([dayOfWeek  isEqual: @"friday"]){
-        cell.detailTextLabel.text = place.fridayHours;
+        cell.detailTextLabel.text = place.fridayHours.hoursToDisplayString;
     }
     else if ([dayOfWeek  isEqual: @"saturday"]){
-        cell.detailTextLabel.text = place.saturdayHours;
+        cell.detailTextLabel.text = place.saturdayHours.hoursToDisplayString;
     }
     else if ([dayOfWeek  isEqual: @"sunday"]){
-        cell.detailTextLabel.text = place.sundayHours;
+        cell.detailTextLabel.text = place.sundayHours.hoursToDisplayString;
     }else{
         NSLog(@"ERROR: The day of the week is not correct");
     }

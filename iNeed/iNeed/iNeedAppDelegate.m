@@ -45,30 +45,40 @@
 
 //Test out database functions
 - (void)testDatabase{
+    //Create some test Hours
+    Hours *h1 = [[Hours alloc] initWithOpeningDigits:@"0100" andClosingDigits:@"0200"];
+    Hours *h2 = [[Hours alloc] initWithOpeningDigits:@"0200" andClosingDigits:@"0300"];
+    Hours *h3 = [[Hours alloc] initWithOpeningDigits:@"0300" andClosingDigits:@"0400"];
+    Hours *h4 = [[Hours alloc] initWithOpeningDigits:@"0400" andClosingDigits:@"0500"];
+    Hours *h5 = [[Hours alloc] initWithOpeningDigits:@"0500" andClosingDigits:@"0600"];
+    Hours *h6 = [[Hours alloc] initWithOpeningDigits:@"0600" andClosingDigits:@"0700"];
+    Hours *h7 = [[Hours alloc] initWithOpeningDigits:@"0700" andClosingDigits:@"0800"];
+    
+    
     //First create some test Places
-    Place *fraryDining = [[Place alloc] initWithSchool:PomonaSchool andName:@"Frary Dining Hall" andBroadCategory:FoodBroad andSpecificCategory:DiningHallNarrow andLocation:@"Pomona College" andMondayHours:@"Monday 1-2" andTuesdayHours:@"Tuesday 2-3" andWednesdayHours:@"Wednesday 3-4" andThursdayHours:@"Thursday 4-5" andFridayHours:@"Friday 5-6" andSaturdayHours:@"Saturday 6-7" andSundayHours:@"Sunday 7-8" andAllHours:@"All hours forever" andPhoneString:@"123-456-7890" andEmailString:@"frarysomething@pomona.edu" andLinkString:None];
+    Place *fraryDining = [[Place alloc] initWithSchool:PomonaSchool andName:@"Frary Dining Hall" andBroadCategory:FoodBroad andSpecificCategory:DiningHallNarrow andLocation:@"Pomona College" andMondayHours:h1 andTuesdayHours:h2 andWednesdayHours:h3 andThursdayHours:h4 andFridayHours:h5 andSaturdayHours:h6 andSundayHours:h7 andAllHours:@"All hours forever" andPhoneString:@"123-456-7890" andEmailString:@"frarysomething@pomona.edu" andLinkString:None];
     
-    Place *frankDining = [[Place alloc] initWithSchool:PomonaSchool andName:@"Frank Dining Hall" andBroadCategory:FoodBroad andSpecificCategory:DiningHallNarrow andLocation:@"Pomona College" andMondayHours:@"Monday 1-2" andTuesdayHours:@"Tuesday 2-3" andWednesdayHours:@"Wednesday 3-4" andThursdayHours:@"Thursday 4-5" andFridayHours:@"Friday 5-6" andSaturdayHours:@"Saturday 6-7" andSundayHours:@"Sunday 7-8" andAllHours:@"Mon allday \nTues \nWed \nThurs \nFri \nSat \nSun" andPhoneString:@"frank-456-7890" andEmailString:@"franksomething@pomona.edu" andLinkString:@"www.google.com"];
+    Place *frankDining = [[Place alloc] initWithSchool:PomonaSchool andName:@"Frank Dining Hall" andBroadCategory:FoodBroad andSpecificCategory:DiningHallNarrow andLocation:@"Pomona College" andMondayHours:h1 andTuesdayHours:h2 andWednesdayHours:h3 andThursdayHours:h4 andFridayHours:h5 andSaturdayHours:h6 andSundayHours:h7 andAllHours:@"Mon allday \nTues \nWed \nThurs \nFri \nSat \nSun" andPhoneString:@"frank-456-7890" andEmailString:@"franksomething@pomona.edu" andLinkString:@"www.google.com"];
     
-    Place *campusSafety = [[Place alloc] initWithSchool:CUCSchool andName:@"Campus Safety" andBroadCategory:SafetyHealth andSpecificCategory:SafetyHealth andLocation:@"Tranquada" andMondayHours:@"Monday 11-12" andTuesdayHours:@"Tuesday 12-13" andWednesdayHours:@"Wednesday 13-14" andThursdayHours:@"Thursday 14-15" andFridayHours:@"Friday 15-16" andSaturdayHours:@"Saturday 16-17" andSundayHours:@"Sunday 17-18" andAllHours:@"Campus Safety Never Sleeps" andPhoneString:@"1800-Mix-a-lot" andEmailString:@"HelpHelpHelp@pomona.edu" andLinkString:@"www.nsa.gov"];
+    Place *campusSafety = [[Place alloc] initWithSchool:CUCSchool andName:@"Campus Safety" andBroadCategory:SafetyHealth andSpecificCategory:SafetyHealth andLocation:@"Tranquada" andMondayHours:h1 andTuesdayHours:h2 andWednesdayHours:h3 andThursdayHours:h4 andFridayHours:h5 andSaturdayHours:h6 andSundayHours:h7 andAllHours:@"Campus Safety Never Sleeps" andPhoneString:@"1800-Mix-a-lot" andEmailString:@"HelpHelpHelp@pomona.edu" andLinkString:@"www.nsa.gov"];
     
-    Place *studyAbroad = [[Place alloc] initWithSchool:PomonaSchool andName:@"Study Abroad Office" andBroadCategory:ResourceCentersOfficesBroad andSpecificCategory:AcademicRCNarrow andLocation:@"Pomona College" andMondayHours:@"Monday 21-22" andTuesdayHours:@"Tuesday 22-23" andWednesdayHours:@"Wednesday 23-24" andThursdayHours:@"Thursday 24-25" andFridayHours:@"Friday 25-26" andSaturdayHours:@"Saturday 26-27" andSundayHours:@"Sunday 27-28" andAllHours:@"All hours forever3" andPhoneString:@"studyabroadphone" andEmailString:@"studyabroad@pomona.edu" andLinkString:@"www.studyabroadforever.com"];
+    Place *studyAbroad = [[Place alloc] initWithSchool:PomonaSchool andName:@"Study Abroad Office" andBroadCategory:ResourceCentersOfficesBroad andSpecificCategory:AcademicRCNarrow andLocation:@"Pomona College" andMondayHours:h1 andTuesdayHours:h2 andWednesdayHours:h3 andThursdayHours:h4 andFridayHours:h5 andSaturdayHours:h6 andSundayHours:h7 andAllHours:@"All hours forever3" andPhoneString:@"studyabroadphone" andEmailString:@"studyabroad@pomona.edu" andLinkString:@"www.studyabroadforever.com"];
     
     
     //Empty the database if necessary
-//    [PlaceDatabase emptyDatabase];
-//    
-//    //Save some test places to database
-//    [PlaceDatabase saveItemWithPlace:fraryDining];
-//    [PlaceDatabase saveItemWithPlace:frankDining];
-//    [PlaceDatabase saveItemWithPlace:campusSafety];
-//    [PlaceDatabase saveItemWithPlace:studyAbroad];
+    [PlaceDatabase emptyDatabase];
+    
+    //Save some test places to database
+    [PlaceDatabase saveItemWithPlace:fraryDining];
+    [PlaceDatabase saveItemWithPlace:frankDining];
+    [PlaceDatabase saveItemWithPlace:campusSafety];
+    [PlaceDatabase saveItemWithPlace:studyAbroad];
     
     //TESTS
     
     //Test: fetch all items
-    //NSMutableArray *testFetchAll = [PlaceDatabase fetchAllPlaces];
-    
+//    NSMutableArray *testFetchAll = [PlaceDatabase fetchAllPlaces];
+//    
 //    for (id object in testFetchAll) { //print all fetched items
 //        Place *tempPlace = (Place *)object;
 //        [tempPlace printPlace];
@@ -83,8 +93,8 @@
 //    }
     
 //    //Test: fetch by specific category
-//    NSMutableArray *testSelectSpecific = [PlaceDatabase fetchPlacesBySpecificCategory:@"Dining Hall"];
-    
+//    NSMutableArray *testSelectSpecific = [PlaceDatabase fetchPlacesBySpecificCategory:DiningHallNarrow];
+//    
 //    for (id object in testSelectSpecific) { //print all fetched items
 //        Place *tempPlace = (Place *)object;
 //        [tempPlace printPlace];
@@ -92,12 +102,12 @@
 //    NSLog(@"%i",[testSelectSpecific count]);
     
     //Test: fetch by name
-//    NSMutableArray *testSelectName = [PlaceDatabase fetchPlacesByName:@"Frary Dining Hall"];
+    NSMutableArray *testSelectName = [PlaceDatabase fetchPlacesByName:@"Frary Dining Hall"];
     
-//    for (id object in testSelectName) { //print all fetched items
-//        Place *tempPlace = (Place *)object;
-//        [tempPlace printPlace];
-//    }
+    for (id object in testSelectName) { //print all fetched items
+        Place *tempPlace = (Place *)object;
+        [tempPlace printPlace];
+    }
 
 }
 

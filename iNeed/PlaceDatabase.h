@@ -45,9 +45,5 @@
 //+ (void)updateAllHoursByName:(NSString *)name;
 
 
-//This method is for the updating hours methods. It checks the input format of the hours string
-
-
-
 
 @end

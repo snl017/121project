@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Place.h"
 #import "Constants.h"
+#import "Hours.h"
 #import <sqlite3.h>
 
 @interface PlaceDatabase : NSObject

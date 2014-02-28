@@ -56,13 +56,13 @@
     
     
     //Empty the database if necessary
-    [PlaceDatabase emptyDatabase];
-    
-    //Save some test places to database
-    [PlaceDatabase saveItemWithPlace:fraryDining];
-    [PlaceDatabase saveItemWithPlace:frankDining];
-    [PlaceDatabase saveItemWithPlace:campusSafety];
-    [PlaceDatabase saveItemWithPlace:studyAbroad];
+//    [PlaceDatabase emptyDatabase];
+//    
+//    //Save some test places to database
+//    [PlaceDatabase saveItemWithPlace:fraryDining];
+//    [PlaceDatabase saveItemWithPlace:frankDining];
+//    [PlaceDatabase saveItemWithPlace:campusSafety];
+//    [PlaceDatabase saveItemWithPlace:studyAbroad];
     
     //TESTS
     

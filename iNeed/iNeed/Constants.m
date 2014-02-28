@@ -10,6 +10,7 @@
 
 @implementation Constants
 
+//A list of specific and broad categories
 NSString* const FoodBroad = @"Food";
 NSString* const ResourceCentersOfficesBroad = @"Resource Centers & Offices";
 NSString* const LivingOnCampusBroad= @"Living on Campus";

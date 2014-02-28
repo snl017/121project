@@ -35,14 +35,7 @@ static sqlite3_stmt *updateSaturdayHoursByNameStmt;
 static sqlite3_stmt *updateSundayHoursByNameStmt;
 static sqlite3_stmt *updateAllHoursByNameStmt; //This will work by looking at the monday-sunday hours in the same table entry
 
-
-
-
-//More specialized statements: Updating monday - sunday hrs, all hrs - TODO
 //TODO - searching by school if we ever get to that
-
-
-
 
 //Create Database if Needed.
 + (void)createEditableCopyOfDatabaseIfNeeded {
@@ -210,15 +203,20 @@ static sqlite3_stmt *updateAllHoursByNameStmt; //This will work by looking at th
         NSString *emailString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 15)];
         NSString *linkString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 16)];
         
-        
+        //Now we turn the hour-related strings to Hours objects in order to make a Place object.
+        Hours *mondayHours = [[Hours alloc] initWithOneString:mondayString];
+        Hours *tuesdayHours = [[Hours alloc] initWithOneString:tuesdayString];
+        Hours *wednesdayHours = [[Hours alloc] initWithOneString:wednesdayString];
+        Hours *thursdayHours = [[Hours alloc] initWithOneString:thursdayString];
+        Hours *fridayHours = [[Hours alloc] initWithOneString:fridayString];
+        Hours *saturdayHours = [[Hours alloc] initWithOneString:saturdayString];
+        Hours *sundayHours = [[Hours alloc] initWithOneString:sundayString];
         
         //Create Place object with information
-        Place *databasePlace = [[Place alloc] initWithSchool:schoolString andName:nameString andBroadCategory:broadString andSpecificCategory:specificString andLocation:locationString andMondayHours:mondayString andTuesdayHours:tuesdayString andWednesdayHours:wednesdayString andThursdayHours:thursdayString andFridayHours:fridayString andSaturdayHours:saturdayString andSundayHours:sundayString andAllHours:allhoursString andPhoneString:phoneString andEmailString:emailString andLinkString:linkString];
+        Place *databasePlace = [[Place alloc] initWithSchool:schoolString andName:nameString andBroadCategory:broadString andSpecificCategory:specificString andLocation:locationString andMondayHours:mondayHours andTuesdayHours:tuesdayHours andWednesdayHours:wednesdayHours andThursdayHours:thursdayHours andFridayHours:fridayHours andSaturdayHours:saturdayHours andSundayHours:sundayHours andAllHours:allhoursString andPhoneString:phoneString andEmailString:emailString andLinkString:linkString];
         
         //Add place object to array
         [ret addObject:databasePlace];
-        
-        
         
     }
     
@@ -226,10 +224,6 @@ static sqlite3_stmt *updateAllHoursByNameStmt; //This will work by looking at th
     sqlite3_reset(fetchPlaces);
     return ret;
 }
-
-
-
-
 
 //More Fetching/Selecting functions
 + (NSMutableArray *)fetchPlacesByName:(NSString *)name{
@@ -260,10 +254,17 @@ static sqlite3_stmt *updateAllHoursByNameStmt; //This will work by looking at th
         NSString *emailString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 15)];
         NSString *linkString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 16)];
         
-        
+        //Now we turn the hour-related strings to Hours objects in order to make a Place object.
+        Hours *mondayHours = [[Hours alloc] initWithOneString:mondayString];
+        Hours *tuesdayHours = [[Hours alloc] initWithOneString:tuesdayString];
+        Hours *wednesdayHours = [[Hours alloc] initWithOneString:wednesdayString];
+        Hours *thursdayHours = [[Hours alloc] initWithOneString:thursdayString];
+        Hours *fridayHours = [[Hours alloc] initWithOneString:fridayString];
+        Hours *saturdayHours = [[Hours alloc] initWithOneString:saturdayString];
+        Hours *sundayHours = [[Hours alloc] initWithOneString:sundayString];
         
         //Create Place object with information
-        Place *databasePlace = [[Place alloc] initWithSchool:schoolString andName:nameString andBroadCategory:broadString andSpecificCategory:specificString andLocation:locationString andMondayHours:mondayString andTuesdayHours:tuesdayString andWednesdayHours:wednesdayString andThursdayHours:thursdayString andFridayHours:fridayString andSaturdayHours:saturdayString andSundayHours:sundayString andAllHours:allhoursString andPhoneString:phoneString andEmailString:emailString andLinkString:linkString];
+        Place *databasePlace = [[Place alloc] initWithSchool:schoolString andName:nameString andBroadCategory:broadString andSpecificCategory:specificString andLocation:locationString andMondayHours:mondayHours andTuesdayHours:tuesdayHours andWednesdayHours:wednesdayHours andThursdayHours:thursdayHours andFridayHours:fridayHours andSaturdayHours:saturdayHours andSundayHours:sundayHours andAllHours:allhoursString andPhoneString:phoneString andEmailString:emailString andLinkString:linkString];
         
         //Add place object to array
         [ret addObject:databasePlace];
@@ -313,9 +314,17 @@ static sqlite3_stmt *updateAllHoursByNameStmt; //This will work by looking at th
         NSString *linkString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectBroadCategoryPlaces, 16)];
         
         
+        //Now we turn the hour-related strings to Hours objects in order to make a Place object.
+        Hours *mondayHours = [[Hours alloc] initWithOneString:mondayString];
+        Hours *tuesdayHours = [[Hours alloc] initWithOneString:tuesdayString];
+        Hours *wednesdayHours = [[Hours alloc] initWithOneString:wednesdayString];
+        Hours *thursdayHours = [[Hours alloc] initWithOneString:thursdayString];
+        Hours *fridayHours = [[Hours alloc] initWithOneString:fridayString];
+        Hours *saturdayHours = [[Hours alloc] initWithOneString:saturdayString];
+        Hours *sundayHours = [[Hours alloc] initWithOneString:sundayString];
         
         //Create Place object with information
-        Place *databasePlace = [[Place alloc] initWithSchool:schoolString andName:nameString andBroadCategory:broadString andSpecificCategory:specificString andLocation:locationString andMondayHours:mondayString andTuesdayHours:tuesdayString andWednesdayHours:wednesdayString andThursdayHours:thursdayString andFridayHours:fridayString andSaturdayHours:saturdayString andSundayHours:sundayString andAllHours:allhoursString andPhoneString:phoneString andEmailString:emailString andLinkString:linkString];
+        Place *databasePlace = [[Place alloc] initWithSchool:schoolString andName:nameString andBroadCategory:broadString andSpecificCategory:specificString andLocation:locationString andMondayHours:mondayHours andTuesdayHours:tuesdayHours andWednesdayHours:wednesdayHours andThursdayHours:thursdayHours andFridayHours:fridayHours andSaturdayHours:saturdayHours andSundayHours:sundayHours andAllHours:allhoursString andPhoneString:phoneString andEmailString:emailString andLinkString:linkString];
         
         //Add place object to array
         [ret addObject:databasePlace];
@@ -363,10 +372,17 @@ static sqlite3_stmt *updateAllHoursByNameStmt; //This will work by looking at th
         NSString *emailString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectSpecificCategoryPlaces, 15)];
         NSString *linkString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectSpecificCategoryPlaces, 16)];
         
-        
+        //Now we turn the hour-related strings to Hours objects in order to make a Place object.
+        Hours *mondayHours = [[Hours alloc] initWithOneString:mondayString];
+        Hours *tuesdayHours = [[Hours alloc] initWithOneString:tuesdayString];
+        Hours *wednesdayHours = [[Hours alloc] initWithOneString:wednesdayString];
+        Hours *thursdayHours = [[Hours alloc] initWithOneString:thursdayString];
+        Hours *fridayHours = [[Hours alloc] initWithOneString:fridayString];
+        Hours *saturdayHours = [[Hours alloc] initWithOneString:saturdayString];
+        Hours *sundayHours = [[Hours alloc] initWithOneString:sundayString];
         
         //Create Place object with information
-        Place *databasePlace = [[Place alloc] initWithSchool:schoolString andName:nameString andBroadCategory:broadString andSpecificCategory:specificString andLocation:locationString andMondayHours:mondayString andTuesdayHours:tuesdayString andWednesdayHours:wednesdayString andThursdayHours:thursdayString andFridayHours:fridayString andSaturdayHours:saturdayString andSundayHours:sundayString andAllHours:allhoursString andPhoneString:phoneString andEmailString:emailString andLinkString:linkString];
+        Place *databasePlace = [[Place alloc] initWithSchool:schoolString andName:nameString andBroadCategory:broadString andSpecificCategory:specificString andLocation:locationString andMondayHours:mondayHours andTuesdayHours:tuesdayHours andWednesdayHours:wednesdayHours andThursdayHours:thursdayHours andFridayHours:fridayHours andSaturdayHours:saturdayHours andSundayHours:sundayHours andAllHours:allhoursString andPhoneString:phoneString andEmailString:emailString andLinkString:linkString];
         
         //Add place object to array
         [ret addObject:databasePlace];
@@ -377,14 +393,9 @@ static sqlite3_stmt *updateAllHoursByNameStmt; //This will work by looking at th
     //Reset the statement
     sqlite3_reset(selectSpecificCategoryPlaces);
     
-    //if (success != SQLITE_DONE) {
-    //    NSLog(@"ERROR: failed to select by specific category");
-    //}
-    
     //Return
     return ret;
 }
-
 
 
 
@@ -421,7 +432,17 @@ static sqlite3_stmt *updateAllHoursByNameStmt; //This will work by looking at th
 }
 
 + (void)saveItemWithPlace:(Place *)place{
-    [self saveItemWithSchool:place.school andName:place.name andBroadCategory:place.broadCategory andSpecificCategory:place.specificCategory andLocation:place.location andMondayHours:place.mondayHours andTuesdayHours:place.tuesdayHours andWednesdayHours:place.wednesdayHours andThursdayHours:place.thursdayHours andFridayHours:place.fridayHours andSaturdayHours:place.saturdayHours andSundayHours:place.sundayHours andAllHours:place.allHours andPhoneString:place.phone andEmailString:place.email andLinkString:place.webLink];
+    //Convert Hours into database-friendly strings
+    NSString *mondayString = [place.mondayHours hoursToDatabaseString];
+    NSString *tuesdayString = [place.tuesdayHours hoursToDatabaseString];
+    NSString *wednesdayString = [place.wednesdayHours hoursToDatabaseString];
+    NSString *thursdayString = [place.thursdayHours hoursToDatabaseString];
+    NSString *fridayString = [place.fridayHours hoursToDatabaseString];
+    NSString *saturdayString = [place.saturdayHours hoursToDatabaseString];
+    NSString *sundayString = [place.sundayHours hoursToDatabaseString];
+    
+    //Use those strings in saving to database
+    [self saveItemWithSchool:place.school andName:place.name andBroadCategory:place.broadCategory andSpecificCategory:place.specificCategory andLocation:place.location andMondayHours:mondayString andTuesdayHours:tuesdayString andWednesdayHours:wednesdayString andThursdayHours:thursdayString andFridayHours:fridayString andSaturdayHours:saturdayString andSundayHours:sundayString andAllHours:place.allHours andPhoneString:place.phone andEmailString:place.email andLinkString:place.webLink];
 }
 
 

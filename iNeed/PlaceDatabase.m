@@ -37,6 +37,16 @@ static sqlite3_stmt *updateAllHoursByNameStmt; //This will work by looking at th
 
 //TODO - searching by school if we ever get to that
 
+//Statements for the Categories table: Fetching, deleting, inserting, creating table.
+static sqlite3_stmt *createCatTable;
+static sqlite3_stmt *deleteCat;
+static sqlite3_stmt *insertCat;
+
+//Specialized statements: Fetching by broad, specific, name categories, empty database
+static sqlite3_stmt *selectBroadCategoryCat;
+static sqlite3_stmt *selectSpecificCategoryCat;
+static sqlite3_stmt *emptyCategories;
+
 //Create Database if Needed.
 + (void)createEditableCopyOfDatabaseIfNeeded {
     
@@ -66,7 +76,7 @@ static sqlite3_stmt *updateAllHoursByNameStmt; //This will work by looking at th
 //School - name - broad category - specific category - location - monday - tuesday - wednesday - thursday - friday - saturday - sunday - allhours - phone - email - link//
 + (void)initDatabase{
     
-    //These are the actual calls to sqlite table.
+    //These are the actual calls to sqlite table placeDatabase.
         //Creation, fetchall, insert, delete, empty database queries
     const char *createTableString = "CREATE TABLE IF NOT EXISTS placeDatabase (rowid INTEGER PRIMARY KEY AUTOINCREMENT, school TEXT, name TEXT, broad TEXT, specific TEXT, location TEXT, monday TEXT, tuesday TEXT, wednesday TEXT, thursday TEXT, friday TEXT, saturday TEXT, sunday TEXT, allhours TEXT, phone TEXT, email TEXT, link TEXT)";
     const char *fetchPlacesString = "SELECT * FROM placeDatabase";
@@ -79,6 +89,18 @@ static sqlite3_stmt *updateAllHoursByNameStmt; //This will work by looking at th
     const char *selectNamePlacesString = "SELECT * FROM placeDatabase WHERE name=?";
         //Update queries
     const char *updateMondayHoursByNameString = "UPDATE placeDatabase SET monday=? WHERE name=?";
+    
+    //Calls to the sqlite table categories
+    //Creation, fetchall, insert, delete, empty database queries
+    const char *createCatTableString = "CREATE TABLE IF NOT EXISTS categories (rowid INTEGER PRIMARY KEY AUTOINCREMENT, broad TEXT, specific TEXT, name TEXT)";
+    const char *insertCatString = "INSERT INTO categories (broad, specific, name) VALUES (?, ?, ?)";
+    const char *deleteCatString = "DELETE FROM categories WHERE rowid=?";
+    const char *emptyCatTableString = "DELETE FROM categories;";
+    //Specific selection queries
+    const char *selectBroadCatString = "SELECT name FROM categories WHERE broad=?";
+    const char *selectSpecificCatString = "SELECT name FROM categories WHERE specific=?";
+   
+    
     
     // Create the path to the database
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -93,9 +115,9 @@ static sqlite3_stmt *updateAllHoursByNameStmt; //This will work by looking at th
     int success;
     
     
-    //init table statement
+    //init table statement for placeDatabase table
     if (sqlite3_prepare_v2(db, createTableString, -1, &createPlaceDatabase, NULL) != SQLITE_OK) {
-        NSLog(@"Failed to prepare create table statement");
+        NSLog(@"Failed to prepare create table statement for places");
         NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
     }
     
@@ -104,21 +126,17 @@ static sqlite3_stmt *updateAllHoursByNameStmt; //This will work by looking at th
     success = sqlite3_step(createPlaceDatabase);
     sqlite3_reset(createPlaceDatabase);
     if (success != SQLITE_DONE) {
-        NSLog(@"ERROR: failed to create table");
+        NSLog(@"ERROR: failed to create table placeDatabase");
         NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
         
     }
-    
-    
     
     //init retrieval statement
     if (sqlite3_prepare_v2(db, fetchPlacesString, -1, &fetchPlaces, NULL) != SQLITE_OK) {
-        NSLog(@"ERROR: failed to prepare fetching statement");
+        NSLog(@"ERROR: failed to prepare fetching statement for places");
         NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
         
     }
-    
-    
     
     //init insertion statement
     if (sqlite3_prepare_v2(db, insertPlaceString, -1, &insertPlace, NULL) != SQLITE_OK) {
@@ -135,7 +153,6 @@ static sqlite3_stmt *updateAllHoursByNameStmt; //This will work by looking at th
         
     }
     
-    
     // init select broad statement
     if (sqlite3_prepare_v2(db, selectBroadCategoryPlacesString, -1, &selectBroadCategoryPlaces, NULL) != SQLITE_OK) {
         NSLog(@"ERROR: failed to prepare selectBroadCategoryPlaces statement");
@@ -143,14 +160,12 @@ static sqlite3_stmt *updateAllHoursByNameStmt; //This will work by looking at th
         
     }
     
-    
     // init select specific statement
     if (sqlite3_prepare_v2(db, selectSpecificCategoryPlacesString, -1, &selectSpecificCategoryPlaces, NULL) != SQLITE_OK) {
         NSLog(@"ERROR: failed to prepare selectSpecificCategoryPlaces statement");
         NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
         
     }
-    
     
     // init select name statement
     if (sqlite3_prepare_v2(db, selectNamePlacesString, -1, &selectNamePlaces, NULL) != SQLITE_OK) {
@@ -171,9 +186,113 @@ static sqlite3_stmt *updateAllHoursByNameStmt; //This will work by looking at th
         NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
     }
     
+    
+    //Prepare the statements for the categories table
+    //init table statement for categories table
+    if (sqlite3_prepare_v2(db, createCatTableString, -1, &createCatTable, NULL) != SQLITE_OK) {
+        NSLog(@"Failed to prepare create table statement for categories");
+        NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
+    }
+    
+    //execute table creation statement
+    success = sqlite3_step(createCatTable);
+    sqlite3_reset(createCatTable);
+    if (success != SQLITE_DONE) {
+        NSLog(@"ERROR: failed to create table categories");
+        NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
+        
+    }
+    //init insertion statement for categories
+    if (sqlite3_prepare_v2(db, insertCatString, -1, &insertCat, NULL) != SQLITE_OK) {
+        NSLog(@"ERROR: failed to prepare inserting statement for categories");
+        NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
+    }
+    
+    
+    // init deletion statement
+    if (sqlite3_prepare_v2(db, deleteCatString, -1, &deleteCat, NULL) != SQLITE_OK) {
+        NSLog(@"ERROR: failed to prepare deleting statement for categories");
+        NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
+        
+    }
+    // init select broad statement for categories table
+    if (sqlite3_prepare_v2(db, selectBroadCatString, -1, &selectBroadCategoryCat, NULL) != SQLITE_OK) {
+        NSLog(@"ERROR: failed to prepare selectBroadCategoryPlaces statement for categories table");
+        NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
+        
+    }
+    // init select specific statement
+    if (sqlite3_prepare_v2(db, selectSpecificCatString, -1, &selectSpecificCategoryCat, NULL) != SQLITE_OK) {
+        NSLog(@"ERROR: failed to prepare selectSpecificCategoryPlaces statement for categories table");
+        NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
+        
+    }
+    // init empty statement for categories table
+    if (sqlite3_prepare_v2(db, emptyCatTableString, -1, &emptyCategories, NULL) != SQLITE_OK) {
+        NSLog(@"ERROR: failed to prepare empty database statement for categories table");
+        NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
+    }
+    
 }
 
+/*
+ * These next several methods pertain to the categories table.
+ *
+ *
+ */
+ 
++(NSMutableArray *) fetchNamesbySpecific:(NSString *)specific{
+    //First we bind to the selectBroadCategoryPlaces statement
+    sqlite3_bind_text(selectSpecificCategoryCat, 1, [specific UTF8String], -1, SQLITE_TRANSIENT);
+        
+    //The array that gets returned
+    NSMutableArray *ret = [NSMutableArray arrayWithCapacity:0];
+        
+    //Get all rows with correct broad category info and place into array as a Place
+    while (sqlite3_step(selectSpecificCategoryCat) == SQLITE_ROW) {
+        NSString *nameString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectSpecificCategoryCat,0)];
+        [ret addObject:nameString];
+        }
+    
+    //Reset!
+    sqlite3_reset(selectSpecificCategoryCat);
+    return ret;
+}
 
++(NSMutableArray *) fetchNamesbyBroad:(NSString *)broad{
+    //First we bind to the selectBroadCategoryPlaces statement
+    sqlite3_bind_text(selectBroadCategoryCat, 1, [broad UTF8String], -1, SQLITE_TRANSIENT);
+    
+    //The array that gets returned
+    NSMutableArray *ret = [NSMutableArray arrayWithCapacity:0];
+    
+    //Get all rows with correct broad category info and place into array as a Place
+    while (sqlite3_step(selectBroadCategoryCat) == SQLITE_ROW) {
+        NSString *nameString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectBroadCategoryCat,0)];
+        [ret addObject:nameString];
+    }
+    
+    //Reset!
+    sqlite3_reset(selectBroadCategoryCat);
+    return ret;
+}
+
++(void) savePlace:(NSString *)name withSpecificCategory:(NSString *)specific andBroadCategory:(NSString*)broad{
+    // bind data to the statement
+    sqlite3_bind_text(insertCat, 1, [broad UTF8String], -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(insertCat, 2, [specific UTF8String], -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(insertCat, 3, [name UTF8String], -1, SQLITE_TRANSIENT);
+    
+    
+    int success = sqlite3_step(insertCat);
+    
+    //Reset!
+    sqlite3_reset(insertPlace);
+    
+    if (success != SQLITE_DONE) {
+        NSLog(@"ERROR: failed to insert item");
+    }
+}
 
 
 //School - name - broad category - specific category - location - monday - tuesday - wednesday - thursday - friday - saturday - sunday - allhours - phone - email - link//
@@ -282,7 +401,6 @@ static sqlite3_stmt *updateAllHoursByNameStmt; //This will work by looking at th
     //Return
     return ret;
 }
-
 
 + (NSMutableArray *)fetchPlacesByBroadCategory:(NSString *)broadCategory{
     
@@ -499,6 +617,7 @@ static sqlite3_stmt *updateAllHoursByNameStmt; //This will work by looking at th
 //Completely empty the databse. Please do not call accidentally.
 + (void)emptyDatabase{
     sqlite3_step(emptyDatabase);
+    sqlite3_step(emptyCategories);
 }
 
 

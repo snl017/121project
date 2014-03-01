@@ -16,7 +16,7 @@
     [PlaceDatabase createEditableCopyOfDatabaseIfNeeded];
     [PlaceDatabase initDatabase];
     [self testDatabase];
-    [self testHoursClass];
+    //[self testHoursClass];
     
     return YES;
 }
@@ -74,7 +74,28 @@
     [PlaceDatabase saveItemWithPlace:campusSafety];
     [PlaceDatabase saveItemWithPlace:studyAbroad];
     
+    
+    
     //TESTS
+    //Test: for categories table methods:
+    
+    //Save a piece of information to the categories table
+    [PlaceDatabase savePlace:@"Frary" withSpecificCategory:DiningHallNarrow andBroadCategory:FoodBroad];
+    NSMutableArray *testSelectBySpecific = [PlaceDatabase fetchNamesbySpecific:DiningHallNarrow];
+    NSLog(@"Fetched Specific!");
+    NSLog(@"%d",[testSelectBySpecific count]);
+    for (id object in testSelectBySpecific) { //print all fetched items
+        NSLog(@"%@",object);
+    }
+    NSMutableArray *testSelectByBroad = [PlaceDatabase fetchNamesbyBroad:FoodBroad];
+    NSLog(@"Fetched Broad");
+    NSLog(@"%d",[testSelectByBroad count]);
+    for (id object in testSelectByBroad) { //print all fetched items
+        NSLog(@"%@",object);
+    }
+
+    
+
     
     //Test: fetch all items
 //    NSMutableArray *testFetchAll = [PlaceDatabase fetchAllPlaces];
@@ -102,12 +123,12 @@
 //    NSLog(@"%i",[testSelectSpecific count]);
     
     //Test: fetch by name
-    NSMutableArray *testSelectName = [PlaceDatabase fetchPlacesByName:@"Frary Dining Hall"];
+   // NSMutableArray *testSelectName = [PlaceDatabase fetchPlacesByName:@"Frary Dining Hall"];
     
-    for (id object in testSelectName) { //print all fetched items
-        Place *tempPlace = (Place *)object;
-        [tempPlace printPlace];
-    }
+//    for (id object in testSelectName) { //print all fetched items
+//        Place *tempPlace = (Place *)object;
+//        [tempPlace printPlace];
+//    }
 
 }
 

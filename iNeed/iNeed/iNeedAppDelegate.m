@@ -80,7 +80,8 @@
     //Test: for categories table methods:
     
     //Save a piece of information to the categories table
-    [PlaceDatabase savePlace:@"Frary" withSpecificCategory:DiningHallNarrow andBroadCategory:FoodBroad];
+    //[PlaceDatabase savePlace:@"Frary" withSpecificCategory:DiningHallNarrow andBroadCategory:FoodBroad];
+    
     NSMutableArray *testSelectBySpecific = [PlaceDatabase fetchNamesbySpecific:DiningHallNarrow];
     NSLog(@"Fetched Specific!");
     NSLog(@"%d",[testSelectBySpecific count]);

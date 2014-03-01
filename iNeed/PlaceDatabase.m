@@ -520,6 +520,7 @@ static sqlite3_stmt *emptyCategories;
 //Save Function: saving item into database. Will we need to use this? Probably not. But it's good to have just in case.
 + (void)saveItemWithSchool:(NSString *)school andName:(NSString *)name andBroadCategory:(NSString *)broadCategory andSpecificCategory:(NSString *)specificCategory andLocation:(NSString *)location andMondayHours:(NSString *)monday andTuesdayHours:(NSString *)tuesday andWednesdayHours:(NSString *)wednesday andThursdayHours:(NSString *)thursday andFridayHours:(NSString *)friday andSaturdayHours:(NSString *)saturday andSundayHours:(NSString *)sunday andAllHours:(NSString *)allhours andPhoneString:(NSString *)phone andEmailString:(NSString *)email andLinkString:(NSString *)webLink{
     
+    //PlaceDatabase Table
     // bind data to the statement
     sqlite3_bind_text(insertPlace, 1, [school UTF8String], -1, SQLITE_TRANSIENT);
     sqlite3_bind_text(insertPlace, 2, [name UTF8String], -1, SQLITE_TRANSIENT);
@@ -539,12 +540,23 @@ static sqlite3_stmt *emptyCategories;
     sqlite3_bind_text(insertPlace, 16, [webLink UTF8String], -1, SQLITE_TRANSIENT);
     
     
-    int success = sqlite3_step(insertPlace);
+    int success1 = sqlite3_step(insertPlace);
     
     //Reset!
     sqlite3_reset(insertPlace);
     
-    if (success != SQLITE_DONE) {
+    //categories Table
+    // bind data to the statement
+    sqlite3_bind_text(insertCat, 1, [broadCategory UTF8String], -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(insertCat, 2, [specificCategory UTF8String], -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(insertCat, 3, [name UTF8String], -1, SQLITE_TRANSIENT);
+    
+    int success2 = sqlite3_step(insertCat);
+    
+    //Reset!
+    sqlite3_reset(insertCat);
+    
+    if (success1 != SQLITE_DONE || success2!=SQLITE_DONE) {
         NSLog(@"ERROR: failed to insert item");
     }
 }

@@ -89,6 +89,14 @@ static sqlite3_stmt *emptyCategories;
     const char *selectNamePlacesString = "SELECT * FROM placeDatabase WHERE name=?";
         //Update queries
     const char *updateMondayHoursByNameString = "UPDATE placeDatabase SET monday=? WHERE name=?";
+    const char *updateTuesdayHoursByNameString = "UPDATE placeDatabase SET tuesday=? WHERE name=?";
+    const char *updateWednesdayHoursByNameString = "UPDATE placeDatabase SET wednesday=? WHERE name=?";
+    const char *updateThursdayHoursByNameString = "UPDATE placeDatabase SET thursday=? WHERE name=?";
+    const char *updateFridayHoursByNameString = "UPDATE placeDatabase SET friday=? WHERE name=?";
+    const char *updateSaturdayHoursByNameString = "UPDATE placeDatabase SET saturday=? WHERE name=?";
+    const char *updateSundayHoursByNameString = "UPDATE placeDatabase SET sunday=? WHERE name=?";
+
+    
     
     //Calls to the sqlite table categories
     //Creation, fetchall, insert, delete, empty database queries
@@ -185,6 +193,31 @@ static sqlite3_stmt *emptyCategories;
         NSLog(@"ERROR: failed to prepare update monday hours database statement");
         NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
     }
+    if (sqlite3_prepare_v2(db, updateTuesdayHoursByNameString, -1, &updateTuesdayHoursByNameStmt, NULL) != SQLITE_OK) {
+        NSLog(@"ERROR: failed to prepare update tuesday hours database statement");
+        NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
+    }
+    if (sqlite3_prepare_v2(db, updateWednesdayHoursByNameString, -1, &updateWednesdayHoursByNameStmt, NULL) != SQLITE_OK) {
+        NSLog(@"ERROR: failed to prepare update wednesday hours database statement");
+        NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
+    }
+    if (sqlite3_prepare_v2(db, updateThursdayHoursByNameString, -1, &updateThursdayHoursByNameStmt, NULL) != SQLITE_OK) {
+        NSLog(@"ERROR: failed to prepare update thursday hours database statement");
+        NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
+    }
+    if (sqlite3_prepare_v2(db, updateFridayHoursByNameString, -1, &updateFridayHoursByNameStmt, NULL) != SQLITE_OK) {
+        NSLog(@"ERROR: failed to prepare update friday hours database statement");
+        NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
+    }
+    if (sqlite3_prepare_v2(db, updateSaturdayHoursByNameString, -1, &updateSaturdayHoursByNameStmt, NULL) != SQLITE_OK) {
+        NSLog(@"ERROR: failed to prepare update saturday hours database statement");
+        NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
+    }
+    if (sqlite3_prepare_v2(db, updateSundayHoursByNameString, -1, &updateSundayHoursByNameStmt, NULL) != SQLITE_OK) {
+        NSLog(@"ERROR: failed to prepare update sunday hours database statement");
+        NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
+    }
+    
     
     
     //Prepare the statements for the categories table
@@ -504,32 +537,97 @@ static sqlite3_stmt *emptyCategories;
 //NOTE: these need to accept Hours objects.
 //All the update methods.
 //Update Monday Hours
-//+ (void)updateMondayHoursByName:(NSString *)name{
-//    //Query takes in name and updated hours. Check hour against correct format and abort with message
-//    //If incorrect format. Otherwise proceed. Bind values to query and then proceed with step stmt.
-//    
-//}
-//+ (void)updateTuesdayHoursByName:(NSString *)name{
-//    
-//}
-//+ (void)updateWednesdayHoursByName:(NSString *)name{
-//    
-//}
-//+ (void)updateThursdayHoursByName:(NSString *)name{
-//    
-//}
-//+ (void)updateFridayHoursByName:(NSString *)name{
-//    
-//}
-//+ (void)updateSaturdayHoursByName:(NSString *)name{
-//    
-//}
-//+ (void)updateSundayHoursByName:(NSString *)name{
-//    
-//}
-//+ (void)updateAllHoursByName:(NSString *)name{
-//    
-//}
++ (void)updateMondayHoursByName:(NSString *)name andNewHours:(Hours *)newHours{
+    //bind name and hours to database string to statement
+    sqlite3_bind_text(updateMondayHoursByNameStmt, 2, [name UTF8String], -1, SQLITE_TRANSIENT); //name bind
+    sqlite3_bind_text(updateMondayHoursByNameStmt, 1, [[newHours hoursToDatabaseString] UTF8String], -1, SQLITE_TRANSIENT); //Hours
+    
+    //Check success, step, and reset
+    int success = sqlite3_step(updateMondayHoursByNameStmt);
+    sqlite3_reset(updateMondayHoursByNameStmt);
+    if (success != SQLITE_DONE) {
+        NSLog(@"ERROR: failed to update Monday Hours By Name item");
+    }
+}
+//Update Tuesday Hours
++ (void)updateTuesdayHoursByName:(NSString *)name andNewHours:(Hours *)newHours{
+    //bind name and hours to database string to statement
+    sqlite3_bind_text(updateTuesdayHoursByNameStmt, 2, [name UTF8String], -1, SQLITE_TRANSIENT); //name bind
+    sqlite3_bind_text(updateTuesdayHoursByNameStmt, 1, [[newHours hoursToDatabaseString] UTF8String], -1, SQLITE_TRANSIENT); //Hours
+    
+    //Check success, step, and reset
+    int success = sqlite3_step(updateTuesdayHoursByNameStmt);
+    sqlite3_reset(updateTuesdayHoursByNameStmt);
+    if (success != SQLITE_DONE) {
+        NSLog(@"ERROR: failed to update Tuesday Hours By Name item");
+    }
+}
+//Update Wednesday Hours
++ (void)updateWednesdayHoursByName:(NSString *)name andNewHours:(Hours *)newHours{
+    //bind name and hours to database string to statement
+    sqlite3_bind_text(updateWednesdayHoursByNameStmt, 2, [name UTF8String], -1, SQLITE_TRANSIENT); //name bind
+    sqlite3_bind_text(updateWednesdayHoursByNameStmt, 1, [[newHours hoursToDatabaseString] UTF8String], -1, SQLITE_TRANSIENT); //Hours
+    
+    //Check success, step, and reset
+    int success = sqlite3_step(updateWednesdayHoursByNameStmt);
+    sqlite3_reset(updateWednesdayHoursByNameStmt);
+    if (success != SQLITE_DONE) {
+        NSLog(@"ERROR: failed to update Wednesday Hours By Name item");
+    }
+}
+//Update Thursday Hours
++ (void)updateThursdayHoursByName:(NSString *)name andNewHours:(Hours *)newHours{
+    //bind name and hours to database string to statement
+    sqlite3_bind_text(updateThursdayHoursByNameStmt, 2, [name UTF8String], -1, SQLITE_TRANSIENT); //name bind
+    sqlite3_bind_text(updateThursdayHoursByNameStmt, 1, [[newHours hoursToDatabaseString] UTF8String], -1, SQLITE_TRANSIENT); //Hours
+    
+    //Check success, step, and reset
+    int success = sqlite3_step(updateThursdayHoursByNameStmt);
+    sqlite3_reset(updateThursdayHoursByNameStmt);
+    if (success != SQLITE_DONE) {
+        NSLog(@"ERROR: failed to update Thursday Hours By Name item");
+    }
+}
+//Update Friday Hours
++ (void)updateFridayHoursByName:(NSString *)name andNewHours:(Hours *)newHours{
+    //bind name and hours to database string to statement
+    sqlite3_bind_text(updateFridayHoursByNameStmt, 2, [name UTF8String], -1, SQLITE_TRANSIENT); //name bind
+    sqlite3_bind_text(updateFridayHoursByNameStmt, 1, [[newHours hoursToDatabaseString] UTF8String], -1, SQLITE_TRANSIENT); //Hours
+    
+    //Check success, step, and reset
+    int success = sqlite3_step(updateFridayHoursByNameStmt);
+    sqlite3_reset(updateFridayHoursByNameStmt);
+    if (success != SQLITE_DONE) {
+        NSLog(@"ERROR: failed to update Friday Hours By Name item");
+    }
+}
+//Update Saturday Hours
++ (void)updateSaturdayHoursByName:(NSString *)name andNewHours:(Hours *)newHours{
+    //bind name and hours to database string to statement
+    sqlite3_bind_text(updateSaturdayHoursByNameStmt, 2, [name UTF8String], -1, SQLITE_TRANSIENT); //name bind
+    sqlite3_bind_text(updateSaturdayHoursByNameStmt, 1, [[newHours hoursToDatabaseString] UTF8String], -1, SQLITE_TRANSIENT); //Hours
+    
+    //Check success, step, and reset
+    int success = sqlite3_step(updateSaturdayHoursByNameStmt);
+    sqlite3_reset(updateSaturdayHoursByNameStmt);
+    if (success != SQLITE_DONE) {
+        NSLog(@"ERROR: failed to update Saturday Hours By Name item");
+    }
+}
+//Update Sunday Hours
++ (void)updateSundayHoursByName:(NSString *)name andNewHours:(Hours *)newHours{
+    //bind name and hours to database string to statement
+    sqlite3_bind_text(updateSundayHoursByNameStmt, 2, [name UTF8String], -1, SQLITE_TRANSIENT); //name bind
+    sqlite3_bind_text(updateSundayHoursByNameStmt, 1, [[newHours hoursToDatabaseString] UTF8String], -1, SQLITE_TRANSIENT); //Hours
+    
+    //Check success, step, and reset
+    int success = sqlite3_step(updateSundayHoursByNameStmt);
+    sqlite3_reset(updateSundayHoursByNameStmt);
+    if (success != SQLITE_DONE) {
+        NSLog(@"ERROR: failed to update Sunday Hours By Name item");
+    }
+}
+//+ (void)updateAllHoursByName:(NSString *)name andNewHours:(Hours *)newHours;
 
 
 

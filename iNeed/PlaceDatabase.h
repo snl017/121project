@@ -41,14 +41,14 @@
 
 //Updating Hours methods
 //NOTICE: these need to be updated to accept Hours objects.
-//+ (void)updateMondayHoursByName:(NSString *)name;
-//+ (void)updateTuesdayHoursByName:(NSString *)name;
-//+ (void)updateWednesdayHoursByName:(NSString *)name;
-//+ (void)updateThursdayHoursByName:(NSString *)name;
-//+ (void)updateFridayHoursByName:(NSString *)name;
-//+ (void)updateSaturdayHoursByName:(NSString *)name;
-//+ (void)updateSundayHoursByName:(NSString *)name;
-//+ (void)updateAllHoursByName:(NSString *)name;
++ (void)updateMondayHoursByName:(NSString *)name andNewHours:(Hours *)newHours;
++ (void)updateTuesdayHoursByName:(NSString *)name andNewHours:(Hours *)newHours;
++ (void)updateWednesdayHoursByName:(NSString *)name andNewHours:(Hours *)newHours;
++ (void)updateThursdayHoursByName:(NSString *)name andNewHours:(Hours *)newHours;
++ (void)updateFridayHoursByName:(NSString *)name andNewHours:(Hours *)newHours;
++ (void)updateSaturdayHoursByName:(NSString *)name andNewHours:(Hours *)newHours;
++ (void)updateSundayHoursByName:(NSString *)name andNewHours:(Hours *)newHours;
++ (void)updateAllHoursByName:(NSString *)name andNewHours:(Hours *)newHours;
 
 
 

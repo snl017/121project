@@ -34,6 +34,14 @@
     
 }
 
+//This consolidates same hours and returns
+-(NSMutableArray *)getAllHours{
+    NSMutableArray *allHoursArray = [[NSMutableArray alloc] init];
+    NSString *firstObj = [NSString stringWithFormat:@"%@ %@", @"M", [NSString stringWithFormat:@"%d",self.mondayHours.openingHours]];
+    return NULL;
+}
+
+
 -(void)printPlace{
     NSString *monString = [self.mondayHours hoursToDisplayString];
     NSString *tueString = [self.tuesdayHours hoursToDisplayString];
@@ -54,8 +62,6 @@
     NSLog(@"%@", @" PLACE: ");
     NSLog(@"%@", printString);
     
-
-
 
 }
 

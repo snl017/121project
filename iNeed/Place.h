@@ -31,6 +31,7 @@
 @property NSString *phone;
 @property NSString *email;
 @property NSString *webLink;
+
 //Broad category in the database. Do we want this?
 @property NSString *broadCategory;
 
@@ -41,6 +42,8 @@
 -(id)initWithSchool:(NSString *)school andName:(NSString *)name andBroadCategory:(NSString *)broadCategory andSpecificCategory:(NSString *)specificCategory andLocation:(NSString *)location andMondayHours:(Hours *)monday andTuesdayHours:(Hours *)tuesday andWednesdayHours:(Hours *)wednesday andThursdayHours:(Hours *)thursday andFridayHours:(Hours *)friday andSaturdayHours:(Hours *)saturday andSundayHours:(Hours *)sunday andAllHours:(NSString *)allhours andPhoneString:(NSString *)phone andEmailString:(NSString *)email andLinkString:(NSString *)link;
 
 -(void)printPlace; //This just prints out a nice formatted version of place
+
+-(NSMutableArray *)getAllHours;//This consolidates same hours and returns
 
 
 

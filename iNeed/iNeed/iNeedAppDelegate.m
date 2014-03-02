@@ -89,6 +89,19 @@
 //        Place *tempPlace = (Place *)object;
 //        [tempPlace printPlace];
 //    }
+    
+//    //Update something
+//    [PlaceDatabase updateMondayHoursByName:fraryDining.name andNewHours: [[Hours alloc] initWithOpeningDigits:@"0000" andClosingDigits:@"1000"]];
+    
+//    //Refetch and print
+//    testSelectBySpecific = [PlaceDatabase fetchPlacesBySpecificCategory:DiningHallNarrow];
+//    NSLog(@"Fetched Specific!");
+//    NSLog(@"%d",[testSelectBySpecific count]);
+//    for (id object in testSelectBySpecific) { //print all fetched items
+//        Place *tempPlace = (Place *)object;
+//        [tempPlace printPlace];
+//    }
+    
 //    NSMutableArray *testSelectByBroad = [PlaceDatabase fetchPlacesByBroadCategory:FoodBroad];
 //    NSLog(@"Fetched Broad");
 //    NSLog(@"%d",[testSelectByBroad count]);

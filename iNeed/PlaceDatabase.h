@@ -38,6 +38,7 @@
 +(NSMutableArray *) fetchNamesbyBroad:(NSString *)broad;
 +(void) savePlace:(NSString *)name withSpecificCategory:(NSString *)specific andBroadCategory:(NSString*)broad;
 
+
 //Updating Hours methods
 //NOTICE: these need to be updated to accept Hours objects.
 //+ (void)updateMondayHoursByName:(NSString *)name;

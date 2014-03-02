@@ -80,21 +80,23 @@
     //Test: for categories table methods:
     
     //Save a piece of information to the categories table
-    //[PlaceDatabase savePlace:@"Frary" withSpecificCategory:DiningHallNarrow andBroadCategory:FoodBroad];
-    
-    NSMutableArray *testSelectBySpecific = [PlaceDatabase fetchNamesbySpecific:DiningHallNarrow];
-    NSLog(@"Fetched Specific!");
-    NSLog(@"%d",[testSelectBySpecific count]);
-    for (id object in testSelectBySpecific) { //print all fetched items
-        NSLog(@"%@",object);
-    }
-    NSMutableArray *testSelectByBroad = [PlaceDatabase fetchNamesbyBroad:FoodBroad];
-    NSLog(@"Fetched Broad");
-    NSLog(@"%d",[testSelectByBroad count]);
-    for (id object in testSelectByBroad) { //print all fetched items
-        NSLog(@"%@",object);
-    }
-
+//  [PlaceDatabase savePlace:@"Frary" withSpecificCategory:DiningHallNarrow andBroadCategory:FoodBroad];
+//    
+//    NSMutableArray *testSelectBySpecific = [PlaceDatabase fetchPlacesBySpecificCategory:DiningHallNarrow];
+//    NSLog(@"Fetched Specific!");
+//    NSLog(@"%d",[testSelectBySpecific count]);
+//    for (id object in testSelectBySpecific) { //print all fetched items
+//        Place *tempPlace = (Place *)object;
+//        [tempPlace printPlace];
+//    }
+//    NSMutableArray *testSelectByBroad = [PlaceDatabase fetchPlacesByBroadCategory:FoodBroad];
+//    NSLog(@"Fetched Broad");
+//    NSLog(@"%d",[testSelectByBroad count]);
+//    for (id object in testSelectByBroad) { //print all fetched items
+//        Place *tempPlace = (Place *)object;
+//        [tempPlace printPlace];
+//    }
+//
     
 
     

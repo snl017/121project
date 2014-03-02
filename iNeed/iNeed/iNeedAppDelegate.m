@@ -16,6 +16,7 @@
     [PlaceDatabase createEditableCopyOfDatabaseIfNeeded];
     [PlaceDatabase initDatabase];
     [self testDatabase];
+    //[self testPlaceClass];
     //[self testHoursClass];
     
     return YES;
@@ -40,6 +41,7 @@
 //    
 //    NSLog(@"%@", dispDbHours);
 //    NSLog(@"%@", dataDbHours);
+    
 }
 
 
@@ -56,7 +58,7 @@
     
     
     //First create some test Places
-    Place *fraryDining = [[Place alloc] initWithSchool:PomonaSchool andName:@"Frary Dining Hall" andBroadCategory:FoodBroad andSpecificCategory:DiningHallNarrow andLocation:@"Pomona College" andMondayHours:h1 andTuesdayHours:h2 andWednesdayHours:h3 andThursdayHours:h4 andFridayHours:h5 andSaturdayHours:h6 andSundayHours:h7 andAllHours:@"All hours forever" andPhoneString:@"123-456-7890" andEmailString:@"frarysomething@pomona.edu" andLinkString:None];
+    Place *fraryDining = [[Place alloc] initWithSchool:PomonaSchool andName:@"Frary Dining Hall" andBroadCategory:FoodBroad andSpecificCategory:DiningHallNarrow andLocation:@"Pomona College" andMondayHours:h3 andTuesdayHours:h3 andWednesdayHours:h3 andThursdayHours:h3 andFridayHours:h3 andSaturdayHours:h3 andSundayHours:h4 andAllHours:@"All hours forever" andPhoneString:@"123-456-7890" andEmailString:@"frarysomething@pomona.edu" andLinkString:None];
     
     Place *frankDining = [[Place alloc] initWithSchool:PomonaSchool andName:@"Frank Dining Hall" andBroadCategory:FoodBroad andSpecificCategory:DiningHallNarrow andLocation:@"Pomona College" andMondayHours:h1 andTuesdayHours:h2 andWednesdayHours:h3 andThursdayHours:h4 andFridayHours:h5 andSaturdayHours:h6 andSundayHours:h7 andAllHours:@"Mon allday \nTues \nWed \nThurs \nFri \nSat \nSun" andPhoneString:@"frank-456-7890" andEmailString:@"franksomething@pomona.edu" andLinkString:@"www.google.com"];
     
@@ -146,6 +148,15 @@
 //        [tempPlace printPlace];
 //    }
 
+}
+
+- (void)testPlaceClass{
+    NSMutableArray *diningArray = [PlaceDatabase fetchPlacesBySpecificCategory:DiningHallNarrow];
+    Place *frary = [diningArray objectAtIndex:0];
+    NSMutableArray *allHoursArray = [frary getAllHours];
+    for (id object in allHoursArray){
+        NSLog(@"%@", object);
+    }
 }
 
 							

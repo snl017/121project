@@ -37,8 +37,115 @@
 //This consolidates same hours and returns
 -(NSMutableArray *)getAllHours{
     NSMutableArray *allHoursArray = [[NSMutableArray alloc] init];
-    NSString *firstObj = [NSString stringWithFormat:@"%@ %@", @"M", [NSString stringWithFormat:@"%d",self.mondayHours.openingHours]];
-    return NULL;
+    
+    //convert Hours to strings
+    NSString *monString = [self.mondayHours hoursToDisplayString];
+    NSString *tuesString = [self.tuesdayHours hoursToDisplayString];
+    NSString *wedString = [self.wednesdayHours hoursToDisplayString];
+    NSString *thurString = [self.thursdayHours hoursToDisplayString];
+    NSString *friString = [self.fridayHours hoursToDisplayString];
+    NSString *satString = [self.saturdayHours hoursToDisplayString];
+    NSString *sunString = [self.sundayHours hoursToDisplayString];
+    
+    //Convert monday string into array object. Insert into array.
+    NSString *monObj = [NSString stringWithFormat:@"%@%@", @"Mo ", monString];
+    [allHoursArray addObject:monObj];
+    
+    //Check tuesday.
+        //Get last 11 digits of monday string
+    NSString *prevHours = [[allHoursArray lastObject] substringFromIndex:[[allHoursArray lastObject] length] - 11];
+        //Compare to tuesday string
+    if ([tuesString isEqualToString: prevHours]) {
+        //modify last object
+        NSString *lastObj = [allHoursArray lastObject];
+        [allHoursArray removeLastObject];
+        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:2], @"-Tu ", prevHours];
+        [allHoursArray addObject:newLastObj];
+    } else {
+        NSString *tuesObj = [NSString stringWithFormat:@"%@%@", @"Tu ", tuesString];
+        [allHoursArray addObject:tuesObj];
+    }
+    
+    //Check Wednesday
+        //Get last 11 digits of last string
+    prevHours = [[allHoursArray lastObject] substringFromIndex:[[allHoursArray lastObject] length] - 11];
+        //Compare Wednesday hours last object in array
+    if ([wedString isEqualToString: prevHours]) {
+        //modify last object
+        NSString *lastObj = [allHoursArray lastObject];
+        [allHoursArray removeLastObject];
+        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:2], @"-We ", prevHours];
+        [allHoursArray addObject:newLastObj];
+    } else {
+        NSString *wedObj = [NSString stringWithFormat:@"%@%@", @"We ", wedString];
+        [allHoursArray addObject:wedObj];
+    }
+    
+    //Check Thursday
+    //Get last 11 digits of last string
+    prevHours = [[allHoursArray lastObject] substringFromIndex:[[allHoursArray lastObject] length] - 11];
+    //Compare Thursday hours last object in array
+    if ([thurString isEqualToString: prevHours]) {
+        //modify last object
+        NSString *lastObj = [allHoursArray lastObject];
+        [allHoursArray removeLastObject];
+        
+        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:2], @"-Th ", prevHours];
+        [allHoursArray addObject:newLastObj];
+    } else {
+        NSString *thursObj = [NSString stringWithFormat:@"%@%@", @"Th ", thurString];
+        [allHoursArray addObject:thursObj];
+    }
+    
+    //Check Friday
+    //Get last 11 digits of last string
+    prevHours = [[allHoursArray lastObject] substringFromIndex:[[allHoursArray lastObject] length] - 11];
+    //Compare Thursday hours last object in array
+    if ([friString isEqualToString: prevHours]) {
+        //modify last object
+        NSString *lastObj = [allHoursArray lastObject];
+        [allHoursArray removeLastObject];
+        
+        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:2], @"-Fr ", prevHours];
+        [allHoursArray addObject:newLastObj];
+    } else {
+        NSString *friObj = [NSString stringWithFormat:@"%@%@", @"Fr ", friString];
+        [allHoursArray addObject:friObj];
+    }
+    
+    //Check Saturday
+    //Get last 11 digits of last string
+    prevHours = [[allHoursArray lastObject] substringFromIndex:[[allHoursArray lastObject] length] - 11];
+    //Compare Thursday hours last object in array
+    if ([satString isEqualToString: prevHours]) {
+        //modify last object
+        NSString *lastObj = [allHoursArray lastObject];
+        [allHoursArray removeLastObject];
+        
+        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:2], @"-Sa ", prevHours];
+        [allHoursArray addObject:newLastObj];
+    } else {
+        NSString *satObj = [NSString stringWithFormat:@"%@%@", @"Sa ", satString];
+        [allHoursArray addObject:satObj];
+    }
+
+    //Check Sunday
+    //Get last 11 digits of last string
+    prevHours = [[allHoursArray lastObject] substringFromIndex:[[allHoursArray lastObject] length] - 11];
+    //Compare Thursday hours last object in array
+    if ([sunString isEqualToString: prevHours]) {
+        //modify last object
+        NSString *lastObj = [allHoursArray lastObject];
+        [allHoursArray removeLastObject];
+        
+        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:2], @"-Su ", prevHours];
+        [allHoursArray addObject:newLastObj];
+    } else {
+        NSString *sunObj = [NSString stringWithFormat:@"%@%@", @"Su ", sunString];
+        [allHoursArray addObject:sunObj];
+    }
+    
+    return allHoursArray;
 }
 
 

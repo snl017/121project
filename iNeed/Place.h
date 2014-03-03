@@ -45,6 +45,8 @@
 
 -(NSMutableArray *)getAllHours;//This consolidates same hours and returns
 
+-(NSString *)getAllHoursAsString;
+
 
 
 @end

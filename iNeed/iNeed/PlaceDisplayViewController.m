@@ -40,7 +40,7 @@
      */
     [super viewDidLoad];
     [self setTitle:self.place.name];
-    [self setLabel:2 with:self.place.allHours];
+    [self setLabel:2 with:self.place.getAllHoursAsString];
     [self setLabel:4 with:self.place.location];
     [self setLabel:6 with:self.place.phone];
     [self setLabel:8 with:self.place.email];

@@ -148,6 +148,19 @@
     return allHoursArray;
 }
 
+/**
+ * Gives the hours for the entire week as a string, where each set of hours is on a different line
+ */
+-(NSString*) getAllHoursAsString{
+    NSString *hoursString = @"";
+    NSMutableArray *hoursArray = self.getAllHours;
+    for (id object in hoursArray){
+        NSString *hour = (NSString*) object;
+        hoursString =[hoursString stringByAppendingString:hour];
+        hoursString = [hoursString stringByAppendingString:@"\n"];
+    }
+    return hoursString;
+}
 
 -(void)printPlace{
     NSString *monString = [self.mondayHours hoursToDisplayString];

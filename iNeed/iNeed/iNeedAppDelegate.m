@@ -68,7 +68,7 @@
     Hours *coopSun = [[Hours alloc] initWithOpeningDigits:@"1100" andClosingDigits:@"2300"];
     
     //grill opens at 10 Mon-Fri, 1 pm on sat&sun
-    Place *coopFountain = [[Place alloc] initWithSchool:PomonaSchool andName:@"Coop Fountain" andBroadCategory:FoodBroad andSpecificCategory:EateryGroceryNarrow andLocation:@"Smith Campus Center, Pomona College\n170 E 6th St" andMondayHours:coopWeek andTuesdayHours:coopWeek andWednesdayHours:coopWeek andThursdayHours:coopWeek andFridayHours:coopFri andSaturdayHours:coopSat andSundayHours:coopSun andAllHours:@"jokes" andPhoneString:@"909-607-3293" andEmailString:@"no email" andLinkString:@"http://aspc.pomona.edu/eatshop/coop-fountain/"];
+    Place *coopFountain = [[Place alloc] initWithSchool:PomonaSchool andName:@"Coop Fountain" andBroadCategory:FoodBroad andSpecificCategory:EateryGroceryNarrow andLocation:@"Smith Campus Center, Pomona College\n170 E 6th St" andMondayHours:coopWeek andTuesdayHours:coopWeek andWednesdayHours:coopWeek andThursdayHours:coopWeek andFridayHours:coopFri andSaturdayHours:coopSat andSundayHours:coopSun andAllHours:@"jokes" andPhoneString:@"909-607-3293" andEmailString:None andLinkString:@"http://aspc.pomona.edu/eatshop/coop-fountain/"];
     
     Hours *coopStWeek =[[Hours alloc] initWithOpeningDigits:@"0900" andClosingDigits:@"2359"];
     Hours *coopStSat =[[Hours alloc] initWithOpeningDigits:@"1200" andClosingDigits:@"2359"];

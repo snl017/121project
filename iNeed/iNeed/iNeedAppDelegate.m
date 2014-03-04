@@ -81,11 +81,14 @@
     
     Place *campusSafety = [[Place alloc] initWithSchool:CUCSchool andName:@"Campus Safety" andBroadCategory:SafetyHealth andSpecificCategory:SafetyHealth andLocation:@"Pendleton Business Building\n150 E 8th St\nClaremont, CA 91711" andMondayHours:allDay andTuesdayHours:allDay andWednesdayHours:allDay andThursdayHours:allDay andFridayHours:allDay andSaturdayHours:allDay andSundayHours:allDay andAllHours:@"Campus Safety Never Sleeps" andPhoneString:@"1-909-607-2000" andEmailString:@"dispatch@cuc.claremont.edu" andLinkString:@"http://www.cuc.claremont.edu/campussafety/"];
     
-    Place *writingCenter = [[Place alloc] initWithSchool:PomonaSchool andName:@"Writing Center" andBroadCategory:ResourceCentersOfficesBroad andSpecificCategory:AcademicRCNarrow andLocation:@"148 Smith Campus Center" andMondayHours:h1 andTuesdayHours:h2 andWednesdayHours:h3 andThursdayHours:h4 andFridayHours:h5 andSaturdayHours:h6 andSundayHours:h7 andAllHours:@"All hours forever3" andPhoneString:@"(909) 607-4599" andEmailString:@"Writing.Center@pomona.edu" andLinkString:@"http://www.pomona.edu/academics/resources/writing-center/"];
+    Hours *closed = [[Hours alloc] initWithOpeningDigits:@"0000" andClosingDigits:@"0000"];
+    Hours *writingCenterNights = [[Hours alloc] initWithOpeningDigits:@"1900" andClosingDigits:@"2200"];;
+    
+    Place *writingCenter = [[Place alloc] initWithSchool:PomonaSchool andName:@"Writing Center" andBroadCategory:ResourceCentersOfficesBroad andSpecificCategory:AcademicRCNarrow andLocation:@"148 Smith Campus Center" andMondayHours:writingCenterNights andTuesdayHours:writingCenterNights andWednesdayHours:writingCenterNights andThursdayHours:writingCenterNights andFridayHours:closed andSaturdayHours:closed andSundayHours:closed andAllHours:@"All hours forever3" andPhoneString:@"(909) 607-4599" andEmailString:@"Writing.Center@pomona.edu" andLinkString:@"http://www.pomona.edu/academics/resources/writing-center/"];
     
     Hours *workDay = [[Hours alloc] initWithOpeningDigits:@"0800" andClosingDigits:@"1700"];
     //closed on weekend...
-    Hours *closed = [[Hours alloc] initWithOpeningDigits:@"0000" andClosingDigits:@"0000"];
+    
     
     //study abroad doesn't have hours...
     Place *studyAbroad = [[Place alloc] initWithSchool:PomonaSchool andName:@"Study Abroad Office" andBroadCategory:ResourceCentersOfficesBroad andSpecificCategory:NonAcademicRCNarrow andLocation:@"Sumner Hall, Pomona College" andMondayHours:workDay andTuesdayHours:workDay andWednesdayHours:workDay andThursdayHours:workDay andFridayHours:workDay andSaturdayHours:closed andSundayHours:closed andAllHours:@"All hours forever3" andPhoneString:@"(909) 621-8154" andEmailString:@"sabroad@pomona.edu" andLinkString:@"http://www.pomona.edu/administration/study-abroad/"];

@@ -72,30 +72,32 @@
     NSDateFormatter* day = [[NSDateFormatter alloc] init];
     [day setDateFormat: @"EEEE"];
     NSString *dayOfWeek=[[day stringFromDate:[NSDate date]]lowercaseString];
+    NSString *toDisplay = @"Today ";
     
     if ([dayOfWeek  isEqual: @"monday"]){
-        cell.detailTextLabel.text = place.mondayHours.hoursToDisplayString;
+        toDisplay= [toDisplay stringByAppendingString: place.mondayHours.hoursToDisplayString];
     }
     else if ([dayOfWeek  isEqual: @"tuesday"]){
-        cell.detailTextLabel.text = place.tuesdayHours.hoursToDisplayString;
+        toDisplay= [toDisplay stringByAppendingString: place.tuesdayHours.hoursToDisplayString];
     }
     else if ([dayOfWeek  isEqual: @"wednesday"]){
-        cell.detailTextLabel.text = place.wednesdayHours.hoursToDisplayString;
+        toDisplay= [toDisplay stringByAppendingString: place.wednesdayHours.hoursToDisplayString];
     }
     else if ([dayOfWeek  isEqual: @"thursday"]){
-        cell.detailTextLabel.text = place.thursdayHours.hoursToDisplayString;
+        toDisplay= [toDisplay stringByAppendingString: place.thursdayHours.hoursToDisplayString];
     }
     else if ([dayOfWeek  isEqual: @"friday"]){
-        cell.detailTextLabel.text = place.fridayHours.hoursToDisplayString;
+        toDisplay= [toDisplay stringByAppendingString: place.fridayHours.hoursToDisplayString];
     }
     else if ([dayOfWeek  isEqual: @"saturday"]){
-        cell.detailTextLabel.text = place.saturdayHours.hoursToDisplayString;
+        toDisplay= [toDisplay stringByAppendingString: place.saturdayHours.hoursToDisplayString];
     }
     else if ([dayOfWeek  isEqual: @"sunday"]){
-        cell.detailTextLabel.text = place.sundayHours.hoursToDisplayString;
+        toDisplay= [toDisplay stringByAppendingString: place.sundayHours.hoursToDisplayString];
     }else{
         NSLog(@"ERROR: The day of the week is not correct");
     }
+    cell.detailTextLabel.text = toDisplay;
     return cell;
 }
 

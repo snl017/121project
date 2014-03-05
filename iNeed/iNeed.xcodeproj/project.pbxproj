@@ -429,8 +429,6 @@
 		DA212D1618B3EAB600C0DF8F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iNeed/iNeed-Prefix.pch";
 				INFOPLIST_FILE = "iNeed/iNeed-Info.plist";
@@ -442,8 +440,6 @@
 		DA212D1718B3EAB600C0DF8F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iNeed/iNeed-Prefix.pch";
 				INFOPLIST_FILE = "iNeed/iNeed-Info.plist";

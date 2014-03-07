@@ -317,7 +317,7 @@ static sqlite3_stmt *selectSpecificCategoryCat;
         Hours *sundayHours = [[Hours alloc] initWithOneString:sundayString];
         
         //Create Place object with information
-        Place *databasePlace = [[Place alloc] initWithSchool:schoolString andName:nameString andBroadCategory:broadString andSpecificCategory:specificString andLocation:locationString andMondayHours:mondayHours andTuesdayHours:tuesdayHours andWednesdayHours:wednesdayHours andThursdayHours:thursdayHours andFridayHours:fridayHours andSaturdayHours:saturdayHours andSundayHours:sundayHours andAllHours:allhoursString andPhoneString:phoneString andEmailString:emailString andLinkString:linkString];
+        Place *databasePlace = [[Place alloc] initWithSchool:schoolString andName:nameString andLocation:locationString andMondayHours:mondayHours andTuesdayHours:tuesdayHours andWednesdayHours:wednesdayHours andThursdayHours:thursdayHours andFridayHours:fridayHours andSaturdayHours:saturdayHours andSundayHours:sundayHours andPhoneString:phoneString andEmailString:emailString andLinkString:linkString];
         
         //Add place object to array
         [ret addObject:databasePlace];
@@ -369,7 +369,7 @@ static sqlite3_stmt *selectSpecificCategoryCat;
         Hours *sundayHours = [[Hours alloc] initWithOneString:sundayString];
         
         //Create Place object with information
-        Place *databasePlace = [[Place alloc] initWithSchool:schoolString andName:nameString andBroadCategory:broadString andSpecificCategory:specificString andLocation:locationString andMondayHours:mondayHours andTuesdayHours:tuesdayHours andWednesdayHours:wednesdayHours andThursdayHours:thursdayHours andFridayHours:fridayHours andSaturdayHours:saturdayHours andSundayHours:sundayHours andAllHours:allhoursString andPhoneString:phoneString andEmailString:emailString andLinkString:linkString];
+        Place *databasePlace = [[Place alloc] initWithSchool:schoolString andName:nameString andLocation:locationString andMondayHours:mondayHours andTuesdayHours:tuesdayHours andWednesdayHours:wednesdayHours andThursdayHours:thursdayHours andFridayHours:fridayHours andSaturdayHours:saturdayHours andSundayHours:sundayHours andPhoneString:phoneString andEmailString:emailString andLinkString:linkString];
         
         //Add place object to array
         [ret addObject:databasePlace];
@@ -490,7 +490,7 @@ static sqlite3_stmt *selectSpecificCategoryCat;
     NSString *sundayString = [place.sundayHours hoursToDatabaseString];
     
     //Use those strings in saving to database
-    [self saveItemWithSchool:place.school andName:place.name andBroadCategory:place.broadCategory andSpecificCategory:place.specificCategory andLocation:place.location andMondayHours:mondayString andTuesdayHours:tuesdayString andWednesdayHours:wednesdayString andThursdayHours:thursdayString andFridayHours:fridayString andSaturdayHours:saturdayString andSundayHours:sundayString andAllHours:place.allHours andPhoneString:place.phone andEmailString:place.email andLinkString:place.webLink];
+    [self saveItemWithSchool:place.school andName:place.name andBroadCategory:@"Food" andSpecificCategory:@"Dining Halls" andLocation:place.location andMondayHours:mondayString andTuesdayHours:tuesdayString andWednesdayHours:wednesdayString andThursdayHours:thursdayString andFridayHours:fridayString andSaturdayHours:saturdayString andSundayHours:sundayString andAllHours:@"WHOO" andPhoneString:place.phone andEmailString:place.email andLinkString:place.webLink];
 }
 
 //Insert an item into the place table using a Place object

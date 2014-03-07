@@ -58,9 +58,9 @@
     
     
     //First create some test Places
-    Place *fraryDining = [[Place alloc] initWithSchool:PomonaSchool andName:@"Frary Dining Hall" andBroadCategory:FoodBroad andSpecificCategory:DiningHallNarrow andLocation:@"Pomona College" andMondayHours:h3 andTuesdayHours:h3 andWednesdayHours:h3 andThursdayHours:h3 andFridayHours:h3 andSaturdayHours:h3 andSundayHours:h4 andAllHours:@"All hours forever" andPhoneString:@"123-456-7890" andEmailString:@"frarysomething@pomona.edu" andLinkString:None];
+    Place *fraryDining = [[Place alloc] initWithSchool:PomonaSchool andName:@"Frary Dining Hall" andLocation:@"Pomona College" andMondayHours:h3 andTuesdayHours:h3 andWednesdayHours:h3 andThursdayHours:h3 andFridayHours:h3 andSaturdayHours:h3 andSundayHours:h4 andPhoneString:@"123-456-7890" andEmailString:@"frarysomething@pomona.edu" andLinkString:None];
     
-    Place *frankDining = [[Place alloc] initWithSchool:PomonaSchool andName:@"Frank Dining Hall" andBroadCategory:FoodBroad andSpecificCategory:DiningHallNarrow andLocation:@"Pomona College" andMondayHours:h1 andTuesdayHours:h2 andWednesdayHours:h3 andThursdayHours:h4 andFridayHours:h5 andSaturdayHours:h6 andSundayHours:h7 andAllHours:@"Mon allday \nTues \nWed \nThurs \nFri \nSat \nSun" andPhoneString:@"frank-456-7890" andEmailString:@"franksomething@pomona.edu" andLinkString:@"www.google.com"];
+    Place *frankDining = [[Place alloc] initWithSchool:PomonaSchool andName:@"Frank Dining Hall" andLocation:@"Pomona College" andMondayHours:h1 andTuesdayHours:h2 andWednesdayHours:h3 andThursdayHours:h4 andFridayHours:h5 andSaturdayHours:h6 andSundayHours:h7 andPhoneString:@"frank-456-7890" andEmailString:@"franksomething@pomona.edu" andLinkString:@"www.google.com"];
     
     Hours *coopWeek = [[Hours alloc] initWithOpeningDigits:@"0900" andClosingDigits:@"2300"];
     Hours *coopFri = [[Hours alloc] initWithOpeningDigits:@"0900" andClosingDigits:@"0030"];
@@ -68,30 +68,30 @@
     Hours *coopSun = [[Hours alloc] initWithOpeningDigits:@"1100" andClosingDigits:@"2300"];
     
     //grill opens at 10 Mon-Fri, 1 pm on sat&sun
-    Place *coopFountain = [[Place alloc] initWithSchool:PomonaSchool andName:@"Coop Fountain" andBroadCategory:FoodBroad andSpecificCategory:EateryGroceryNarrow andLocation:@"Smith Campus Center, Pomona College\n170 E 6th St" andMondayHours:coopWeek andTuesdayHours:coopWeek andWednesdayHours:coopWeek andThursdayHours:coopWeek andFridayHours:coopFri andSaturdayHours:coopSat andSundayHours:coopSun andAllHours:@"jokes" andPhoneString:@"909-607-3293" andEmailString:None andLinkString:@"http://aspc.pomona.edu/eatshop/coop-fountain/"];
+    Place *coopFountain = [[Place alloc] initWithSchool:PomonaSchool andName:@"Coop Fountain" andLocation:@"Smith Campus Center, Pomona College\n170 E 6th St" andMondayHours:coopWeek andTuesdayHours:coopWeek andWednesdayHours:coopWeek andThursdayHours:coopWeek andFridayHours:coopFri andSaturdayHours:coopSat andSundayHours:coopSun andPhoneString:@"909-607-3293" andEmailString:None andLinkString:@"http://aspc.pomona.edu/eatshop/coop-fountain/"];
     
     Hours *coopStWeek =[[Hours alloc] initWithOpeningDigits:@"0900" andClosingDigits:@"2359"];
     Hours *coopStSat =[[Hours alloc] initWithOpeningDigits:@"1200" andClosingDigits:@"2359"];
     Hours *coopStSun =[[Hours alloc] initWithOpeningDigits:@"1200" andClosingDigits:@"2100"];
     
-    Place *coopStore = [[Place alloc] initWithSchool:PomonaSchool andName:@"Coop Store" andBroadCategory:FoodBroad andSpecificCategory:EateryGroceryNarrow andLocation:@"Smith Campus Center, Pomona College\n170 E 6th St" andMondayHours:coopStWeek andTuesdayHours:coopStWeek andWednesdayHours:coopStWeek andThursdayHours:coopStWeek andFridayHours:coopStWeek andSaturdayHours:coopStSat andSundayHours:coopStSun andAllHours:@"jokes" andPhoneString:@"909-607-2264" andEmailString:@"coopstore@aspc.pomona.edu" andLinkString:@"http://coopstore.pomona.edu"];
+    Place *coopStore = [[Place alloc] initWithSchool:PomonaSchool andName:@"Coop Store" andLocation:@"Smith Campus Center, Pomona College\n170 E 6th St" andMondayHours:coopStWeek andTuesdayHours:coopStWeek andWednesdayHours:coopStWeek andThursdayHours:coopStWeek andFridayHours:coopStWeek andSaturdayHours:coopStSat andSundayHours:coopStSun andPhoneString:@"909-607-2264" andEmailString:@"coopstore@aspc.pomona.edu" andLinkString:@"http://coopstore.pomona.edu"];
     
     
     Hours *allDay =[[Hours alloc] initWithOpeningDigits:@"0000" andClosingDigits:@"2359"];
     
-    Place *campusSafety = [[Place alloc] initWithSchool:CUCSchool andName:@"Campus Safety" andBroadCategory:SafetyHealth andSpecificCategory:SafetyHealth andLocation:@"Pendleton Business Building\n150 E 8th St\nClaremont, CA 91711" andMondayHours:allDay andTuesdayHours:allDay andWednesdayHours:allDay andThursdayHours:allDay andFridayHours:allDay andSaturdayHours:allDay andSundayHours:allDay andAllHours:@"Campus Safety Never Sleeps" andPhoneString:@"1-909-607-2000" andEmailString:@"dispatch@cuc.claremont.edu" andLinkString:@"http://www.cuc.claremont.edu/campussafety/"];
+    Place *campusSafety = [[Place alloc] initWithSchool:CUCSchool andName:@"Campus Safety" andLocation:@"Pendleton Business Building\n150 E 8th St\nClaremont, CA 91711" andMondayHours:allDay andTuesdayHours:allDay andWednesdayHours:allDay andThursdayHours:allDay andFridayHours:allDay andSaturdayHours:allDay andSundayHours:allDay andPhoneString:@"1-909-607-2000" andEmailString:@"dispatch@cuc.claremont.edu" andLinkString:@"http://www.cuc.claremont.edu/campussafety/"];
     
     Hours *closed = [[Hours alloc] initWithOpeningDigits:@"0000" andClosingDigits:@"0000"];
     Hours *writingCenterNights = [[Hours alloc] initWithOpeningDigits:@"1900" andClosingDigits:@"2200"];;
     
-    Place *writingCenter = [[Place alloc] initWithSchool:PomonaSchool andName:@"Writing Center" andBroadCategory:ResourceCentersOfficesBroad andSpecificCategory:AcademicRCNarrow andLocation:@"148 Smith Campus Center" andMondayHours:writingCenterNights andTuesdayHours:writingCenterNights andWednesdayHours:writingCenterNights andThursdayHours:writingCenterNights andFridayHours:closed andSaturdayHours:closed andSundayHours:closed andAllHours:@"All hours forever3" andPhoneString:@"(909) 607-4599" andEmailString:@"Writing.Center@pomona.edu" andLinkString:@"http://www.pomona.edu/academics/resources/writing-center/"];
+    Place *writingCenter = [[Place alloc] initWithSchool:PomonaSchool andName:@"Writing Center" andLocation:@"148 Smith Campus Center" andMondayHours:writingCenterNights andTuesdayHours:writingCenterNights andWednesdayHours:writingCenterNights andThursdayHours:writingCenterNights andFridayHours:closed andSaturdayHours:closed andSundayHours:closed andPhoneString:@"(909) 607-4599" andEmailString:@"Writing.Center@pomona.edu" andLinkString:@"http://www.pomona.edu/academics/resources/writing-center/"];
     
     Hours *workDay = [[Hours alloc] initWithOpeningDigits:@"0800" andClosingDigits:@"1700"];
     //closed on weekend...
     
     
     //study abroad doesn't have hours...
-    Place *studyAbroad = [[Place alloc] initWithSchool:PomonaSchool andName:@"Study Abroad Office" andBroadCategory:ResourceCentersOfficesBroad andSpecificCategory:NonAcademicRCNarrow andLocation:@"Sumner Hall, Pomona College" andMondayHours:workDay andTuesdayHours:workDay andWednesdayHours:workDay andThursdayHours:workDay andFridayHours:workDay andSaturdayHours:closed andSundayHours:closed andAllHours:@"All hours forever3" andPhoneString:@"(909) 621-8154" andEmailString:@"sabroad@pomona.edu" andLinkString:@"http://www.pomona.edu/administration/study-abroad/"];
+    Place *studyAbroad = [[Place alloc] initWithSchool:PomonaSchool andName:@"Study Abroad Office" andLocation:@"Sumner Hall, Pomona College" andMondayHours:workDay andTuesdayHours:workDay andWednesdayHours:workDay andThursdayHours:workDay andFridayHours:workDay andSaturdayHours:closed andSundayHours:closed andPhoneString:@"(909) 621-8154" andEmailString:@"sabroad@pomona.edu" andLinkString:@"http://www.pomona.edu/administration/study-abroad/"];
     
     
     //Empty the database if necessary

@@ -113,10 +113,7 @@
     
     //Check Saturday
     //Get all of last string that occurs after the day identifier. This will consist of either "Closed" or hyphenated hours
-    NSLog(@"%@", [allHoursArray lastObject]);
     prevHours = [[allHoursArray lastObject] substringFromIndex:[[allHoursArray lastObject] rangeOfString:@" "].location+1];
-    NSLog(@"%@", prevHours);
-    NSLog(@"%@", satString);
     //Compare Thursday hours last object in array
     if ([satString isEqualToString: prevHours]) {
         //modify last object

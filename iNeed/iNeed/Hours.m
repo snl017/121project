@@ -118,9 +118,6 @@
     }
     int standardClosedMin = militaryClosed%100;
     int standardClosed = (standardClosedHrs*100) + standardClosedMin;
-    NSLog(@"%04d", standardClosedHrs);
-    NSLog(@"%04d", standardClosedMin);
-    NSLog(@"%04d", standardClosed);
     NSMutableString *openHours = [NSMutableString stringWithFormat:@"%d %@", standardOpen, openAm];
     NSMutableString *closedHours = [NSMutableString stringWithFormat:@"%d %@", standardClosed, closedAm];
     [openHours insertString:@":" atIndex:(openHours.length-5)];

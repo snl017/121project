@@ -26,7 +26,7 @@
 + (void)saveItemWithPlace:(Place *)place;
 + (void)savePlace:(NSString *)name withSpecificCategory:(NSString *)specific andBroadCategory:(NSString*)broad;
 
-+ (void)saveItemWithSchool:(NSString *)school andName:(NSString *)name andLocation:(NSString *)location andMondayHours:(NSString *)monday andTuesdayHours:(NSString *)tuesday andWednesdayHours:(NSString *)wednesday andThursdayHours:(NSString *)thursday andFridayHours:(NSString *)friday andSaturdayHours:(NSString *)saturday andSundayHours:(NSString *)sunday andPhoneString:(NSString *)phone andEmailString:(NSString *)email andLinkString:(NSString *)webLink;
++ (void)saveItemWithSchool:(NSString *)school andName:(NSString *)name andLocation:(NSString *)location andMondayHours:(NSString *)monday andTuesdayHours:(NSString *)tuesday andWednesdayHours:(NSString *)wednesday andThursdayHours:(NSString *)thursday andFridayHours:(NSString *)friday andSaturdayHours:(NSString *)saturday andSundayHours:(NSString *)sunday andPhoneString:(NSString *)phone andEmailString:(NSString *)email andLinkString:(NSString *)webLink andExtraInfo:(NSString *)extraInfo;
 
 //To delete an item, to clean up database
 + (void)deletePlace:(int)rowid;

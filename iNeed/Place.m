@@ -11,7 +11,7 @@
 @implementation Place
 
 //Init method. Creation of a new Place object with all parameters.
--(id)initWithSchool:(NSString *)school andName:(NSString *)name andLocation:(NSString *)location andMondayHours:(Hours *)monday andTuesdayHours:(Hours *)tuesday andWednesdayHours:(Hours *)wednesday andThursdayHours:(Hours *)thursday andFridayHours:(Hours *)friday andSaturdayHours:(Hours *)saturday andSundayHours:(Hours *)sunday andPhoneString:(NSString *)phone andEmailString:(NSString *)email andLinkString:(NSString *)webLink{
+-(id)initWithSchool:(NSString *)school andName:(NSString *)name andLocation:(NSString *)location andMondayHours:(Hours *)monday andTuesdayHours:(Hours *)tuesday andWednesdayHours:(Hours *)wednesday andThursdayHours:(Hours *)thursday andFridayHours:(Hours *)friday andSaturdayHours:(Hours *)saturday andSundayHours:(Hours *)sunday andPhoneString:(NSString *)phone andEmailString:(NSString *)email andLinkString:(NSString *)webLink andExtraInfo:(NSString *)extraInfo{
     
     self.school = school;
     self.name = name;
@@ -26,6 +26,7 @@
     self.phone = phone;
     self.email = email;
     self.webLink = webLink;
+    self.extraInfo = extraInfo;
     
     return self;
     

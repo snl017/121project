@@ -29,12 +29,13 @@
 @property NSString *phone;
 @property NSString *email;
 @property NSString *webLink;
+@property NSString *extraInfo;
 
 
 
 
 //Methods
--(id)initWithSchool:(NSString *)school andName:(NSString *)name andLocation:(NSString *)location andMondayHours:(Hours *)monday andTuesdayHours:(Hours *)tuesday andWednesdayHours:(Hours *)wednesday andThursdayHours:(Hours *)thursday andFridayHours:(Hours *)friday andSaturdayHours:(Hours *)saturday andSundayHours:(Hours *)sunday andPhoneString:(NSString *)phone andEmailString:(NSString *)email andLinkString:(NSString *)link;
+-(id)initWithSchool:(NSString *)school andName:(NSString *)name andLocation:(NSString *)location andMondayHours:(Hours *)monday andTuesdayHours:(Hours *)tuesday andWednesdayHours:(Hours *)wednesday andThursdayHours:(Hours *)thursday andFridayHours:(Hours *)friday andSaturdayHours:(Hours *)saturday andSundayHours:(Hours *)sunday andPhoneString:(NSString *)phone andEmailString:(NSString *)email andLinkString:(NSString *)link andExtraInfo:(NSString *)extraInfo;
 
 -(void)printPlace; //This just prints out a nice formatted version of place
 

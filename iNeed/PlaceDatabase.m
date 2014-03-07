@@ -79,9 +79,9 @@ static sqlite3_stmt *selectSpecificCategoryCat;
     //These are the actual calls to sqlite table placeDatabase.
     //Statements for places table
         //Create, Fetch, Insert, Delete, Empty
-    const char *createTableString = "CREATE TABLE IF NOT EXISTS places (rowid INTEGER PRIMARY KEY AUTOINCREMENT, school TEXT, name TEXT, broad TEXT, specific TEXT, location TEXT, monday TEXT, tuesday TEXT, wednesday TEXT, thursday TEXT, friday TEXT, saturday TEXT, sunday TEXT, allhours TEXT, phone TEXT, email TEXT, link TEXT)";
+    const char *createTableString = "CREATE TABLE IF NOT EXISTS places (rowid INTEGER PRIMARY KEY AUTOINCREMENT, school TEXT, name TEXT, location TEXT, monday TEXT, tuesday TEXT, wednesday TEXT, thursday TEXT, friday TEXT, saturday TEXT, sunday TEXT, phone TEXT, email TEXT, link TEXT, extraInfo TEXT)";
     const char *fetchPlacesString = "SELECT * FROM places";
-    const char *insertPlaceString = "INSERT INTO places (school, name, broad, specific, location, monday, tuesday, wednesday, thursday, friday, saturday, sunday, allhours, phone, email, link) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    const char *insertPlaceString = "INSERT INTO places (school, name, location, monday, tuesday, wednesday, thursday, friday, saturday, sunday, phone, email, link, extraInfo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     const char *deletePlaceString = "DELETE FROM places WHERE rowid=?";
     const char *emptyPlacesTableString = "DELETE FROM places;";
         //Specific selection queries
@@ -120,6 +120,15 @@ static sqlite3_stmt *selectSpecificCategoryCat;
     int success;
     
     //Create Places Table & Initialize sqlite3 Statements
+    
+    //If rebuilding the table:
+    //Drop the places Table such that it can be rebuilt
+//    sqlite3_stmt *dropTablePlaces;
+//    NSString *dropTablePlacesString= @"DROP TABLE places";
+//    sqlite3_prepare_v2(db, [dropTablePlacesString UTF8String], -1, &dropTablePlaces, NULL);
+//    sqlite3_step(dropTablePlaces);
+//    sqlite3_reset(dropTablePlaces);
+    
     
     //init table statement for places table
     if (sqlite3_prepare_v2(db, createTableString, -1, &createPlaceTable, NULL) != SQLITE_OK) {
@@ -292,20 +301,18 @@ static sqlite3_stmt *selectSpecificCategoryCat;
         // query columns from fetch statement (we exclude rowid for now?)
         NSString *schoolString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 1)];
         NSString *nameString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 2)];
-        NSString *broadString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 3)];
-        NSString *specificString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 4)];
-        NSString *locationString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 5)];
-        NSString *mondayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 6)];
-        NSString *tuesdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 7)];
-        NSString *wednesdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 8)];
-        NSString *thursdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 9)];
-        NSString *fridayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 10)];
-        NSString *saturdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 11)];
-        NSString *sundayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 12)];
-        NSString *allhoursString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 13)];
-        NSString *phoneString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 14)];
-        NSString *emailString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 15)];
-        NSString *linkString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 16)];
+        NSString *locationString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 3)];
+        NSString *mondayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 4)];
+        NSString *tuesdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 5)];
+        NSString *wednesdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 6)];
+        NSString *thursdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 7)];
+        NSString *fridayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 8)];
+        NSString *saturdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 9)];
+        NSString *sundayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 10)];
+        NSString *phoneString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 11)];
+        NSString *emailString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 12)];
+        NSString *linkString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 13)];
+        NSString *extraInfo = [NSString stringWithUTF8String:(char *) sqlite3_column_text(fetchPlaces, 14)];
         
         //Now we turn the hour-related strings to Hours objects in order to make a Place object.
         Hours *mondayHours = [[Hours alloc] initWithOneString:mondayString];
@@ -317,7 +324,7 @@ static sqlite3_stmt *selectSpecificCategoryCat;
         Hours *sundayHours = [[Hours alloc] initWithOneString:sundayString];
         
         //Create Place object with information
-        Place *databasePlace = [[Place alloc] initWithSchool:schoolString andName:nameString andLocation:locationString andMondayHours:mondayHours andTuesdayHours:tuesdayHours andWednesdayHours:wednesdayHours andThursdayHours:thursdayHours andFridayHours:fridayHours andSaturdayHours:saturdayHours andSundayHours:sundayHours andPhoneString:phoneString andEmailString:emailString andLinkString:linkString];
+        Place *databasePlace = [[Place alloc] initWithSchool:schoolString andName:nameString andLocation:locationString andMondayHours:mondayHours andTuesdayHours:tuesdayHours andWednesdayHours:wednesdayHours andThursdayHours:thursdayHours andFridayHours:fridayHours andSaturdayHours:saturdayHours andSundayHours:sundayHours andPhoneString:phoneString andEmailString:emailString andLinkString:linkString andExtraInfo:extraInfo];
         
         //Add place object to array
         [ret addObject:databasePlace];
@@ -332,7 +339,7 @@ static sqlite3_stmt *selectSpecificCategoryCat;
 //More Fetching/Selecting functions
 //Fetch Places by Name.
 + (NSMutableArray *)fetchPlacesByName:(NSString *)name{
-    //First we bind to the selectBroadCategoryPlaces statement
+    //First we bind to the selectNamePlaces statement
     sqlite3_bind_text(selectNamePlaces, 1, [name UTF8String], -1, SQLITE_TRANSIENT);
     
     //The array that gets returned
@@ -344,20 +351,18 @@ static sqlite3_stmt *selectSpecificCategoryCat;
         // query columns from fetch statement (we exclude rowid for now?)
         NSString *schoolString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 1)];
         NSString *nameString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 2)];
-        NSString *broadString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 3)];
-        NSString *specificString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 4)];
-        NSString *locationString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 5)];
-        NSString *mondayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 6)];
-        NSString *tuesdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 7)];
-        NSString *wednesdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 8)];
-        NSString *thursdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 9)];
-        NSString *fridayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 10)];
-        NSString *saturdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 11)];
-        NSString *sundayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 12)];
-        NSString *allhoursString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 13)];
-        NSString *phoneString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 14)];
-        NSString *emailString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 15)];
-        NSString *linkString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 16)];
+        NSString *locationString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 3)];
+        NSString *mondayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 4)];
+        NSString *tuesdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 5)];
+        NSString *wednesdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 6)];
+        NSString *thursdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 7)];
+        NSString *fridayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 8)];
+        NSString *saturdayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 9)];
+        NSString *sundayString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 10)];
+        NSString *phoneString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 11)];
+        NSString *emailString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 12)];
+        NSString *linkString = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 13)];
+        NSString *extraInfo = [NSString stringWithUTF8String:(char *) sqlite3_column_text(selectNamePlaces, 14)];
         
         //Now we turn the hour-related strings to Hours objects in order to make a Place object.
         Hours *mondayHours = [[Hours alloc] initWithOneString:mondayString];
@@ -369,7 +374,7 @@ static sqlite3_stmt *selectSpecificCategoryCat;
         Hours *sundayHours = [[Hours alloc] initWithOneString:sundayString];
         
         //Create Place object with information
-        Place *databasePlace = [[Place alloc] initWithSchool:schoolString andName:nameString andLocation:locationString andMondayHours:mondayHours andTuesdayHours:tuesdayHours andWednesdayHours:wednesdayHours andThursdayHours:thursdayHours andFridayHours:fridayHours andSaturdayHours:saturdayHours andSundayHours:sundayHours andPhoneString:phoneString andEmailString:emailString andLinkString:linkString];
+        Place *databasePlace = [[Place alloc] initWithSchool:schoolString andName:nameString andLocation:locationString andMondayHours:mondayHours andTuesdayHours:tuesdayHours andWednesdayHours:wednesdayHours andThursdayHours:thursdayHours andFridayHours:fridayHours andSaturdayHours:saturdayHours andSundayHours:sundayHours andPhoneString:phoneString andEmailString:emailString andLinkString:linkString andExtraInfo: extraInfo];
         
         //Add place object to array
         [ret addObject:databasePlace];
@@ -444,32 +449,25 @@ static sqlite3_stmt *selectSpecificCategoryCat;
 }
 
 //Save Function: saving item into database. Will we need to use this? Probably not. But it's good to have just in case.
-+ (void)saveItemWithSchool:(NSString *)school andName:(NSString *)name andLocation:(NSString *)location andMondayHours:(NSString *)monday andTuesdayHours:(NSString *)tuesday andWednesdayHours:(NSString *)wednesday andThursdayHours:(NSString *)thursday andFridayHours:(NSString *)friday andSaturdayHours:(NSString *)saturday andSundayHours:(NSString *)sunday andPhoneString:(NSString *)phone andEmailString:(NSString *)email andLinkString:(NSString *)webLink{
++ (void)saveItemWithSchool:(NSString *)school andName:(NSString *)name andLocation:(NSString *)location andMondayHours:(NSString *)monday andTuesdayHours:(NSString *)tuesday andWednesdayHours:(NSString *)wednesday andThursdayHours:(NSString *)thursday andFridayHours:(NSString *)friday andSaturdayHours:(NSString *)saturday andSundayHours:(NSString *)sunday andPhoneString:(NSString *)phone andEmailString:(NSString *)email andLinkString:(NSString *)webLink andExtraInfo:extraInfo{
     
     //PlaceDatabase Table
-    
-    NSString *broadCategory = @"Food";
-    NSString *specificCategory = @"Dining Halls";
-    NSString *allhours = @"WHOO!";
     
     // bind data to the statement
     sqlite3_bind_text(insertPlace, 1, [school UTF8String], -1, SQLITE_TRANSIENT);
     sqlite3_bind_text(insertPlace, 2, [name UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(insertPlace, 3, [broadCategory UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(insertPlace, 4, [specificCategory UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(insertPlace, 5, [location UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(insertPlace, 6, [monday UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(insertPlace, 7, [tuesday UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(insertPlace, 8, [wednesday UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(insertPlace, 9, [thursday UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(insertPlace, 10, [friday UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(insertPlace, 11, [saturday UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(insertPlace, 12, [sunday UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(insertPlace, 13, [allhours UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(insertPlace, 14, [phone UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(insertPlace, 15, [email UTF8String], -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(insertPlace, 16, [webLink UTF8String], -1, SQLITE_TRANSIENT);
-    
+    sqlite3_bind_text(insertPlace, 3, [location UTF8String], -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(insertPlace, 4, [monday UTF8String], -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(insertPlace, 5, [tuesday UTF8String], -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(insertPlace, 6, [wednesday UTF8String], -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(insertPlace, 7, [thursday UTF8String], -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(insertPlace, 8, [friday UTF8String], -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(insertPlace, 9, [saturday UTF8String], -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(insertPlace, 10, [sunday UTF8String], -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(insertPlace, 11, [phone UTF8String], -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(insertPlace, 12, [email UTF8String], -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(insertPlace, 13, [webLink UTF8String], -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(insertPlace, 14, [extraInfo UTF8String], -1, SQLITE_TRANSIENT);
     
     int success = sqlite3_step(insertPlace);
     
@@ -493,7 +491,7 @@ static sqlite3_stmt *selectSpecificCategoryCat;
     NSString *sundayString = [place.sundayHours hoursToDatabaseString];
     
     //Use those strings in saving to database
-    [self saveItemWithSchool:place.school andName:place.name andLocation:place.location andMondayHours:mondayString andTuesdayHours:tuesdayString andWednesdayHours:wednesdayString andThursdayHours:thursdayString andFridayHours:fridayString andSaturdayHours:saturdayString andSundayHours:sundayString andPhoneString:place.phone andEmailString:place.email andLinkString:place.webLink];
+    [self saveItemWithSchool:place.school andName:place.name andLocation:place.location andMondayHours:mondayString andTuesdayHours:tuesdayString andWednesdayHours:wednesdayString andThursdayHours:thursdayString andFridayHours:fridayString andSaturdayHours:saturdayString andSundayHours:sundayString andPhoneString:place.phone andEmailString:place.email andLinkString:place.webLink andExtraInfo:place.extraInfo];
 }
 
 //Insert an item into the place table using a Place object

@@ -50,8 +50,8 @@
     [allHoursArray addObject:monObj];
     
     //Check tuesday.
-        //Get last 11 digits of monday string
-    NSString *prevHours = [[allHoursArray lastObject] substringFromIndex:[[allHoursArray lastObject] length] - 11];
+        //Get all of monday string that occurs after the "Mon" day identifier. This will consist of either "Closed" or hyphenated hours
+    NSString *prevHours = [[allHoursArray lastObject] substringFromIndex:[[allHoursArray lastObject] rangeOfString:@" "].location+1];
         //Compare to tuesday string
     if ([tuesString isEqualToString: prevHours]) {
         //modify last object
@@ -65,9 +65,9 @@
     }
     
     //Check Wednesday
-        //Get last 11 digits of last string
-    prevHours = [[allHoursArray lastObject] substringFromIndex:[[allHoursArray lastObject] length] - 11];
-        //Compare Wednesday hours last object in array
+    //Get all of last string that occurs after the day identifier. This will consist of either "Closed" or hyphenated hours
+    prevHours = [[allHoursArray lastObject] substringFromIndex:[[allHoursArray lastObject] rangeOfString:@" "].location+1];
+    //Compare Wednesday hours last object in array
     if ([wedString isEqualToString: prevHours]) {
         //modify last object
         NSString *lastObj = [allHoursArray lastObject];
@@ -80,8 +80,8 @@
     }
     
     //Check Thursday
-    //Get last 11 digits of last string
-    prevHours = [[allHoursArray lastObject] substringFromIndex:[[allHoursArray lastObject] length] - 11];
+    //Get all of last string that occurs after the day identifier. This will consist of either "Closed" or hyphenated hours
+    prevHours = [[allHoursArray lastObject] substringFromIndex:[[allHoursArray lastObject] rangeOfString:@" "].location+1];
     //Compare Thursday hours last object in array
     if ([thurString isEqualToString: prevHours]) {
         //modify last object
@@ -96,8 +96,8 @@
     }
     
     //Check Friday
-    //Get last 11 digits of last string
-    prevHours = [[allHoursArray lastObject] substringFromIndex:[[allHoursArray lastObject] length] - 11];
+    //Get all of last string that occurs after the day identifier. This will consist of either "Closed" or hyphenated hours
+    prevHours = [[allHoursArray lastObject] substringFromIndex:[[allHoursArray lastObject] rangeOfString:@" "].location+1];
     //Compare Thursday hours last object in array
     if ([friString isEqualToString: prevHours]) {
         //modify last object
@@ -112,8 +112,11 @@
     }
     
     //Check Saturday
-    //Get last 11 digits of last string
-    prevHours = [[allHoursArray lastObject] substringFromIndex:[[allHoursArray lastObject] length] - 11];
+    //Get all of last string that occurs after the day identifier. This will consist of either "Closed" or hyphenated hours
+    NSLog(@"%@", [allHoursArray lastObject]);
+    prevHours = [[allHoursArray lastObject] substringFromIndex:[[allHoursArray lastObject] rangeOfString:@" "].location+1];
+    NSLog(@"%@", prevHours);
+    NSLog(@"%@", satString);
     //Compare Thursday hours last object in array
     if ([satString isEqualToString: prevHours]) {
         //modify last object
@@ -128,8 +131,8 @@
     }
 
     //Check Sunday
-    //Get last 11 digits of last string
-    prevHours = [[allHoursArray lastObject] substringFromIndex:[[allHoursArray lastObject] length] - 11];
+    //Get all of last string that occurs after the day identifier. This will consist of either "Closed" or hyphenated hours
+    prevHours = [[allHoursArray lastObject] substringFromIndex:[[allHoursArray lastObject] rangeOfString:@" "].location+1];
     //Compare Thursday hours last object in array
     if ([sunString isEqualToString: prevHours]) {
         //modify last object

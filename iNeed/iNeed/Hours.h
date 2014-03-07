@@ -16,9 +16,13 @@
 //Properties
 @property NSInteger openingHours;
 @property NSInteger closingHours;
+@property bool closedAllDay;
 
 //This init method used when have opening and closing hours as separate strings
 -(id) initWithOpeningDigits:(NSString *)openingDigits andClosingDigits:(NSString *)closingDigits;
+
+//This init method used when a place has no hours for a day, because it is closed.
+-(id) initAsClosedAllDay;
 
 //The idea behind this is to have pulled text from the database to convert into an hours object
 -(id) initWithOneString:(NSString *)fourDigitsDashFourDigits;

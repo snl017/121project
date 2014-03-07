@@ -98,13 +98,14 @@
     [PlaceDatabase emptyDatabase];
     
     //Save some test places to database
-    [PlaceDatabase saveItemWithPlace:fraryDining];
-    [PlaceDatabase saveItemWithPlace:frankDining];
-    [PlaceDatabase saveItemWithPlace:campusSafety];
-    [PlaceDatabase saveItemWithPlace:studyAbroad];
-    [PlaceDatabase saveItemWithPlace:coopFountain];
-    [PlaceDatabase saveItemWithPlace:coopStore];
-    [PlaceDatabase saveItemWithPlace:writingCenter];
+    [PlaceDatabase saveItemWithPlace:fraryDining andSpecificCategory:DiningHallNarrow andBroadCategory:FoodBroad];
+    [PlaceDatabase saveItemWithPlace:frankDining andSpecificCategory:DiningHallNarrow andBroadCategory:FoodBroad];
+    [PlaceDatabase saveItemWithPlace:campusSafety andSpecificCategory:SafetyHealth andBroadCategory:SafetyHealth];
+    [PlaceDatabase saveItemWithPlace:studyAbroad andSpecificCategory:NonAcademicRCNarrow andBroadCategory:AcademicRCNarrow];
+    [PlaceDatabase saveItemWithPlace:coopFountain andSpecificCategory:EateryGroceryNarrow andBroadCategory:FoodBroad];
+    [PlaceDatabase savePlace:coopStore.name withSpecificCategory:StoresNarrow andBroadCategory:LivingOnCampusBroad];
+    [PlaceDatabase saveItemWithPlace:coopStore andSpecificCategory:EateryGroceryNarrow andBroadCategory:FoodBroad];
+    [PlaceDatabase saveItemWithPlace:writingCenter andSpecificCategory:AcademicRCNarrow andBroadCategory:ResourceCentersOfficesBroad];
     
     
     

@@ -444,9 +444,14 @@ static sqlite3_stmt *selectSpecificCategoryCat;
 }
 
 //Save Function: saving item into database. Will we need to use this? Probably not. But it's good to have just in case.
-+ (void)saveItemWithSchool:(NSString *)school andName:(NSString *)name andBroadCategory:(NSString *)broadCategory andSpecificCategory:(NSString *)specificCategory andLocation:(NSString *)location andMondayHours:(NSString *)monday andTuesdayHours:(NSString *)tuesday andWednesdayHours:(NSString *)wednesday andThursdayHours:(NSString *)thursday andFridayHours:(NSString *)friday andSaturdayHours:(NSString *)saturday andSundayHours:(NSString *)sunday andAllHours:(NSString *)allhours andPhoneString:(NSString *)phone andEmailString:(NSString *)email andLinkString:(NSString *)webLink{
++ (void)saveItemWithSchool:(NSString *)school andName:(NSString *)name andLocation:(NSString *)location andMondayHours:(NSString *)monday andTuesdayHours:(NSString *)tuesday andWednesdayHours:(NSString *)wednesday andThursdayHours:(NSString *)thursday andFridayHours:(NSString *)friday andSaturdayHours:(NSString *)saturday andSundayHours:(NSString *)sunday andPhoneString:(NSString *)phone andEmailString:(NSString *)email andLinkString:(NSString *)webLink{
     
     //PlaceDatabase Table
+    
+    NSString *broadCategory = @"Food";
+    NSString *specificCategory = @"Dining Halls";
+    NSString *allhours = @"WHOO!";
+    
     // bind data to the statement
     sqlite3_bind_text(insertPlace, 1, [school UTF8String], -1, SQLITE_TRANSIENT);
     sqlite3_bind_text(insertPlace, 2, [name UTF8String], -1, SQLITE_TRANSIENT);
@@ -471,8 +476,6 @@ static sqlite3_stmt *selectSpecificCategoryCat;
     //Reset!
     sqlite3_reset(insertPlace);
     
-    //categories Table
-    [self savePlace:name withSpecificCategory:specificCategory andBroadCategory:broadCategory];
     
     if (success != SQLITE_DONE) {
         NSLog(@"ERROR: failed to insert item");
@@ -490,7 +493,7 @@ static sqlite3_stmt *selectSpecificCategoryCat;
     NSString *sundayString = [place.sundayHours hoursToDatabaseString];
     
     //Use those strings in saving to database
-    [self saveItemWithSchool:place.school andName:place.name andBroadCategory:@"Food" andSpecificCategory:@"Dining Halls" andLocation:place.location andMondayHours:mondayString andTuesdayHours:tuesdayString andWednesdayHours:wednesdayString andThursdayHours:thursdayString andFridayHours:fridayString andSaturdayHours:saturdayString andSundayHours:sundayString andAllHours:@"WHOO" andPhoneString:place.phone andEmailString:place.email andLinkString:place.webLink];
+    [self saveItemWithSchool:place.school andName:place.name andLocation:place.location andMondayHours:mondayString andTuesdayHours:tuesdayString andWednesdayHours:wednesdayString andThursdayHours:thursdayString andFridayHours:fridayString andSaturdayHours:saturdayString andSundayHours:sundayString andPhoneString:place.phone andEmailString:place.email andLinkString:place.webLink];
 }
 
 //Insert an item into the place table using a Place object

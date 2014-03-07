@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PlaceDatabase.m"
-            timestampString = "415412323.66137"
+            timestampString = "415849349.591373"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "411"
-            endingLineNumber = "411"
+            startingLineNumber = "364"
+            endingLineNumber = "364"
             landmarkName = "+fetchPlacesByName:"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PlaceDatabase.m"
-            timestampString = "415412323.66137"
+            timestampString = "415849349.591373"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "418"
-            endingLineNumber = "418"
+            startingLineNumber = "371"
+            endingLineNumber = "371"
             landmarkName = "+fetchPlacesByName:"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PlaceDatabase.m"
-            timestampString = "415412323.66137"
+            timestampString = "415849349.591373"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "410"
-            endingLineNumber = "410"
+            startingLineNumber = "363"
+            endingLineNumber = "363"
             landmarkName = "+fetchPlacesByName:"
             landmarkType = "5">
             <Locations>

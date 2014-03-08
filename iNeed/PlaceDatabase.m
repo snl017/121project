@@ -14,18 +14,21 @@
 static sqlite3 *db;
 
 //Place table
-//Statements: Fetching each place, or deleting, inserting a place. Also creating & emptying place table.
+//Statements: Fetching each place, or deleting, inserting a place. Also creating & emptying place table, deleting table.
 static sqlite3_stmt *createPlaceTable;
 static sqlite3_stmt *fetchPlaces;
 static sqlite3_stmt *deletePlace;
 static sqlite3_stmt *insertPlace;
 static sqlite3_stmt *emptyPlacesTable;
+static sqlite3_stmt *dropTablePlaces;
 
-//Statements for the Categories table: Fetching, deleting, inserting, creating table, emptying table.
+//Statements for the Categories table: Fetching, deleting, inserting, creating table, emptying table, deleting table.
 static sqlite3_stmt *createCatTable;
 static sqlite3_stmt *deleteCat;
 static sqlite3_stmt *insertCat;
 static sqlite3_stmt *emptyCategories;
+static sqlite3_stmt *dropTableCategories;
+
 
 //Update statements for updating hours! This will be used once we implement scraping.
 static sqlite3_stmt *updateMondayHoursByNameStmt;
@@ -84,6 +87,8 @@ static sqlite3_stmt *selectSpecificCategoryCat;
     const char *insertPlaceString = "INSERT INTO places (school, name, location, monday, tuesday, wednesday, thursday, friday, saturday, sunday, phone, email, link, extraInfo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     const char *deletePlaceString = "DELETE FROM places WHERE rowid=?";
     const char *emptyPlacesTableString = "DELETE FROM places;";
+    const char *dropTablePlacesString= "DROP TABLE places";
+    
         //Specific selection queries
     const char *selectNamePlacesString = "SELECT * FROM places WHERE name=?";
         //Update queries
@@ -101,10 +106,10 @@ static sqlite3_stmt *selectSpecificCategoryCat;
     const char *insertCatString = "INSERT INTO categories (broad, specific, name) VALUES (?, ?, ?)";
     const char *deleteCatString = "DELETE FROM categories WHERE rowid=?";
     const char *emptyCatTableString = "DELETE FROM categories;";
+    const char *dropTableCategoriesString= "DROP TABLE categories";
     //Specific selection queries
     const char *selectBroadCatString = "SELECT name FROM categories WHERE broad=?";
     const char *selectSpecificCatString = "SELECT name FROM categories WHERE specific=?";
-   
     
     
     // Create the path to the database
@@ -120,15 +125,6 @@ static sqlite3_stmt *selectSpecificCategoryCat;
     int success;
     
     //Create Places Table & Initialize sqlite3 Statements
-    
-    //If rebuilding the table:
-    //Drop the places Table such that it can be rebuilt
-//    sqlite3_stmt *dropTablePlaces;
-//    NSString *dropTablePlacesString= @"DROP TABLE places";
-//    sqlite3_prepare_v2(db, [dropTablePlacesString UTF8String], -1, &dropTablePlaces, NULL);
-//    sqlite3_step(dropTablePlaces);
-//    sqlite3_reset(dropTablePlaces);
-    
     
     //init table statement for places table
     if (sqlite3_prepare_v2(db, createTableString, -1, &createPlaceTable, NULL) != SQLITE_OK) {
@@ -159,6 +155,11 @@ static sqlite3_stmt *selectSpecificCategoryCat;
     // init deletion statement for the places table
     if (sqlite3_prepare_v2(db, deletePlaceString, -1, &deletePlace, NULL) != SQLITE_OK) {
         NSLog(@"ERROR: failed to prepare deleting statement for places");
+        NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
+    }
+    // init drop statement for the places table
+    if (sqlite3_prepare_v2(db, dropTablePlacesString, -1, &dropTablePlaces, NULL) != SQLITE_OK) {
+        NSLog(@"ERROR: failed to prepare drop statement for places table");
         NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
     }
     
@@ -229,6 +230,12 @@ static sqlite3_stmt *selectSpecificCategoryCat;
     // init deletion statement for categories table
     if (sqlite3_prepare_v2(db, deleteCatString, -1, &deleteCat, NULL) != SQLITE_OK) {
         NSLog(@"ERROR: failed to prepare deleting statement for categories");
+        NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
+    }
+    
+    // init drop statement for the categories table
+    if (sqlite3_prepare_v2(db, dropTableCategoriesString, -1, &dropTableCategories, NULL) != SQLITE_OK) {
+        NSLog(@"ERROR: failed to prepare drop statement for categories table");
         NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
     }
     
@@ -624,22 +631,47 @@ static sqlite3_stmt *selectSpecificCategoryCat;
 }
 
 
-//Completely empty the databse. Please do not call accidentally.
+//Completely empty the database. Please do not call accidentally.
 + (void)emptyDatabase{
     sqlite3_step(emptyPlacesTable);
     sqlite3_step(emptyCategories);
 }
 
+//Drop the tables in the database to rebuilt.
++ (void)dropTables{
+    sqlite3_step(dropTableCategories);
+    sqlite3_step(dropTablePlaces);
+}
 
 //Cleanup Function
 + (void)cleanUpDatabaseForQuit
 {
     // finalize frees the compiled statements, close closes the database connection
+    sqlite3_finalize(createPlaceTable);
     sqlite3_finalize(fetchPlaces);
     sqlite3_finalize(insertPlace);
     sqlite3_finalize(deletePlace);
-    sqlite3_finalize(createPlaceTable);
+    sqlite3_finalize(emptyPlacesTable);
+    sqlite3_finalize(dropTablePlaces);
+    
     sqlite3_finalize(createCatTable);
+    sqlite3_finalize(deleteCat);
+    sqlite3_finalize(insertCat);
+    sqlite3_finalize(emptyCategories);
+    sqlite3_finalize(dropTableCategories);
+    
+    sqlite3_finalize(updateMondayHoursByNameStmt);
+    sqlite3_finalize(updateTuesdayHoursByNameStmt);
+    sqlite3_finalize(updateWednesdayHoursByNameStmt);
+    sqlite3_finalize(updateThursdayHoursByNameStmt);
+    sqlite3_finalize(updateFridayHoursByNameStmt);
+    sqlite3_finalize(updateSaturdayHoursByNameStmt);
+    sqlite3_finalize(updateSundayHoursByNameStmt);
+    
+    sqlite3_finalize(selectNamePlaces);
+    sqlite3_finalize(selectBroadCategoryCat);
+    sqlite3_finalize(selectSpecificCategoryCat);
+    
     sqlite3_close(db);
 }
 

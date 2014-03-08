@@ -16,34 +16,9 @@
     [PlaceDatabase createEditableCopyOfDatabaseIfNeeded];
     [PlaceDatabase initDatabase];
     [self testDatabase];
-    //[self testPlaceClass];
-    //[self testHoursClass];
     
     return YES;
 }
-
-//Test out Hours class
--(void)testHoursClass{
-//    //Some hours to test out
-//    Hours *normalHours = [[Hours alloc] initWithOpeningDigits:@"0961" andClosingDigits:@"1700"];
-//    NSString *dispString = [normalHours hoursToDisplayString];
-//    NSString *dataString = [normalHours hoursToDatabaseString];
-//    
-//    NSLog(@"%@", dispString);
-//    NSLog(@"%@", dataString);
-
-
-    //5. These hours are initiated with a digits-dash-digits string presumably pulled from database
-    //NOTE: may need to do checks on database inited hours to make sure valid, just as the checks are done for the regular init
-//    Hours *dbHours = [[Hours alloc] initWithOneString:@"1300-1900"];
-//    NSString *dispDbHours = [dbHours hoursToDatabaseString];
-//    NSString *dataDbHours = [dbHours hoursToDisplayString];
-//    
-//    NSLog(@"%@", dispDbHours);
-//    NSLog(@"%@", dataDbHours);
-    
-}
-
 
 //Test out database functions
 - (void)testDatabase{
@@ -109,87 +84,7 @@
     
     
     
-    //TESTS
-    //Test: for categories table methods:
-    
-    //Save a piece of information to the categories table
-//  [PlaceDatabase savePlace:@"Frary" withSpecificCategory:DiningHallNarrow andBroadCategory:FoodBroad];
-//    
-//    NSMutableArray *testSelectBySpecific = [PlaceDatabase fetchPlacesBySpecificCategory:DiningHallNarrow];
-//    NSLog(@"Fetched Specific!");
-//    NSLog(@"%d",[testSelectBySpecific count]);
-//    for (id object in testSelectBySpecific) { //print all fetched items
-//        Place *tempPlace = (Place *)object;
-//        [tempPlace printPlace];
-//    }
-    
-//    //Update something
-//    [PlaceDatabase updateMondayHoursByName:fraryDining.name andNewHours: [[Hours alloc] initWithOpeningDigits:@"0000" andClosingDigits:@"1000"]];
-    
-//    //Refetch and print
-//    testSelectBySpecific = [PlaceDatabase fetchPlacesBySpecificCategory:DiningHallNarrow];
-//    NSLog(@"Fetched Specific!");
-//    NSLog(@"%d",[testSelectBySpecific count]);
-//    for (id object in testSelectBySpecific) { //print all fetched items
-//        Place *tempPlace = (Place *)object;
-//        [tempPlace printPlace];
-//    }
-    
-//    NSMutableArray *testSelectByBroad = [PlaceDatabase fetchPlacesByBroadCategory:FoodBroad];
-//    NSLog(@"Fetched Broad");
-//    NSLog(@"%d",[testSelectByBroad count]);
-//    for (id object in testSelectByBroad) { //print all fetched items
-//        Place *tempPlace = (Place *)object;
-//        [tempPlace printPlace];
-//    }
-//
-    
-
-    
-    //Test: fetch all items
-//    NSMutableArray *testFetchAll = [PlaceDatabase fetchAllPlaces];
-//    
-//    for (id object in testFetchAll) { //print all fetched items
-//        Place *tempPlace = (Place *)object;
-//        [tempPlace printPlace];
-//    }
-    
-    //Test: fetch by broad category
-//    NSMutableArray *testSelectBroad = [PlaceDatabase fetchPlacesByBroadCategory:@"Food"];
-//    
-//    for (id object in testSelectBroad) { //print all fetched items
-//        Place *tempPlace = (Place *)object;
-//        [tempPlace printPlace];
-//    }
-    
-//    //Test: fetch by specific category
-//    NSMutableArray *testSelectSpecific = [PlaceDatabase fetchPlacesBySpecificCategory:DiningHallNarrow];
-//    
-//    for (id object in testSelectSpecific) { //print all fetched items
-//        Place *tempPlace = (Place *)object;
-//        [tempPlace printPlace];
-//    }
-//    NSLog(@"%i",[testSelectSpecific count]);
-    
-    //Test: fetch by name
-   // NSMutableArray *testSelectName = [PlaceDatabase fetchPlacesByName:@"Frary Dining Hall"];
-    
-//    for (id object in testSelectName) { //print all fetched items
-//        Place *tempPlace = (Place *)object;
-//        [tempPlace printPlace];
-//    }
-
 }
-
-- (void)testPlaceClass{
-    NSMutableArray *diningArray = [PlaceDatabase fetchPlacesBySpecificCategory:DiningHallNarrow];
-    Place *frary = [diningArray objectAtIndex:0];
-    NSMutableArray *allHoursArray = [frary getAllHours];
-    for (id object in allHoursArray){
-        NSLog(@"%@", object);
-    }
-}
-
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {

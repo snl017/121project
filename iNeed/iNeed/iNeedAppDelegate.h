@@ -20,10 +20,7 @@
 //METHODS
 //This is the tester function that just makes sure the database queries are working.
 - (void)testDatabase;
-//This is the tester function checking that the Hours class works.
-- (void)testHoursClass;
-//This is the tester function check out the allHours method in the Place class
-- (void)testPlaceClass;
+
 
 
 

@@ -33,6 +33,7 @@
 + (void)deleteCategoryTableRow:(int)rowid;
 + (void)cleanUpDatabaseForQuit;
 + (void)emptyDatabase;
++ (void)dropTables;
 
 
 //Fetch/select methods returning NSMutableArrays of Places

@@ -11,38 +11,27 @@
 @implementation Hours
 
 
+//helper method to check the legal format of hours
+-(bool) inLegalHourFormat:(NSString *) hours{
+    //change into ints
+    NSInteger hoursDigits = [hours integerValue];
+    //get last 2 digits
+    NSInteger minutes = hoursDigits % 100;
+    //check that has 4 digits, is < 2400, and minutes are < 60
+    return ([hours length] == 4 && hoursDigits < 2400 && minutes < 60);
+}
+
 //This init method used when have opening and closing hours as separate strings.
 //Double check digit string lengths, and values as numbers (nothing higher than 2359 and nothing with greater than 59 in last two digits)
 -(id) initWithOpeningDigits:(NSString *)openingDigits andClosingDigits:(NSString *)closingDigits{
     self.closedAllDay = false;
-    //As integers
-    NSInteger openingDigitsInteger = [openingDigits integerValue];
-    NSInteger closingDigitsInteger = [closingDigits integerValue];
-    NSInteger openingLastTwo = openingDigitsInteger % 100;
-    NSInteger closingLastTwo = closingDigitsInteger % 100;
-    
-    if ([openingDigits length] != 4) {
-        NSLog(@"ERROR: Opening digits string must be 4 characters in length");
-        return NULL;
-    } else if ([closingDigits length] != 4){
-        NSLog(@"ERROR: Closing digits string must be 4 characters in length");
-        return NULL;
-    } else if (openingDigitsInteger > 2359){
-        NSLog(@"ERROR: Opening digits string must be a valid time");
-        return NULL;
-    } else if (closingDigitsInteger > 2359){
-        NSLog(@"ERROR: Closing digits string must be a valid time");
-        return NULL;
-    } else if (openingLastTwo > 59){
-        NSLog(@"ERROR: Opening hours' last two digits must be < 60");
-        return NULL;
-    } else if (closingLastTwo > 59){
-        NSLog(@"ERROR: Closing hours' last two digits must be < 60");
-        return NULL;
-    } else { //all is okay
+    if ([self inLegalHourFormat:openingDigits] && [self inLegalHourFormat:closingDigits]){ //all is okay
         self.openingHours = [openingDigits integerValue];
         self.closingHours = [closingDigits integerValue];
         return self;
+    } else {
+        NSLog(@"ERROR: hours are not in proper format");
+        return NULL;
     }
 }
 
@@ -55,10 +44,17 @@
 //The idea behind this is to have pulled text from the database to convert into an hours object
 -(id) initWithOneString:(NSString *)fourDigitsDashFourDigits{
     if(![fourDigitsDashFourDigits isEqualToString:@"Closed"]){
-    NSArray *openClose = [fourDigitsDashFourDigits componentsSeparatedByString:@"-"];
-    self.openingHours = [[openClose objectAtIndex:0] integerValue];
-    self.closingHours = [[openClose objectAtIndex:1] integerValue];
+        NSArray *openClose = [fourDigitsDashFourDigits componentsSeparatedByString:@"-"];
+        NSString *openDigits = [openClose objectAtIndex:0];
+        NSString *closeDigits = [openClose objectAtIndex:1];
+        if([self inLegalHourFormat:openDigits] && [self inLegalHourFormat:closeDigits]){
+        self.openingHours = [openDigits integerValue];
+        self.closingHours = [closeDigits integerValue];
         self.closedAllDay = false;
+        }else{
+            NSLog(@"ERROR: hours are not in proper format");
+            return NULL;
+        }
     }else{
         self.closedAllDay = true;
     }
@@ -105,9 +101,9 @@
     
     int closedHrs = militaryClosed/100;
     if(closedHrs < 12){
-        closedAm = @"AM";
+        closedAm = @"am";
     }else{
-        closedAm = @"PM";
+        closedAm = @"pm";
     }
     if(closedHrs == 12) {
         standardClosedHrs = 12;

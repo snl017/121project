@@ -31,9 +31,10 @@
     Hours *h6 = [[Hours alloc] initWithOpeningDigits:@"0600" andClosingDigits:@"0700"];
     Hours *h7 = [[Hours alloc] initWithOpeningDigits:@"0700" andClosingDigits:@"0800"];
     
+    Hours *illegalHr =[[Hours alloc] initWithOpeningDigits:@"700" andClosingDigits:@"0800"];
     
     //First create some test Places
-    Place *fraryDining = [[Place alloc] initWithSchool:PomonaSchool andName:@"Frary Dining Hall" andLocation:@"Pomona College" andMondayHours:h3 andTuesdayHours:h3 andWednesdayHours:h3 andThursdayHours:h3 andFridayHours:h3 andSaturdayHours:h3 andSundayHours:h4 andPhoneString:@"123-456-7890" andEmailString:@"frarysomething@pomona.edu" andLinkString:None andExtraInfo:@"Snack M-Th"];
+    Place *fraryDining = [[Place alloc] initWithSchool:PomonaSchool andName:@"Frary Dining Hall" andLocation:@"Pomona College" andMondayHours:h1 andTuesdayHours:h3 andWednesdayHours:h3 andThursdayHours:h3 andFridayHours:h3 andSaturdayHours:h3 andSundayHours:h4 andPhoneString:@"123-456-7890" andEmailString:@"frarysomething@pomona.edu" andLinkString:None andExtraInfo:@"Snack M-Th"];
     
     Place *frankDining = [[Place alloc] initWithSchool:PomonaSchool andName:@"Frank Dining Hall" andLocation:@"Pomona College" andMondayHours:h1 andTuesdayHours:h2 andWednesdayHours:h3 andThursdayHours:h4 andFridayHours:h5 andSaturdayHours:h6 andSundayHours:h7 andPhoneString:@"frank-456-7890" andEmailString:@"franksomething@pomona.edu" andLinkString:@"www.google.com" andExtraInfo:None];
     

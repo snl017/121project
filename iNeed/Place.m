@@ -46,21 +46,22 @@
     NSString *sunString = [self.sundayHours hoursToDisplayString];
     
     //Convert monday string into array object. Insert into array.
-    NSString *monObj = [NSString stringWithFormat:@"%@%@", @"Mo ", monString];
+    NSString *monObj = [NSString stringWithFormat:@"%@%@", @"Mon ", monString];
     [allHoursArray addObject:monObj];
     
     //Check tuesday.
         //Get all of monday string that occurs after the "Mon" day identifier. This will consist of either "Closed" or hyphenated hours
+    //this finds the first space and substrings up to that point
     NSString *prevHours = [[allHoursArray lastObject] substringFromIndex:[[allHoursArray lastObject] rangeOfString:@" "].location+1];
         //Compare to tuesday string
     if ([tuesString isEqualToString: prevHours]) {
         //modify last object
         NSString *lastObj = [allHoursArray lastObject];
         [allHoursArray removeLastObject];
-        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:2], @"-Tu ", prevHours];
+        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:[lastObj rangeOfString:@" "].location], @"-Tues ", prevHours];
         [allHoursArray addObject:newLastObj];
     } else {
-        NSString *tuesObj = [NSString stringWithFormat:@"%@%@", @"Tu ", tuesString];
+        NSString *tuesObj = [NSString stringWithFormat:@"%@%@", @"Tues ", tuesString];
         [allHoursArray addObject:tuesObj];
     }
     
@@ -71,11 +72,17 @@
     if ([wedString isEqualToString: prevHours]) {
         //modify last object
         NSString *lastObj = [allHoursArray lastObject];
+        
+        //I AM DEBUGGING STUFF PRINT STATEMENTS
+        NSLog(@"this is last object, which we then substring to index 2: %@", lastObj);
+        NSLog(@"%@", [lastObj substringToIndex:[lastObj rangeOfString:@" "].location]);
+        
+        
         [allHoursArray removeLastObject];
-        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:2], @"-We ", prevHours];
+        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:[lastObj rangeOfString:@" "].location], @"-Wed ", prevHours];
         [allHoursArray addObject:newLastObj];
     } else {
-        NSString *wedObj = [NSString stringWithFormat:@"%@%@", @"We ", wedString];
+        NSString *wedObj = [NSString stringWithFormat:@"%@%@", @"Wed ", wedString];
         [allHoursArray addObject:wedObj];
     }
     
@@ -88,10 +95,10 @@
         NSString *lastObj = [allHoursArray lastObject];
         [allHoursArray removeLastObject];
         
-        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:2], @"-Th ", prevHours];
+        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:[lastObj rangeOfString:@" "].location], @"-Thurs ", prevHours];
         [allHoursArray addObject:newLastObj];
     } else {
-        NSString *thursObj = [NSString stringWithFormat:@"%@%@", @"Th ", thurString];
+        NSString *thursObj = [NSString stringWithFormat:@"%@%@", @"Thurs ", thurString];
         [allHoursArray addObject:thursObj];
     }
     
@@ -104,10 +111,10 @@
         NSString *lastObj = [allHoursArray lastObject];
         [allHoursArray removeLastObject];
         
-        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:2], @"-Fr ", prevHours];
+        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:[lastObj rangeOfString:@" "].location], @"-Fri ", prevHours];
         [allHoursArray addObject:newLastObj];
     } else {
-        NSString *friObj = [NSString stringWithFormat:@"%@%@", @"Fr ", friString];
+        NSString *friObj = [NSString stringWithFormat:@"%@%@", @"Fri ", friString];
         [allHoursArray addObject:friObj];
     }
     
@@ -120,10 +127,10 @@
         NSString *lastObj = [allHoursArray lastObject];
         [allHoursArray removeLastObject];
         
-        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:2], @"-Sa ", prevHours];
+        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:[lastObj rangeOfString:@" "].location], @"-Sat ", prevHours];
         [allHoursArray addObject:newLastObj];
     } else {
-        NSString *satObj = [NSString stringWithFormat:@"%@%@", @"Sa ", satString];
+        NSString *satObj = [NSString stringWithFormat:@"%@%@", @"Sat ", satString];
         [allHoursArray addObject:satObj];
     }
 
@@ -136,10 +143,10 @@
         NSString *lastObj = [allHoursArray lastObject];
         [allHoursArray removeLastObject];
         
-        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:2], @"-Su ", prevHours];
+        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:[lastObj rangeOfString:@" "].location], @"-Sun ", prevHours];
         [allHoursArray addObject:newLastObj];
     } else {
-        NSString *sunObj = [NSString stringWithFormat:@"%@%@", @"Su ", sunString];
+        NSString *sunObj = [NSString stringWithFormat:@"%@%@", @"Sun ", sunString];
         [allHoursArray addObject:sunObj];
     }
     

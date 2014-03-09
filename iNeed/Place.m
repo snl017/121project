@@ -58,10 +58,12 @@
         //modify last object
         NSString *lastObj = [allHoursArray lastObject];
         [allHoursArray removeLastObject];
-        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:[lastObj rangeOfString:@" "].location], @"-Tues ", prevHours];
+        
+        //FUN NOTE: this is the code if you want to substring up to the first space: [lastObj substringToIndex:[lastObj rangeOfString:@" "].location] but for now we're just doing 3 letters for everything
+        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:3], @"-Tue ", prevHours];
         [allHoursArray addObject:newLastObj];
     } else {
-        NSString *tuesObj = [NSString stringWithFormat:@"%@%@", @"Tues ", tuesString];
+        NSString *tuesObj = [NSString stringWithFormat:@"%@%@", @"Tue ", tuesString];
         [allHoursArray addObject:tuesObj];
     }
     
@@ -72,14 +74,8 @@
     if ([wedString isEqualToString: prevHours]) {
         //modify last object
         NSString *lastObj = [allHoursArray lastObject];
-        
-        //I AM DEBUGGING STUFF PRINT STATEMENTS
-        NSLog(@"this is last object, which we then substring to index 2: %@", lastObj);
-        NSLog(@"%@", [lastObj substringToIndex:[lastObj rangeOfString:@" "].location]);
-        
-        
         [allHoursArray removeLastObject];
-        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:[lastObj rangeOfString:@" "].location], @"-Wed ", prevHours];
+        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:3], @"-Wed ", prevHours];
         [allHoursArray addObject:newLastObj];
     } else {
         NSString *wedObj = [NSString stringWithFormat:@"%@%@", @"Wed ", wedString];
@@ -95,10 +91,10 @@
         NSString *lastObj = [allHoursArray lastObject];
         [allHoursArray removeLastObject];
         
-        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:[lastObj rangeOfString:@" "].location], @"-Thurs ", prevHours];
+        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:3], @"-Thu ", prevHours];
         [allHoursArray addObject:newLastObj];
     } else {
-        NSString *thursObj = [NSString stringWithFormat:@"%@%@", @"Thurs ", thurString];
+        NSString *thursObj = [NSString stringWithFormat:@"%@%@", @"Thu ", thurString];
         [allHoursArray addObject:thursObj];
     }
     
@@ -111,7 +107,7 @@
         NSString *lastObj = [allHoursArray lastObject];
         [allHoursArray removeLastObject];
         
-        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:[lastObj rangeOfString:@" "].location], @"-Fri ", prevHours];
+        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:3], @"-Fri ", prevHours];
         [allHoursArray addObject:newLastObj];
     } else {
         NSString *friObj = [NSString stringWithFormat:@"%@%@", @"Fri ", friString];
@@ -127,7 +123,7 @@
         NSString *lastObj = [allHoursArray lastObject];
         [allHoursArray removeLastObject];
         
-        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:[lastObj rangeOfString:@" "].location], @"-Sat ", prevHours];
+        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:3], @"-Sat ", prevHours];
         [allHoursArray addObject:newLastObj];
     } else {
         NSString *satObj = [NSString stringWithFormat:@"%@%@", @"Sat ", satString];
@@ -143,7 +139,7 @@
         NSString *lastObj = [allHoursArray lastObject];
         [allHoursArray removeLastObject];
         
-        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:[lastObj rangeOfString:@" "].location], @"-Sun ", prevHours];
+        NSString *newLastObj = [NSString stringWithFormat:@"%@%@%@", [lastObj substringToIndex:3], @"-Sun ", prevHours];
         [allHoursArray addObject:newLastObj];
     } else {
         NSString *sunObj = [NSString stringWithFormat:@"%@%@", @"Sun ", sunString];

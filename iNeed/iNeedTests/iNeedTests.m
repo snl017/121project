@@ -22,53 +22,57 @@
 {
     [super setUp];
     [PlaceDatabase createEditableCopyOfDatabaseIfNeeded];
-    [PlaceDatabase emptyDatabase];
     [PlaceDatabase initDatabase];
     //Create some test Hours
     Hours *h1 = [[Hours alloc] initWithOpeningDigits:@"0100" andClosingDigits:@"0200"];
     Hours *h2 = [[Hours alloc] initWithOpeningDigits:@"0200" andClosingDigits:@"0300"];
     Hours *h3 = [[Hours alloc] initWithOpeningDigits:@"0300" andClosingDigits:@"0400"];
     Hours *h4 = [[Hours alloc] initWithOpeningDigits:@"0400" andClosingDigits:@"0500"];
-    Hours *h5 = [[Hours alloc] initWithOpeningDigits:@"0500" andClosingDigits:@"0600"];
-    Hours *h6 = [[Hours alloc] initWithOpeningDigits:@"0600" andClosingDigits:@"0700"];
-    Hours *h7 = [[Hours alloc] initWithOpeningDigits:@"0700" andClosingDigits:@"0800"];
+    Hours *closed = [[Hours alloc]initAsClosedAllDay];
+    
+    //Create a test place
+    Place *testPlace = [[Place alloc] initWithSchool:@"testSchool" andName:@"testName" andLocation:@"testLocation" andMondayHours:h1 andTuesdayHours:h1 andWednesdayHours:h2 andThursdayHours:h3 andFridayHours:h4 andSaturdayHours:closed andSundayHours:closed andPhoneString:@"123-456-7890" andEmailString:@"testEmail" andLinkString:@"testLink" andExtraInfo:@"testExtra"];
+    Place *inTestSpecific = [[Place alloc]initWithSchool:None andName:@"inTestSpecific" andLocation:None andMondayHours:h1 andTuesdayHours:h1 andWednesdayHours:h1 andThursdayHours:h1 andFridayHours:h1 andSaturdayHours:h1 andSundayHours:h1 andPhoneString:None andEmailString:None andLinkString:None andExtraInfo:None];
+    Place *inTestBroad = [[Place alloc]initWithSchool:None andName:@"inTestBroad" andLocation:None andMondayHours:h1 andTuesdayHours:h1 andWednesdayHours:h1 andThursdayHours:h1 andFridayHours:h1 andSaturdayHours:h1 andSundayHours:h1 andPhoneString:None andEmailString:None andLinkString:None andExtraInfo:None];
     
     
-    //First create some test Places
-    Place *fraryDining = [[Place alloc] initWithSchool:PomonaSchool andName:@"Frary Dining Hall" andLocation:@"Pomona College" andMondayHours:h3 andTuesdayHours:h3 andWednesdayHours:h3 andThursdayHours:h3 andFridayHours:h3 andSaturdayHours:h3 andSundayHours:h4 andPhoneString:@"123-456-7890" andEmailString:@"frarysomething@pomona.edu" andLinkString:None andExtraInfo:@"Snack M-Th"];
-    
-    Place *frankDining = [[Place alloc] initWithSchool:PomonaSchool andName:@"Frank Dining Hall" andLocation:@"Pomona College" andMondayHours:h1 andTuesdayHours:h2 andWednesdayHours:h3 andThursdayHours:h4 andFridayHours:h5 andSaturdayHours:h6 andSundayHours:h7 andPhoneString:@"frank-456-7890" andEmailString:@"franksomething@pomona.edu" andLinkString:@"www.google.com" andExtraInfo:None];
-    
-    Hours *coopStWeek =[[Hours alloc] initWithOpeningDigits:@"0900" andClosingDigits:@"0000"];
-    Hours *coopStSat =[[Hours alloc] initWithOpeningDigits:@"1200" andClosingDigits:@"0000"];
-    Hours *coopStSun =[[Hours alloc] initWithOpeningDigits:@"1200" andClosingDigits:@"2000"];
-    Hours *allDay =[[Hours alloc] initWithOpeningDigits:@"0000" andClosingDigits:@"2359"];
-    
-    Place *coopStore = [[Place alloc] initWithSchool:PomonaSchool andName:@"Coop Store" andLocation:@"Smith Campus Center, Pomona College\n170 E 6th St" andMondayHours:coopStWeek andTuesdayHours:coopStWeek andWednesdayHours:coopStWeek andThursdayHours:coopStWeek andFridayHours:coopStWeek andSaturdayHours:coopStSat andSundayHours:coopStSun andPhoneString:@"909-607-2264" andEmailString:@"coopstore@aspc.pomona.edu" andLinkString:@"http://coopstore.pomona.edu" andExtraInfo:None];
-
-    Place *campusSafety = [[Place alloc] initWithSchool:CUCSchool andName:@"Campus Safety" andLocation:@"Pendleton Business Building\n150 E 8th St\nClaremont, CA 91711" andMondayHours:allDay andTuesdayHours:allDay andWednesdayHours:allDay andThursdayHours:allDay andFridayHours:allDay andSaturdayHours:allDay andSundayHours:allDay andPhoneString:@"1-909-607-2000" andEmailString:@"dispatch@cuc.claremont.edu" andLinkString:@"http://www.cuc.claremont.edu/campussafety/" andExtraInfo:None];
-    
-    //Save some test places to database
-    [PlaceDatabase saveItemWithPlace:fraryDining andSpecificCategory:DiningHallNarrow andBroadCategory:FoodBroad];
-    [PlaceDatabase saveItemWithPlace:frankDining andSpecificCategory:DiningHallNarrow andBroadCategory:FoodBroad];
-     [PlaceDatabase saveItemWithPlace:campusSafety andSpecificCategory:SafetyHealth andBroadCategory:SafetyHealth];
-    [PlaceDatabase savePlace:coopStore.name withSpecificCategory:StoresNarrow andBroadCategory:LivingOnCampusBroad];
-    [PlaceDatabase savePlace:coopStore.name withSpecificCategory:EateryGroceryNarrow andBroadCategory:FoodBroad];
-    [PlaceDatabase saveItemWithPlace:coopStore];
-
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    //Save test place to database
+    [PlaceDatabase saveItemWithPlace:testPlace andSpecificCategory:@"testSpecific" andBroadCategory:@"testBroad"];
+    [PlaceDatabase saveItemWithPlace:inTestSpecific andSpecificCategory:@"testSpecific" andBroadCategory:None];
+    [PlaceDatabase saveItemWithPlace:inTestBroad andSpecificCategory:None andBroadCategory:@"testBroad"];
 }
-
+//Ensure that we are inputting a data point
 -(void)testInputToDatabase{
     XCTAssertNotNil([PlaceDatabase fetchAllPlaces]);
 }
-- (void)testPlaceClass{
-    NSMutableArray *diningArray = [PlaceDatabase fetchPlacesBySpecificCategory:DiningHallNarrow];
-    Place *frary = [diningArray objectAtIndex:0];
-    NSMutableArray *allHoursArray = [frary getAllHours];
-    for (id object in allHoursArray){
-        XCTAssertNotNil(object);
-    }
+//Ensure that the delete works in the tearDown method of the tests
+-(void)testDeleteByName{
+    XCTAssertTrue([[PlaceDatabase fetchPlacesByName:@"testName" ] count]==1, @"d");
+}
+
+//test the place class
+- (void)testPlaceClassInit{
+    Hours *h1 = [[Hours alloc] initWithOpeningDigits:@"0100" andClosingDigits:@"0200"];
+    Place *place = [[Place alloc]initWithSchool:@"placeSchool" andName:@"placeName" andLocation:@"placeLocation" andMondayHours:h1 andTuesdayHours:h1 andWednesdayHours:h1 andThursdayHours:h1 andFridayHours:h1 andSaturdayHours:h1 andSundayHours:h1 andPhoneString:@"phone" andEmailString:@"email" andLinkString:@"link" andExtraInfo:@"extras"];
+    XCTAssertEqualObjects(place.school, @"placeSchool", @"d");
+    XCTAssertEqualObjects(place.name, @"placeName", @"d");
+    XCTAssertEqualObjects(place.location, @"placeLocation", @"d");
+    XCTAssertEqualObjects(place.phone, @"phone", @"d");
+    XCTAssertEqualObjects(place.email, @"email", @"d");
+    XCTAssertEqualObjects(place.webLink, @"link", @"d");
+    XCTAssertEqualObjects(place.extraInfo, @"extras", @"d");
+}
+
+//test the allHours method
+- (void)testAllHoursMethod{
+    Place *test = [[PlaceDatabase fetchPlacesByName:@"testName"] objectAtIndex:0];
+    NSArray *hours = [test getAllHours];
+    XCTAssertEqualObjects([hours objectAtIndex:0], @"Mon-Tue 1:00 am - 2:00 am", @"d");
+    XCTAssertEqualObjects([hours objectAtIndex:1], @"Wed 2:00 am - 3:00 am", @"d");
+    XCTAssertEqualObjects([hours objectAtIndex:2], @"Thu 3:00 am - 4:00 am", @"d");
+    XCTAssertEqualObjects([hours objectAtIndex:3], @"Fri 4:00 am - 5:00 am", @"d");
+    XCTAssertEqualObjects([hours objectAtIndex:4], @"Sat-Sun Closed", @"d");
+    
 }
 
 //Test out Hours class
@@ -108,30 +112,31 @@
 
 
 -(void)testSelectByName{
-    NSMutableArray *places =[PlaceDatabase fetchPlacesByName:@"Frary Dining Hall"];
+    NSMutableArray *places =[PlaceDatabase fetchPlacesByName:@"testName"];
     XCTAssertTrue([places count]==1, @"d");
-    Place *frary = [places objectAtIndex:0];
-    XCTAssertEqualObjects(frary.name, @"Frary Dining Hall", @"@");
+    Place *test = [places objectAtIndex:0];
+    XCTAssertEqualObjects(test.name, @"testName", @"@");
 }
 
 -(void)testSelectBySpecific{
-    NSMutableArray *names =[PlaceDatabase fetchNamesbySpecific:DiningHallNarrow];
-    XCTAssertEqualObjects([names objectAtIndex:0], @"Frary Dining Hall", @"@");
-    XCTAssertEqualObjects([names objectAtIndex:1], @"Frank Dining Hall", @"@");
+    NSMutableArray *names =[PlaceDatabase fetchNamesbySpecific:@"testSpecific"];
+    XCTAssertEqualObjects([names objectAtIndex:0], @"testName", @"@");
+    XCTAssertEqualObjects([names objectAtIndex:1], @"inTestSpecific", @"@");
+    
 }
 -(void)testSelectByBroad{
-    NSMutableArray *names =[PlaceDatabase fetchNamesbyBroad:FoodBroad];
-    XCTAssertEqualObjects([names objectAtIndex:0], @"Frary Dining Hall", @"@");
-    XCTAssertEqualObjects([names objectAtIndex:1], @"Frank Dining Hall", @"@");
+    NSMutableArray *names =[PlaceDatabase fetchNamesbyBroad:@"testBroad"];
+    XCTAssertEqualObjects([names objectAtIndex:0], @"testName", @"@");
+    XCTAssertEqualObjects([names objectAtIndex:1], @"inTestBroad", @"@");
 }
 
 //Update Hours test
 -(void)testUpdateHours{
     Hours *newHours = [[Hours alloc]initWithOpeningDigits:@"0000" andClosingDigits:@"1000"];
-    [PlaceDatabase updateMondayHoursByName:@"Frary Dining Hall" andNewHours: newHours];
-    NSMutableArray *places= [PlaceDatabase fetchPlacesByName:@"Frary Dining Hall"];
-    Place *frary = [places objectAtIndex:0];
-    XCTAssertEqualObjects(frary.mondayHours.hoursToDisplayString, newHours.hoursToDisplayString, @"@");
+    [PlaceDatabase updateMondayHoursByName:@"testName" andNewHours: newHours];
+    NSMutableArray *places= [PlaceDatabase fetchPlacesByName:@"testName"];
+    Place *test = [places objectAtIndex:0];
+    XCTAssertEqualObjects(test.mondayHours.hoursToDisplayString, newHours.hoursToDisplayString, @"@");
 
 }
 
@@ -139,6 +144,9 @@
 {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
+    [PlaceDatabase deletePlaceByName:@"testName"];
+    [PlaceDatabase deletePlaceByName:@"inTestSpecific"];
+    [PlaceDatabase deletePlaceByName:@"inTestBroad"];
 }
 
 

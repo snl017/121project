@@ -18,6 +18,7 @@ static sqlite3 *db;
 static sqlite3_stmt *createPlaceTable;
 static sqlite3_stmt *fetchPlaces;
 static sqlite3_stmt *deletePlace;
+static sqlite3_stmt *deletePlaceByName;
 static sqlite3_stmt *insertPlace;
 static sqlite3_stmt *emptyPlacesTable;
 static sqlite3_stmt *dropTablePlaces;
@@ -25,6 +26,7 @@ static sqlite3_stmt *dropTablePlaces;
 //Statements for the Categories table: Fetching, deleting, inserting, creating table, emptying table, deleting table.
 static sqlite3_stmt *createCatTable;
 static sqlite3_stmt *deleteCat;
+static sqlite3_stmt *deleteCatByName;
 static sqlite3_stmt *insertCat;
 static sqlite3_stmt *emptyCategories;
 static sqlite3_stmt *dropTableCategories;
@@ -86,6 +88,7 @@ static sqlite3_stmt *selectSpecificCategoryCat;
     const char *fetchPlacesString = "SELECT * FROM places";
     const char *insertPlaceString = "INSERT INTO places (school, name, location, monday, tuesday, wednesday, thursday, friday, saturday, sunday, phone, email, link, extraInfo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     const char *deletePlaceString = "DELETE FROM places WHERE rowid=?";
+    const char *deletePlaceByNameString = "DELETE FROM places WHERE name=?";
     const char *emptyPlacesTableString = "DELETE FROM places;";
     const char *dropTablePlacesString= "DROP TABLE places";
     
@@ -105,6 +108,7 @@ static sqlite3_stmt *selectSpecificCategoryCat;
     const char *createCatTableString = "CREATE TABLE IF NOT EXISTS categories (rowid INTEGER PRIMARY KEY AUTOINCREMENT, broad TEXT, specific TEXT, name TEXT)";
     const char *insertCatString = "INSERT INTO categories (broad, specific, name) VALUES (?, ?, ?)";
     const char *deleteCatString = "DELETE FROM categories WHERE rowid=?";
+    const char *deleteCatByNameString = "DELETE FROM categories WHERE name=?";
     const char *emptyCatTableString = "DELETE FROM categories;";
     const char *dropTableCategoriesString= "DROP TABLE categories";
     //Specific selection queries
@@ -155,6 +159,11 @@ static sqlite3_stmt *selectSpecificCategoryCat;
     // init deletion statement for the places table
     if (sqlite3_prepare_v2(db, deletePlaceString, -1, &deletePlace, NULL) != SQLITE_OK) {
         NSLog(@"ERROR: failed to prepare deleting statement for places");
+        NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
+    }
+    // init deletion statement by name for the places table
+    if (sqlite3_prepare_v2(db, deletePlaceByNameString, -1, &deletePlaceByName, NULL) != SQLITE_OK) {
+        NSLog(@"ERROR: failed to prepare deleting statement by name for places");
         NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
     }
     // init drop statement for the places table
@@ -230,6 +239,11 @@ static sqlite3_stmt *selectSpecificCategoryCat;
     // init deletion statement for categories table
     if (sqlite3_prepare_v2(db, deleteCatString, -1, &deleteCat, NULL) != SQLITE_OK) {
         NSLog(@"ERROR: failed to prepare deleting statement for categories");
+        NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
+    }
+    // init deletion by name statement for categories table
+    if (sqlite3_prepare_v2(db, deleteCatByNameString, -1, &deleteCatByName, NULL) != SQLITE_OK) {
+        NSLog(@"ERROR: failed to prepare deleting statement by name for categories");
         NSLog(@"%s Prepare failure '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(db), sqlite3_errcode(db));
     }
     
@@ -520,6 +534,27 @@ static sqlite3_stmt *selectSpecificCategoryCat;
     if (success != SQLITE_DONE) {
         NSLog(@"ERROR: failed to delete item from place table");
     }
+}
+
++ (void) deletePlaceByName:(NSString *)name{
+    //delete the place from the places table
+    // bind the name, step the statement, reset the statement, check for error
+    sqlite3_bind_text(deletePlaceByName, 1, [name UTF8String], -1, SQLITE_TRANSIENT); //I AM UNSURE IF SHOULD BE 1 OR 0
+    int success = sqlite3_step(deletePlaceByName);
+    sqlite3_reset(deletePlaceByName);
+    if (success != SQLITE_DONE) {
+        NSLog(@"ERROR: failed to delete item by name from place table");
+    }
+
+    //delete the place from the categories table
+    // bind the row id, step the statement, reset the statement, check for error
+    sqlite3_bind_text(deleteCatByName, 1, [name UTF8String], -1, SQLITE_TRANSIENT);    //I AM UNSURE IF SHOULD BE 1 OR 0
+    int success1 = sqlite3_step(deleteCatByName);
+    sqlite3_reset(deleteCatByName);
+    if (success1 !=SQLITE_DONE) {
+        NSLog(@"ERROR: failed to delete item by name from categories table");
+    }
+
 }
 
 //Again, unclear if we are going to be deleting from our app. Can remove this function if necessary.

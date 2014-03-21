@@ -30,6 +30,7 @@
 
 //To delete an item, to clean up database
 + (void)deletePlace:(int)rowid;
++ (void)deletePlaceByName:(NSString *)name;
 + (void)deleteCategoryTableRow:(int)rowid;
 + (void)cleanUpDatabaseForQuit;
 + (void)emptyDatabase;

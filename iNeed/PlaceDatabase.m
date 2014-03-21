@@ -686,11 +686,13 @@ static sqlite3_stmt *selectSpecificCategoryCat;
     sqlite3_finalize(fetchPlaces);
     sqlite3_finalize(insertPlace);
     sqlite3_finalize(deletePlace);
+    sqlite3_finalize(deletePlaceByName);
     sqlite3_finalize(emptyPlacesTable);
     sqlite3_finalize(dropTablePlaces);
     
     sqlite3_finalize(createCatTable);
     sqlite3_finalize(deleteCat);
+    sqlite3_finalize(deleteCatByName);
     sqlite3_finalize(insertCat);
     sqlite3_finalize(emptyCategories);
     sqlite3_finalize(dropTableCategories);

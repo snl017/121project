@@ -84,13 +84,10 @@
 -(NSString *) hoursToDisplayString{
     NSMutableString *displayString = [NSMutableString string];
     if(!self.closedAllDay){
-        NSLog(@"\n\n\n\n ENTERING HERE BECAUSE NOT CLOSED and length of array is %lu \n\n\n", (unsigned long)[self.hoursArray count]);
         for (int i = 0; i < [self.hoursArray count]; i++){
             NSString *openClose = [[self.hoursArray objectAtIndex:i] hoursToDisplayString];
-            NSLog(@"\n\n\n\n%@ is the string that is extracted as a singleHourSet\n\n\n\n", openClose);
             if (i==0){
                 [displayString appendString: [NSMutableString stringWithString: openClose]];
-                NSLog(@"\n\n\n\n THIS IS THE STRING TO RETURN %@ \n\n\n", displayString);
             } else {
                 [displayString appendString: [NSMutableString stringWithString: [@"\n" stringByAppendingString: openClose]]];
             }

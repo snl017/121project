@@ -29,6 +29,7 @@
 		DA49770018B6DB3700BD4BC8 /* iNeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4976FF18B6DB3700BD4BC8 /* iNeedTableViewController.m */; };
 		DA4D4D7E18BDB6CF00368DC8 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4D4D7D18BDB6CF00368DC8 /* Constants.m */; };
 		DA4D4D8118BDC42B00368DC8 /* PlaceDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4D4D8018BDC42B00368DC8 /* PlaceDisplayViewController.m */; };
+		FB32A89318E90D88007F095E /* SingleHourSet.m in Sources */ = {isa = PBXBuildFile; fileRef = FB32A89218E90D88007F095E /* SingleHourSet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,8 @@
 		DA4D4D7D18BDB6CF00368DC8 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		DA4D4D7F18BDC42B00368DC8 /* PlaceDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceDisplayViewController.h; sourceTree = "<group>"; };
 		DA4D4D8018BDC42B00368DC8 /* PlaceDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceDisplayViewController.m; sourceTree = "<group>"; };
+		FB32A89118E90D88007F095E /* SingleHourSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleHourSet.h; sourceTree = "<group>"; };
+		FB32A89218E90D88007F095E /* SingleHourSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleHourSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +160,8 @@
 				86314D2118B40C74006FA727 /* Place.m */,
 				86314D2918B986AD006FA727 /* Hours.h */,
 				86314D2A18B986AD006FA727 /* Hours.m */,
+				FB32A89118E90D88007F095E /* SingleHourSet.h */,
+				FB32A89218E90D88007F095E /* SingleHourSet.m */,
 				DA212CF518B3EAB600C0DF8F /* iNeedAppDelegate.h */,
 				DA212CF618B3EAB600C0DF8F /* iNeedAppDelegate.m */,
 				DA212CF818B3EAB600C0DF8F /* Main.storyboard */,
@@ -300,6 +305,7 @@
 				86314D2518B40C90006FA727 /* PlaceDatabase.m in Sources */,
 				DA212CF318B3EAB600C0DF8F /* main.m in Sources */,
 				DA4D4D7E18BDB6CF00368DC8 /* Constants.m in Sources */,
+				FB32A89318E90D88007F095E /* SingleHourSet.m in Sources */,
 				DA4D4D8118BDC42B00368DC8 /* PlaceDisplayViewController.m in Sources */,
 				86314D2B18B986AD006FA727 /* Hours.m in Sources */,
 				DA49770018B6DB3700BD4BC8 /* iNeedTableViewController.m in Sources */,

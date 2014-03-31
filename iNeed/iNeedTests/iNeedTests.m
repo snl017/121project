@@ -84,20 +84,26 @@
     NSString *dataString = [normalHours hoursToDatabaseString];
     XCTAssertNotNil(dispString, @"@");
     XCTAssertNotNil(dataString, @"@");
-    //
     XCTAssertEqualObjects(dispString, @"9:55 am - 5:00 pm", @"@");
     XCTAssertEqualObjects(dataString, @"0955-1700", @"@");
     
     
     //These hours are initiated with a digits-dash-digits string presumably pulled from database
     //NOTE: may need to do checks on database inited hours to make sure valid, just as the checks are done for the regular init
+    //This tests initWithOneString for a single hour set
     Hours *dbHours = [[Hours alloc] initWithOneString:@"0955-1700"];
     XCTAssertNotNil(dbHours);
     NSString *dispDbHours = [dbHours hoursToDisplayString];
     NSString *dataDbHours = [dbHours hoursToDatabaseString];
-    
     XCTAssertEqualObjects(dispDbHours, @"9:55 am - 5:00 pm", @"@");
     XCTAssertEqualObjects(dataDbHours, @"0955-1700", @"@");
+    //This tests initWithOneString for multiple hour set
+    Hours *dbHoursMulti = [[Hours alloc] initWithOneString:@"0700-1300%1430-1700"];
+    XCTAssertNotNil(dbHoursMulti);
+    NSString *dispDbHoursMulti = [dbHoursMulti hoursToDisplayString];
+    NSString *dataDbHoursMulti = [dbHoursMulti hoursToDatabaseString];
+    XCTAssertEqualObjects(dispDbHoursMulti, @"7:00 am - 1:00 pm\n2:30 pm - 5:00 pm", @"@");
+    XCTAssertEqualObjects(dataDbHoursMulti, @"0700-1300%1430-1700", @"@");
     
     //Closed!
     Hours *closed = [[Hours alloc]initAsClosedAllDay];

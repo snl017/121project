@@ -34,7 +34,10 @@
     Hours *illegalHr =[[Hours alloc] initWithOpeningDigits:@"700" andClosingDigits:@"0800"];
     
     //First create some test Places
-    Place *fraryDining = [[Place alloc] initWithSchool:PomonaSchool andName:@"Frary Dining Hall" andLocation:@"Pomona College" andMondayHours:h1 andTuesdayHours:h3 andWednesdayHours:h3 andThursdayHours:h3 andFridayHours:h3 andSaturdayHours:h3 andSundayHours:h4 andPhoneString:@"123-456-7890" andEmailString:@"frarysomething@pomona.edu" andLinkString:None andExtraInfo:@"Snack M-Th"];
+    
+    //Testing frary with multiple hours
+    Hours *fraryMulti = [[Hours alloc] initWithOneString:@"0730-1000%1100-1400%1700-2000"];
+    Place *fraryDining = [[Place alloc] initWithSchool:PomonaSchool andName:@"Frary Dining Hall" andLocation:@"Pomona College" andMondayHours:fraryMulti andTuesdayHours:fraryMulti andWednesdayHours:h3 andThursdayHours:h3 andFridayHours:h3 andSaturdayHours:h3 andSundayHours:h4 andPhoneString:@"123-456-7890" andEmailString:@"frarysomething@pomona.edu" andLinkString:None andExtraInfo:@"Snack M-Th"];
     
     Place *frankDining = [[Place alloc] initWithSchool:PomonaSchool andName:@"Frank Dining Hall" andLocation:@"Pomona College" andMondayHours:h1 andTuesdayHours:h2 andWednesdayHours:h3 andThursdayHours:h4 andFridayHours:h5 andSaturdayHours:h6 andSundayHours:h7 andPhoneString:@"frank-456-7890" andEmailString:@"franksomething@pomona.edu" andLinkString:@"www.google.com" andExtraInfo:None];
     

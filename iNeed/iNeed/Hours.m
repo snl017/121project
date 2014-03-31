@@ -7,34 +7,27 @@
 //
 
 #import "Hours.h"
+#import "SingleHourSet.h"
 
 @implementation Hours
 
 
-//helper method to check the legal format of hours
--(bool) inLegalHourFormat:(NSString *) hours{
-    //change into ints
-    NSInteger hoursDigits = [hours integerValue];
-    //get last 2 digits
-    NSInteger minutes = hoursDigits % 100;
-    //check that has 4 digits, is < 2400, and minutes are < 60
-    return ([hours length] == 4 && hoursDigits < 2400 && minutes < 60);
-}
-
 //This init method used when have opening and closing hours as separate strings.
 //Double check digit string lengths, and values as numbers (nothing higher than 2359 and nothing with greater than 59 in last two digits)
 -(id) initWithOpeningDigits:(NSString *)openingDigits andClosingDigits:(NSString *)closingDigits{
+    self.hoursArray = [[NSMutableArray alloc] init];
     self.closedAllDay = false;
-    if ([self inLegalHourFormat:openingDigits] && [self inLegalHourFormat:closingDigits]){ //all is okay
-        self.openingHours = [openingDigits integerValue];
-        self.closingHours = [closingDigits integerValue];
-        return self;
-    } else {
-        NSLog(@"ERROR: hours are not in proper format");
+    SingleHourSet *hourSet =[[SingleHourSet alloc] initWithOpeningDigits:openingDigits andClosingDigits:closingDigits];
+    if(hourSet){
+        [self.hoursArray addObject: hourSet];
+    }else{
         return NULL;
     }
+    return self;
 }
 
+//This init method is used when a place is not open at all during this day
+//There are no hours to store in the array; instead, a property of a boolean is set to true.
 -(id) initAsClosedAllDay{
     self.closedAllDay = true;
     return self;
@@ -42,18 +35,19 @@
 
 
 //The idea behind this is to have pulled text from the database to convert into an hours object
--(id) initWithOneString:(NSString *)fourDigitsDashFourDigits{
-    if(![fourDigitsDashFourDigits isEqualToString:@"Closed"]){
-        NSArray *openClose = [fourDigitsDashFourDigits componentsSeparatedByString:@"-"];
-        NSString *openDigits = [openClose objectAtIndex:0];
-        NSString *closeDigits = [openClose objectAtIndex:1];
-        if([self inLegalHourFormat:openDigits] && [self inLegalHourFormat:closeDigits]){
-        self.openingHours = [openDigits integerValue];
-        self.closingHours = [closeDigits integerValue];
-        self.closedAllDay = false;
-        }else{
-            NSLog(@"ERROR: hours are not in proper format");
-            return NULL;
+//This string could have a lot of opening-closing hours in it, serparated by a percentage sign
+//(we can format it to have a % sign between instances when we store it in the database)
+-(id) initWithOneString:(NSString *)stringOfHours{
+    self.hoursArray = [[NSMutableArray alloc] init];
+    if(![stringOfHours isEqualToString:@"Closed"]){
+        NSArray *setsOfHours = [stringOfHours componentsSeparatedByString:@"%"];
+        for (NSString* hour in setsOfHours){
+            SingleHourSet *hourSet = [[SingleHourSet alloc] initWithOneString: hour];
+            if(hourSet != NULL){
+                [self.hoursArray addObject: hourSet];
+            }else{
+                return NULL;
+            }
         }
     }else{
         self.closedAllDay = true;
@@ -63,67 +57,57 @@
 
 //This method used to convert hours to string object to place into a database.
 -(NSString *) hoursToDatabaseString{
-    NSString *concatString;
+    NSMutableString *dbString = [NSMutableString string];
     if(!self.closedAllDay){
-    NSString *open = [NSString stringWithFormat:@"%04d", [self openingHours]];
-    NSString *closed = [NSString stringWithFormat:@"%04d", [self closingHours]];
-    concatString = [NSString stringWithFormat:@"%@-%@", open, closed];
+        for (int i = 0; i < [self.hoursArray count]; i++){
+            NSString *openClose = [[self.hoursArray objectAtIndex:i] hoursToDatabaseString];
+            if (i==0){
+                [dbString appendString: [NSMutableString stringWithString: openClose]];
+            } else {
+                [dbString appendString: [NSMutableString stringWithString: [@"%" stringByAppendingString: openClose]]];
+            }
+        }
     }else{
-        concatString = @"Closed";
+        dbString = [NSMutableString stringWithString:@"Closed"];
     }
-    return concatString;
+    NSString *returnString;
+    if(dbString){
+        returnString = [NSString stringWithString: dbString];
+    }else{
+        returnString = @"Error";
+    }
+    return returnString;
 }
 
 //This method used to convert hours into user-friendly displayable string
 //I.e. something that's 1200-2300 in a database format becomes 12:00-23:00
 -(NSString *) hoursToDisplayString{
+    NSMutableString *displayString = [NSMutableString string];
     if(!self.closedAllDay){
-    NSString *openAm, *closedAm;
-    int standardOpenHrs, standardClosedHrs;
-    int militaryOpen = [self openingHours];
-    int militaryClosed = [self closingHours];
-    
-    int openHrs = militaryOpen/100;
-    if(openHrs < 12){
-        openAm = @"am";
+        NSLog(@"\n\n\n\n ENTERING HERE BECAUSE NOT CLOSED and length of array is %lu \n\n\n", (unsigned long)[self.hoursArray count]);
+        for (int i = 0; i < [self.hoursArray count]; i++){
+            NSString *openClose = [[self.hoursArray objectAtIndex:i] hoursToDisplayString];
+            NSLog(@"\n\n\n\n%@ is the string that is extracted as a singleHourSet\n\n\n\n", openClose);
+            if (i==0){
+                [displayString appendString: [NSMutableString stringWithString: openClose]];
+                NSLog(@"\n\n\n\n THIS IS THE STRING TO RETURN %@ \n\n\n", displayString);
+            } else {
+                [displayString appendString: [NSMutableString stringWithString: [@"\n" stringByAppendingString: openClose]]];
+            }
+        }
     }else{
-        openAm = @"pm";
+        displayString = [NSMutableString stringWithString:@"Closed"];
     }
-    if(openHrs == 12) {
-        standardOpenHrs = 12;
-    }else if(openHrs == 0){
-        standardOpenHrs = 12;
+    NSString *returnString;
+    if(displayString){
+        returnString = [NSString stringWithString: displayString];
     }else{
-        standardOpenHrs = openHrs % 12;
+        returnString = @"Error";
     }
-    int standardOpenMin = militaryOpen%100;
-    int standardOpen = (standardOpenHrs*100) + standardOpenMin;
-    
-    int closedHrs = militaryClosed/100;
-    if(closedHrs < 12){
-        closedAm = @"am";
-    }else{
-        closedAm = @"pm";
-    }
-    if(closedHrs == 12) {
-        standardClosedHrs = 12;
-    }else if(closedHrs == 0){
-        standardClosedHrs = 12;
-    }else{
-        standardClosedHrs = closedHrs % 12;
-    }
-    int standardClosedMin = militaryClosed%100;
-    int standardClosed = (standardClosedHrs*100) + standardClosedMin;
-    NSMutableString *openHours = [NSMutableString stringWithFormat:@"%d %@", standardOpen, openAm];
-    NSMutableString *closedHours = [NSMutableString stringWithFormat:@"%d %@", standardClosed, closedAm];
-    [openHours insertString:@":" atIndex:(openHours.length-5)];
-    [closedHours insertString:@":" atIndex:(closedHours.length-5)];
-    NSMutableString *concatString = [NSMutableString stringWithFormat:@"%@ - %@", openHours, closedHours];
-    return [NSString stringWithString:concatString];
-    }else{
-        return @"Closed";
-    }
+    return returnString;
 }
+
+
 
 @end
 

@@ -30,6 +30,7 @@
 		DA4D4D7E18BDB6CF00368DC8 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4D4D7D18BDB6CF00368DC8 /* Constants.m */; };
 		DA4D4D8118BDC42B00368DC8 /* PlaceDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4D4D8018BDC42B00368DC8 /* PlaceDisplayViewController.m */; };
 		FB32A89318E90D88007F095E /* SingleHourSet.m in Sources */ = {isa = PBXBuildFile; fileRef = FB32A89218E90D88007F095E /* SingleHourSet.m */; };
+		FB32A89518E9E820007F095E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB32A89418E9E820007F095E /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		DA4D4D8018BDC42B00368DC8 /* PlaceDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceDisplayViewController.m; sourceTree = "<group>"; };
 		FB32A89118E90D88007F095E /* SingleHourSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleHourSet.h; sourceTree = "<group>"; };
 		FB32A89218E90D88007F095E /* SingleHourSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleHourSet.m; sourceTree = "<group>"; };
+		FB32A89418E9E820007F095E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 		DA212CDA18B3EAB600C0DF8F = {
 			isa = PBXGroup;
 			children = (
+				FB32A89418E9E820007F095E /* Default-568h@2x.png */,
 				DA212CEC18B3EAB600C0DF8F /* iNeed */,
 				DA212D0B18B3EAB600C0DF8F /* iNeedTests */,
 				DA212CE518B3EAB600C0DF8F /* Frameworks */,
@@ -282,6 +285,7 @@
 				DA212CFF18B3EAB600C0DF8F /* Images.xcassets in Resources */,
 				86314D2818B40E18006FA727 /* placeDatabase.sql in Resources */,
 				DA212CF118B3EAB600C0DF8F /* InfoPlist.strings in Resources */,
+				FB32A89518E9E820007F095E /* Default-568h@2x.png in Resources */,
 				DA212CFA18B3EAB600C0DF8F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

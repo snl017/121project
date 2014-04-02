@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "iNeedTableViewController.h"
 
-@interface DetailsTableViewController : iNeedTableViewController
+@interface DetailsTableViewController : UITableViewController
+
 
 @property NSString *specificCategory;
 @property NSMutableArray *places;

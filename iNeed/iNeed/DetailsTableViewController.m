@@ -148,10 +148,9 @@
     PlaceDisplayViewController *destination = [segue destinationViewController];
     NSIndexPath *path = [self.tableView indexPathForSelectedRow];
     Place *place = (self.places)[path.row];
+    //Set the place of the PlaceDisplay to the place the user's selected
     destination.place = place;
     
-    
-    // Pass the selected object to the new view controller.
 }
 
 

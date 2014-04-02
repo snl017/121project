@@ -40,9 +40,12 @@
 -(void)initTimeStamp
 {
     //set the current time
-    //THIS NEEDS TO BE CHANGED
+    NSTimeInterval timeInt = [[NSDate date]timeIntervalSince1970];
+    NSString *currTime = [NSString stringWithFormat: @"%f", timeInt];
     //format the current time into "TIME:<time>" in correct format for server
-    self.currentTime = @"current time";
+    self.currentTime = [@"TIME:" stringByAppendingString:currTime];
+    NSLog(@"current time:");
+    NSLog(self.currentTime, @"@%");
     
     //get the last update from memory
     self.lastUpdate = [[NSUserDefaults standardUserDefaults]objectForKey:@"lastUpdate"];

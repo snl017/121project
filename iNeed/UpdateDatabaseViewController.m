@@ -28,7 +28,6 @@
     [super viewDidLoad];
     [self initNetworkCommunication];
     [self initTimeStamp];
-    NSLog(self.lastUpdate, @"@%");
     [self sendTimeStamp];
     
     
@@ -79,6 +78,56 @@
     [self.outputStream open];
 }
 
+
+- (void)stream:(NSStream *)theStream handleEvent:(NSStreamEvent)streamEvent {
+	switch (streamEvent) {
+            
+		case NSStreamEventOpenCompleted:
+			NSLog(@"Stream opened");
+			break;
+            
+		case NSStreamEventHasBytesAvailable:
+            //get the data! Put it in the right place!
+            //read bytes from the stream
+            //collect them in a buffer
+            //transform the buffer into a string (JSON?)
+            //update our database using the JSON
+
+            if (theStream == self.inputStream) {
+                
+                
+                //IS THIS ENOUGH FOR A JSON? How much data are we sending?
+                uint8_t buffer[1024];
+                int len;
+                
+                while ([self.inputStream hasBytesAvailable]) {
+                    len = [self.inputStream read:buffer maxLength:sizeof(buffer)];
+                    if (len > 0) { //still have data to read in
+                        //Convert to JSON
+                        //Use JSON to update database
+                        
+                        //Able to collect a string message using the following code:
+//                        NSString *output = [[NSString alloc] initWithBytes:buffer length:len encoding:NSASCIIStringEncoding];
+//                        if (nil != output) {
+//                            NSLog(@"server said: %@", output);
+//                        }
+                    
+                    }
+                }
+            }
+			break;
+            
+		case NSStreamEventErrorOccurred:
+			NSLog(@"Can not connect to the host!");
+			break;
+            
+		case NSStreamEventEndEncountered:
+			break;
+            
+		default:
+			NSLog(@"Unknown event");
+            }
+}
 
 - (void)didReceiveMemoryWarning
 {

@@ -28,9 +28,9 @@
 		DA4976FD18B6D69E00BD4BC8 /* DetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4976FC18B6D69E00BD4BC8 /* DetailsTableViewController.m */; };
 		DA4D4D7E18BDB6CF00368DC8 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4D4D7D18BDB6CF00368DC8 /* Constants.m */; };
 		DA4D4D8118BDC42B00368DC8 /* PlaceDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4D4D8018BDC42B00368DC8 /* PlaceDisplayViewController.m */; };
-		DADDDEB018EBC98600C25831 /* ServerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = DADDDEAF18EBC98600C25831 /* ServerClient.m */; };
 		DADDDEB318EBCE0200C25831 /* HighLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DADDDEB218EBCE0200C25831 /* HighLevelViewController.m */; };
 		DADDDEBC18EBD1FD00C25831 /* SpecificCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DADDDEBB18EBD1FD00C25831 /* SpecificCategoryViewController.m */; };
+		DADDDEC818EC8D1A00C25831 /* UpdateDatabaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DADDDEC718EC8D1A00C25831 /* UpdateDatabaseViewController.m */; };
 		FB32A89318E90D88007F095E /* SingleHourSet.m in Sources */ = {isa = PBXBuildFile; fileRef = FB32A89218E90D88007F095E /* SingleHourSet.m */; };
 		FB32A89518E9E820007F095E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB32A89418E9E820007F095E /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
@@ -77,12 +77,12 @@
 		DA4D4D7D18BDB6CF00368DC8 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		DA4D4D7F18BDC42B00368DC8 /* PlaceDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceDisplayViewController.h; sourceTree = "<group>"; };
 		DA4D4D8018BDC42B00368DC8 /* PlaceDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceDisplayViewController.m; sourceTree = "<group>"; };
-		DADDDEAE18EBC98600C25831 /* ServerClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerClient.h; sourceTree = "<group>"; };
-		DADDDEAF18EBC98600C25831 /* ServerClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerClient.m; sourceTree = "<group>"; };
 		DADDDEB118EBCE0200C25831 /* HighLevelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighLevelViewController.h; sourceTree = "<group>"; };
 		DADDDEB218EBCE0200C25831 /* HighLevelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighLevelViewController.m; sourceTree = "<group>"; };
 		DADDDEBA18EBD1FD00C25831 /* SpecificCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecificCategoryViewController.h; sourceTree = "<group>"; };
 		DADDDEBB18EBD1FD00C25831 /* SpecificCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecificCategoryViewController.m; sourceTree = "<group>"; };
+		DADDDEC618EC8D1A00C25831 /* UpdateDatabaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateDatabaseViewController.h; sourceTree = "<group>"; };
+		DADDDEC718EC8D1A00C25831 /* UpdateDatabaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateDatabaseViewController.m; sourceTree = "<group>"; };
 		FB32A89118E90D88007F095E /* SingleHourSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleHourSet.h; sourceTree = "<group>"; };
 		FB32A89218E90D88007F095E /* SingleHourSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleHourSet.m; sourceTree = "<group>"; };
 		FB32A89418E9E820007F095E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -126,6 +126,8 @@
 		DA212CDA18B3EAB600C0DF8F = {
 			isa = PBXGroup;
 			children = (
+				DADDDEC618EC8D1A00C25831 /* UpdateDatabaseViewController.h */,
+				DADDDEC718EC8D1A00C25831 /* UpdateDatabaseViewController.m */,
 				FB32A89418E9E820007F095E /* Default-568h@2x.png */,
 				DA212CEC18B3EAB600C0DF8F /* iNeed */,
 				DA212D0B18B3EAB600C0DF8F /* iNeedTests */,
@@ -180,8 +182,6 @@
 				DA4D4D7D18BDB6CF00368DC8 /* Constants.m */,
 				DA212CFE18B3EAB600C0DF8F /* Images.xcassets */,
 				DA212CED18B3EAB600C0DF8F /* Supporting Files */,
-				DADDDEAE18EBC98600C25831 /* ServerClient.h */,
-				DADDDEAF18EBC98600C25831 /* ServerClient.m */,
 			);
 			path = iNeed;
 			sourceTree = "<group>";
@@ -322,8 +322,8 @@
 				DADDDEB318EBCE0200C25831 /* HighLevelViewController.m in Sources */,
 				DA4D4D7E18BDB6CF00368DC8 /* Constants.m in Sources */,
 				FB32A89318E90D88007F095E /* SingleHourSet.m in Sources */,
-				DADDDEB018EBC98600C25831 /* ServerClient.m in Sources */,
 				DA4D4D8118BDC42B00368DC8 /* PlaceDisplayViewController.m in Sources */,
+				DADDDEC818EC8D1A00C25831 /* UpdateDatabaseViewController.m in Sources */,
 				86314D2B18B986AD006FA727 /* Hours.m in Sources */,
 				DA4976FD18B6D69E00BD4BC8 /* DetailsTableViewController.m in Sources */,
 				86314D2218B40C74006FA727 /* Place.m in Sources */,

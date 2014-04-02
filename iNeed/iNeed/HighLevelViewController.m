@@ -46,7 +46,7 @@
         placesViewController.specificCategory = SafetyHealth;
         
     }
-    else{
+    else if (![[segue identifier]isEqualToString:@"Update"]){
         // Get the new view controller using [segue destinationViewController].
         SpecificCategoryViewController *specificCatView =[segue destinationViewController];
         // Pass the broad category the user's clicked to the new view controller.

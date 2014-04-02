@@ -63,11 +63,38 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Claremont Clock" id="W1p-Wu-wdo"/>
+                    <navigationItem key="navigationItem" title="Claremont Clock" id="W1p-Wu-wdo">
+                        <barButtonItem key="rightBarButtonItem" title="Update" id="G8W-Ft-vmJ">
+                            <connections>
+                                <segue destination="zEF-1F-aNv" kind="push" identifier="Update" id="kI0-q4-8nU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GOf-aR-AFH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="457" y="-1552"/>
+        </scene>
+        <!--Update Database View Controller - Update Database-->
+        <scene sceneID="gM0-IK-mr7">
+            <objects>
+                <viewController id="zEF-1F-aNv" customClass="UpdateDatabaseViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mYs-7k-1LZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="15a-ia-GFL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="o4C-Th-BA1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Update Database" id="d3b-1c-4bP" customClass="U">
+                        <barButtonItem key="backBarButtonItem" title="Cancel" id="Op3-FP-GnN"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T1C-eO-rJa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1077" y="-1158"/>
         </scene>
         <!--Specific Category View Controller - Title-->
         <scene sceneID="nJp-Pw-bHI">
@@ -145,7 +172,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J0Q-fs-PxM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="433" y="-2233"/>
+            <point key="canvasLocation" x="1103" y="-2713"/>
         </scene>
         <!--Details Table View Controller-->
         <scene sceneID="nI6-ET-xvw">
@@ -300,7 +327,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R4q-sq-I8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2218" y="-2381"/>
+            <point key="canvasLocation" x="2258" y="-2373"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Y01-zM-eA3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="B3J-4K-7Ii" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="x2q-J6-e8F">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="zEF-1F-aNv" kind="relationship" relationship="rootViewController" id="8VK-ca-wIn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e5s-vg-EIz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1077" y="-550"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -309,8 +354,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="sMl-kX-pzG"/>
         <segue reference="bKi-sB-bI3"/>
-        <segue reference="6iR-xc-M1y"/>
-        <segue reference="nmT-Kt-7xs"/>
+        <segue reference="WiA-dF-Sjt"/>
+        <segue reference="kI0-q4-8nU"/>
     </inferredMetricsTieBreakers>
 </document>

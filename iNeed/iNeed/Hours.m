@@ -11,21 +11,6 @@
 
 @implementation Hours
 
-
-//This init method used when have opening and closing hours as separate strings.
-//Double check digit string lengths, and values as numbers (nothing higher than 2359 and nothing with greater than 59 in last two digits)
--(id) initWithOpeningDigits:(NSString *)openingDigits andClosingDigits:(NSString *)closingDigits{
-    self.hoursArray = [[NSMutableArray alloc] init];
-    self.closedAllDay = false;
-    SingleHourSet *hourSet =[[SingleHourSet alloc] initWithOpeningDigits:openingDigits andClosingDigits:closingDigits];
-    if(hourSet){
-        [self.hoursArray addObject: hourSet];
-    }else{
-        return NULL;
-    }
-    return self;
-}
-
 //This init method is used when a place is not open at all during this day
 //There are no hours to store in the array; instead, a property of a boolean is set to true.
 -(id) initAsClosedAllDay{
@@ -34,9 +19,10 @@
 }
 
 
-//The idea behind this is to have pulled text from the database to convert into an hours object
+//This method is used to initial an hours object with 1 or more sets of opening and closing hours
 //This string could have a lot of opening-closing hours in it, serparated by a percentage sign
 //(we can format it to have a % sign between instances when we store it in the database)
+//Also works with the idea of having pulled text from the database to convert into an hours object
 -(id) initWithOneString:(NSString *)stringOfHours{
     self.hoursArray = [[NSMutableArray alloc] init];
     if(![stringOfHours isEqualToString:@"Closed"]){

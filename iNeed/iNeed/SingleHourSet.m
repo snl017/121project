@@ -20,27 +20,9 @@
     return ([hours length] == 4 && hoursDigits < 2400 && minutes < 60);
 }
 
-//This init method used when have opening and closing hours as separate strings.
-//Double check digit string lengths, and values as numbers (nothing higher than 2359 and nothing with greater than 59 in last two digits)
--(id) initWithOpeningDigits:(NSString *)openingDigits andClosingDigits:(NSString *)closingDigits{
-    self.closedAllDay = false;
-    if ([self inLegalHourFormat:openingDigits] && [self inLegalHourFormat:closingDigits]){ //all is okay
-        self.openingHours = [openingDigits integerValue];
-        self.closingHours = [closingDigits integerValue];
-        return self;
-    } else {
-        NSLog(@"ERROR: hours are not in proper format");
-        return NULL;
-    }
-}
-
--(id) initAsClosedAllDay{
-    self.closedAllDay = true;
-    return self;
-}
-
-
-//The idea behind this is to have pulled text from the database to convert into an hours object
+//This method is used to initial an hours object with a set of opening and closing hours
+//This string is formatted as opening-closing hours, where each is 4 digits in military time
+//Also works with the idea of having pulled text from the database to convert into an hours object
 -(id) initWithOneString:(NSString *)fourDigitsDashFourDigits{
     if(![fourDigitsDashFourDigits isEqualToString:@"Closed"]){
         NSArray *openClose = [fourDigitsDashFourDigits componentsSeparatedByString:@"-"];

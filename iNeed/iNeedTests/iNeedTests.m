@@ -24,10 +24,10 @@
     [PlaceDatabase createEditableCopyOfDatabaseIfNeeded];
     [PlaceDatabase initDatabase];
     //Create some test Hours
-    Hours *h1 = [[Hours alloc] initWithOpeningDigits:@"0100" andClosingDigits:@"0200"];
-    Hours *h2 = [[Hours alloc] initWithOpeningDigits:@"0200" andClosingDigits:@"0300"];
-    Hours *h3 = [[Hours alloc] initWithOpeningDigits:@"0300" andClosingDigits:@"0400"];
-    Hours *h4 = [[Hours alloc] initWithOpeningDigits:@"0400" andClosingDigits:@"0500"];
+    Hours *h1 = [[Hours alloc] initWithOneString:@"0100-0200"];
+    Hours *h2 = [[Hours alloc] initWithOneString:@"0200-0300"];
+    Hours *h3 = [[Hours alloc] initWithOneString:@"0300-0400"];
+    Hours *h4 = [[Hours alloc] initWithOneString:@"0400-0500"];
     Hours *closed = [[Hours alloc]initAsClosedAllDay];
     
     //Create a test place
@@ -52,7 +52,7 @@
 
 //test the place class
 - (void)testPlaceClassInit{
-    Hours *h1 = [[Hours alloc] initWithOpeningDigits:@"0100" andClosingDigits:@"0200"];
+    Hours *h1 = [[Hours alloc] initWithOneString:@"0100-0200"];
     Place *place = [[Place alloc]initWithSchool:@"placeSchool" andName:@"placeName" andLocation:@"placeLocation" andMondayHours:h1 andTuesdayHours:h1 andWednesdayHours:h1 andThursdayHours:h1 andFridayHours:h1 andSaturdayHours:h1 andSundayHours:h1 andPhoneString:@"phone" andEmailString:@"email" andLinkString:@"link" andExtraInfo:@"extras"];
     XCTAssertEqualObjects(place.school, @"placeSchool", @"d");
     XCTAssertEqualObjects(place.name, @"placeName", @"d");
@@ -77,7 +77,7 @@
 
 //Test out Hours class
 -(void)testHoursClass{
-    Hours *normalHours = [[Hours alloc] initWithOpeningDigits:@"0955" andClosingDigits:@"1700"];
+    Hours *normalHours = [[Hours alloc] initWithOneString:@"0955-1700"];
     XCTAssertNotNil(normalHours);
     
     NSString *dispString = [normalHours hoursToDisplayString];
@@ -138,7 +138,7 @@
 
 //Update Hours test
 -(void)testUpdateHours{
-    Hours *newHours = [[Hours alloc]initWithOpeningDigits:@"0000" andClosingDigits:@"1000"];
+    Hours *newHours = [[Hours alloc] initWithOneString:@"0000-1000"];
     [PlaceDatabase updateMondayHoursByName:@"testName" andNewHours: newHours];
     NSMutableArray *places= [PlaceDatabase fetchPlacesByName:@"testName"];
     Place *test = [places objectAtIndex:0];

@@ -2,6 +2,7 @@ from twisted.internet.protocol import Factory, Protocol
 from twisted.internet import reactor
 import constants
 import database
+import json
 
 
 class DatabaseServer(Protocol):
@@ -32,6 +33,11 @@ class DatabaseServer(Protocol):
 		rowsToSend = database.rowsUpdatedLaterThan(self.lastTime) 
 		for row in rowsToSend:
 			self.sendMessage(row)
+
+		#debugging stuff, so that something hasn't been updated at TIME:0
+		rows = database.rowsUpdatedLaterThan(0)	
+		self.transport.write(json.dumps(rows))
+
 		self.transport.loseConnection()
 
 	#message is a tuple representing a row
@@ -42,13 +48,15 @@ class DatabaseServer(Protocol):
 		#print message
 		#example message:
 		#(2, u'Pomona College', u'Frank Dining Hall', u'Pomona', None, None, None, None, None, None, None, u'(###)###-####', u'', u'frank.google.com', u'closed Fridays!\n', u'0')
-		
-		#PACKAGE DATA INTO A JSON FROM A TUPLE
-		#SEND IT TO THE CLIENT
-		self.transport.write("getting data!" + '\n') #needs modification. This is how to send a string. I don't know how to send a JSON.
+		#here, json.dumps transforms the tuple into an array that is a JSON formatted string
+		jsonOBJ = json.dumps(message)
+		self.transport.write(jsonOBJ + '\n')
+
+
+		#self.transport.write("getting data!" + '\n') #needs modification. This just sends a string whenever the server wants to be sending a message
 		#for debugging: 
 		#print "message sent to", self
-		#
+
 
 
 factory = Factory()

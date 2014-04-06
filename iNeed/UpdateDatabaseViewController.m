@@ -7,6 +7,7 @@
 //
 
 #import "UpdateDatabaseViewController.h"
+#import "PlaceDatabase.h"
 
 @interface UpdateDatabaseViewController ()
 
@@ -90,6 +91,9 @@
 			break;
             
 		case NSStreamEventHasBytesAvailable:
+            
+            
+            
             //get the data! Put it in the right place!
             //read bytes from the stream
             //collect them in a buffer
@@ -98,25 +102,63 @@
 
             if (theStream == self.inputStream) {
                 
+                NSError *error = nil;
+                id object = [NSJSONSerialization JSONObjectWithStream:self.inputStream options:kNilOptions error:&error];
                 
+                if(error) {
+                    /* this means JSON obj returnedData was malformed, so do something here */
+                    NSLog(@"ERROR");
+                }
+                
+                //just check to make sure is returning an array. it should be, but just in case,
+                //we initialize it to read as an id, and then check to see if it's an NSArray and then assign it as an NSArray
+                if([object isKindOfClass: [NSArray class]]) {
+                    NSArray *results = object;
+                    for(NSArray *row in results){
+                        //so this is where we now use these rows to change the database on the phone, using update statements.
+                        //using such methods as... (void)updateMondayHoursByName:(NSString *)name andNewHours:(Hours *)newHours
+                        [PlaceDatabase updateMondayHoursByName:row[2] andNewHours: [[Hours alloc] initWithOneString:row[4]]];
+                        [PlaceDatabase updateTuesdayHoursByName:row[2] andNewHours: [[Hours alloc] initWithOneString:row[5]]];
+                        [PlaceDatabase updateWednesdayHoursByName:row[2] andNewHours: [[Hours alloc] initWithOneString:row[6]]];
+                        [PlaceDatabase updateThursdayHoursByName:row[2] andNewHours: [[Hours alloc] initWithOneString:row[7]]];
+                        [PlaceDatabase updateFridayHoursByName:row[2] andNewHours: [[Hours alloc] initWithOneString:row[8]]];
+                        [PlaceDatabase updateSaturdayHoursByName:row[2] andNewHours: [[Hours alloc] initWithOneString:row[9]]];
+                        [PlaceDatabase updateSundayHoursByName:row[2] andNewHours: [[Hours alloc] initWithOneString:row[10]]];
+                    }
+                    
+                }
+                
+                
+                
+                /***
+                 THIS is stream stuff that Sarah did, by reading in from a buffer, but I do NOT think we need ANY of it
+                 
                 //IS THIS ENOUGH FOR A JSON? How much data are we sending?
                 uint8_t buffer[1024];
                 int len;
                 
                 while ([self.inputStream hasBytesAvailable]) {
+                    NSLog(@"enters while loop");
+
                     len = [self.inputStream read:buffer maxLength:sizeof(buffer)];
                     if (len > 0) { //still have data to read in
                         //Convert to JSON
                         //Use JSON to update database
                         
                         //Able to collect a string message using the following code:
-//                        NSString *output = [[NSString alloc] initWithBytes:buffer length:len encoding:NSASCIIStringEncoding];
-//                        if (nil != output) {
-//                            NSLog(@"server said: %@", output);
-//                        }
+                        NSString *output = [[NSString alloc] initWithBytes:buffer length:len encoding:NSASCIIStringEncoding];
+                        
+                        //would just use this if got an object...?
+                        //NSError *error = nil;
+                        //id object = [NSJSONSerialization JSONObjectWithData:output options:kNilOptions error:&error];
+                        
+                        if (nil != object) {
+                            NSLog(@"server said: %@", object);
+                        }
                     
                     }
                 }
+                 ***/
             }
 			break;
             

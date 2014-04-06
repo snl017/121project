@@ -81,8 +81,8 @@
 		DADDDEB218EBCE0200C25831 /* HighLevelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighLevelViewController.m; sourceTree = "<group>"; };
 		DADDDEBA18EBD1FD00C25831 /* SpecificCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecificCategoryViewController.h; sourceTree = "<group>"; };
 		DADDDEBB18EBD1FD00C25831 /* SpecificCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecificCategoryViewController.m; sourceTree = "<group>"; };
-		DADDDEC618EC8D1A00C25831 /* UpdateDatabaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateDatabaseViewController.h; sourceTree = "<group>"; };
-		DADDDEC718EC8D1A00C25831 /* UpdateDatabaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateDatabaseViewController.m; sourceTree = "<group>"; };
+		DADDDEC618EC8D1A00C25831 /* UpdateDatabaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UpdateDatabaseViewController.h; path = ../UpdateDatabaseViewController.h; sourceTree = "<group>"; };
+		DADDDEC718EC8D1A00C25831 /* UpdateDatabaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UpdateDatabaseViewController.m; path = ../UpdateDatabaseViewController.m; sourceTree = "<group>"; };
 		FB32A89118E90D88007F095E /* SingleHourSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleHourSet.h; sourceTree = "<group>"; };
 		FB32A89218E90D88007F095E /* SingleHourSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleHourSet.m; sourceTree = "<group>"; };
 		FB32A89418E9E820007F095E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -126,8 +126,6 @@
 		DA212CDA18B3EAB600C0DF8F = {
 			isa = PBXGroup;
 			children = (
-				DADDDEC618EC8D1A00C25831 /* UpdateDatabaseViewController.h */,
-				DADDDEC718EC8D1A00C25831 /* UpdateDatabaseViewController.m */,
 				FB32A89418E9E820007F095E /* Default-568h@2x.png */,
 				DA212CEC18B3EAB600C0DF8F /* iNeed */,
 				DA212D0B18B3EAB600C0DF8F /* iNeedTests */,
@@ -161,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				86314D2618B40CA4006FA727 /* Database */,
+				DADDDEC918EF81DA00C25831 /* UIControllers */,
 				86314D2018B40C74006FA727 /* Place.h */,
 				86314D2118B40C74006FA727 /* Place.m */,
 				86314D2918B986AD006FA727 /* Hours.h */,
@@ -170,14 +169,6 @@
 				DA212CF518B3EAB600C0DF8F /* iNeedAppDelegate.h */,
 				DA212CF618B3EAB600C0DF8F /* iNeedAppDelegate.m */,
 				DA212CF818B3EAB600C0DF8F /* Main.storyboard */,
-				DA4D4D7F18BDC42B00368DC8 /* PlaceDisplayViewController.h */,
-				DA4D4D8018BDC42B00368DC8 /* PlaceDisplayViewController.m */,
-				DA4976FB18B6D69E00BD4BC8 /* DetailsTableViewController.h */,
-				DA4976FC18B6D69E00BD4BC8 /* DetailsTableViewController.m */,
-				DADDDEBA18EBD1FD00C25831 /* SpecificCategoryViewController.h */,
-				DADDDEBB18EBD1FD00C25831 /* SpecificCategoryViewController.m */,
-				DADDDEB118EBCE0200C25831 /* HighLevelViewController.h */,
-				DADDDEB218EBCE0200C25831 /* HighLevelViewController.m */,
 				DA4D4D7C18BDB6CF00368DC8 /* Constants.h */,
 				DA4D4D7D18BDB6CF00368DC8 /* Constants.m */,
 				DA212CFE18B3EAB600C0DF8F /* Images.xcassets */,
@@ -213,6 +204,23 @@
 				DA212D0E18B3EAB600C0DF8F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DADDDEC918EF81DA00C25831 /* UIControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DADDDEC618EC8D1A00C25831 /* UpdateDatabaseViewController.h */,
+				DADDDEC718EC8D1A00C25831 /* UpdateDatabaseViewController.m */,
+				DA4D4D7F18BDC42B00368DC8 /* PlaceDisplayViewController.h */,
+				DA4D4D8018BDC42B00368DC8 /* PlaceDisplayViewController.m */,
+				DA4976FB18B6D69E00BD4BC8 /* DetailsTableViewController.h */,
+				DA4976FC18B6D69E00BD4BC8 /* DetailsTableViewController.m */,
+				DADDDEBA18EBD1FD00C25831 /* SpecificCategoryViewController.h */,
+				DADDDEBB18EBD1FD00C25831 /* SpecificCategoryViewController.m */,
+				DADDDEB118EBCE0200C25831 /* HighLevelViewController.h */,
+				DADDDEB218EBCE0200C25831 /* HighLevelViewController.m */,
+			);
+			name = UIControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -29,10 +29,10 @@
     [self initNetworkCommunication];
     [self initTimeStamp];
     [self sendTimeStamp];
+    [self updateTimeAndClose];
     
     
-    //This will eventually be us setting the "last updated" to the current time stamp
-    //[[NSUserDefaults standardUserDefaults]setObject:currentTime forKey:@"lastUpdate"];
+    
     
 	// Do any additional setup after loading the view.
 }
@@ -123,13 +123,26 @@
 		case NSStreamEventErrorOccurred:
 			NSLog(@"Can not connect to the host!");
 			break;
-            
+        
+        //The update is finished!
 		case NSStreamEventEndEncountered:
-			break;
+            [self.inputStream close];
+            [self.outputStream close];
+            [self.inputStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+            [self.outputStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+            
+            //Segue back!!!!!
+            //DO THIS
+            break;
             
 		default:
 			NSLog(@"Unknown event");
             }
+}
+
+-(void)updateTimeAndClose{
+    //setting the "last updated" to the current time stamp
+    [[NSUserDefaults standardUserDefaults]setObject:self.currentTime forKey:@"lastUpdate"];
 }
 
 - (void)didReceiveMemoryWarning

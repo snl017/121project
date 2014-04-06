@@ -20,5 +20,6 @@
 -(void)initTimeStamp;
 -(void)initNetworkCommunication;
 -(void)sendTimeStamp;
+-(void)updateTimeAndClose;
 
 @end

@@ -43,23 +43,6 @@ class DatabaseServer(Protocol):
 		self.transport.write(json.dumps(rows))
 		self.transport.loseConnection()
 
-	#message is a tuple representing a row
-	#packages it into a JSON
-	#sends the information to the client
-	def sendMessage(self,message):
-		#for debugging:
-		#print message
-		#example message:
-		#(2, u'Pomona College', u'Frank Dining Hall', u'Pomona', None, None, None, None, None, None, None, u'(###)###-####', u'', u'frank.google.com', u'closed Fridays!\n', u'0')
-		#here, json.dumps transforms the tuple into an array that is a JSON formatted string
-		jsonOBJ = json.dumps(message)
-		self.transport.write(jsonOBJ + '\n')
-
-
-		#self.transport.write("getting data!" + '\n') #needs modification. This just sends a string whenever the server wants to be sending a message
-		#for debugging: 
-		#print "message sent to", self
-
 
 
 factory = Factory()

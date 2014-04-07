@@ -1,2 +1,9 @@
 Food:Dining Halls:Frary Dining Hall
 Food:Dining Halls:Frank Dining Hall
+Food:On-Campus Eateries & Groceries:Coop Fountain
+Food:On-Campus Eateries & Groceries:Coop Store
+Resource Centers & Offices:Academic Centers & Offices:Writing Center
+Resource Centers & Offices:Non-Academic Centers & Offices:Study Abroad Office
+Safety & Health:Safety & Health:Campus Safety
+Living on Campus:Services on Campus:ITS
+Living on Campus:Stores on Campus:Coop Store

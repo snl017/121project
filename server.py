@@ -36,8 +36,11 @@ class DatabaseServer(Protocol):
 
 		#debugging stuff, so that something hasn't been updated at TIME:0
 		rows = database.rowsUpdatedLaterThan(0)	
-		self.transport.write(json.dumps(rows))
+		#this just does the first 2 places to update, because they are the only ones with initialized hours in the database
+		rows = rows[0:2]
 
+		#now we're back to actual code we keep for GOOD
+		self.transport.write(json.dumps(rows))
 		self.transport.loseConnection()
 
 	#message is a tuple representing a row

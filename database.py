@@ -65,7 +65,8 @@ placesFiles = open("places.txt", "r")
 
 for line in placesFiles:
     # Parse values
-    vals = line.split(":")
+    #I changed this to split on "%" instead of ":" because there are colons in website urls
+    vals = line.split("%")
     c.execute(insertPlaceStmt, vals)
 
 
@@ -101,7 +102,7 @@ updateDatabase("Frary Dining Hall", "wednesday", "0200-0600%0700-1200", "0")
 updateDatabase("Frary Dining Hall", "thursday", "0200-0600%0700-1200", "0")
 updateDatabase("Frary Dining Hall", "friday", "0200-0600%0700-1200", "0")
 updateDatabase("Frary Dining Hall", "saturday", "0200-0600%0700-1200", "0")
-updateDatabase("Frary Dining Hall", "sunday", "0200-0600%0700-1200", "0")
+updateDatabase("Frary Dining Hall", "sunday", "0200-1200", "0")
 
 #Test the rowsToSend method
 #rowsToSend = rowsUpdatedLaterThan(1)

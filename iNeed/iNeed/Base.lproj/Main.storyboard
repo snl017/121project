@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="IiC-PI-4K6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="IiC-PI-4K6">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--High Level View Controller - Claremont Clock-->
@@ -91,8 +91,13 @@
                     <navigationItem key="navigationItem" title="Update Database" id="d3b-1c-4bP" customClass="U">
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="Op3-FP-GnN"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="yDc-75-Txe" kind="push" identifier="returnHomeAfterUpdate" id="yBg-dD-RB7"/>
+                        <segue destination="C66-QZ-WQf" kind="unwind" unwindAction="unwindToMainMenu:" id="Y7E-lh-ibP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T1C-eO-rJa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="C66-QZ-WQf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1077" y="-1158"/>
         </scene>
@@ -184,7 +189,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlacesCell" textLabel="0vb-A3-Ocp" detailTextLabel="Igu-3O-pQo" style="IBUITableViewCellStyleSubtitle" id="BOd-Ft-mWS">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BOd-Ft-mWS" id="4Mw-YV-xBs">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -354,9 +359,10 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="sMl-kX-pzG"/>
-        <segue reference="bKi-sB-bI3"/>
-        <segue reference="WiA-dF-Sjt"/>
+        <segue reference="QPM-5t-vFm"/>
+        <segue reference="yBg-dD-RB7"/>
         <segue reference="kI0-q4-8nU"/>
+        <segue reference="WiA-dF-Sjt"/>
+        <segue reference="sMl-kX-pzG"/>
     </inferredMetricsTieBreakers>
 </document>

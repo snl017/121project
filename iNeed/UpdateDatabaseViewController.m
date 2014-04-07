@@ -8,6 +8,7 @@
 
 #import "UpdateDatabaseViewController.h"
 #import "PlaceDatabase.h"
+#import "HighLevelViewController.h"
 
 @interface UpdateDatabaseViewController ()
 
@@ -173,8 +174,11 @@
             [self.inputStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
             [self.outputStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
             
-            //Segue back!!!!!
+            //Segue back!!!!, in view controllers, to the main screen
             //DO THIS
+            [self unwindToMainMenu:nil];
+
+            
             break;
             
 		default:
@@ -191,6 +195,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)unwindToMainMenu:(UIStoryboardSegue*)sender
+{
+    //I think there's something to this, as I have added it in storyboard and I think it should work
+    //but I don't know what goes here
 }
 
 @end

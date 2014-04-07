@@ -72,6 +72,8 @@
     //study abroad doesn't have hours...
     Place *studyAbroad = [[Place alloc] initWithSchool:PomonaSchool andName:@"Study Abroad Office" andLocation:@"Sumner Hall, Pomona College" andMondayHours:workDay andTuesdayHours:workDay andWednesdayHours:workDay andThursdayHours:workDay andFridayHours:workDay andSaturdayHours:closed andSundayHours:closed andPhoneString:@"(909) 621-8154" andEmailString:@"sabroad@pomona.edu" andLinkString:@"http://www.pomona.edu/administration/study-abroad/" andExtraInfo:None];
     
+    Place *its = [[Place alloc] initWithSchool:PomonaSchool andName:@"ITS" andLocation:@"156 E. 7th St" andMondayHours:workDay andTuesdayHours:workDay andWednesdayHours:workDay andThursdayHours:workDay andFridayHours:workDay andSaturdayHours:closed andSundayHours:closed andPhoneString:@"(909) 621-8061" andEmailString:@"ServiceDesk@pomona.edu" andLinkString:@"its.pomona.edu" andExtraInfo:@"Extended hours staffed by students. Building open 24/7."];
+    
     
     //Empty the database if necessary
     [PlaceDatabase emptyDatabase];
@@ -85,6 +87,7 @@
     [PlaceDatabase savePlace:coopStore.name withSpecificCategory:StoresNarrow andBroadCategory:LivingOnCampusBroad];
     [PlaceDatabase saveItemWithPlace:coopStore andSpecificCategory:EateryGroceryNarrow andBroadCategory:FoodBroad];
     [PlaceDatabase saveItemWithPlace:writingCenter andSpecificCategory:AcademicRCNarrow andBroadCategory:ResourceCentersOfficesBroad];
+    [PlaceDatabase saveItemWithPlace:its andSpecificCategory:ServicesNarrow andBroadCategory:LivingOnCampusBroad];
     
     
     

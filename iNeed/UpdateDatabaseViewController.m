@@ -116,7 +116,7 @@
                 if([object isKindOfClass: [NSArray class]]) {
                     NSArray *results = object;
                     for(NSArray *row in results){
-                        //so this is where we now use these rows to change the database on the phone, using update statements.
+                        //This is where we now use these rows to change the database on the phone, using update statements.
                         //using such methods as... (void)updateMondayHoursByName:(NSString *)name andNewHours:(Hours *)newHours
                         [PlaceDatabase updateMondayHoursByName:row[2] andNewHours: [[Hours alloc] initWithOneString:row[4]]];
                         [PlaceDatabase updateTuesdayHoursByName:row[2] andNewHours: [[Hours alloc] initWithOneString:row[5]]];
@@ -142,7 +142,7 @@
             [self.inputStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
             [self.outputStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
             
-            //Segue back!!!!, in view controllers, to the main screen
+            //Segue back, in view controllers, to the main screen
             //DO THIS
             [self unwindToMainMenu:nil];
 

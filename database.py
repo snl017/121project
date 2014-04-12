@@ -47,7 +47,7 @@ c = conn.cursor()
 #Set up the initialization of the database: create our tables.
 #These two lines are necessary while we're changing the things we want to input but won't be used once we're updating all the time
 c.execute('DROP TABLE IF EXISTS places')
-c.execute('DROP TABLE IF EXISTS places')
+c.execute('DROP TABLE IF EXISTS categories')
 #We want these lines to stay
 c.execute( 'CREATE TABLE IF NOT EXISTS places (rowid INTEGER PRIMARY KEY AUTOINCREMENT, school TEXT, name TEXT, location TEXT, monday TEXT, tuesday TEXT, wednesday TEXT, thursday TEXT, friday TEXT, saturday TEXT, sunday TEXT, phone TEXT, email TEXT, link TEXT, extraInfo TEXT, lastUpdate TEXT)')
 c.execute('CREATE TABLE IF NOT EXISTS categories (rowid INTEGER PRIMARY KEY AUTOINCREMENT, broad TEXT, specific TEXT, name TEXT)')

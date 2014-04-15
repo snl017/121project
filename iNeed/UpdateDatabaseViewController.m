@@ -28,15 +28,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
     [self initNetworkCommunication];
     [self initTimeStamp];
     [self sendTimeStamp];
     [self updateTimeAndClose];
-    
-    
-    
-    
-	// Do any additional setup after loading the view.
+
 }
 
 -(void)initTimeStamp
@@ -94,7 +93,6 @@
 		case NSStreamEventHasBytesAvailable:
             
             
-            
             //get the data! Put it in the right place!
             //read bytes from the stream
             //collect them in a buffer
@@ -144,7 +142,9 @@
             
             //Segue back, in view controllers, to the main screen
             //DO THIS
-            [self unwindToMainMenu:nil];
+            //[self unwindToMainMenu:nil];
+            //[self performSegueWithIdentifier:@"unwinder" sender:self];
+            [self.navigationController popViewControllerAnimated:YES];
 
             
             break;
@@ -165,10 +165,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)unwindToMainMenu:(UIStoryboardSegue*)sender
-{
-    //I think there's something to this, as I have added it in storyboard and I think it should work
-    //but I don't know what goes here
-}
+//- (IBAction)unwindToMainMenu:(UIStoryboardSegue*)sender
+//{
+//    //[self performSegueWithIdentifier:@"unwindToMain" sender:self];
+//    //NSLog(@"in unwindToMainMenu");
+//    
+//    //[self.navigationController popViewControllerAnimated:YES];
+//    
+//    //I think there's something to this, as I have added it in storyboard and I think it should work
+//    //but I don't know what goes here
+//}
 
 @end

@@ -1,9 +1,46 @@
-Food:Dining Halls:Frary Dining Hall
-Food:Dining Halls:Frank Dining Hall
-Food:On-Campus Eateries & Groceries:Coop Fountain
-Food:On-Campus Eateries & Groceries:Coop Store
-Resource Centers & Offices:Academic Centers & Offices:Writing Center
-Resource Centers & Offices:Non-Academic Centers & Offices:Study Abroad Office
-Safety & Health:Safety & Health:Campus Safety
-Living on Campus:Services on Campus:ITS
-Living on Campus:Stores on Campus:Coop Store
+Food^^^Dining Halls^^^Frary Dining Hall
+Food^^^Dining Halls^^^Frank Dining Hall
+Food^^^Dining Halls^^^Oldenborg Dining Hall
+Food^^^On-Campus Eateries & Groceries^^^Coop Fountain
+Food^^^On-Campus Eateries & Groceries^^^Coop Store
+Food^^^On-Campus Eateries & Groceries^^^Huntley Bookstore
+Food^^^On-Campus Eateries & Groceries^^^Honnold Cafe
+Food^^^On-Campus Eateries & Groceries^^^Sagehen Cafe
+Resource Centers & Offices^^^Academic Centers & Offices^^^Writing Center
+Resource Centers & Offices^^^Academic Centers & Offices^^^Honnold-Mudd Library
+Resource Centers & Offices^^^Academic Centers & Offices^^^Special Collections
+Resource Centers & Offices^^^Academic Centers & Offices^^^History Reading Room
+Resource Centers & Offices^^^Academic Centers & Offices^^^Pomona College Museum of Art
+Resource Centers & Offices^^^Academic Centers & Offices^^^Registrar's Office
+Resource Centers & Offices^^^Academic Centers & Offices^^^Quantitative Skills Center
+Resource Centers & Offices^^^Academic Centers & Offices^^^Foreign Language Fellows
+Resource Centers & Offices^^^Academic Centers & Offices^^^Music Library
+Resource Centers & Offices^^^Non-Academic Centers & Offices^^^Study Abroad Office
+Resource Centers & Offices^^^Non-Academic Centers & Offices^^^Admissions Office
+Resource Centers & Offices^^^Non-Academic Centers & Offices^^^Queer Resource Center
+Resource Centers & Offices^^^Non-Academic Centers & Offices^^^Outdoor Education Center
+Resource Centers & Offices^^^Non-Academic Centers & Offices^^^Human Resources
+Resource Centers & Offices^^^Non-Academic Centers & Offices^^^Office of Campus Life
+Resource Centers & Offices^^^Non-Academic Centers & Offices^^^Women's Union
+Resource Centers & Offices^^^Non-Academic Centers & Offices^^^Career Development Office
+Resource Centers & Offices^^^Non-Academic Centers & Offices^^^Associated Students of Pomona College
+Resource Centers & Offices^^^Non-Academic Centers & Offices^^^KSPC
+Resource Centers & Offices^^^Non-Academic Centers & Offices^^^Draper Center
+Resource Centers & Offices^^^Non-Academic Centers & Offices^^^Financial Aid Office
+Safety & Health^^^Safety & Health^^^Campus Safety
+Safety & Health^^^Safety & Health^^^Student Health Services
+Safety & Health^^^Safety & Health^^^Monsour Counseling Center
+Safety & Health^^^Safety & Health^^^Dean On Call
+Safety & Health^^^Safety & Health^^^RA On Call
+Living on Campus^^^Services on Campus^^^ITS
+Living on Campus^^^Services on Campus^^^Claremont Connect
+Living on Campus^^^Services on Campus^^^Housekeeping
+Living on Campus^^^Services on Campus^^^Big Bridges Box Office
+Living on Campus^^^Services on Campus^^^Seaver Theater Box Office
+Living on Campus^^^Services on Campus^^^Pendleton Pool
+Living on Campus^^^Services on Campus^^^Haldeman Pool
+Living on Campus^^^Services on Campus^^^Rains Center
+Living on Campus^^^Services on Campus^^^Associated Students of Pomona College
+Living on Campus^^^Services on Campus^^^Mailroom
+Living on Campus^^^Stores on Campus^^^Coop Store
+Living on Campus^^^Stores on Campus^^^Huntley Bookstore

@@ -64,9 +64,8 @@ insertPlaceStmt = 'INSERT INTO places (school, name, location, phone, email, lin
 placesFiles = open("places.txt", "r")
 
 for line in placesFiles:
-    # Parse values
-    #I changed this to split on "%" instead of ":" because there are colons in website urls
-    vals = line.split("%")
+    # Parse values, that are split by the character sequence "^^^"
+    vals = line.split("^^^")
     c.execute(insertPlaceStmt, vals)
 
 
@@ -78,7 +77,7 @@ categoriesFile = open("categories.txt", "r")
 
 for line in categoriesFile:
 	#Parse values
-	vals = line.split(":")
+	vals = line.split("^^^")
 	c.execute(insertToCatStmt, vals)
 
 # Done!

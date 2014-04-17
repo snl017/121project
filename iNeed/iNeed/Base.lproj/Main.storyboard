@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12E3067" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="IiC-PI-4K6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="IiC-PI-4K6">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--High Level View Controller - Claremont Clock-->
@@ -363,9 +363,9 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="WiA-dF-Sjt"/>
-        <segue reference="QPM-5t-vFm"/>
-        <segue reference="kI0-q4-8nU"/>
         <segue reference="sMl-kX-pzG"/>
+        <segue reference="QPM-5t-vFm"/>
+        <segue reference="WiA-dF-Sjt"/>
+        <segue reference="kI0-q4-8nU"/>
     </inferredMetricsTieBreakers>
 </document>

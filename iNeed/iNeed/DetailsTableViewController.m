@@ -74,6 +74,9 @@
     NSString *dayOfWeek=[[day stringFromDate:[NSDate date]]lowercaseString];
     NSString *toDisplay = @"Today ";
     
+    
+    //THERE IS A PROBLEM HERE. b/c the hours for today may include multiple strings displayed with line breaks,
+    //we want to show today's hours in small font in the table view, but it only does the first line of the hours
     if ([dayOfWeek  isEqual: @"monday"]){
         toDisplay= [toDisplay stringByAppendingString: place.mondayHours.hoursToDisplayString];
     }

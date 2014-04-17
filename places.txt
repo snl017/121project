@@ -1,8 +1,8 @@
-Pomona College^^^Frary Dining Hall^^^Pomona^^^(###)###-####^^^frary.something@gmail.com^^^frary.google.com^^^
-Pomona College^^^Frank Dining Hall^^^Pomona^^^(###)###-####^^^^^^frank.google.com^^^closed Fridays!
-Pomona College^^^Coop Fountain^^^Smith Campus Center, Pomona College\n170 E 6th St^^^(909)607-3293^^^^^^http://aspc.pomona.edu/eatshop/coop-fountain/^^^
-Pomona College^^^Coop Store^^^Smith Campus Center, Pomona College\n170 E 6th St^^^(909)607-2264^^^coopstore@aspc.pomona.edu^^^http://coopstore.pomona.edu^^^
-Pomona College^^^Writing Center^^^148 Smith Campus Center^^^(909)607-4599^^^Writing.Center@pomona.edu^^^http://www.pomona.edu/academics/resources/writing-center/^^^
-Pomona College^^^Study Abroad Office^^^Sumner Hall, Pomona College^^^(909)621-8154^^^sabroad@pomona.edu^^^http://www.pomona.edu/administration/study-abroad/^^^
-CUC^^^Campus Safety^^^Pendleton Business Building\n150 E 8th St\nClaremont, CA 91711^^^(909)607-2000^^^dispatch@cuc.claremont.edu^^^http://www.cuc.claremont.edu/campussafety/^^^
-Pomona College^^^ITS^^^156 E. 7th St^^^(909) 621-8061^^^ServiceDesk@pomona.edu^^^its.pomona.edu^^^Extended hours staffed by students. Building open 24/7.
+Pomona College^^^Frary Dining Hall^^^Pomona^^^(###)###-####^^^frary.something@gmail.com^^^frary.google.com^^^^^^http://www.pomona.edu/administration/dining/facilities-hours/hours.aspx
+Pomona College^^^Frank Dining Hall^^^Pomona^^^(###)###-####^^^^^^frank.google.com^^^closed Fridays!^^^http://www.pomona.edu/administration/dining/facilities-hours/hours.aspx
+Pomona College^^^Coop Fountain^^^Smith Campus Center, Pomona College\n170 E 6th St^^^(909)607-3293^^^^^^http://aspc.pomona.edu/eatshop/coop-fountain/^^^^^^http://aspc.pomona.edu/eatshop/on-campus/
+Pomona College^^^Coop Store^^^Smith Campus Center, Pomona College\n170 E 6th St^^^(909)607-2264^^^coopstore@aspc.pomona.edu^^^http://coopstore.pomona.edu^^^^^^http://coopstore.pomona.edu/
+Pomona College^^^Writing Center^^^148 Smith Campus Center^^^(909)607-4599^^^Writing.Center@pomona.edu^^^http://www.pomona.edu/academics/resources/writing-center/^^^^^^https://my.pomona.edu/ICS/Academics/Writing_Center_Page.jnz
+Pomona College^^^Study Abroad Office^^^Sumner Hall, Pomona College^^^(909)621-8154^^^sabroad@pomona.edu^^^http://www.pomona.edu/administration/study-abroad/^^^^^^http://www.pomona.edu/administration/
+CUC^^^Campus Safety^^^Pendleton Business Building\n150 E 8th St\nClaremont, CA 91711^^^(909)607-2000^^^dispatch@cuc.claremont.edu^^^http://www.cuc.claremont.edu/campussafety/^^^^^^http://www.cuc.claremont.edu/campussafety/
+Pomona College^^^ITS^^^156 E. 7th St^^^(909) 621-8061^^^ServiceDesk@pomona.edu^^^its.pomona.edu^^^Extended hours staffed by students. Building open 24/7.^^^http://its.pomona.edu/2007/01/14/start-of-semester-hours/

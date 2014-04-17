@@ -39,7 +39,9 @@ def rowsUpdatedLaterThan(time):
 	conn.commit()
 	return toReturn
 
-##The code for creating the database & reading in the static data provided in text files. Needs to be run exactly once to create/fill the database.
+#############################################################################################
+##The code for creating the database & reading in the static data provided in text files. 
+##Needs to be run exactly once to create/fill the database.
 
 conn = sqlite3.connect('claremontClock.sqlite3')
 c = conn.cursor()
@@ -49,7 +51,7 @@ c = conn.cursor()
 c.execute('DROP TABLE IF EXISTS places')
 c.execute('DROP TABLE IF EXISTS categories')
 #We want these lines to stay
-c.execute( 'CREATE TABLE IF NOT EXISTS places (rowid INTEGER PRIMARY KEY AUTOINCREMENT, school TEXT, name TEXT, location TEXT, monday TEXT, tuesday TEXT, wednesday TEXT, thursday TEXT, friday TEXT, saturday TEXT, sunday TEXT, phone TEXT, email TEXT, link TEXT, extraInfo TEXT, lastUpdate TEXT)')
+c.execute( 'CREATE TABLE IF NOT EXISTS places (rowid INTEGER PRIMARY KEY AUTOINCREMENT, school TEXT, name TEXT, location TEXT, monday TEXT, tuesday TEXT, wednesday TEXT, thursday TEXT, friday TEXT, saturday TEXT, sunday TEXT, phone TEXT, email TEXT, link TEXT, extraInfo TEXT, lastUpdate TEXT, scrapingSite TEXT)')
 c.execute('CREATE TABLE IF NOT EXISTS categories (rowid INTEGER PRIMARY KEY AUTOINCREMENT, broad TEXT, specific TEXT, name TEXT)')
 
 
@@ -57,7 +59,7 @@ c.execute('CREATE TABLE IF NOT EXISTS categories (rowid INTEGER PRIMARY KEY AUTO
 #Insert items into the places table & add their name to the places list for updates
 
 #the statement to use for inserting into the database
-insertPlaceStmt = 'INSERT INTO places (school, name, location, phone, email, link, extraInfo, lastUpdate) VALUES (?, ?, ?, ?, ?, ?, ?, "0")'
+insertPlaceStmt = 'INSERT INTO places (school, name, location, phone, email, link, extraInfo, lastUpdate, scrapingSite) VALUES (?, ?, ?, ?, ?, ?, ?, "0", ?)'
 
 #Open the file with information
 #Note: each line of the file is a place with "school:name:location:phone:email:link:extraInfo"
@@ -87,7 +89,6 @@ conn.commit()
 #test the update statement, and actually inserts hours so that we can update in the database on the phone
 #of course, these hours should initiated by the scraping we do (NEXT STEPPPP)
 # formatted as nameToUpdate,dayToUpdate,newHours,timeStamp
-# idk what's going on with the last input of time stamp... Sarah?
 updateDatabase("Frank Dining Hall", "monday", "0200-0600%0700-1200", "0")
 updateDatabase("Frank Dining Hall", "tuesday", "0200-0600%0700-1200", "0")
 updateDatabase("Frank Dining Hall", "wednesday", "0200-0600%0700-1200", "0")

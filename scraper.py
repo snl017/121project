@@ -19,19 +19,43 @@ import string
 #Accepts a BeautifulSoup Object String
 def military(n):
 	encoded = n.encode('utf-8')
-	formatted = encoded.translate(None, ' .')
+	formatted = encoded.translate(None, ' .:')
 	uniString = unicode(formatted, "UTF-8")
 	uniString = uniString.replace(u"\u00A0", "")
 	strFormat = str(uniString.encode('utf-8'))
-	strFormat = strFormat.replace("midnight", "2400")
-	strFormat = strFormat.replace("noon", "1200")
+
+	#Replace Keywords
+	strFormat = strFormat.replace("midnight", "2400pm")
+	strFormat = strFormat.replace("noon", "1200pm")
+
+	#Add 0s as necessary
+	#Parse first hours number via regex
+	numbersPattern = re.compile("\d+")
+	numbersArray = testPattern.findall(strFormat)
+	print collect
+
+	amPmPattern = re.compile("[a-zA-Z]+")
+	amPmArray = amPmPattern.findall(strFormat)
+	print amPmArray
+
+	#Checking for am and pm and adding accordingly
+	for i in range len(amPmArray):
+		if amPmArray[i] == "pm":
+			rawCorrespondingTime = numbersArray[i];
+			#parse it into integer
+			rawIntTime = (int(rawCorrespondingTime)%12) + 12
+
+
 	return strFormat
 
+
+
+#TODO - this function gives us multiple hour sets if need be
+#def parseHourSets(n)
 
 	#TODO
 	#Convert to military time based on if am or pm
 	#also add zeroes.
-	#if "midnight" in 
 
 
 #Test with http://aspc.pomona.edu/eatshop/on-campus/
@@ -52,7 +76,6 @@ for elt in eatshopHonnoldArray:
 #find actual hours. Find monday by string search and get sibling for hours
 mondayElt = eatshopHonnoldHours.find(text = (re.compile(".Mon."))).parent.next_sibling.next_sibling #first nextsibling gives whitespace
 monHours = military(mondayElt.string)
-print monHours
 
 
 

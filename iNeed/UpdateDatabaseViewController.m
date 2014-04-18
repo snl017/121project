@@ -25,19 +25,32 @@
     return self;
 }
 
+//called once when view is loaded into memory when the app starts
+//add things that the view will never exist without in form
+//thigns here execute before the user sees the view
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 }
 
+//called every time view appears
+//things that happen after the view has appeared to the user
+//we do all our communication with the server here
+//can show waiting message here, if we want --------------------- ANNA --------- waiting message? 
 -(void)viewDidAppear:(BOOL)animated{
+    //open connection
     [self initNetworkCommunication];
+    //set current time and access when was last updated
     [self initTimeStamp];
+    //send last updated time stamp to database on server
     [self sendTimeStamp];
+    //just reset last update to current time
     [self updateTimeAndClose];
 
 }
 
+//set self.currentTime to format string of current time "TIME:<time>"
+//set self.lastUpdate to format string of when the database(?) was last updated
 -(void)initTimeStamp
 {
     //set the current time
@@ -50,23 +63,23 @@
     
     //get the last update from memory
     self.lastUpdate = [[NSUserDefaults standardUserDefaults]objectForKey:@"lastUpdate"];
-    
-    //if the old time is nil:
+    //if the old time is nil, just set lastUpdate to 0
     if (!self.lastUpdate){
         //create the correctly-formatted string
         self.lastUpdate = @"TIME:0";
     }
-    //otherwise, the old time is the time we want to send to the server.
-
-    
 }
 
+//write time stamp of when last updated from phone to server
 -(void)sendTimeStamp
 {
 	NSData *data = [[NSData alloc] initWithData:[self.lastUpdate dataUsingEncoding:NSASCIIStringEncoding]];
 	[self.outputStream write:[data bytes] maxLength:[data length]];
 }
 
+//create streams
+//init with local host on port 80 (for mock server right now)
+//open and run streams
 - (void)initNetworkCommunication {
     CFReadStreamRef readStream;
     CFWriteStreamRef writeStream;
@@ -82,7 +95,9 @@
     [self.outputStream open];
 }
 
-
+//handles communication event with server.
+//if receiving data, will be rows to update, unpackage and update server on phone
+//if end event received pop view controller and return to home screen
 - (void)stream:(NSStream *)theStream handleEvent:(NSStreamEvent)streamEvent {
 	switch (streamEvent) {
             
@@ -91,8 +106,6 @@
 			break;
             
 		case NSStreamEventHasBytesAvailable:
-            
-            
             //get the data! Put it in the right place!
             //read bytes from the stream
             //collect them in a buffer
@@ -141,12 +154,9 @@
             [self.outputStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
             
             //Segue back, in view controllers, to the main screen
-            //DO THIS
-            //[self unwindToMainMenu:nil];
-            //[self performSegueWithIdentifier:@"unwinder" sender:self];
+            //achieved by popping view controller off the top of the stack
             [self.navigationController popViewControllerAnimated:YES];
 
-            
             break;
             
 		default:
@@ -154,8 +164,8 @@
             }
 }
 
+//setting the "last updated" for the row to the current time stamp (because it has just been updated)
 -(void)updateTimeAndClose{
-    //setting the "last updated" to the current time stamp
     [[NSUserDefaults standardUserDefaults]setObject:self.currentTime forKey:@"lastUpdate"];
 }
 
@@ -164,16 +174,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-//- (IBAction)unwindToMainMenu:(UIStoryboardSegue*)sender
-//{
-//    //[self performSegueWithIdentifier:@"unwindToMain" sender:self];
-//    //NSLog(@"in unwindToMainMenu");
-//    
-//    //[self.navigationController popViewControllerAnimated:YES];
-//    
-//    //I think there's something to this, as I have added it in storyboard and I think it should work
-//    //but I don't know what goes here
-//}
 
 @end

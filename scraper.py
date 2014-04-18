@@ -22,11 +22,16 @@ def military(n):
 	formatted = encoded.translate(None, ' .')
 	uniString = unicode(formatted, "UTF-8")
 	uniString = uniString.replace(u"\u00A0", "")
-	return uniString
+	strFormat = str(uniString.encode('utf-8'))
+	strFormat = strFormat.replace("midnight", "2400")
+	strFormat = strFormat.replace("noon", "1200")
+	return strFormat
+
 
 	#TODO
 	#Convert to military time based on if am or pm
 	#also add zeroes.
+	#if "midnight" in 
 
 
 #Test with http://aspc.pomona.edu/eatshop/on-campus/
@@ -47,7 +52,7 @@ for elt in eatshopHonnoldArray:
 #find actual hours. Find monday by string search and get sibling for hours
 mondayElt = eatshopHonnoldHours.find(text = (re.compile(".Mon."))).parent.next_sibling.next_sibling #first nextsibling gives whitespace
 monHours = military(mondayElt.string)
-
+print monHours
 
 
 

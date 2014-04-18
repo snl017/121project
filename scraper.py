@@ -14,5 +14,5 @@ test = soup.find_all('li', text = (re.compile("Tuesday.") or re.compile("Tuesday
 for elt in test:
 	print(str(elt))
 
-
+#print
 #print(soup.prettify())

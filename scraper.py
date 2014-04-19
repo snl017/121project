@@ -3,6 +3,12 @@ from urllib2 import urlopen
 from bs4 import BeautifulSoup
 import re
 import string
+import database
+
+#Created by Anna Turner and Shannon Lubetich
+#4/15/2014
+
+
 
 #This is a testing section. We get the url and open it below.
 # testURL = "http://flrc.pomona.edu/"
@@ -12,8 +18,9 @@ import string
 #Then we look for the Hours of Operation Section
 # test = soup.find_all('li', text = (re.compile("Tuesday.") or re.compile("Tuesday.")))
 
-# for elt in test:
-# 	print(str(elt))
+
+
+
 
 
 #helper method for calculating military time
@@ -82,10 +89,6 @@ def military(n):
 #TODO - this function gives us multiple hour sets if need be
 #def parseHourSets(n)
 
-	#TODO
-	#Convert to military time based on if am or pm
-	#also add zeroes.
-
 
 #Test with http://aspc.pomona.edu/eatshop/on-campus/
 eatshopURL = "http://aspc.pomona.edu/eatshop/on-campus/"
@@ -102,14 +105,53 @@ for elt in eatshopHonnoldArray:
 	if(eatshopHonnoldHours != None and eatshopHonnoldHours != -1):
 		break
 
-#find actual hours. Find monday by string search and get sibling for hours
-mondayElt = eatshopHonnoldHours.find(text = (re.compile(".Mon."))).parent.next_sibling.next_sibling #first nextsibling gives whitespace
-monHours = military(mondayElt.string)
-#print(military("700am - Midnight"))
-#print(military("NOON - 530 pm"))
+
+arrayOfDayStrings = ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"]
+dictOfDaysToHours = {}
+
+for day in arrayOfDayStrings : 
+	dayRegex = ".*" + day + ".*"
+	#if the name of the day is explicitly here, then access hours
+	desiredSection = eatshopHonnoldHours.find(text = re.compile(dayRegex))
+	if desiredSection :
+		dayElt = desiredSection.parent.next_sibling.next_sibling #first nextsibling gives whitespace
+		dayHours = military(dayElt.string)
+		dictOfDaysToHours[day] = dayHours
+
+#temporary way of accounting for "Mon - Thurs"
+"""TODO: deal with something says "closed", or if hours are simply just not listed for that day if it is closed"""
+currHourSet = ""
+for day in arrayOfDayStrings :
+	if day in dictOfDaysToHours.keys()  :
+		currHourSet = dictOfDaysToHours[day]
+	else : 
+		dictOfDaysToHours[day] = currHourSet
+
+#now I need to know how to update the database on the server based on this info. hey update statements? 
+#def updateDatabase(nameToUpdate,dayToUpdate,newHours,timeStamp):
+databaseDayStrings = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+
+for i in range(len(arrayOfDayStrings)) :
+	database.updateDatabase("Honnold Cafe", databaseDayStrings[i], str(dictOfDaysToHours[arrayOfDayStrings[i]]), "0")
+	#UHHH PROBLEM. i'm assuming we need to get the timestamp of when we're updating this, 
+	#and that's going to need to be basically the same "time since 1972"??? what was it??? 
 
 
 
+database.updateDatabase("Frank Dining Hall", "monday", "0200-0600%0700-1200", "0")
+database.updateDatabase("Frank Dining Hall", "tuesday", "0200-0600%0700-1200", "0")
+database.updateDatabase("Frank Dining Hall", "wednesday", "0200-0600%0700-1200", "0")
+database.updateDatabase("Frank Dining Hall", "thursday", "0200-0600%0700-1200", "0")
+database.updateDatabase("Frank Dining Hall", "friday", "0200-0600%0700-1200", "0")
+database.updateDatabase("Frank Dining Hall", "saturday", "0200-0600%0700-1200", "0")
+database.updateDatabase("Frank Dining Hall", "sunday", "0200-0600%0700-1200", "0")
+database.updateDatabase("Frary Dining Hall", "monday", "0200-0600%0700-1200", "0")
+database.updateDatabase("Frary Dining Hall", "tuesday", "0200-0600%0700-1200", "0")
+database.updateDatabase("Frary Dining Hall", "wednesday", "0200-0600%0700-1200", "0")
+database.updateDatabase("Frary Dining Hall", "thursday", "0200-0600%0700-1200", "0")
+database.updateDatabase("Frary Dining Hall", "friday", "0200-0600%0700-1200", "0")
+database.updateDatabase("Frary Dining Hall", "saturday", "0200-0600%0700-1200", "0")
+database.updateDatabase("Frary Dining Hall", "sunday", "0200-1200", "0")
 
 
 

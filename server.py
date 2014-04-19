@@ -3,6 +3,7 @@ from twisted.internet import reactor
 import constants
 import database
 import json
+import os
 
 
 class DatabaseServer(Protocol):
@@ -36,8 +37,11 @@ class DatabaseServer(Protocol):
 
 		#debugging stuff, so that something hasn't been updated at TIME:0
 		rows = database.rowsUpdatedLaterThan(0)	
+
 		#this just does the first 2 places to update, because they are the only ones with initialized hours in the database
-		rows = rows[0:2]
+		rows = rows[0:3]
+
+		print json.dumps(rows)
 
 		#now we're back to actual code we keep for GOOD
 		self.transport.write(json.dumps(rows))
@@ -50,4 +54,6 @@ factory.clients = []
 factory.protocol = DatabaseServer
 reactor.listenTCP(80, factory)
 print "DatabaseServer started"
+os.system("python scraper.py")
+
 reactor.run()

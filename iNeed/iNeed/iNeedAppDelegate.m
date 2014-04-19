@@ -74,6 +74,8 @@
     
     Place *its = [[Place alloc] initWithSchool:PomonaSchool andName:@"ITS" andLocation:@"156 E. 7th St" andMondayHours:workDay andTuesdayHours:workDay andWednesdayHours:workDay andThursdayHours:workDay andFridayHours:workDay andSaturdayHours:closed andSundayHours:closed andPhoneString:@"(909) 621-8061" andEmailString:@"ServiceDesk@pomona.edu" andLinkString:@"its.pomona.edu" andExtraInfo:@"Extended hours staffed by students. Building open 24/7."];
     
+    Place *honnoldcafe = [[Place alloc] initWithSchool:PomonaSchool andName:@"Honnold Cafe" andLocation:@"Honnold/Mudd Library, 1st floor" andMondayHours:workDay andTuesdayHours:workDay andWednesdayHours:workDay andThursdayHours:workDay andFridayHours:workDay andSaturdayHours:workDay andSundayHours:workDay andPhoneString:@"(909) 607-1703" andEmailString:@"catering@cuc.claremont.edu" andLinkString:@"http://www.cuc.claremont.edu/cafe/" andExtraInfo:@"Last call for all prepared beverages 60 minutes prior to closing."];
+    
     
     //Empty the database if necessary
     [PlaceDatabase emptyDatabase];
@@ -88,6 +90,7 @@
     [PlaceDatabase saveItemWithPlace:coopStore andSpecificCategory:EateryGroceryNarrow andBroadCategory:FoodBroad];
     [PlaceDatabase saveItemWithPlace:writingCenter andSpecificCategory:AcademicRCNarrow andBroadCategory:ResourceCentersOfficesBroad];
     [PlaceDatabase saveItemWithPlace:its andSpecificCategory:ServicesNarrow andBroadCategory:LivingOnCampusBroad];
+    [PlaceDatabase saveItemWithPlace:honnoldcafe andSpecificCategory:EateryGroceryNarrow andBroadCategory:FoodBroad];
     
     
     

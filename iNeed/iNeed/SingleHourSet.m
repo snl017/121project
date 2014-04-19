@@ -17,7 +17,7 @@
     //get last 2 digits
     NSInteger minutes = hoursDigits % 100;
     //check that has 4 digits, is < 2400, and minutes are < 60
-    return ([hours length] == 4 && hoursDigits < 2400 && minutes < 60);
+    return ([hours length] == 4 && hoursDigits <= 2400 && minutes < 60);
 }
 
 //This method is used to initial an hours object with a set of opening and closing hours
@@ -33,6 +33,7 @@
             self.closingHours = [closeDigits integerValue];
             self.closedAllDay = false;
         }else{
+            NSLog(@"hours look like %@", fourDigitsDashFourDigits);
             NSLog(@"ERROR: hours are not in proper format");
             return NULL;
         }
@@ -81,7 +82,7 @@
         int standardOpen = (standardOpenHrs*100) + standardOpenMin;
         
         int closedHrs = militaryClosed/100;
-        if(closedHrs < 12){
+        if(closedHrs < 12 || closedHrs >= 24){
             closedAm = @"am";
         }else{
             closedAm = @"pm";
@@ -89,6 +90,8 @@
         if(closedHrs == 12) {
             standardClosedHrs = 12;
         }else if(closedHrs == 0){
+            standardClosedHrs = 12;
+        }else if(closedHrs == 24) {
             standardClosedHrs = 12;
         }else{
             standardClosedHrs = closedHrs % 12;

@@ -1,5 +1,6 @@
-import sqlite3;
+import sqlite3
 from sets import Set
+import os
 
 #define a method to update the database.
 #day to update given as a all-lower-case, full day of the week
@@ -35,6 +36,7 @@ def rowsUpdatedLaterThan(time):
 		c.execute(selectString,time)
 		for row in c:
 			toReturn.append(row)
+			print row
 
 	conn.commit()
 	return toReturn
@@ -89,25 +91,24 @@ conn.commit()
 #test the update statement, and actually inserts hours so that we can update in the database on the phone
 #of course, these hours should initiated by the scraping we do (NEXT STEPPPP)
 # formatted as nameToUpdate,dayToUpdate,newHours,timeStamp
-updateDatabase("Frank Dining Hall", "monday", "0200-0600%0700-1200", "0")
-updateDatabase("Frank Dining Hall", "tuesday", "0200-0600%0700-1200", "0")
-updateDatabase("Frank Dining Hall", "wednesday", "0200-0600%0700-1200", "0")
-updateDatabase("Frank Dining Hall", "thursday", "0200-0600%0700-1200", "0")
-updateDatabase("Frank Dining Hall", "friday", "0200-0600%0700-1200", "0")
-updateDatabase("Frank Dining Hall", "saturday", "0200-0600%0700-1200", "0")
-updateDatabase("Frank Dining Hall", "sunday", "0200-0600%0700-1200", "1")
-updateDatabase("Frary Dining Hall", "monday", "0200-0600%0700-1200", "0")
-updateDatabase("Frary Dining Hall", "tuesday", "0200-0600%0700-1200", "0")
-updateDatabase("Frary Dining Hall", "wednesday", "0200-0600%0700-1200", "0")
-updateDatabase("Frary Dining Hall", "thursday", "0200-0600%0700-1200", "0")
-updateDatabase("Frary Dining Hall", "friday", "0200-0600%0700-1200", "0")
-updateDatabase("Frary Dining Hall", "saturday", "0200-0600%0700-1200", "0")
-updateDatabase("Frary Dining Hall", "sunday", "0200-1200", "0")
+# updateDatabase("Frank Dining Hall", "monday", "0200-0600%0700-1200", "0")
+# updateDatabase("Frank Dining Hall", "tuesday", "0200-0600%0700-1200", "0")
+# updateDatabase("Frank Dining Hall", "wednesday", "0200-0600%0700-1200", "0")
+# updateDatabase("Frank Dining Hall", "thursday", "0200-0600%0700-1200", "0")
+# updateDatabase("Frank Dining Hall", "friday", "0200-0600%0700-1200", "0")
+# updateDatabase("Frank Dining Hall", "saturday", "0200-0600%0700-1200", "0")
+# updateDatabase("Frank Dining Hall", "sunday", "0200-0600%0700-1200", "1")
+# updateDatabase("Frary Dining Hall", "monday", "0200-0600%0700-1200", "0")
+# updateDatabase("Frary Dining Hall", "tuesday", "0200-0600%0700-1200", "0")
+# updateDatabase("Frary Dining Hall", "wednesday", "0200-0600%0700-1200", "0")
+# updateDatabase("Frary Dining Hall", "thursday", "0200-0600%0700-1200", "0")
+# updateDatabase("Frary Dining Hall", "friday", "0200-0600%0700-1200", "0")
+# updateDatabase("Frary Dining Hall", "saturday", "0200-0600%0700-1200", "0")
+# updateDatabase("Frary Dining Hall", "sunday", "0200-1200", "0")
 
 #Test the rowsToSend method
 #rowsToSend = rowsUpdatedLaterThan(1)
 #print rowsToSend
-
 
 
 

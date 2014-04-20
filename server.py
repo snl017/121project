@@ -38,8 +38,8 @@ class DatabaseServer(Protocol):
 		#debugging stuff, so that something hasn't been updated at TIME:0
 		rows = database.rowsUpdatedLaterThan(0)	
 
-		#this just does the first 2 places to update, because they are the only ones with initialized hours in the database
-		rows = rows[0:3]
+		#this just does the first 4 places to update, because they are the only ones with initialized hours in the database
+		rows = rows[0:4]
 
 		print json.dumps(rows)
 

@@ -132,9 +132,89 @@ for day in arrayOfDayStrings :
 databaseDayStrings = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 
 for i in range(len(arrayOfDayStrings)) :
-	database.updateDatabase("Honnold Cafe", databaseDayStrings[i], str(dictOfDaysToHours[arrayOfDayStrings[i]]), "0")
+	database.updateDatabase("Honnold Cafe", databaseDayStrings[i], dictOfDaysToHours[arrayOfDayStrings[i]], "0")
 	#UHHH PROBLEM. i'm assuming we need to get the timestamp of when we're updating this, 
 	#and that's going to need to be basically the same "time since 1972"??? what was it??? 
+
+
+
+
+################################################################################
+#now i'm doing this for the coop fountain
+eatshopCoopFountain = eatshopSoup.find('h2', text = (re.compile("Coop Fountain"))).parent
+eatshopCoopFountainArray = eatshopCoopFountain.descendants
+
+#Find the <dl> tag that has hours in it
+for elt in eatshopCoopFountainArray:
+	eatshopCoopFountainHours = elt.find('dl')
+	if(eatshopCoopFountainHours != None and eatshopCoopFountainHours != -1):
+		break
+
+dictOfDaysToHours.clear()
+for day in arrayOfDayStrings : 
+	dayRegex = ".*" + day + ".*"
+	#if the name of the day is explicitly here, then access hours
+	desiredSection = eatshopCoopFountainHours.find(text = re.compile(dayRegex))
+	if desiredSection :
+		dayElt = desiredSection.parent.next_sibling.next_sibling #first nextsibling gives whitespace
+		dayHours = military(dayElt.string)
+		dictOfDaysToHours[day] = dayHours
+
+#temporary way of accounting for "Mon - Thurs"
+"""TODO: deal with something says "closed", or if hours are simply just not listed for that day if it is closed"""
+currHourSet = ""
+for day in arrayOfDayStrings :
+	if day in dictOfDaysToHours.keys()  :
+		currHourSet = dictOfDaysToHours[day]
+	else : 
+		dictOfDaysToHours[day] = currHourSet
+
+#now I need to know how to update the database on the server based on this info. hey update statements? 
+#def updateDatabase(nameToUpdate,dayToUpdate,newHours,timeStamp):
+databaseDayStrings = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+
+for i in range(len(arrayOfDayStrings)) :
+	database.updateDatabase("Coop Fountain", databaseDayStrings[i], dictOfDaysToHours[arrayOfDayStrings[i]], "0")
+
+
+
+
+
+
+
+
+
+
+################################################################################
+#FRANK AND FRARY#
+#WORK IN PROGRESS#
+
+poDiningURL = "http://www.pomona.edu/administration/dining/facilities-hours/hours.aspx"
+poDiningHTML = urlopen(poDiningURL).read()
+poDiningSoup = BeautifulSoup(poDiningHTML)
+
+poDiningFrank = poDiningSoup.find('h2', text = (re.compile("Frank")))
+
+#get section with by finding next next sibling (next sibling is white space)
+poDiningFrankHours = poDiningFrank.next_sibling.next_sibling
+
+dictOfDaysToHours.clear()
+for day in arrayOfDayStrings : 
+	dayRegex = ".*" + day + ".*"
+	#if the name of the day is explicitly here, then access hours
+	desiredSection = poDiningFrankHours.find(text = re.compile(dayRegex))
+	if desiredSection : 
+		if "closed" in desiredSection.lower() :
+			break
+		else: 
+			breakfast = desiredSection.parent.parent.next_sibling.next_sibling.next_sibling.next_sibling #first nextsibling gives whitespace
+			breakfastTime = breakfast.split()[1]
+			lunch = breakfast.next_sibling.next_sibling
+			dinner = lunch.next_sibling.next_sibling
+			
+			###UGH but i'm going to have to deal with brunch and dinner so this for loop might not work.
+			#i might just have to do the weekend days separately
+
 
 
 

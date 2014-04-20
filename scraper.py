@@ -90,6 +90,7 @@ def military(n):
 #def parseHourSets(n)
 
 
+#HONNOLD CAFE
 #Test with http://aspc.pomona.edu/eatshop/on-campus/
 eatshopURL = "http://aspc.pomona.edu/eatshop/on-campus/"
 eatshopHTML = urlopen(eatshopURL).read()
@@ -195,8 +196,9 @@ poDiningSoup = BeautifulSoup(poDiningHTML)
 
 poDiningFrank = poDiningSoup.find('h2', text = (re.compile("Frank")))
 
-#get section with by finding next next sibling (next sibling is white space)
-poDiningFrankHours = poDiningFrank.next_sibling.next_sibling
+#get mon-thurs section with by finding next next sibling (next sibling is white space)
+poDiningFrankHoursWeek = poDiningFrank.next_sibling.next_sibling
+poDiningFrankHoursWeekend = poDiningFrankHoursWeek.next_sibling.next_sibling
 
 dictOfDaysToHours.clear()
 for day in arrayOfDayStrings : 

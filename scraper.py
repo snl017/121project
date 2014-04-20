@@ -205,6 +205,7 @@ for day in arrayOfDayStrings :
 	desiredSection = poDiningFrankHours.find(text = re.compile(dayRegex))
 	if desiredSection : 
 		if "closed" in desiredSection.lower() :
+			#TODO: set to closed
 			break
 		else: 
 			breakfast = desiredSection.parent.parent.next_sibling.next_sibling.next_sibling.next_sibling #first nextsibling gives whitespace

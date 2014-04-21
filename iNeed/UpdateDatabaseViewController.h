@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import "MBProgressHUD.h"
 
 @interface UpdateDatabaseViewController : UIViewController <NSStreamDelegate>
 
@@ -17,9 +18,13 @@
 @property NSInputStream *inputStream;
 @property NSOutputStream *outputStream;
 
+//Animation
+@property MBProgressHUD *hud;
+
 -(void)initTimeStamp;
 -(void)initNetworkCommunication;
 -(void)sendTimeStamp;
 -(void)updateTimeAndClose;
+-(void)displayAnimation;
 
 @end

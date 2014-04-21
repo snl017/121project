@@ -38,6 +38,8 @@
 //we do all our communication with the server here
 //can show waiting message here, if we want --------------------- ANNA --------- waiting message? 
 -(void)viewDidAppear:(BOOL)animated{
+    //display animation
+    [self displayAnimation];
     //open connection
     [self initNetworkCommunication];
     //set current time and access when was last updated
@@ -47,6 +49,16 @@
     //just reset last update to current time
     [self updateTimeAndClose];
 
+
+}
+
+//Show the loading animation
+-(void)displayAnimation{
+    self.hud = [[MBProgressHUD alloc] initWithView:self.view];
+    self.hud.frame = CGRectMake(0, 0, 120, 143);
+    [self.hud setLabelText:@"Updating"];
+    [self.view addSubview:self.hud];
+    [self.hud show:YES];
 }
 
 //set self.currentTime to format string of current time "TIME:<time>"

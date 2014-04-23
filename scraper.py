@@ -406,7 +406,7 @@ for i in range(len(arrayOfDayStrings)) :
 	database.updateDatabase("Frary Dining Hall", databaseDayStrings[i], dictOfDaysToHours[arrayOfDayStrings[i]], "0")
 
 
-
+ 
 
 
 

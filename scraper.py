@@ -9,16 +9,6 @@ import database
 #4/15/2014
 
 
-
-#This is a testing section. We get the url and open it below.
-# testURL = "http://flrc.pomona.edu/"
-# html = urlopen(testURL).read()
-# soup = BeautifulSoup(html)
-
-#Then we look for the Hours of Operation Section
-# test = soup.find_all('li', text = (re.compile("Tuesday.") or re.compile("Tuesday.")))
-
-
 #Function that goes through arrays of hours for each day and fills in missing days with the 
 #assumption that those days are implied in a hyphen. I.e. a site might have mon-thurs: 8-10
 #so we carry through the hours for Monday, tues, wed, thurs in the hours array.

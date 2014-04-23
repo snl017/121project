@@ -33,6 +33,7 @@
 		DADDDEC818EC8D1A00C25831 /* UpdateDatabaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DADDDEC718EC8D1A00C25831 /* UpdateDatabaseViewController.m */; };
 		FB32A89318E90D88007F095E /* SingleHourSet.m in Sources */ = {isa = PBXBuildFile; fileRef = FB32A89218E90D88007F095E /* SingleHourSet.m */; };
 		FB32A89518E9E820007F095E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB32A89418E9E820007F095E /* Default-568h@2x.png */; };
+		FBF75FDC1904965E008CFF9D /* initDatabaseFromServer.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF75FDB1904965E008CFF9D /* initDatabaseFromServer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,8 @@
 		FB32A89118E90D88007F095E /* SingleHourSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleHourSet.h; sourceTree = "<group>"; };
 		FB32A89218E90D88007F095E /* SingleHourSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleHourSet.m; sourceTree = "<group>"; };
 		FB32A89418E9E820007F095E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		FBF75FDA1904965E008CFF9D /* initDatabaseFromServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = initDatabaseFromServer.h; sourceTree = "<group>"; };
+		FBF75FDB1904965E008CFF9D /* initDatabaseFromServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = initDatabaseFromServer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +169,8 @@
 				86314D2A18B986AD006FA727 /* Hours.m */,
 				FB32A89118E90D88007F095E /* SingleHourSet.h */,
 				FB32A89218E90D88007F095E /* SingleHourSet.m */,
+				FBF75FDA1904965E008CFF9D /* initDatabaseFromServer.h */,
+				FBF75FDB1904965E008CFF9D /* initDatabaseFromServer.m */,
 				DA212CF518B3EAB600C0DF8F /* iNeedAppDelegate.h */,
 				DA212CF618B3EAB600C0DF8F /* iNeedAppDelegate.m */,
 				DA212CF818B3EAB600C0DF8F /* Main.storyboard */,
@@ -332,6 +337,7 @@
 				FB32A89318E90D88007F095E /* SingleHourSet.m in Sources */,
 				DA4D4D8118BDC42B00368DC8 /* PlaceDisplayViewController.m in Sources */,
 				DADDDEC818EC8D1A00C25831 /* UpdateDatabaseViewController.m in Sources */,
+				FBF75FDC1904965E008CFF9D /* initDatabaseFromServer.m in Sources */,
 				86314D2B18B986AD006FA727 /* Hours.m in Sources */,
 				DA4976FD18B6D69E00BD4BC8 /* DetailsTableViewController.m in Sources */,
 				86314D2218B40C74006FA727 /* Place.m in Sources */,

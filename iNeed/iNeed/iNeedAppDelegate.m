@@ -12,10 +12,42 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    if (!([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])){
+        // this is the first launch ever
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        NSLog(@"first launch!");
+        //ok this first launch thing works, but to test it out with the simulator,
+        //you have to delete the app off the simulator, then run it all again from xcode
+        //this might get annoying to test, so just pretending every launch is the first launch might be the best option for right now
+        initDatabaseFromServer *serverCommObj = [[initDatabaseFromServer alloc] init];
+        [serverCommObj initNetworkCommunication];
+        [serverCommObj sendTimeStamp];
+        [serverCommObj updateTimeAndClose];
+        
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //(written by) SHANNON - idk if we even need any of the things below here or the testDatabase function
+    //we should figure this out at some point....
+    
+    
     //Create database. Call tester function to make sure they work.
     [PlaceDatabase createEditableCopyOfDatabaseIfNeeded];
     [PlaceDatabase initDatabase];
     [self testDatabase];
+    
+
+    
+    
     
     return YES;
 }
@@ -77,20 +109,20 @@
     Place *honnoldcafe = [[Place alloc] initWithSchool:PomonaSchool andName:@"Honnold Cafe" andLocation:@"Honnold/Mudd Library, 1st floor" andMondayHours:workDay andTuesdayHours:workDay andWednesdayHours:workDay andThursdayHours:workDay andFridayHours:workDay andSaturdayHours:workDay andSundayHours:workDay andPhoneString:@"(909) 607-1703" andEmailString:@"catering@cuc.claremont.edu" andLinkString:@"http://www.cuc.claremont.edu/cafe/" andExtraInfo:@"Last call for all prepared beverages 60 minutes prior to closing."];
     
     
-    //Empty the database if necessary
+//    //Empty the database if necessary
     [PlaceDatabase emptyDatabase];
-    
-    //Save some test places to database
-    [PlaceDatabase saveItemWithPlace:fraryDining andSpecificCategory:DiningHallNarrow andBroadCategory:FoodBroad];
-    [PlaceDatabase saveItemWithPlace:frankDining andSpecificCategory:DiningHallNarrow andBroadCategory:FoodBroad];
-    [PlaceDatabase saveItemWithPlace:campusSafety andSpecificCategory:SafetyHealth andBroadCategory:SafetyHealth];
-    [PlaceDatabase saveItemWithPlace:studyAbroad andSpecificCategory:NonAcademicRCNarrow andBroadCategory:AcademicRCNarrow];
-    [PlaceDatabase saveItemWithPlace:coopFountain andSpecificCategory:EateryGroceryNarrow andBroadCategory:FoodBroad];
-    [PlaceDatabase savePlace:coopStore.name withSpecificCategory:StoresNarrow andBroadCategory:LivingOnCampusBroad];
-    [PlaceDatabase saveItemWithPlace:coopStore andSpecificCategory:EateryGroceryNarrow andBroadCategory:FoodBroad];
-    [PlaceDatabase saveItemWithPlace:writingCenter andSpecificCategory:AcademicRCNarrow andBroadCategory:ResourceCentersOfficesBroad];
-    [PlaceDatabase saveItemWithPlace:its andSpecificCategory:ServicesNarrow andBroadCategory:LivingOnCampusBroad];
-    [PlaceDatabase saveItemWithPlace:honnoldcafe andSpecificCategory:EateryGroceryNarrow andBroadCategory:FoodBroad];
+//    
+//    //Save some test places to database
+//    [PlaceDatabase saveItemWithPlace:fraryDining andSpecificCategory:DiningHallNarrow andBroadCategory:FoodBroad];
+//    [PlaceDatabase saveItemWithPlace:frankDining andSpecificCategory:DiningHallNarrow andBroadCategory:FoodBroad];
+//    [PlaceDatabase saveItemWithPlace:campusSafety andSpecificCategory:SafetyHealth andBroadCategory:SafetyHealth];
+//    [PlaceDatabase saveItemWithPlace:studyAbroad andSpecificCategory:NonAcademicRCNarrow andBroadCategory:AcademicRCNarrow];
+//    [PlaceDatabase saveItemWithPlace:coopFountain andSpecificCategory:EateryGroceryNarrow andBroadCategory:FoodBroad];
+//    [PlaceDatabase savePlace:coopStore.name withSpecificCategory:StoresNarrow andBroadCategory:LivingOnCampusBroad];
+//    [PlaceDatabase saveItemWithPlace:coopStore andSpecificCategory:EateryGroceryNarrow andBroadCategory:FoodBroad];
+//    [PlaceDatabase saveItemWithPlace:writingCenter andSpecificCategory:AcademicRCNarrow andBroadCategory:ResourceCentersOfficesBroad];
+//    [PlaceDatabase saveItemWithPlace:its andSpecificCategory:ServicesNarrow andBroadCategory:LivingOnCampusBroad];
+//    [PlaceDatabase saveItemWithPlace:honnoldcafe andSpecificCategory:EateryGroceryNarrow andBroadCategory:FoodBroad];
     
     
     
@@ -122,5 +154,8 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
+
 
 @end

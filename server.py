@@ -31,15 +31,17 @@ class DatabaseServer(Protocol):
 		#check whether it needs to be updated using a timestamp
 
 		#get a list of the rows to be updated (represented as a tuple)
-		rowsToSend = database.rowsUpdatedLaterThan(self.lastTime) 
-		for row in rowsToSend:
-			self.sendMessage(row)
+		#this is how we will ACTUALLY need to do this, 
+		#but for right now we're just testing to see if ANY rows get updated
+		#rowsToSend = database.rowsUpdatedLaterThan(self.lastTime) 
+		#for row in rowsToSend:
+		#self.sendMessage(row)
 
 		#debugging stuff, so that something hasn't been updated at TIME:0
 		rows = database.rowsUpdatedLaterThan(0)	
 
 		#this just does the first 4 places to update, because they are the only ones with initialized hours in the database
-		rows = rows[0:4]
+		rows = rows[0:6]
 
 		print json.dumps(rows)
 
@@ -54,6 +56,6 @@ factory.clients = []
 factory.protocol = DatabaseServer
 reactor.listenTCP(80, factory)
 print "DatabaseServer started"
-os.system("python scraper.py")
+os.system("python scraperShannon.py")
 
 reactor.run()

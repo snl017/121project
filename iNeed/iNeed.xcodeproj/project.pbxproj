@@ -31,6 +31,7 @@
 		DADDDEB318EBCE0200C25831 /* HighLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DADDDEB218EBCE0200C25831 /* HighLevelViewController.m */; };
 		DADDDEBC18EBD1FD00C25831 /* SpecificCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DADDDEBB18EBD1FD00C25831 /* SpecificCategoryViewController.m */; };
 		DADDDEC818EC8D1A00C25831 /* UpdateDatabaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DADDDEC718EC8D1A00C25831 /* UpdateDatabaseViewController.m */; };
+		FB0DEE0E190A235100172B09 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FB0DEE0D190A235100172B09 /* MBProgressHUD.m */; };
 		FB32A89318E90D88007F095E /* SingleHourSet.m in Sources */ = {isa = PBXBuildFile; fileRef = FB32A89218E90D88007F095E /* SingleHourSet.m */; };
 		FB32A89518E9E820007F095E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB32A89418E9E820007F095E /* Default-568h@2x.png */; };
 		FBF75FDC1904965E008CFF9D /* initDatabaseFromServer.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF75FDB1904965E008CFF9D /* initDatabaseFromServer.m */; };
@@ -84,6 +85,8 @@
 		DADDDEBB18EBD1FD00C25831 /* SpecificCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecificCategoryViewController.m; sourceTree = "<group>"; };
 		DADDDEC618EC8D1A00C25831 /* UpdateDatabaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UpdateDatabaseViewController.h; path = ../UpdateDatabaseViewController.h; sourceTree = "<group>"; };
 		DADDDEC718EC8D1A00C25831 /* UpdateDatabaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UpdateDatabaseViewController.m; path = ../UpdateDatabaseViewController.m; sourceTree = "<group>"; };
+		FB0DEE0C190A235100172B09 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		FB0DEE0D190A235100172B09 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		FB32A89118E90D88007F095E /* SingleHourSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleHourSet.h; sourceTree = "<group>"; };
 		FB32A89218E90D88007F095E /* SingleHourSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleHourSet.m; sourceTree = "<group>"; };
 		FB32A89418E9E820007F095E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -173,6 +176,8 @@
 				FBF75FDB1904965E008CFF9D /* initDatabaseFromServer.m */,
 				DA212CF518B3EAB600C0DF8F /* iNeedAppDelegate.h */,
 				DA212CF618B3EAB600C0DF8F /* iNeedAppDelegate.m */,
+				FB0DEE0C190A235100172B09 /* MBProgressHUD.h */,
+				FB0DEE0D190A235100172B09 /* MBProgressHUD.m */,
 				DA212CF818B3EAB600C0DF8F /* Main.storyboard */,
 				DA4D4D7C18BDB6CF00368DC8 /* Constants.h */,
 				DA4D4D7D18BDB6CF00368DC8 /* Constants.m */,
@@ -341,6 +346,7 @@
 				86314D2B18B986AD006FA727 /* Hours.m in Sources */,
 				DA4976FD18B6D69E00BD4BC8 /* DetailsTableViewController.m in Sources */,
 				86314D2218B40C74006FA727 /* Place.m in Sources */,
+				FB0DEE0E190A235100172B09 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

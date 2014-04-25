@@ -61,6 +61,9 @@ def military(n):
 	amPmPattern = re.compile("[a-zA-Z]+")
 	amPmArray = amPmPattern.findall(strFormat)
 
+	if len(amPmArray) == 1 :
+		amPmArray.append(amPmArray[0])
+
 	#go through all numbers, format correctly into 4-digit military time
 	formattedHours = []
 	for i in range(len(numbersArray)):
@@ -175,7 +178,6 @@ for i in range(len(arrayOfDayStrings)) :
 
 ################################################################################
 #FRANK AND FRARY#
-#WORK IN PROGRESS#
 
 poDiningURL = "http://www.pomona.edu/administration/dining/facilities-hours/hours.aspx"
 poDiningHTML = urlopen(poDiningURL).read()
@@ -396,12 +398,75 @@ for i in range(len(arrayOfDayStrings)) :
 	database.updateDatabase("Frary Dining Hall", databaseDayStrings[i], dictOfDaysToHours[arrayOfDayStrings[i]], "0")
 
 
- 
 
 
+#######################################################################################
+###COOP STORE
+coopStoreURL = "http://coopstore.pomona.edu"
+coopStoreHTML = urlopen(coopStoreURL).read()
+coopStoreSoup = BeautifulSoup(coopStoreHTML)
+
+coopStoreHours = coopStoreSoup.find('h2', text = (re.compile("Hours"))).parent
+
+dictOfDaysToHours.clear()
+for day in arrayOfDayStrings : 
+	dayRegex = ".*" + day + ".*"
+	#if the name of the day is explicitly here, then access hours
+	desiredSection = coopStoreHours.find(text = re.compile(dayRegex))
+	if desiredSection :
+		dayElt = desiredSection.parent.next_sibling.next_sibling #first nextsibling gives whitespace
+		dayHours = military(dayElt.string)
+		dictOfDaysToHours[day] = dayHours
+
+#Fill in rest of days and hours array
+fillInHoursDictionary(dictOfDaysToHours, arrayOfDayStrings)
+
+#now I need to know how to update the database on the server based on this info. 
+#def updateDatabase(nameToUpdate,dayToUpdate,newHours,timeStamp):
+databaseDayStrings = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+
+for i in range(len(arrayOfDayStrings)) :
+	database.updateDatabase("Coop Store", databaseDayStrings[i], dictOfDaysToHours[arrayOfDayStrings[i]], "0")
 
 
-			
+################################################################################
+#WRITING CENTER
+writingCenterURL = "https://my.pomona.edu/ICS/Academics/Writing_Center_Page.jnz"
+writingCenterHTML = urlopen(writingCenterURL).read()
+writingCenterSoup = BeautifulSoup(writingCenterHTML)
+
+writingCenterHours = writingCenterSoup.find(text = (re.compile("Writing Center.*hours"))).parent
+
+dictOfDaysToHours.clear()
+for day in arrayOfDayStrings : 
+	dayRegex = ".*" + day + ".*"
+	#if the name of the day is explicitly here, then access hours
+	desiredSection = writingCenterHours.find(text = re.compile(dayRegex))
+	if desiredSection :
+		#Using regex, get hours from long sentence
+		hrsPattern = re.compile("\d+.*\d+.*\s")
+		hrsArray = hrsPattern.findall(desiredSection)
+		dayElt = hrsArray[0]
+		openClose = dayElt.split("-")
+		dayElt = openClose[0] + "pm-" + openClose[1]
+		dayHours = military(dayElt)
+		dictOfDaysToHours[day] = dayHours
+	dictOfDaysToHours["Mon"] = dayHours
+	dictOfDaysToHours["Fri"] = "Closed"
+
+
+#Fill in rest of days and hours array
+fillInHoursDictionary(dictOfDaysToHours, arrayOfDayStrings)
+
+
+#now I need to know how to update the database on the server based on this info. 
+#def updateDatabase(nameToUpdate,dayToUpdate,newHours,timeStamp):
+databaseDayStrings = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+
+for i in range(len(arrayOfDayStrings)) :
+	database.updateDatabase("Writing Center", databaseDayStrings[i], dictOfDaysToHours[arrayOfDayStrings[i]], "0")
+
+
 
 
 

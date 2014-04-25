@@ -56,6 +56,6 @@ factory.clients = []
 factory.protocol = DatabaseServer
 reactor.listenTCP(80, factory)
 print "DatabaseServer started"
-os.system("python scraperShannon.py")
+os.system("python scraper.py")
 
 reactor.run()

@@ -17,6 +17,8 @@
 
 @implementation HighLevelViewController
 
+@synthesize Update;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -30,6 +32,23 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    if (!([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])){
+        // this is the first launch ever
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        NSLog(@"first launch! from view controller, should be faking click");
+        //ok this first launch thing works, but to test it out with the simulator,
+        //you have to delete the app off the simulator, then run it all again from xcode
+        //this might get annoying to test, so just pretending every launch is the first launch might be the best option for right now
+
+        //fake button click
+        UIBarButtonItem *updateButton = self.navigationItem.rightBarButtonItem;
+        [updateButton.target performSelector:updateButton.action];
+        
+        
+    }
+
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,9 +75,5 @@
     
 }
 
-//- (IBAction)unwindToMain:(UIStoryboardSegue*)sender
-//{
-//    NSLog(@"here yay");
-//}
 
 @end

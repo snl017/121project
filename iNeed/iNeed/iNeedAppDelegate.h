@@ -11,7 +11,7 @@
 #import "Constants.h"
 #import "Place.h"
 #import "Hours.h"
-#import "initDatabaseFromServer.h"
+
 
 
 @interface iNeedAppDelegate : UIResponder <UIApplicationDelegate>

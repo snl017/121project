@@ -1,42 +1,42 @@
-Oldenborg Dining Hall:Monday~1145am-1245pm Tuesday~1145am-1245pm Wednesday~1145am-1245pm Thursday~1145am-1245pm Friday~1145am-1245pm Saturday-Closed Sunday-Closed
-Coop Store
-Huntley Bookstore
-Sagehen Cafe
-Writing Center
-Honnold-Mudd Library
-Special Collections
-History Reading Room
-Pomona College Museum of Art
+Oldenborg Dining Hall~Monday:1145am-1245pm Tuesday:1145am-1245pm Wednesday:1145am-1245pm Thursday:1145am-1245pm Friday:1145am-1245pm Saturday-Closed Sunday-Closed
+Coop Store~Monday:0900am-0000am Tuesday:0900am-0000am Wednesday:0900am-0000am Thursday:0900am-0000am Friday:0900am-0000am Saturday:1200pm-0000am Sunday:1200pm-2100pm
+Huntley Bookstore~Monday:0830am-1800pm Tuesday:0830am-1800pm Wednesday:0830am-1800pm Thursday:0830am-1800pm Friday:0830am-1700pm Saturday:1000am-1700pm Sunday-Closed
+Sagehen Cafe~
+Writing Center~Monday:2000pm-2200pm Tuesday:2000pm-2200pm Wednesday:2000pm-2200pm Thursday:2000pm-2200pm Friday:Closed Saturday:Closed
+Honnold-Mudd Library~Monday:0800am-0100am Tuesday:0800am-0100am Wednesday:0800am-0100am Thursday:0800am-0100am Friday:0800am-2200pm Saturday:0900am-2200pm Sunday:1100am-0100am
+Special Collections~Monday:1300pm-1900pm Tuesday:1300pm-1900pm Wednesday:1300pm-1900pm Thursday:1300pm-1900pm Friday:1300pm-1700pm Saturday:1300pm-1700pm Sunday:Closed
+History Reading Room~Monday:0800am-1200pm%1300pm-1600pm%1815pm-2000pm Tuesday:0800am-1200pm%1300pm-1600pm%1900pm-2200pm Wednesday:0800am-1200pm%1300pm-1600pm%1900pm-2200pm Thursday:0800am-1200pm%1300pm-1900pm% Friday:Closed Saturday:Closed Sunday:Closed
+Pomona College Museum of Art~Monday:Closed Tuesday:1200pm-1700pm Wednesday:1200pm-1700pm Thursday:1200pm-1700pm Friday:1200pm-1700pm Saturday:1200pm-1700pm Sunday:1200pm-1700pm
 Registrar's Office
 Quantitative Skills Center
 Foreign Language Fellows
 Music Library
 Study Abroad Office
-Admissions Office
-Queer Resource Center
-Outdoor Education Center
-Human Resources
-Office of Campus Life
-Women's Union
+Admissions Office~Monday:0830am-1630pm Tuesday:0830am-1630pm Wednesday:0830am-1630pm Thursday:0830am-1630pm Friday:0830am-1630pm Saturday:Closed Sunday:Closed
+Queer Resource Center~Monday:1000am-1800pm Tuesday:1000am-1800pm Wednesday:1000am-1800pm Thursday:1000am-1800pm Friday:1000am-1700pm Saturday:Closed Sunday:Closed
+Outdoor Education Center~Monday:1300pm-2200pm Tuesday:1300pm-2200pm Wednesday:1300pm-2200pm Thursday:1300pm-2200pm Friday:1000am-1300pm Saturday:Closed Sunday:Closed
+Human Resources~Monday:0800am-1700pm Tuesday:0800am-1700pm Wednesday:0800am-1700pm Thursday:0800am-1700pm Friday:0800am-1700pm Saturday:Closed Sunday:Closed
+Office of Campus Life~Monday:0800am-1200pm%1300pm-1700pm Tuesday:0800am-1200pm%1300pm-1700pm Wednesday:0800am-1200pm%1300pm-1700pm Thursday:0800am-1200pm%1300pm-1700pm Friday:0800am-1200pm%1300pm-1700pm Saturday:Closed Sunday:Closed
+Women's Union~Monday:1600pm-2300pm Tuesday:1600pm-2300pm Wednesday:1600pm-2300pm Thursday:1600pm-2300pm Friday:1200pm-1900pm Saturday:1200pm-1900pm Sunday:1600pm-2300pm 
 Career Development Office
 Associated Students of Pomona College
 KSPC
 Draper Center
 Financial Aid Office
-Campus Safety
+Campus Safety~Monday:0000am-2359pm Tuesday:0000am-2359pm Wednesday:0000am-2359pm Thursday:0000am-2359pm Friday:0000am-2359pm Saturday:0000am-2359pm Sunday:0000am-2359pm 
 Student Health Services
-Monsour Counseling Center
-Dean On Call
-RA On Call
-ITS
-Claremont Connect
-Housekeeping
-Big Bridges Box Office
-Seaver Theater Box Office
+Monsour Counseling Center~Monday:0800am-1700pm Tuesday:0800am-1700pm Wednesday:0800am-1700pm Thursday:0800am-1700pm Friday:0800am-1700pm Saturday:Closed Sunday:Closed
+Dean On Call~Monday:0000am-2359pm Tuesday:0000am-2359pm Wednesday:0000am-2359pm Thursday:0000am-2359pm Friday:0000am-2359pm Saturday:0000am-2359pm Sunday:0000am-2359pm 
+RA On Call~Monday:0000am-2359pm Tuesday:0000am-2359pm Wednesday:0000am-2359pm Thursday:0000am-2359pm Friday:0000am-2359pm Saturday:0000am-2359pm Sunday:0000am-2359pm 
+ITS~Monday:0900am-1200pm%1300pm-0000am Tuesday:0900am-1200pm%1300pm-0000am Wednesday:0900am-1200pm%1300pm-0000am Thursday:0900am-1200pm%1300pm-0000am Friday:0900am-1200pm%1300pm-1700pm Saturday:1300pm-1700pm Sunday:1300pm-0000am 
+Claremont Connection~Monday:0800am-2200pm Tuesday:0800am-2200pm Wednesday:0800am-2200pm Thursday:0800am-2200pm Friday:0800am-1900pm Saturday:1200pm-1900pm Sunday:1300pm-2200pm
+Housekeeping~Monday:0800am-1700pm Tuesday:0800am-1700pm Wednesday:0800am-1700pm Thursday:0800am-1700pm Friday:0800am-1700pm Saturday:Closed Sunday:Closed
+Big Bridges Box Officer~Monday:1000am-1600pm Tuesday:1000am-1600pm Wednesday:1000am-1600pm Thursday:1000am-1600pm Friday:1000am-1600pm Saturday:Closed Sunday:Closed
+Seaver Theater Box Office~
 Pendleton Pool
 Haldeman Pool
 Rains Center
 Associated Students of Pomona College
 Mailroom
 Coop Store
-Huntley Bookstore
+Huntley Bookstore~Monday:0830am-1800pm Tuesday:0830am-1800pm Wednesday:0830am-1800pm Thursday:0830am-1800pm Friday:0830am-1700pm Saturday:1000am-1700pm Sunday-Closed

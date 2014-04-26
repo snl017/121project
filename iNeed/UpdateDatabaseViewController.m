@@ -67,6 +67,16 @@
 //set self.lastUpdate to format string of when the database(?) was last updated
 -(void)initTimeStamp
 {
+    if (!([[NSUserDefaults standardUserDefaults] boolForKey:@"NOTfirstupdate"])){
+        // this is the first update ever, so we want both the place info AND the category info
+        // we signal this to the server by sending a -1 time stamp
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"NOTfirstupdate"];
+        self.lastUpdate = @"TIME:-1";
+        
+        
+    } else {
+    //we want to send actual time stamps
+    
     //set the current time
     NSTimeInterval timeInt = [[NSDate date]timeIntervalSince1970];
     NSString *currTime = [NSString stringWithFormat: @"%f", timeInt];
@@ -81,6 +91,7 @@
     if (!self.lastUpdate){
         //create the correctly-formatted string
         self.lastUpdate = @"TIME:0";
+    }
     }
 }
 
@@ -160,9 +171,9 @@
                             //a la a similar form as below, but accessing the data in the rows that are sent to me
                             //need to figure this out
                             
-                            Place *its = [[Place alloc] initWithSchool:PomonaSchool andName:row[2] andLocation:@"156 E. 7th St" andMondayHours:[[Hours alloc] initWithOneString:row[4]] andTuesdayHours:[[Hours alloc] initWithOneString:row[5]] andWednesdayHours:[[Hours alloc] initWithOneString:row[6]] andThursdayHours:[[Hours alloc] initWithOneString:row[7]] andFridayHours:[[Hours alloc] initWithOneString:row[8]] andSaturdayHours:[[Hours alloc] initWithOneString:row[9]] andSundayHours:[[Hours alloc] initWithOneString:row[10]] andPhoneString:@"(909) 621-8061" andEmailString:@"ServiceDesk@pomona.edu" andLinkString:@"its.pomona.edu" andExtraInfo:@"Extended hours staffed by students. Building open 24/7."];
+                            Place *newPlace = [[Place alloc] initWithSchool:row[1] andName:row[2] andLocation:row[3] andMondayHours:[[Hours alloc] initWithOneString:row[4]] andTuesdayHours:[[Hours alloc] initWithOneString:row[5]] andWednesdayHours:[[Hours alloc] initWithOneString:row[6]] andThursdayHours:[[Hours alloc] initWithOneString:row[7]] andFridayHours:[[Hours alloc] initWithOneString:row[8]] andSaturdayHours:[[Hours alloc] initWithOneString:row[9]] andSundayHours:[[Hours alloc] initWithOneString:row[10]] andPhoneString:row[11] andEmailString:row[12] andLinkString:row[13] andExtraInfo:row[13]];
                             
-                            [PlaceDatabase saveItemWithPlace:its andSpecificCategory:ServicesNarrow andBroadCategory:LivingOnCampusBroad];
+                            [PlaceDatabase saveItemWithPlace:newPlace andSpecificCategory:ServicesNarrow andBroadCategory:LivingOnCampusBroad];
 
                             
                         }

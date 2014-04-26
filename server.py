@@ -53,6 +53,11 @@ class DatabaseServer(Protocol):
 		else: 
 		#time stamp will be -1 and we need to send category info TOO
 			print "time stamp is -1!"
+			rows = database.rowsUpdatedLaterThan(self.lastTime)
+			rows.append(database.rowsCategories())
+			print json.dumps(rows)
+			self.transport.write(json.dumps(rows))
+			self.transport.loseConnection()
 
 
 

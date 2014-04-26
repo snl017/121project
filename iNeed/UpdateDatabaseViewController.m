@@ -58,7 +58,6 @@
     self.hud = [[MBProgressHUD alloc] initWithView:self.view];
     self.hud.frame = CGRectMake(0, 0, 120, 143);
     [self.hud setLabelText:@"Updating"];
-    [self.hud s]
     [self.view addSubview:self.hud];
     [self.hud show:YES];
 }

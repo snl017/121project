@@ -56,8 +56,8 @@ class DatabaseServer(Protocol):
 			rows = database.rowsUpdatedLaterThan(self.lastTime)
 			rows.append(database.rowsCategories())
 			print json.dumps(rows)
-			self.transport.write(json.dumps(rows))
-			self.transport.loseConnection()
+			#self.transport.write(json.dumps(rows))
+			#self.transport.loseConnection()
 
 
 

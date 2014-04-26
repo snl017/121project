@@ -1,0 +1,64 @@
+DINING HALLS
+Oldenborg - http://www.pomona.edu/administration/dining/facilities-hours/hours.aspx
+Frank - http://www.pomona.edu/administration/dining/facilities-hours/hours.aspx
+	Frary - http://www.pomona.edu/administration/dining/facilities-hours/hours.aspx INCORRECT
+	Malott
+	Hoch
+	Collins
+	Pitzer
+
+OTHER ON-CAMPUS EATERIES AND GROCERIES
+Coop Store - http://coopstore.pomona.edu/
+Huntley Bookstore - http://www.bkstr.com/webapp/wcs/stores/servlet/HelpStoreInfoView?langId=-1&catalogId=10001&storeId=15303&demoKey=p
+Honnold Cafe - http://libraries.claremont.edu/about/hours/
+Sagehen Cafe - NOT FOUND
+Coop Fountain - http://aspc.pomona.edu/eatshop/on-campus/
+
+
+RESOURCE CENTERS AND OFFICES
+	Academic 
+		Writing Center - https://my.pomona.edu/ICS/Academics/Writing_Center_Page.jnz
+		QSC - https://my.pomona.edu/ICS/Academics/Quantitative_Skills_Center.jnz
+		foreign languages resource center - http://flrc.pomona.edu/
+		foreign language fellows - http://oldenborg.pomona.edu/language-programming/tutorial/
+		registrar - NOT FOUND
+		library - http://libraries.claremont.edu/about/hours/
+		Special Collections - http://libraries.claremont.edu/about/hours/
+		music library
+		history library
+	Non-Academic
+		CDO
+		admissions
+		Study abroad
+		QRC
+		OEC
+		HR
+		Financial Aid
+		OCL
+		WU
+		ASPC
+		KSPC
+
+SAFETY AND HEALTH
+Safety & health (camp sec, SHS) (both broad and specific)
+camp sec
+SHS	
+monsour
+dean-on-call
+RA-on-call
+
+LIVING ON CAMPUS
+	Services 
+		Pomona mailroom
+		ITS
+		claremont connect - http://libraries.claremont.edu/about/hours/
+		housekeeping
+		ASPC
+		Big bridges box office
+		Seaver theater box office
+		Pools
+		Gym
+	Stores 
+		huntley bookstore
+		coop store
+		scripps store

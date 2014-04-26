@@ -5,7 +5,12 @@ import re
 import string
 import database
 
-#Created by Anna Turner and Shannon Lubetich
+###DO NOT USE
+###created by Shannon while she and Anna were working simulatenously
+###ALL work in scraper.py now 
+
+
+#Created by Shannon Lubetich
 #4/15/2014
 
 

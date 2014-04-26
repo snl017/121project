@@ -36,8 +36,8 @@
 
 //called every time view appears
 //things that happen after the view has appeared to the user
+//shows waiting animation
 //we do all our communication with the server here
-//can show waiting message here, if we want --------------------- ANNA --------- waiting message? 
 -(void)viewDidAppear:(BOOL)animated{
     //display animation
     [self displayAnimation];
@@ -141,6 +141,9 @@
                 if([object isKindOfClass: [NSArray class]]) {
                     NSArray *results = object;
                     for(NSArray *row in results){
+
+                        
+                        if([[PlaceDatabase fetchPlacesByName:row[2]] count] != 0){
                         //This is where we now use these rows to change the database on the phone, using update statements.
                         //using such methods as... (void)updateMondayHoursByName:(NSString *)name andNewHours:(Hours *)newHours
                         [PlaceDatabase updateMondayHoursByName:row[2] andNewHours: [[Hours alloc] initWithOneString:row[4]]];
@@ -150,6 +153,19 @@
                         [PlaceDatabase updateFridayHoursByName:row[2] andNewHours: [[Hours alloc] initWithOneString:row[8]]];
                         [PlaceDatabase updateSaturdayHoursByName:row[2] andNewHours: [[Hours alloc] initWithOneString:row[9]]];
                         [PlaceDatabase updateSundayHoursByName:row[2] andNewHours: [[Hours alloc] initWithOneString:row[10]]];
+                        }
+                        else{
+                            NSLog(@"need to init");
+                            //so now i need to create a place and save it
+                            //a la a similar form as below, but accessing the data in the rows that are sent to me
+                            //need to figure this out
+                            
+                            Place *its = [[Place alloc] initWithSchool:PomonaSchool andName:row[2] andLocation:@"156 E. 7th St" andMondayHours:[[Hours alloc] initWithOneString:row[4]] andTuesdayHours:[[Hours alloc] initWithOneString:row[5]] andWednesdayHours:[[Hours alloc] initWithOneString:row[6]] andThursdayHours:[[Hours alloc] initWithOneString:row[7]] andFridayHours:[[Hours alloc] initWithOneString:row[8]] andSaturdayHours:[[Hours alloc] initWithOneString:row[9]] andSundayHours:[[Hours alloc] initWithOneString:row[10]] andPhoneString:@"(909) 621-8061" andEmailString:@"ServiceDesk@pomona.edu" andLinkString:@"its.pomona.edu" andExtraInfo:@"Extended hours staffed by students. Building open 24/7."];
+                            
+                            [PlaceDatabase saveItemWithPlace:its andSpecificCategory:ServicesNarrow andBroadCategory:LivingOnCampusBroad];
+
+                            
+                        }
                     }
                     
                 }

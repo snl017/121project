@@ -2,8 +2,6 @@ import sqlite3
 from sets import Set
 import os
 
-updatedRows = []
-
 #define a method to update the database.
 #day to update given as a all-lower-case, full day of the week
 def updateDatabase(nameToUpdate,dayToUpdate,newHours,timeStamp):
@@ -46,21 +44,30 @@ def rowsUpdatedLaterThan(time):
 
 #returns a list of rows represented as tuples (broad categ, specific categ, place name)
 #returns all rows that were returned by the updated statement to the database
-def rowsCategories() :
+def rowsCategories(updatedRows) :
 	conn = sqlite3.connect('claremontClock.sqlite3')
 	c = conn.cursor()
 
-	categoryRowsToReturn = []
+	updatedRowsCopy = [[x] for x in updatedRows]
 
+	categoryRowsToReturn = []
 	selectString = 'SELECT * FROM categories WHERE name=?'
-	for place in updatedRows :
-		c.execute(selectString,place[2])
+	for i in range(len(updatedRows)) :
+		place = updatedRows[i]
+		#bc place names are saved in category file with a line break at the end
+		categoryRowsToReturn = []
+
+		placeName = place[2] + '\n'
+		t=(placeName,)
+		c.execute(selectString,t)
 		for row in c:
 			categoryRowsToReturn.append(row)
-			print row
+		updatedRowsCopy[i].append(categoryRowsToReturn[0])
+
+	#print updatedRowsCopy
 
 	conn.commit()
-	return categoryRowsToReturn
+	return updatedRowsCopy
 
 #############################################################################################
 ##The code for creating the database & reading in the static data provided in text files. 

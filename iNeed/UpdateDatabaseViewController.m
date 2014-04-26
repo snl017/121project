@@ -150,9 +150,37 @@
                 //we initialize it to read as an id, and then check to see if it's an NSArray and then assign it as an NSArray
                 if([object isKindOfClass: [NSArray class]]) {
                     NSArray *results = object;
+                    NSLog(@"results look like %@", results);
+                    
+                    
+                    if (!([[NSUserDefaults standardUserDefaults] boolForKey:@"NOTinitializing"])){
+                        // this is the first update ever, so we want both the place info AND the category info
+                        // we signal this to the server by sending a -1 time stamp
+                        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"NOTinitializing"];
+                        
+                        for(NSArray *row in results){
+                            NSLog(@"need to init");
+                            //so now i need to create a place and save it
+                            //a la a similar form as below, but accessing the data in the rows that are sent to me
+                            //need to figure this out
+                            NSLog(@"place looks like %@", row);
+                            
+                            NSArray *placeInfo = row[0];
+                            NSArray *catInfo = row[1];
+                            
+                            Place *newPlace = [[Place alloc] initWithSchool:placeInfo[1] andName:placeInfo[2] andLocation:placeInfo[3] andMondayHours:[[Hours alloc] initWithOneString:placeInfo[4]] andTuesdayHours:[[Hours alloc] initWithOneString:placeInfo[5]] andWednesdayHours:[[Hours alloc] initWithOneString:placeInfo[6]] andThursdayHours:[[Hours alloc] initWithOneString:placeInfo[7]] andFridayHours:[[Hours alloc] initWithOneString:placeInfo[8]] andSaturdayHours:[[Hours alloc] initWithOneString:placeInfo[9]] andSundayHours:[[Hours alloc] initWithOneString:placeInfo[10]] andPhoneString:placeInfo[11] andEmailString:placeInfo[12] andLinkString:placeInfo[13] andExtraInfo:placeInfo[13]];
+                            
+                            [PlaceDatabase saveItemWithPlace:newPlace andSpecificCategory:catInfo[2] andBroadCategory:catInfo[1]];
+                        }
+                        
+                        
+                        
+                    } else {
+                    
+                    
                     for(NSArray *row in results){
 
-                        
+                        //this is NOT working because I add layers of things, so does NOT work here. add new boolean?
                         if([[PlaceDatabase fetchPlacesByName:row[2]] count] != 0){
                         //This is where we now use these rows to change the database on the phone, using update statements.
                         //using such methods as... (void)updateMondayHoursByName:(NSString *)name andNewHours:(Hours *)newHours
@@ -164,18 +192,9 @@
                         [PlaceDatabase updateSaturdayHoursByName:row[2] andNewHours: [[Hours alloc] initWithOneString:row[9]]];
                         [PlaceDatabase updateSundayHoursByName:row[2] andNewHours: [[Hours alloc] initWithOneString:row[10]]];
                         }
-                        else{
-                            NSLog(@"need to init");
-                            //so now i need to create a place and save it
-                            //a la a similar form as below, but accessing the data in the rows that are sent to me
-                            //need to figure this out
-                            
-                            Place *newPlace = [[Place alloc] initWithSchool:row[1] andName:row[2] andLocation:row[3] andMondayHours:[[Hours alloc] initWithOneString:row[4]] andTuesdayHours:[[Hours alloc] initWithOneString:row[5]] andWednesdayHours:[[Hours alloc] initWithOneString:row[6]] andThursdayHours:[[Hours alloc] initWithOneString:row[7]] andFridayHours:[[Hours alloc] initWithOneString:row[8]] andSaturdayHours:[[Hours alloc] initWithOneString:row[9]] andSundayHours:[[Hours alloc] initWithOneString:row[10]] andPhoneString:row[11] andEmailString:row[12] andLinkString:row[13] andExtraInfo:row[13]];
-                            
-                            [PlaceDatabase saveItemWithPlace:newPlace andSpecificCategory:ServicesNarrow andBroadCategory:LivingOnCampusBroad];
+                        
+                    }
 
-                            
-                        }
                     }
                     
                 }

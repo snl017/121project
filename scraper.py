@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import re
 import string
 import database
+import helper
 
 #Created by Anna Turner and Shannon Lubetich
 #4/15/2014
@@ -21,72 +22,6 @@ def fillInHoursDictionary(dictOfDaysToHours, arrayOfDayStrings) :
 			currHourSet = dictOfDaysToHours[day]
 		else : 
 			dictOfDaysToHours[day] = currHourSet
-
-#helper method for calculating military time
-#returns an ordered pair of strings
-#the first is a string of the hour digits (0-24)
-#the second elt is a string of the minute digits (0-59)
-def extractHoursMinutes(n):
-	if len(n) == 3 :
-		return (n[:1], n[1:])
-	elif len(n) == 4 :
-		return (n[:2], n[2:])
-	else :
-		return (n, "0")
-
-#Wrapper Function - put hours into database-friendly military time
-#Accepts a BeautifulSoup Object String
-#returns a string
-def military(n):
-	#make string from BeautifulSoup object
-	encoded = n.encode('utf-8')
-	#eliminate symobls from string
-	formatted = encoded.translate(None, ' .:')
-
-	#make unicode, eliminate spaces, then turn back into string
-	uniString = unicode(formatted, "UTF-8")
-	uniString = uniString.replace(u"\u00A0", "")
-	strFormat = str(uniString.encode('utf-8'))
-
-	#convert to lowercase, replace Keywords
-	strFormat = strFormat.lower()
-	strFormat = strFormat.replace("midnight", "2400am")
-	strFormat = strFormat.replace("noon", "1200pm")
-
-	#Using regex, get array of all groups of digits
-	numbersPattern = re.compile("\d+")
-	numbersArray = numbersPattern.findall(strFormat)
-
-	#Using regex, get array of all groups of letters (will be am/pm)
-	amPmPattern = re.compile("[a-zA-Z]+")
-	amPmArray = amPmPattern.findall(strFormat)
-
-	if len(amPmArray) == 1 :
-		amPmArray.append(amPmArray[0])
-
-	#go through all numbers, format correctly into 4-digit military time
-	formattedHours = []
-	for i in range(len(numbersArray)):
-		time = numbersArray[i]
-		hr_min = extractHoursMinutes(time)
-		hrDigits = int(hr_min[0])
-		minDigits = int(hr_min[1])
-		#handle if is PM and needs to be converted to military time
-		if(amPmArray[i] == "pm") :
-			hrDigits = (hrDigits%12) + 12
-		#calulate full digits
-		fullDigits = hrDigits*100+minDigits
-		#convert to string
-		fullHours = str(fullDigits)
-		#add leading 0 if is only 3 characters lon
-		if len(fullHours) == 3 :
-			fullHours = "0" + fullHours
-		formattedHours.append(fullHours)
-	#build final string of opening-closing
-	finalHourString = formattedHours[0]+"-"+formattedHours[1]
-	return finalHourString
-
-
 
 #TODO - this function gives us multiple hour sets if need be
 #def parseHourSets(n)
@@ -118,7 +53,7 @@ for day in arrayOfDayStrings :
 	desiredSection = eatshopHonnoldHours.find(text = re.compile(dayRegex))
 	if desiredSection :
 		dayElt = desiredSection.parent.next_sibling.next_sibling #first nextsibling gives whitespace
-		dayHours = military(dayElt.string)
+		dayHours = helper.military(dayElt.string)
 		dictOfDaysToHours[day] = dayHours
 
 # Fill in the rest of the days
@@ -154,7 +89,7 @@ for day in arrayOfDayStrings :
 	desiredSection = eatshopCoopFountainHours.find(text = re.compile(dayRegex))
 	if desiredSection :
 		dayElt = desiredSection.parent.next_sibling.next_sibling #first nextsibling gives whitespace
-		dayHours = military(dayElt.string)
+		dayHours = helper.military(dayElt.string)
 		dictOfDaysToHours[day] = dayHours
 
 #Fill in rest of days
@@ -204,7 +139,7 @@ for day in arrayOfDayStrings :
 		if "closed" in desiredWeekSection.lower() :
 			dictOfDaysToHours[day] = "Closed"
 		else: 
-			#Military expects am and pm to show up in the time. Because the website for Frank and Frary
+			#helper.military expects am and pm to show up in the time. Because the website for Frank and Frary
 			#Doesn't include am and pm in their times we add it in here. We do this by splitting via regex
 			#on the dash and reconstructing each string.
 
@@ -215,7 +150,7 @@ for day in arrayOfDayStrings :
 			breakfastStart = breakfastDeconstruct[0] + 'am' + '-'
 			breakfastEnd = breakfastDeconstruct[1] + 'pm'
 			breakfastTime = breakfastStart + breakfastEnd
-			breakfastTime = military(breakfastTime)
+			breakfastTime = helper.military(breakfastTime)
 
 			#Lunch hours
 			lunch = breakfast.next_sibling.next_sibling
@@ -224,7 +159,7 @@ for day in arrayOfDayStrings :
 			lunchStart = lunchDeconstruct[0] + 'am' + '-'
 			lunchEnd = lunchDeconstruct[1] + 'pm'
 			lunchTime = lunchStart + lunchEnd
-			lunchTime = military(lunchTime)
+			lunchTime = helper.military(lunchTime)
 
 			#Dinner hours
 			dinner = lunch.next_sibling.next_sibling
@@ -233,7 +168,7 @@ for day in arrayOfDayStrings :
 			dinnerStart = dinnerDeconstruct[0] + 'pm' + '-'
 			dinnerEnd = dinnerDeconstruct[1] + 'pm'
 			dinnerTime = dinnerStart + dinnerEnd
-			dinnerTime = military(dinnerTime)
+			dinnerTime = helper.military(dinnerTime)
 
 			#Concatenate and add to array
 			frankHoursWeek = breakfastTime + '%' + lunchTime + '%' + dinnerTime
@@ -254,7 +189,7 @@ for day in arrayOfDayStrings :
 			brunchStart = brunchDeconstruct[0] + 'am' + '-'
 			brunchEnd = brunchDeconstruct[1] + 'pm'
 			brunchTime = brunchStart + brunchEnd
-			brunchTime = military(brunchTime)
+			brunchTime = helper.military(brunchTime)
 
 			#Dinner
 			dinner = brunch.next_sibling.next_sibling
@@ -263,7 +198,7 @@ for day in arrayOfDayStrings :
 			dinnerStart = dinnerDeconstruct[0] + 'pm' + '-'
 			dinnerEnd = dinnerDeconstruct[1] + 'pm'
 			dinnerTime = dinnerStart + dinnerEnd
-			dinnerTime = military(dinnerTime)
+			dinnerTime = helper.military(dinnerTime)
 
 			#Concatenate and add to array
 			frankHoursWeekend = brunchTime + '%' + dinnerTime
@@ -300,7 +235,7 @@ for day in arrayOfDayStrings :
 		if "closed" in desiredWeekSection.lower() :
 			dictOfDaysToHours[day] = "Closed"
 		else: 
-			#Military expects am and pm to show up in the time. Because the website for Frary and Frary
+			#helper.military expects am and pm to show up in the time. Because the website for Frary and Frary
 			#Doesn't include am and pm in their times we add it in here. We do this by splitting via regex
 			#on the dash and reconstructing each string.
 
@@ -311,7 +246,7 @@ for day in arrayOfDayStrings :
 			breakfastStart = breakfastDeconstruct[0] + 'am' + '-'
 			breakfastEnd = breakfastDeconstruct[1] + 'am'
 			breakfastTime = breakfastStart + breakfastEnd
-			breakfastTime = military(breakfastTime)
+			breakfastTime = helper.military(breakfastTime)
 
 			#Lunch hours
 			lunch = breakfast.next_sibling.next_sibling
@@ -320,7 +255,7 @@ for day in arrayOfDayStrings :
 			lunchStart = lunchDeconstruct[0] + 'am' + '-'
 			lunchEnd = lunchDeconstruct[1] + 'pm'
 			lunchTime = lunchStart + lunchEnd
-			lunchTime = military(lunchTime)
+			lunchTime = helper.military(lunchTime)
 
 			#Dinner hours
 			dinner = lunch.next_sibling.next_sibling
@@ -329,7 +264,7 @@ for day in arrayOfDayStrings :
 			dinnerStart = dinnerDeconstruct[0] + 'pm' + '-'
 			dinnerEnd = dinnerDeconstruct[1] + 'pm'
 			dinnerTime = dinnerStart + dinnerEnd
-			dinnerTime = military(dinnerTime)
+			dinnerTime = helper.military(dinnerTime)
 
 			#Concatenate and add to array
 			fraryHoursWeek = breakfastTime + '%' + lunchTime + '%' + dinnerTime
@@ -348,7 +283,7 @@ for day in arrayOfDayStrings :
 			cBreakfastStart = cBreakfastDeconstruct[0] + 'am' + '-'
 			cBreakfastEnd = cBreakfastDeconstruct[1] + 'pm'
 			cBreakfastTime = cBreakfastStart + cBreakfastEnd
-			cBreakfastTime = military(cBreakfastTime)
+			cBreakfastTime = helper.military(cBreakfastTime)
 
 			#Brunch
 			brunch = cBreakfast.next_sibling.next_sibling
@@ -357,7 +292,7 @@ for day in arrayOfDayStrings :
 			brunchStart = brunchDeconstruct[0] + 'am' + '-'
 			brunchEnd = brunchDeconstruct[1] + 'pm'
 			brunchTime = brunchStart + brunchEnd
-			brunchTime = military(brunchTime)
+			brunchTime = helper.military(brunchTime)
 
 			#Dinner
 			dinner = brunch.next_sibling.next_sibling
@@ -366,7 +301,7 @@ for day in arrayOfDayStrings :
 			dinnerStart = dinnerDeconstruct[0] + 'pm' + '-'
 			dinnerEnd = dinnerDeconstruct[1] + 'pm'
 			dinnerTime = dinnerStart + dinnerEnd
-			dinnerTime = military(dinnerTime)
+			dinnerTime = helper.military(dinnerTime)
 
 			#Concatenate and add to array
 			fraryHoursWeekend = cBreakfastTime + '%' + brunchTime + '%' + dinnerTime
@@ -381,7 +316,7 @@ snackDeconstruct = snackTime.split('-')
 snackStart = snackDeconstruct[0] + 'pm' + '-'
 snackEnd = snackDeconstruct[0].replace(',','') + 'pm'
 snackTime = snackStart + snackEnd
-snackTime = military(snackTime)
+snackTime = helper.military(snackTime)
 
 
 #Fill in rest of days and hours array
@@ -415,7 +350,7 @@ for day in arrayOfDayStrings :
 	desiredSection = coopStoreHours.find(text = re.compile(dayRegex))
 	if desiredSection :
 		dayElt = desiredSection.parent.next_sibling.next_sibling #first nextsibling gives whitespace
-		dayHours = military(dayElt.string)
+		dayHours = helper.military(dayElt.string)
 		dictOfDaysToHours[day] = dayHours
 
 #Fill in rest of days and hours array
@@ -449,7 +384,7 @@ for day in arrayOfDayStrings :
 		dayElt = hrsArray[0]
 		openClose = dayElt.split("-")
 		dayElt = openClose[0] + "pm-" + openClose[1]
-		dayHours = military(dayElt)
+		dayHours = helper.military(dayElt)
 		dictOfDaysToHours[day] = dayHours
 	dictOfDaysToHours["Mon"] = dayHours
 	dictOfDaysToHours["Fri"] = "Closed"

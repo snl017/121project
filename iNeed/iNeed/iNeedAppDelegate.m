@@ -88,7 +88,7 @@
     
     
 //    //Empty the database if necessary
-    [PlaceDatabase emptyDatabase];
+//    [PlaceDatabase emptyDatabase];
 //    
 //    //Save some test places to database
 //    [PlaceDatabase saveItemWithPlace:fraryDining andSpecificCategory:DiningHallNarrow andBroadCategory:FoodBroad];

@@ -160,10 +160,6 @@
                         
                         for(NSArray *row in results){
                             NSLog(@"need to init");
-                            //so now i need to create a place and save it
-                            //a la a similar form as below, but accessing the data in the rows that are sent to me
-                            //need to figure this out
-                            NSLog(@"place looks like %@", row);
                             
                             NSArray *placeInfo = row[0];
                             NSArray *catInfo = row[1];

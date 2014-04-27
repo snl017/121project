@@ -1,6 +1,5 @@
-Oldenborg Dining Hall~Monday:1145am-1245pm Tuesday:1145am-1245pm Wednesday:1145am-1245pm Thursday:1145am-1245pm Friday:1145am-1245pm Saturday-Closed Sunday-Closed
-Coop Store~Monday:0900am-0000am Tuesday:0900am-0000am Wednesday:0900am-0000am Thursday:0900am-0000am Friday:0900am-0000am Saturday:1200pm-0000am Sunday:1200pm-2100pm
-Huntley Bookstore~Monday:0830am-1800pm Tuesday:0830am-1800pm Wednesday:0830am-1800pm Thursday:0830am-1800pm Friday:0830am-1700pm Saturday:1000am-1700pm Sunday-Closed
+Oldenborg Dining Hall~Monday:1145am-1245pm Tuesday:1145am-1245pm Wednesday:1145am-1245pm Thursday:1145am-1245pm Friday:1145am-1245pm Saturday:Closed Sunday:Closed
+Huntley Bookstore~Monday:0830am-1800pm Tuesday:0830am-1800pm Wednesday:0830am-1800pm Thursday:0830am-1800pm Friday:0830am-1700pm Saturday:1000am-1700pm Sunday:Closed
 Sagehen Cafe~
 Writing Center~Monday:2000pm-2200pm Tuesday:2000pm-2200pm Wednesday:2000pm-2200pm Thursday:2000pm-2200pm Friday:Closed Saturday:Closed
 Honnold-Mudd Library~Monday:0800am-0100am Tuesday:0800am-0100am Wednesday:0800am-0100am Thursday:0800am-0100am Friday:0800am-2200pm Saturday:0900am-2200pm Sunday:1100am-0100am

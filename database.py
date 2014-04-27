@@ -1,6 +1,7 @@
 import sqlite3
 from sets import Set
 import os
+import helper
 
 #define a method to update the database.
 #day to update given as a all-lower-case, full day of the week
@@ -33,6 +34,7 @@ def rowsUpdatedLaterThan(time):
 	timesToUpdateSet = Set(timesToUpdate)
 	selectString = 'SELECT * FROM places WHERE lastUpdate=?'
 	for time in timesToUpdateSet:
+		print time
 		c.execute(selectString,time)
 		for row in c:
 			updatedRows.append(row)
@@ -111,6 +113,40 @@ for line in categoriesFile:
 	#Parse values
 	vals = line.split("^^^")
 	c.execute(insertToCatStmt, vals)
+
+
+
+
+#update places with hardcoded hours
+updateString = 'UPDATE places SET monday=?, tuesday=?, wednesday=?, thursday=?, friday=?, saturday=?, sunday=?, lastUpdate=? WHERE name=?'
+
+hardcodedHrsFile = open("hardcoded.txt", "r")
+
+#setting timestamp to 0 so that the app will never try to update these rows after initialized
+timeStamp = 0
+
+#right now, while it's not filled in, I'm just getting the first 2 rows
+x  = 0
+for line in hardcodedHrsFile :
+	if(x < 2) :
+		#parse values
+		nameHours = line.split("~")
+		placeName = nameHours[0]
+		hours = nameHours[1].split(" ")
+		monday = helper.military(hours[0].split(":")[1])
+		tuesday = helper.military(hours[1].split(":")[1])
+		wednesday = helper.military(hours[2].split(":")[1])
+		thursday = helper.military(hours[3].split(":")[1])
+		friday = helper.military(hours[4].split(":")[1])
+		saturday = helper.military(hours[5].split(":")[1])
+
+		#rstrip removes the new line character at the end of sunday's hours
+		sunday = helper.military(hours[6].split(":")[1].rstrip())
+
+		c.execute(updateString,(monday,tuesday,wednesday,thursday,friday,saturday,sunday,timeStamp, placeName))
+		x +=1
+
+
 
 # Done!
 conn.commit()

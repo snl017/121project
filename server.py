@@ -39,10 +39,13 @@ class DatabaseServer(Protocol):
 
 		if (self.lastTime >= 0) :
 			#debugging stuff, so that something hasn't been updated at TIME:0
+			#this should be changed to self.lastTime
+			#but for now, this doesn't realistically update. 
+			#instead, it just ALWAYS UPDATES ALL THE ROWS (that were not hardcoded)
 			rows = database.rowsUpdatedLaterThan(0)	
 
 			#this just does the first 4 places to update, because they are the only ones with initialized hours in the database
-			rows = rows[0:6]
+			#rows = rows[0:6]
 
 			#print json.dumps(rows)
 

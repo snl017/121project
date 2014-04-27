@@ -16,4 +16,5 @@
 
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *Update;
 
+@property UIImageView *backgroundImageView;
 @end

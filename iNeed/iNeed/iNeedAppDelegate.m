@@ -12,7 +12,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
+    //To test prettyness of launch screen uncomment below
+    //sleep(5);
     
     //(written by) SHANNON - idk if we even need any of the things below here or the testDatabase function
     //we should figure this out at some point....

@@ -21,6 +21,11 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        
+        //Code for Custom Cell use
+        [self.tableView registerClass:[detailCell class] forCellReuseIdentifier:@"Cell"];
+        
+        
     }
     return self;
 }
@@ -31,6 +36,7 @@
     self.places = [NSMutableArray new];
     self.places = [PlaceDatabase fetchPlacesBySpecificCategory:self.specificCategory];
     [self setTitle:self.specificCategory];
+    [self.tableView setRowHeight:140.00];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -62,7 +68,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"PlacesCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    detailCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     
     Place *place = (self.places)[indexPath.row];
@@ -100,7 +106,14 @@
     }else{
         NSLog(@"ERROR: The day of the week is not correct");
     }
+    
+    //Format the cell before return
     cell.detailTextLabel.text = toDisplay;
+    [cell.textLabel setNumberOfLines:3];
+    [cell.textLabel setLineBreakMode:NSLineBreakByWordWrapping];
+    [cell.detailTextLabel setNumberOfLines:4];
+    [cell.detailTextLabel setLineBreakMode:NSLineBreakByWordWrapping];
+    [cell.detailTextLabel sizeToFit];
     return cell;
 }
 

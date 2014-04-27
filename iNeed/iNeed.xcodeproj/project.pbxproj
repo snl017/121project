@@ -12,6 +12,7 @@
 		86314D2818B40E18006FA727 /* placeDatabase.sql in Resources */ = {isa = PBXBuildFile; fileRef = 86314D2718B40E18006FA727 /* placeDatabase.sql */; };
 		86314D2B18B986AD006FA727 /* Hours.m in Sources */ = {isa = PBXBuildFile; fileRef = 86314D2A18B986AD006FA727 /* Hours.m */; };
 		865BE42D190C5553007D8502 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 865BE42C190C5553007D8502 /* MBProgressHUD.m */; };
+		86712BDF190C6C2E00D35309 /* detailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 86712BDE190C6C2E00D35309 /* detailCell.m */; };
 		DA212CE718B3EAB600C0DF8F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA212CE618B3EAB600C0DF8F /* Foundation.framework */; };
 		DA212CE918B3EAB600C0DF8F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA212CE818B3EAB600C0DF8F /* CoreGraphics.framework */; };
 		DA212CEB18B3EAB600C0DF8F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA212CEA18B3EAB600C0DF8F /* UIKit.framework */; };
@@ -56,6 +57,8 @@
 		86314D2A18B986AD006FA727 /* Hours.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hours.m; sourceTree = "<group>"; };
 		865BE42B190C5553007D8502 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		865BE42C190C5553007D8502 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		86712BDD190C6C2E00D35309 /* detailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = detailCell.h; path = ../detailCell.h; sourceTree = "<group>"; };
+		86712BDE190C6C2E00D35309 /* detailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = detailCell.m; path = ../detailCell.m; sourceTree = "<group>"; };
 		DA212CE318B3EAB600C0DF8F /* iNeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iNeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA212CE618B3EAB600C0DF8F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DA212CE818B3EAB600C0DF8F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -129,6 +132,8 @@
 		865BE42A190C5541007D8502 /* Display */ = {
 			isa = PBXGroup;
 			children = (
+				86712BDD190C6C2E00D35309 /* detailCell.h */,
+				86712BDE190C6C2E00D35309 /* detailCell.m */,
 				865BE42B190C5553007D8502 /* MBProgressHUD.h */,
 				865BE42C190C5553007D8502 /* MBProgressHUD.m */,
 			);
@@ -342,6 +347,7 @@
 				DA212CF318B3EAB600C0DF8F /* main.m in Sources */,
 				DADDDEB318EBCE0200C25831 /* HighLevelViewController.m in Sources */,
 				DA4D4D7E18BDB6CF00368DC8 /* Constants.m in Sources */,
+				86712BDF190C6C2E00D35309 /* detailCell.m in Sources */,
 				FB32A89318E90D88007F095E /* SingleHourSet.m in Sources */,
 				DA4D4D8118BDC42B00368DC8 /* PlaceDisplayViewController.m in Sources */,
 				DADDDEC818EC8D1A00C25831 /* UpdateDatabaseViewController.m in Sources */,

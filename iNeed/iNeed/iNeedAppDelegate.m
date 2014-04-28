@@ -14,6 +14,8 @@
 {
     //To test prettyness of launch screen uncomment below
     //sleep(5);
+    NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor purpleColor], UITextAttributeTextColor, [UIColor whiteColor], UITextAttributeTextShadowColor, nil];
+    [[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
     
     //(written by) SHANNON - idk if we even need any of the things below here or the testDatabase function
     //we should figure this out at some point....
@@ -90,18 +92,18 @@
     [PlaceDatabase emptyDatabase];
     
 //    //Save some test places to database
-//    [PlaceDatabase saveItemWithPlace:fraryDining andSpecificCategory:DiningHallNarrow andBroadCategory:FoodBroad];
-//    [PlaceDatabase saveItemWithPlace:frankDining andSpecificCategory:DiningHallNarrow andBroadCategory:FoodBroad];
-//    [PlaceDatabase saveItemWithPlace:campusSafety andSpecificCategory:SafetyHealth andBroadCategory:SafetyHealth];
-//    [PlaceDatabase saveItemWithPlace:studyAbroad andSpecificCategory:NonAcademicRCNarrow andBroadCategory:AcademicRCNarrow];
-//    [PlaceDatabase saveItemWithPlace:coopFountain andSpecificCategory:EateryGroceryNarrow andBroadCategory:FoodBroad];
-//    [PlaceDatabase savePlace:coopStore.name withSpecificCategory:StoresNarrow andBroadCategory:LivingOnCampusBroad];
-//    [PlaceDatabase saveItemWithPlace:coopStore andSpecificCategory:EateryGroceryNarrow andBroadCategory:FoodBroad];
-//    [PlaceDatabase saveItemWithPlace:writingCenter andSpecificCategory:AcademicRCNarrow andBroadCategory:ResourceCentersOfficesBroad];
-//    [PlaceDatabase saveItemWithPlace:its andSpecificCategory:ServicesNarrow andBroadCategory:LivingOnCampusBroad];
-//    [PlaceDatabase saveItemWithPlace:honnoldcafe andSpecificCategory:EateryGroceryNarrow andBroadCategory:FoodBroad];
-//    
-//    
+    [PlaceDatabase saveItemWithPlace:fraryDining andSpecificCategory:DiningHallNarrow andBroadCategory:FoodBroad];
+    [PlaceDatabase saveItemWithPlace:frankDining andSpecificCategory:DiningHallNarrow andBroadCategory:FoodBroad];
+    [PlaceDatabase saveItemWithPlace:campusSafety andSpecificCategory:SafetyHealth andBroadCategory:SafetyHealth];
+    [PlaceDatabase saveItemWithPlace:studyAbroad andSpecificCategory:NonAcademicRCNarrow andBroadCategory:AcademicRCNarrow];
+    [PlaceDatabase saveItemWithPlace:coopFountain andSpecificCategory:EateryGroceryNarrow andBroadCategory:FoodBroad];
+    [PlaceDatabase savePlace:coopStore.name withSpecificCategory:StoresNarrow andBroadCategory:LivingOnCampusBroad];
+    [PlaceDatabase saveItemWithPlace:coopStore andSpecificCategory:EateryGroceryNarrow andBroadCategory:FoodBroad];
+    [PlaceDatabase saveItemWithPlace:writingCenter andSpecificCategory:AcademicRCNarrow andBroadCategory:ResourceCentersOfficesBroad];
+    [PlaceDatabase saveItemWithPlace:its andSpecificCategory:ServicesNarrow andBroadCategory:LivingOnCampusBroad];
+    [PlaceDatabase saveItemWithPlace:honnoldcafe andSpecificCategory:EateryGroceryNarrow andBroadCategory:FoodBroad];
+    
+//
 //    
 }
 

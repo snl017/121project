@@ -15,4 +15,7 @@
 @property NSString *specificCategory;
 @property NSMutableArray *places;
 
+//Background properties
+@property UIImageView *backgroundImageView;
+
 @end

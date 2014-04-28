@@ -39,6 +39,14 @@
      Tag: 10 Displays: Web
      */
     [super viewDidLoad];
+    
+    //Set background image
+    self.backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"darkTickBg-01.png"]];
+    self.backgroundImageView.frame = self.view.bounds;
+    [[self view] addSubview:self.backgroundImageView];
+    [self.backgroundImageView.superview sendSubviewToBack:self.backgroundImageView];
+    
+    
     [self setTitle:self.place.name];
     [self setLabel:2 with:self.place.getAllHoursAsString];
     [self setLabel:4 with:self.place.location];

@@ -28,6 +28,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //Set background image
+    self.backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"darkBlueBg-01.png"]];
+    self.backgroundImageView.frame = self.view.bounds;
+    [[self view] addSubview:self.backgroundImageView];
+    [self.backgroundImageView.superview sendSubviewToBack:self.backgroundImageView];
+    
+    
     //Set the title to be the broad category
     [self setTitle:self.category];
     

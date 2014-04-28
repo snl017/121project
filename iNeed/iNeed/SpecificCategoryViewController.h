@@ -12,4 +12,7 @@
 //The broad category for which we're displaying buttons for the specific categories
 @property NSString *category;
 
+//Background properties
+@property UIImageView *backgroundImageView;
+
 @end

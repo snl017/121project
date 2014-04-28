@@ -33,6 +33,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //Set background image
+    self.backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"darkTickBg-01.png"]];
+    self.backgroundImageView.frame = self.view.bounds;
+    [[self view] addSubview:self.backgroundImageView];
+    [self.backgroundImageView.superview sendSubviewToBack:self.backgroundImageView];
+    
     self.places = [NSMutableArray new];
     self.places = [PlaceDatabase fetchPlacesBySpecificCategory:self.specificCategory];
     [self setTitle:self.specificCategory];

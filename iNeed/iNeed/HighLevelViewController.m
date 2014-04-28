@@ -34,7 +34,7 @@
 	// Do any additional setup after loading the view.
     
     //Set background image
-    self.backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"testBg1.png"]];
+    self.backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"darkTickBg-01.png"]];
     self.backgroundImageView.frame = self.view.bounds;
     [[self view] addSubview:self.backgroundImageView];
     [self.backgroundImageView.superview sendSubviewToBack:self.backgroundImageView];

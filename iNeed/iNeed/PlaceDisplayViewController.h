@@ -13,4 +13,7 @@
 
 @property Place *place;
 
+//Background properties
+@property UIImageView *backgroundImageView;
+
 @end

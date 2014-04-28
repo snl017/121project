@@ -34,8 +34,9 @@ def rowsUpdatedLaterThan(time):
 	timesToUpdateSet = Set(timesToUpdate)
 	selectString = 'SELECT * FROM places WHERE lastUpdate=?'
 	for time in timesToUpdateSet:
-		print time
-		c.execute(selectString,time)
+		#print time
+		t = (time,)
+		c.execute(selectString,t)
 		for row in c:
 			updatedRows.append(row)
 			#print row
@@ -70,6 +71,20 @@ def rowsCategories(updatedRows) :
 
 	conn.commit()
 	return updatedRowsCopy
+
+def getScrapingSite(place):
+	conn = sqlite3.connect('claremontClock.sqlite3')
+	c = conn.cursor()
+
+	selectString = 'SELECT scrapingSite FROM places WHERE name=?'
+	t = (place,)
+	c.execute(selectString,t)
+	for row in c:
+		scrapeSite = row
+
+	conn.commit()
+	return scrapeSite[0]
+
 
 #############################################################################################
 ##The code for creating the database & reading in the static data provided in text files. 
@@ -125,10 +140,10 @@ hardcodedHrsFile = open("hardcoded.txt", "r")
 #setting timestamp to 0 so that the app will never try to update these rows after initialized
 timeStamp = 0
 
-#right now, while it's not filled in, I'm just getting the first 2 rows
+#right now, while it's not filled in, I'm just getting the first 10 rows
 x  = 0
 for line in hardcodedHrsFile :
-	if(x < 2) :
+	if(x < 10) :
 		#parse values
 		nameHours = line.split("~")
 		placeName = nameHours[0]

@@ -8,6 +8,9 @@
 import re
 import string
 
+import time
+import calendar
+
 #helper method for calculating military time
 #returns an ordered pair of strings
 #the first is a string of the hour digits (0-24)
@@ -29,6 +32,8 @@ def military(n):
 	if n == 'Closed' :
 		return n
 
+	if '%' in n :
+		return multHourMilitary(n)
 
 	#make string from BeautifulSoup object
 	encoded = n.encode('utf-8')
@@ -78,3 +83,22 @@ def military(n):
 	finalHourString = formattedHours[0]+"-"+formattedHours[1]
 	return finalHourString
 
+
+#helper function to call military on all bits of a multiple hour set, put them back together, and return
+def multHourMilitary(n) :
+	hourSets = n.split('%')
+	resultString = ""
+	for hourSet in hourSets :
+		resultString+= military(hourSet)
+		resultString += "%"
+	#get rid of final % separator (because end of string has no mark after last hour set)
+	resultString = resultString[:-1]
+	return resultString
+
+
+#helper function that gets system time since 1970, formats properly as number of minutes
+#saves as float
+#returns
+def getTimeStamp():
+	updatingTimeStamp = calendar.timegm(time.gmtime())
+	return updatingTimeStamp

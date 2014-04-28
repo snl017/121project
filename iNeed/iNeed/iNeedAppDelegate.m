@@ -41,9 +41,7 @@
     Hours *h5 = [[Hours alloc] initWithOneString:@"0500-0600"];
     Hours *h6 = [[Hours alloc] initWithOneString:@"0600-0700"];
     Hours *h7 = [[Hours alloc] initWithOneString:@"0700-0800"];
-    
-    Hours *illegalHr =[[Hours alloc] initWithOneString:@"700-0800"];
-    
+        
     //First create some test Places
     
     //Testing frary with multiple hours

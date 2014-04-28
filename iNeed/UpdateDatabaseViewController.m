@@ -156,7 +156,10 @@
                     if (!([[NSUserDefaults standardUserDefaults] boolForKey:@"NOTinitializing"])){
                         // this is the first update ever, so we want both the place info AND the category info
                         // we signal this to the server by sending a -1 time stamp
+                        //since this is the first launch EVER, it is safe to assume that there is NOTHING in the database on the phone
+                        //and that ALL DATA coming in MUST be initilialized (this is currently problematic with some stuff being initialized as hardcoded in app delegate)
                         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"NOTinitializing"];
+                        
                         
                         for(NSArray *row in results){
                             NSLog(@"need to init");

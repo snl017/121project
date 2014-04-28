@@ -22,7 +22,7 @@ class DatabaseServer(Protocol):
 		if len(timeStamp) > 1:
 			#Save the time stamp passed in 
 			self.lastTime = float(timeStamp[1])
-			print self.lastTime #for debugging, but also not necessarily bad
+			print "time stamp received from phone " + str(self.lastTime) #for debugging, but also not necessarily bad
 			#call getData to send data back to the client
 			self.getData() 
 
@@ -38,11 +38,8 @@ class DatabaseServer(Protocol):
 		#self.sendMessage(row)
 
 		if (self.lastTime >= 0) :
-			#debugging stuff, so that something hasn't been updated at TIME:0
-			#this should be changed to self.lastTime
-			#but for now, this doesn't realistically update. 
-			#instead, it just ALWAYS UPDATES ALL THE ROWS (that were not hardcoded)
-			rows = database.rowsUpdatedLaterThan(0)	
+			#gets rows that have been updated after the last time the row had been updated (as sent by the phone)
+			rows = database.rowsUpdatedLaterThan(self.lastTime)	
 
 			#this just does the first 4 places to update, because they are the only ones with initialized hours in the database
 			#rows = rows[0:6]

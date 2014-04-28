@@ -5,6 +5,8 @@ import re
 import string
 import database
 import helper
+import time
+import calendar
 
 #Created by Anna Turner and Shannon Lubetich
 #4/15/2014
@@ -29,7 +31,8 @@ def fillInHoursDictionary(dictOfDaysToHours, arrayOfDayStrings) :
 
 #HONNOLD CAFE
 #Test with http://aspc.pomona.edu/eatshop/on-campus/
-eatshopURL = "http://aspc.pomona.edu/eatshop/on-campus/"
+#eatshopURL = "http://aspc.pomona.edu/eatshop/on-campus/"
+eatshopURL = database.getScrapingSite("Honnold Cafe")
 eatshopHTML = urlopen(eatshopURL).read()
 eatshopSoup = BeautifulSoup(eatshopHTML)
 
@@ -64,7 +67,8 @@ fillInHoursDictionary(dictOfDaysToHours, arrayOfDayStrings)
 databaseDayStrings = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 
 for i in range(len(arrayOfDayStrings)) :
-	database.updateDatabase("Honnold Cafe", databaseDayStrings[i], dictOfDaysToHours[arrayOfDayStrings[i]], "0")
+	timeStamp = helper.getTimeStamp()
+	database.updateDatabase("Honnold Cafe", databaseDayStrings[i], dictOfDaysToHours[arrayOfDayStrings[i]], timeStamp)
 	#UHHH PROBLEM. i'm assuming we need to get the timestamp of when we're updating this, 
 	#and that's going to need to be basically the same "time since 1972"??? what was it??? 
 
@@ -100,7 +104,8 @@ fillInHoursDictionary(dictOfDaysToHours, arrayOfDayStrings)
 databaseDayStrings = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 
 for i in range(len(arrayOfDayStrings)) :
-	database.updateDatabase("Coop Fountain", databaseDayStrings[i], dictOfDaysToHours[arrayOfDayStrings[i]], "0")
+	timeStamp = helper.getTimeStamp()
+	database.updateDatabase("Coop Fountain", databaseDayStrings[i], dictOfDaysToHours[arrayOfDayStrings[i]], timeStamp)
 
 
 
@@ -114,7 +119,8 @@ for i in range(len(arrayOfDayStrings)) :
 ################################################################################
 #FRANK AND FRARY#
 
-poDiningURL = "http://www.pomona.edu/administration/dining/facilities-hours/hours.aspx"
+#poDiningURL = "http://www.pomona.edu/administration/dining/facilities-hours/hours.aspx"
+poDiningURL = database.getScrapingSite("Frank Dining Hall")
 poDiningHTML = urlopen(poDiningURL).read()
 poDiningSoup = BeautifulSoup(poDiningHTML)
 
@@ -208,7 +214,8 @@ for day in arrayOfDayStrings :
 fillInHoursDictionary(dictOfDaysToHours, arrayOfDayStrings)
 #Update Database
 for i in range(len(arrayOfDayStrings)) :
-	database.updateDatabase("Frank Dining Hall", databaseDayStrings[i], dictOfDaysToHours[arrayOfDayStrings[i]], "0")
+	timeStamp = helper.getTimeStamp()
+	database.updateDatabase("Frank Dining Hall", databaseDayStrings[i], dictOfDaysToHours[arrayOfDayStrings[i]], timeStamp)
 
 
 
@@ -281,7 +288,7 @@ for day in arrayOfDayStrings :
 			cBreakfastTime = cBreakfast.split()[2]
 			cBreakfastDeconstruct = cBreakfastTime.split('-')
 			cBreakfastStart = cBreakfastDeconstruct[0] + 'am' + '-'
-			cBreakfastEnd = cBreakfastDeconstruct[1] + 'pm'
+			cBreakfastEnd = cBreakfastDeconstruct[1] + 'am'
 			cBreakfastTime = cBreakfastStart + cBreakfastEnd
 			cBreakfastTime = helper.military(cBreakfastTime)
 
@@ -314,7 +321,7 @@ snack = poDiningFraryHoursSnack.find("strong").next_sibling
 snackTime = snack.split()[0]
 snackDeconstruct = snackTime.split('-')
 snackStart = snackDeconstruct[0] + 'pm' + '-'
-snackEnd = snackDeconstruct[0].replace(',','') + 'pm'
+snackEnd = snackDeconstruct[1].replace(',','') + 'pm'
 snackTime = snackStart + snackEnd
 snackTime = helper.military(snackTime)
 
@@ -330,14 +337,16 @@ dictOfDaysToHours["Wed"] = dictOfDaysToHours["Wed"] + '%' + str(snackTime)
 
 #Update Database
 for i in range(len(arrayOfDayStrings)) :
-	database.updateDatabase("Frary Dining Hall", databaseDayStrings[i], dictOfDaysToHours[arrayOfDayStrings[i]], "0")
+	timeStamp = helper.getTimeStamp()
+	database.updateDatabase("Frary Dining Hall", databaseDayStrings[i], dictOfDaysToHours[arrayOfDayStrings[i]], timeStamp)
 
 
 
 
 #######################################################################################
 ###COOP STORE
-coopStoreURL = "http://coopstore.pomona.edu"
+#coopStoreURL = "http://coopstore.pomona.edu"
+coopStoreURL = database.getScrapingSite("Coop Store")
 coopStoreHTML = urlopen(coopStoreURL).read()
 coopStoreSoup = BeautifulSoup(coopStoreHTML)
 
@@ -361,12 +370,14 @@ fillInHoursDictionary(dictOfDaysToHours, arrayOfDayStrings)
 databaseDayStrings = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 
 for i in range(len(arrayOfDayStrings)) :
-	database.updateDatabase("Coop Store", databaseDayStrings[i], dictOfDaysToHours[arrayOfDayStrings[i]], "0")
+	timeStamp = helper.getTimeStamp()
+	database.updateDatabase("Coop Store", databaseDayStrings[i], dictOfDaysToHours[arrayOfDayStrings[i]], timeStamp)
 
 
 ################################################################################
 #WRITING CENTER
-writingCenterURL = "https://my.pomona.edu/ICS/Academics/Writing_Center_Page.jnz"
+#writingCenterURL = "https://my.pomona.edu/ICS/Academics/Writing_Center_Page.jnz"
+writingCenterURL = database.getScrapingSite("Writing Center")
 writingCenterHTML = urlopen(writingCenterURL).read()
 writingCenterSoup = BeautifulSoup(writingCenterHTML)
 
@@ -399,28 +410,8 @@ fillInHoursDictionary(dictOfDaysToHours, arrayOfDayStrings)
 databaseDayStrings = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
 
 for i in range(len(arrayOfDayStrings)) :
-	database.updateDatabase("Writing Center", databaseDayStrings[i], dictOfDaysToHours[arrayOfDayStrings[i]], "0")
-
-
-
-
-
-
-
-# database.updateDatabase("Frank Dining Hall", "monday", "0200-0600%0700-1200", "0")
-# database.updateDatabase("Frank Dining Hall", "tuesday", "0200-0600%0700-1200", "0")
-# database.updateDatabase("Frank Dining Hall", "wednesday", "0200-0600%0700-1200", "0")
-# database.updateDatabase("Frank Dining Hall", "thursday", "0200-0600%0700-1200", "0")
-# database.updateDatabase("Frank Dining Hall", "friday", "0200-0600%0700-1200", "0")
-# database.updateDatabase("Frank Dining Hall", "saturday", "0200-0600%0700-1200", "0")
-# database.updateDatabase("Frank Dining Hall", "sunday", "0200-0600%0700-1200", "0")
-# database.updateDatabase("Frary Dining Hall", "monday", "0200-0600%0700-1200", "0")
-# database.updateDatabase("Frary Dining Hall", "tuesday", "0200-0600%0700-1200", "0")
-# database.updateDatabase("Frary Dining Hall", "wednesday", "0200-0600%0700-1200", "0")
-# database.updateDatabase("Frary Dining Hall", "thursday", "0200-0600%0700-1200", "0")
-# database.updateDatabase("Frary Dining Hall", "friday", "0200-0600%0700-1200", "0")
-# database.updateDatabase("Frary Dining Hall", "saturday", "0200-0600%0700-1200", "0")
-# database.updateDatabase("Frary Dining Hall", "sunday", "0200-1200", "0")
+	timeStamp = helper.getTimeStamp()
+	database.updateDatabase("Writing Center", databaseDayStrings[i], dictOfDaysToHours[arrayOfDayStrings[i]], timeStamp)
 
 
 

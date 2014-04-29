@@ -38,7 +38,6 @@
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:
                                      [UIImage imageNamed:@"darkTickBg-01.png"]];
     
-    
     self.places = [NSMutableArray new];
     self.places = [PlaceDatabase fetchPlacesBySpecificCategory:self.specificCategory];
     [self setTitle:self.specificCategory];

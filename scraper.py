@@ -348,7 +348,8 @@ for i in range(len(arrayOfDayStrings)) :
 #coopStoreURL = "http://coopstore.pomona.edu"
 coopStoreURL = database.getScrapingSite("Coop Store")
 coopStoreHTML = urlopen(coopStoreURL).read()
-coopStoreSoup = BeautifulSoup(coopStoreHTML)
+coopStoreSoup = BeautifulSoup(coopStoreHTML, 'html5lib')
+
 
 coopStoreHours = coopStoreSoup.find('h2', text = (re.compile("Hours"))).parent
 

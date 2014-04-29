@@ -169,7 +169,9 @@
                             
                             Place *newPlace = [[Place alloc] initWithSchool:placeInfo[1] andName:placeInfo[2] andLocation:placeInfo[3] andMondayHours:[[Hours alloc] initWithOneString:placeInfo[4]] andTuesdayHours:[[Hours alloc] initWithOneString:placeInfo[5]] andWednesdayHours:[[Hours alloc] initWithOneString:placeInfo[6]] andThursdayHours:[[Hours alloc] initWithOneString:placeInfo[7]] andFridayHours:[[Hours alloc] initWithOneString:placeInfo[8]] andSaturdayHours:[[Hours alloc] initWithOneString:placeInfo[9]] andSundayHours:[[Hours alloc] initWithOneString:placeInfo[10]] andPhoneString:placeInfo[11] andEmailString:placeInfo[12] andLinkString:placeInfo[13] andExtraInfo:placeInfo[13]];
                             
-                            [PlaceDatabase saveItemWithPlace:newPlace andSpecificCategory:catInfo[2] andBroadCategory:catInfo[1]];
+                            for (NSArray *cat in catInfo) {
+                                [PlaceDatabase saveItemWithPlace:newPlace andSpecificCategory:cat[2] andBroadCategory:cat[1]];
+                            }
                         }
                         
                         

@@ -49,14 +49,60 @@
     
     
     [self setTitle:self.place.name];
+    
+    //Set all labels with variables
+    UILabel *labelOne = (UILabel *)[self.view viewWithTag:1];
+    UILabel *labelTwo = (UILabel *)[self.view viewWithTag:2];
+    UILabel *labelThree = (UILabel *)[self.view viewWithTag:3];
+    UILabel *labelFour = (UILabel *)[self.view viewWithTag:4];
+    UILabel *labelFive = (UILabel *)[self.view viewWithTag:5];
+    UILabel *labelSix = (UILabel *)[self.view viewWithTag:6];
+    UILabel *labelSeven = (UILabel *)[self.view viewWithTag:7];
+    UILabel *labelEight = (UILabel *)[self.view viewWithTag:8];
+    UILabel *labelNine = (UILabel *)[self.view viewWithTag:9];
+    UILabel *labelTen = (UILabel *)[self.view viewWithTag:10];
+    
     [self setLabel:2 with:self.place.getAllHoursAsString];
     [self setLabel:4 with:self.place.location];
     [self setLabel:6 with:self.place.phone];
     [self setLabel:8 with:self.place.email];
     [self setLabel:10 with:self.place.webLink];
     
+    //Loop: set the label sizes
+    NSMutableArray *labelArray = [[NSMutableArray alloc] init];
+    [labelArray addObject:labelOne];
+    [labelArray addObject:labelTwo];
+    [labelArray addObject:labelThree];
+    [labelArray addObject:labelFour];
+    [labelArray addObject:labelFive];
+    [labelArray addObject:labelSix];
+    [labelArray addObject:labelSeven];
+    [labelArray addObject:labelEight];
+    [labelArray addObject:labelNine];
+    [labelArray addObject:labelTen];
+    
+    //Constant offset
+    CGFloat betweenSpace = 10;
+    
+    //Loop through array and set all the labels
+    for (NSInteger i = 0; i < 10; i++) {
+        UILabel *fitLabel = (UILabel *)[labelArray objectAtIndex:i];
+        [fitLabel sizeToFit];
+    }
+    
+    for (NSInteger i = 1; i < 10; i++) {
+        UILabel *fitLabel = (UILabel *)[labelArray objectAtIndex:i];
+        UILabel *prevLabel = (UILabel *)[labelArray objectAtIndex:i-1];
+        
+        CGRect fitFrame  = fitLabel.frame;
+        fitFrame.origin.y = prevLabel.frame.origin.y + prevLabel.frame.size.height;
+        [fitLabel setFrame:fitFrame];
+        
+    }
    	// Do any additional setup after loading the view.
 }
+
+
 /*
  * Sets the text of a specific display label.
  * If the information to be displayed on the label is not available,

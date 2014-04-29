@@ -159,6 +159,7 @@
                         //since this is the first launch EVER, it is safe to assume that there is NOTHING in the database on the phone
                         //and that ALL DATA coming in MUST be initilialized (this is currently problematic with some stuff being initialized as hardcoded in app delegate)
                         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"NOTinitializing"];
+                        [PlaceDatabase emptyDatabase];
                         
                         
                         for(NSArray *row in results){
@@ -168,9 +169,11 @@
                             NSArray *catInfo = row[1];
                             
                             Place *newPlace = [[Place alloc] initWithSchool:placeInfo[1] andName:placeInfo[2] andLocation:placeInfo[3] andMondayHours:[[Hours alloc] initWithOneString:placeInfo[4]] andTuesdayHours:[[Hours alloc] initWithOneString:placeInfo[5]] andWednesdayHours:[[Hours alloc] initWithOneString:placeInfo[6]] andThursdayHours:[[Hours alloc] initWithOneString:placeInfo[7]] andFridayHours:[[Hours alloc] initWithOneString:placeInfo[8]] andSaturdayHours:[[Hours alloc] initWithOneString:placeInfo[9]] andSundayHours:[[Hours alloc] initWithOneString:placeInfo[10]] andPhoneString:placeInfo[11] andEmailString:placeInfo[12] andLinkString:placeInfo[13] andExtraInfo:placeInfo[13]];
+                            [PlaceDatabase saveItemWithPlace:newPlace];
+                            
                             
                             for (NSArray *cat in catInfo) {
-                                [PlaceDatabase saveItemWithPlace:newPlace andSpecificCategory:cat[2] andBroadCategory:cat[1]];
+                                [PlaceDatabase savePlace:placeInfo[2] withSpecificCategory:cat[2] andBroadCategory:cat[1]];
                             }
                         }
                         

@@ -78,6 +78,8 @@ def military(n):
 		#add leading 0 if is only 3 characters lon
 		if len(fullHours) == 3 :
 			fullHours = "0" + fullHours
+		elif len(fullHours) == 1 :
+			fullHours = "000" + fullHours
 		formattedHours.append(fullHours)
 	#build final string of opening-closing
 	finalHourString = formattedHours[0]+"-"+formattedHours[1]

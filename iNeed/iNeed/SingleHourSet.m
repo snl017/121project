@@ -11,8 +11,8 @@
 @implementation SingleHourSet
 
 //helper method to check the legal format of hours
-//limits opening to be sometime after 1200 am
-//limits closing to be sometime before 2400 = 1200 am
+//limits opening to be sometime after 1200 pm
+//limits closing to be sometime before 2400 = 1200 pm
 -(bool) inLegalHourFormat:(NSString *) hours{
     //change into ints
     NSInteger hoursDigits = [hours integerValue];

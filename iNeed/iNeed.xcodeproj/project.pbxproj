@@ -42,6 +42,7 @@
 		DADDDEB318EBCE0200C25831 /* HighLevelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DADDDEB218EBCE0200C25831 /* HighLevelViewController.m */; };
 		DADDDEBC18EBD1FD00C25831 /* SpecificCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DADDDEBB18EBD1FD00C25831 /* SpecificCategoryViewController.m */; };
 		DADDDEC818EC8D1A00C25831 /* UpdateDatabaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DADDDEC718EC8D1A00C25831 /* UpdateDatabaseViewController.m */; };
+		FB0DEE10190F685000172B09 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB0DEE0F190F685000172B09 /* Default@2x.png */; };
 		FB32A89318E90D88007F095E /* SingleHourSet.m in Sources */ = {isa = PBXBuildFile; fileRef = FB32A89218E90D88007F095E /* SingleHourSet.m */; };
 		FB32A89518E9E820007F095E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB32A89418E9E820007F095E /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
@@ -107,6 +108,7 @@
 		DADDDEBB18EBD1FD00C25831 /* SpecificCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecificCategoryViewController.m; sourceTree = "<group>"; };
 		DADDDEC618EC8D1A00C25831 /* UpdateDatabaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UpdateDatabaseViewController.h; path = ../UpdateDatabaseViewController.h; sourceTree = "<group>"; };
 		DADDDEC718EC8D1A00C25831 /* UpdateDatabaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UpdateDatabaseViewController.m; path = ../UpdateDatabaseViewController.m; sourceTree = "<group>"; };
+		FB0DEE0F190F685000172B09 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		FB32A89118E90D88007F095E /* SingleHourSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleHourSet.h; sourceTree = "<group>"; };
 		FB32A89218E90D88007F095E /* SingleHourSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleHourSet.m; sourceTree = "<group>"; };
 		FB32A89418E9E820007F095E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 		DA212CED18B3EAB600C0DF8F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FB0DEE0F190F685000172B09 /* Default@2x.png */,
 				DA212CEE18B3EAB600C0DF8F /* iNeed-Info.plist */,
 				DA212CEF18B3EAB600C0DF8F /* InfoPlist.strings */,
 				DA212CF218B3EAB600C0DF8F /* main.m */,
@@ -365,6 +368,7 @@
 				86712BF9190DAD8E00D35309 /* Default@2x.png in Resources */,
 				DA212CF118B3EAB600C0DF8F /* InfoPlist.strings in Resources */,
 				FB32A89518E9E820007F095E /* Default-568h@2x.png in Resources */,
+				FB0DEE10190F685000172B09 /* Default@2x.png in Resources */,
 				86712BF0190DA1D000D35309 /* testLaunch1.png in Resources */,
 				DA212CFA18B3EAB600C0DF8F /* Main.storyboard in Resources */,
 			);

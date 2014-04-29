@@ -33,6 +33,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+   
+    
+    
     //self.navigationController.navigationBar.topItem.leftBarButtonItem.title = @"";
     
     
@@ -80,6 +83,8 @@
     
     Place *place = (self.places)[indexPath.row];
     cell.textLabel.text = place.name;
+    UIColor *titleColor = UIColorFromRGB(0x0075A8);
+    cell.textColor = titleColor;
     
     //Get the day of the week
     NSDateFormatter* day = [[NSDateFormatter alloc] init];

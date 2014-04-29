@@ -35,6 +35,7 @@
     [super viewDidLoad];
     //self.navigationController.navigationBar.topItem.leftBarButtonItem.title = @"";
     
+    
     //Fixed background image
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:
                                      [UIImage imageNamed:@"darkTickBg-01.png"]];

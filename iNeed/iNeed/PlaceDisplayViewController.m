@@ -61,12 +61,16 @@
     UILabel *labelEight = (UILabel *)[self.view viewWithTag:8];
     UILabel *labelNine = (UILabel *)[self.view viewWithTag:9];
     UILabel *labelTen = (UILabel *)[self.view viewWithTag:10];
+//    UILabel *labelEleven = (UILabel *)[self.view viewWithTag:11];
+//    UILabel *labelTwelve = (UILabel *)[self.view viewWithTag:12];
     
     [self setLabel:2 with:self.place.getAllHoursAsString];
     [self setLabel:4 with:self.place.location];
     [self setLabel:6 with:self.place.phone];
     [self setLabel:8 with:self.place.email];
     [self setLabel:10 with:self.place.webLink];
+
+//    [self setLabel:12 with:self.place.extraInfo];
     
     //Loop: set the label sizes
     NSMutableArray *labelArray = [[NSMutableArray alloc] init];
@@ -80,6 +84,8 @@
     [labelArray addObject:labelEight];
     [labelArray addObject:labelNine];
     [labelArray addObject:labelTen];
+//    [labelArray addObject:labelEleven];
+//    [labelArray addObject:labelTwelve];
     
     //Constant offset
     CGFloat betweenSpace = 10;
@@ -87,6 +93,7 @@
     //Loop through array and set all the labels
     for (NSInteger i = 0; i < 10; i++) {
         UILabel *fitLabel = (UILabel *)[labelArray objectAtIndex:i];
+        
         [fitLabel sizeToFit];
     }
     
@@ -109,7 +116,7 @@
  * Remove all text from the label and the label explaining its contents.
  */
 -(void)setLabel:(int)tag with:(NSString*)element{
-    if([element isEqualToString:@""]){
+    if([element isEqualToString:@""] || [element isEqualToString:None]){
         UITextField *label =(UITextField*)[self.view viewWithTag:(tag-1)];
         label.text = @"";
         UITextField *text =(UITextField*)[self.view viewWithTag:tag];

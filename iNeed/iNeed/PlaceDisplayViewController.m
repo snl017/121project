@@ -62,7 +62,7 @@
  * Remove all text from the label and the label explaining its contents.
  */
 -(void)setLabel:(int)tag with:(NSString*)element{
-    if([element isEqualToString:None]){
+    if([element isEqualToString:@""]){
         UITextField *label =(UITextField*)[self.view viewWithTag:(tag-1)];
         label.text = @"";
         UITextField *text =(UITextField*)[self.view viewWithTag:tag];

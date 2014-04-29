@@ -17,5 +17,4 @@
 
 //Background properties
 @property UIImageView *backgroundImageView;
-
 @end

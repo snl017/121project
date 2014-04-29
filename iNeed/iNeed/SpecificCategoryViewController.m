@@ -28,6 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //self.navigationController.navigationBar.topItem.leftBarButtonItem.title = @"";
     
     //Set background image
     self.backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"darkBlueBg-01.png"]];

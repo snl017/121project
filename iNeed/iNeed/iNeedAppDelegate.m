@@ -14,7 +14,8 @@
 {
     //To test prettyness of launch screen uncomment below
     //sleep(5);
-    NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor purpleColor], UITextAttributeTextColor, [UIColor whiteColor], UITextAttributeTextShadowColor, nil];
+    UIColor *titleColor = UIColorFromRGB(0x0075A8);
+    NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:titleColor, UITextAttributeTextColor, [UIColor whiteColor], UITextAttributeTextShadowColor, nil];
     [[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
     
     //(written by) SHANNON - idk if we even need any of the things below here or the testDatabase function

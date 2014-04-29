@@ -168,7 +168,11 @@
                             NSArray *placeInfo = row[0];
                             NSArray *catInfo = row[1];
                             
-                            Place *newPlace = [[Place alloc] initWithSchool:placeInfo[1] andName:placeInfo[2] andLocation:placeInfo[3] andMondayHours:[[Hours alloc] initWithOneString:placeInfo[4]] andTuesdayHours:[[Hours alloc] initWithOneString:placeInfo[5]] andWednesdayHours:[[Hours alloc] initWithOneString:placeInfo[6]] andThursdayHours:[[Hours alloc] initWithOneString:placeInfo[7]] andFridayHours:[[Hours alloc] initWithOneString:placeInfo[8]] andSaturdayHours:[[Hours alloc] initWithOneString:placeInfo[9]] andSundayHours:[[Hours alloc] initWithOneString:placeInfo[10]] andPhoneString:placeInfo[11] andEmailString:placeInfo[12] andLinkString:placeInfo[13] andExtraInfo:placeInfo[13]];
+                            NSString *location = [NSString stringWithString: placeInfo[3]];
+                            //so line breaks weren't working, so we saved them with hashtags, and then replace hashtags here with line breaks
+                            NSString *newLocation = [location stringByReplacingOccurrencesOfString:@"#" withString:@"\n"];
+                            
+                            Place *newPlace = [[Place alloc] initWithSchool:placeInfo[1] andName:placeInfo[2] andLocation:newLocation andMondayHours:[[Hours alloc] initWithOneString:placeInfo[4]] andTuesdayHours:[[Hours alloc] initWithOneString:placeInfo[5]] andWednesdayHours:[[Hours alloc] initWithOneString:placeInfo[6]] andThursdayHours:[[Hours alloc] initWithOneString:placeInfo[7]] andFridayHours:[[Hours alloc] initWithOneString:placeInfo[8]] andSaturdayHours:[[Hours alloc] initWithOneString:placeInfo[9]] andSundayHours:[[Hours alloc] initWithOneString:placeInfo[10]] andPhoneString:placeInfo[11] andEmailString:placeInfo[12] andLinkString:placeInfo[13] andExtraInfo:placeInfo[13]];
                             [PlaceDatabase saveItemWithPlace:newPlace];
                             
                             

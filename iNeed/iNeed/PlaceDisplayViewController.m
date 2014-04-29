@@ -39,6 +39,7 @@
      Tag: 10 Displays: Web
      */
     [super viewDidLoad];
+    //self.navigationController.navigationBar.topItem.leftBarButtonItem.title = @"";
     
     //Set background image
     self.backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"darkTickBg-01.png"]];

@@ -65,9 +65,9 @@ def rowsCategories(updatedRows) :
 		c.execute(selectString,t)
 		for row in c:
 			categoryRowsToReturn.append(row)
-		updatedRowsCopy[i].append(categoryRowsToReturn[0])
+		updatedRowsCopy[i].append(categoryRowsToReturn)
 
-	#print updatedRowsCopy
+	print updatedRowsCopy
 
 	conn.commit()
 	return updatedRowsCopy
